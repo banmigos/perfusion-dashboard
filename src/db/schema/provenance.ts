@@ -1,5 +1,12 @@
 import { sql } from "drizzle-orm";
-import { check, index, integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
+import {
+  check,
+  index,
+  integer,
+  sqliteTable,
+  text,
+  unique,
+} from "drizzle-orm/sqlite-core";
 import { createdAt, id, updatedAt } from "./_helpers";
 
 export const SOURCE_TYPES = [
@@ -11,7 +18,12 @@ export const SOURCE_TYPES = [
   "phone",
   "other",
 ] as const;
-export const CLAIM_STATES = ["known", "unknown", "not_published", "not_applicable"] as const;
+export const CLAIM_STATES = [
+  "known",
+  "unknown",
+  "not_published",
+  "not_applicable",
+] as const;
 export const VERIFICATION_STATES = [
   "draft",
   "needs_review",
@@ -59,14 +71,20 @@ export const claims = sqliteTable(
     quote: text(),
     note: text(),
     checkedAt: integer({ mode: "timestamp_ms" }),
-    verification: text({ enum: VERIFICATION_STATES }).notNull().default("draft"),
+    verification: text({ enum: VERIFICATION_STATES })
+      .notNull()
+      .default("draft"),
     locked: integer({ mode: "boolean" }).notNull().default(false),
     confidence: text({ enum: CONFIDENCE_LEVELS }),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },
   (t) => [
-    unique("claims_subject_field_unique").on(t.subjectTable, t.subjectId, t.fieldKey),
+    unique("claims_subject_field_unique").on(
+      t.subjectTable,
+      t.subjectId,
+      t.fieldKey,
+    ),
     index("claims_verification_idx").on(t.verification),
     index("claims_checked_at_idx").on(t.checkedAt),
     index("claims_subject_idx").on(t.subjectTable, t.subjectId),

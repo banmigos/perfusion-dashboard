@@ -1,5 +1,18 @@
-import { index, integer, real, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
-import { archivedAt, canonicalStatus, createdAt, id, updatedAt } from "./_helpers";
+import {
+  index,
+  integer,
+  real,
+  sqliteTable,
+  text,
+  unique,
+} from "drizzle-orm/sqlite-core";
+import {
+  archivedAt,
+  canonicalStatus,
+  createdAt,
+  id,
+  updatedAt,
+} from "./_helpers";
 
 export const users = sqliteTable("users", {
   id: id(),
@@ -7,9 +20,21 @@ export const users = sqliteTable("users", {
   createdAt: createdAt(),
 });
 
-export const CREDENTIALS = ["MS", "MPS", "MHS", "BS", "Certificate", "Other"] as const;
+export const CREDENTIALS = [
+  "MS",
+  "MPS",
+  "MHS",
+  "BS",
+  "Certificate",
+  "Other",
+] as const;
 export const MODALITIES = ["in_person", "hybrid", "online"] as const;
-export const DEADLINE_TYPES = ["rolling", "firm", "priority", "unknown"] as const;
+export const DEADLINE_TYPES = [
+  "rolling",
+  "firm",
+  "priority",
+  "unknown",
+] as const;
 export const CAS_SERVICES = ["none", "CASPA", "other"] as const;
 export const REQUIREMENT_CATEGORIES = [
   "gpa",
@@ -24,8 +49,17 @@ export const REQUIREMENT_CATEGORIES = [
   "fee",
   "other",
 ] as const;
-export const RESIDENCIES = ["in_state", "out_of_state", "international", "flat"] as const;
-export const TUITION_COVERS = ["total_program", "per_year", "per_credit"] as const;
+export const RESIDENCIES = [
+  "in_state",
+  "out_of_state",
+  "international",
+  "flat",
+] as const;
+export const TUITION_COVERS = [
+  "total_program",
+  "per_year",
+  "per_credit",
+] as const;
 
 export const schools = sqliteTable(
   "schools",
@@ -97,7 +131,10 @@ export const applicationCycles = sqliteTable(
     updatedAt: updatedAt(),
   },
   (t) => [
-    unique("application_cycles_program_label_unique").on(t.programId, t.cycleLabel),
+    unique("application_cycles_program_label_unique").on(
+      t.programId,
+      t.cycleLabel,
+    ),
     index("application_cycles_deadline_date_idx").on(t.deadlineDate),
     index("application_cycles_entry_year_idx").on(t.entryYear),
   ],
@@ -148,7 +185,9 @@ export const tuitionEstimates = sqliteTable("tuition_estimates", {
   programId: integer()
     .notNull()
     .references(() => programs.id, { onDelete: "restrict" }),
-  cycleId: integer().references(() => applicationCycles.id, { onDelete: "restrict" }),
+  cycleId: integer().references(() => applicationCycles.id, {
+    onDelete: "restrict",
+  }),
   residency: text({ enum: RESIDENCIES }).notNull(),
   amountCents: integer().notNull(),
   currency: text().notNull().default("USD"),

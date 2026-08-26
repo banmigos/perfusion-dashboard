@@ -5,7 +5,9 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import * as schema from "./schema";
 
 function resolveDatabasePath(databaseUrl: string): string {
-  return databaseUrl.startsWith("file:") ? databaseUrl.slice("file:".length) : databaseUrl;
+  return databaseUrl.startsWith("file:")
+    ? databaseUrl.slice("file:".length)
+    : databaseUrl;
 }
 
 const databaseUrl = process.env.DATABASE_URL ?? "file:./data/app.db";

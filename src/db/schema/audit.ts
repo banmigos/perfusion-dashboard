@@ -3,9 +3,24 @@ import { id } from "./_helpers";
 import { SUBJECT_TABLES } from "./provenance";
 
 export const IMPORT_MODES = ["dry_run", "apply"] as const;
-export const IMPORT_BATCH_STATUSES = ["running", "succeeded", "failed", "rolled_back"] as const;
-export const CONFLICT_RESOLUTIONS = ["accepted", "rejected", "pending"] as const;
-export const CHANGE_LOG_ACTIONS = ["create", "update", "delete", "archive", "verify"] as const;
+export const IMPORT_BATCH_STATUSES = [
+  "running",
+  "succeeded",
+  "failed",
+  "rolled_back",
+] as const;
+export const CONFLICT_RESOLUTIONS = [
+  "accepted",
+  "rejected",
+  "pending",
+] as const;
+export const CHANGE_LOG_ACTIONS = [
+  "create",
+  "update",
+  "delete",
+  "archive",
+  "verify",
+] as const;
 
 export const importBatches = sqliteTable("import_batches", {
   id: id(),

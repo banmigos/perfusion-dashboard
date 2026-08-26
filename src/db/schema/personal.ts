@@ -1,4 +1,10 @@
-import { index, integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
+import {
+  index,
+  integer,
+  sqliteTable,
+  text,
+  unique,
+} from "drizzle-orm/sqlite-core";
 import { createdAt, id, updatedAt } from "./_helpers";
 import { applicationCycles, programs, requirements, users } from "./canonical";
 
@@ -27,7 +33,9 @@ export const savedPrograms = sqliteTable(
     priority: text({ enum: PRIORITIES }),
     personalNote: text(),
   },
-  (t) => [unique("saved_programs_user_program_unique").on(t.userId, t.programId)],
+  (t) => [
+    unique("saved_programs_user_program_unique").on(t.userId, t.programId),
+  ],
 );
 
 export const personalChecklists = sqliteTable("personal_checklists", {
@@ -38,7 +46,9 @@ export const personalChecklists = sqliteTable("personal_checklists", {
   savedProgramId: integer()
     .notNull()
     .references(() => savedPrograms.id, { onDelete: "cascade" }),
-  cycleId: integer().references(() => applicationCycles.id, { onDelete: "restrict" }),
+  cycleId: integer().references(() => applicationCycles.id, {
+    onDelete: "restrict",
+  }),
   title: text().notNull(),
   createdAt: integer({ mode: "timestamp_ms" })
     .notNull()

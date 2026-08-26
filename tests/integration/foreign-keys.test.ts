@@ -29,7 +29,9 @@ describe("foreign key policy", () => {
     const fixture = await seedFixtureSchool(db);
 
     await expect(
-      db.delete(schema.programs).where(eq(schema.programs.id, fixture.program.id)),
+      db
+        .delete(schema.programs)
+        .where(eq(schema.programs.id, fixture.program.id)),
     ).rejects.toThrow(/FOREIGN KEY constraint failed/);
   });
 
@@ -65,16 +67,24 @@ describe("foreign key policy", () => {
       .returning();
     const [checklist] = await db
       .insert(schema.personalChecklists)
-      .values({ userId: user!.id, savedProgramId: saved!.id, title: "Application tasks" })
+      .values({
+        userId: user!.id,
+        savedProgramId: saved!.id,
+        title: "Application tasks",
+      })
       .returning();
     await db.insert(schema.checklistItems).values({
       checklistId: checklist!.id,
       title: "Submit transcript",
     });
 
-    await db.delete(schema.savedPrograms).where(eq(schema.savedPrograms.id, saved!.id));
+    await db
+      .delete(schema.savedPrograms)
+      .where(eq(schema.savedPrograms.id, saved!.id));
 
-    const remainingChecklists = await db.select().from(schema.personalChecklists);
+    const remainingChecklists = await db
+      .select()
+      .from(schema.personalChecklists);
     const remainingItems = await db.select().from(schema.checklistItems);
     expect(remainingChecklists).toHaveLength(0);
     expect(remainingItems).toHaveLength(0);
@@ -92,7 +102,9 @@ describe("foreign key policy", () => {
       fieldKey: "name",
     });
 
-    await db.delete(schema.importBatches).where(eq(schema.importBatches.id, batch!.id));
+    await db
+      .delete(schema.importBatches)
+      .where(eq(schema.importBatches.id, batch!.id));
 
     const remaining = await db.select().from(schema.importConflicts);
     expect(remaining).toHaveLength(0);
@@ -107,7 +119,11 @@ describe("foreign key policy", () => {
       .returning();
     const [checklist] = await db
       .insert(schema.personalChecklists)
-      .values({ userId: user!.id, savedProgramId: saved!.id, title: "Application tasks" })
+      .values({
+        userId: user!.id,
+        savedProgramId: saved!.id,
+        title: "Application tasks",
+      })
       .returning();
     const [item] = await db
       .insert(schema.checklistItems)
@@ -121,7 +137,9 @@ describe("foreign key policy", () => {
     // Requirements are RESTRICT-protected by application_cycles being their own
     // parent, not the other way around, so deleting the requirement directly is
     // legal here — nothing else references application_cycles through it.
-    await db.delete(schema.requirements).where(eq(schema.requirements.id, fixture.requirement.id));
+    await db
+      .delete(schema.requirements)
+      .where(eq(schema.requirements.id, fixture.requirement.id));
 
     const [reloaded] = await db
       .select()

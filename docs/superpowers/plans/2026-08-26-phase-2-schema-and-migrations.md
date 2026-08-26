@@ -677,7 +677,9 @@ import path from "node:path";
 import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 
-export function runMigrations(db: BetterSQLite3Database<Record<string, unknown>>): void {
+export function runMigrations<TSchema extends Record<string, unknown>>(
+  db: BetterSQLite3Database<TSchema>,
+): void {
   migrate(db, { migrationsFolder: path.join(process.cwd(), "drizzle") });
 }
 ```
@@ -924,7 +926,7 @@ git commit -m "Phase 2: add Zod schemas mirroring the Drizzle schema"
 - Modify: `vitest.config.ts` (broaden `include` to pick up `tests/integration`)
 
 **Interfaces:**
-- Consumes: `schema` from `src/db/schema` (Task 3), the committed `drizzle/` migration (Task 4).
+- Consumes: `schema` from `src/db/schema` (Task 3), the committed `drizzle/` migration (Task 4), `runMigrations` from `src/db/migrate.ts` (Task 5).
 - Produces: `createTestDb()` from `tests/integration/helpers/db.ts` — returns `{ db, close }`, used by every test in Tasks 8–11. `seedFixtureSchool(db)` from `tests/fixtures/school.ts` — inserts one fully-worked school→program→cycle→requirement/prerequisite/tuition→source→claim chain and returns every inserted row, used by Tasks 8–11 wherever a realistic row is needed instead of a bare insert.
 
 - [ ] **Step 1: Broaden `vitest.config.ts` to include integration tests**
@@ -952,8 +954,8 @@ import os from "node:os";
 import path from "node:path";
 import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
-import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import * as schema from "@/db/schema";
+import { runMigrations } from "@/db/migrate";
 
 export function createTestDb() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "perfusion-test-"));
@@ -963,7 +965,7 @@ export function createTestDb() {
   sqlite.pragma("foreign_keys = ON");
 
   const db = drizzle(sqlite, { schema, casing: "snake_case" });
-  migrate(db, { migrationsFolder: path.join(process.cwd(), "drizzle") });
+  runMigrations(db);
 
   return {
     db,
@@ -1135,7 +1137,7 @@ describe("fixture school", () => {
 - [ ] **Step 5: Run the new test**
 
 Run: `npm run test -- tests/integration/fixture.test.ts`
-Expected: PASS (2 tests). If it fails with a `SqliteError: no such table`, the migration didn't run — check that `migrationsFolder` in `tests/integration/helpers/db.ts` resolves to the repo-root `drizzle/` folder (it uses `process.cwd()`, so this test must be run via `npm run test`/`vitest`, from the repo root, not from inside `tests/`).
+Expected: PASS (2 tests). If it fails with a `SqliteError: no such table`, the migration didn't run — check that `src/db/migrate.ts`'s `migrationsFolder` (Task 5) resolves to the repo-root `drizzle/` folder via `process.cwd()`, so this test must be run via `npm run test`/`vitest` from the repo root, not from inside `tests/`.
 
 - [ ] **Step 6: Commit**
 

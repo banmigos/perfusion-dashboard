@@ -1,4 +1,3 @@
-import "server-only";
 import { index, integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
 import { createdAt, id, updatedAt } from "./_helpers";
 import { applicationCycles, programs, requirements, users } from "./canonical";

@@ -1,4 +1,3 @@
-import "server-only";
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { id } from "./_helpers";
 import { SUBJECT_TABLES } from "./provenance";

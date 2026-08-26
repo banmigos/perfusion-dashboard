@@ -164,6 +164,25 @@ describe("buildProgramImportPlan", () => {
     expect(shadowing?.claimNote).toMatch(/CURRENTLY WAIVED/);
   });
 
+  it("special-cases Baylor with a shadowing requirement from its notes, in addition to the duplicate_check claim", () => {
+    const plan = buildProgramImportPlan(
+      fixtureRecord({
+        name: "Baylor College of Medicine",
+        degree: "Certificate (via THI)",
+        notes:
+          "REQUIRED: Same as Texas Heart Institute - minimum 1 open-heart observation. Start: January 15 2025.",
+      }),
+    );
+    const shadowing = plan.requirements.find((r) => r.category === "shadowing");
+    expect(shadowing).toBeDefined();
+    expect(shadowing?.claimNote).toMatch(/open-heart/);
+
+    const dup = plan.unknownClaims.find(
+      (c) => c.fieldKey === "duplicate_check",
+    );
+    expect(dup).toBeDefined();
+  });
+
   it("special-cases Baylor with a duplicate_check claim referencing Texas Heart Institute", () => {
     const plan = buildProgramImportPlan(
       fixtureRecord({

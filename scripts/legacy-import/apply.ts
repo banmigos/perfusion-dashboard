@@ -33,6 +33,14 @@ const REQUIREMENT_VALUE_FIELD: Record<string, string> = {
   shadowing: "value_text",
 };
 
+/**
+ * Idempotent by `programs.legacy_key`: a program that already exists is
+ * skipped entirely, never updated. This means a transform bug found after
+ * a real `--apply` run cannot be corrected by fixing the transform and
+ * re-running — the already-imported row is silently skipped either way.
+ * Recovery requires deleting the affected program's rows (or the whole
+ * database, since this is a one-time migration script) and re-applying.
+ */
 export function runLegacyImport(
   db: BetterSQLite3Database<typeof schema>,
   plans: ProgramImportPlan[],

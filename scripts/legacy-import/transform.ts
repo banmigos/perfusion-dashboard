@@ -95,6 +95,7 @@ const SPECIAL_CASES: Record<string, SpecialCase> = {
   },
   "UTHealth Houston (McGovern Medical School)": { shadowingFromNotes: true },
   "Baylor College of Medicine": {
+    shadowingFromNotes: true,
     extraUnknownClaims: [
       {
         subject: "program",

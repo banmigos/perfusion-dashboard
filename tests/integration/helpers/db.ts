@@ -5,13 +5,14 @@ import Database from "better-sqlite3";
 import { drizzle } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import { runMigrations } from "@/db/migrate";
+import { applyPragmas } from "@/db/pragmas";
 
 export function createTestDb() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "perfusion-test-"));
   const file = path.join(dir, "test.db");
 
   const sqlite = new Database(file);
-  sqlite.pragma("foreign_keys = ON");
+  applyPragmas(sqlite);
 
   const db = drizzle(sqlite, { schema, casing: "snake_case" });
   runMigrations(db);

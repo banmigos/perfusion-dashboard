@@ -20,11 +20,32 @@ describe("PRAGMAs and soft-delete lifecycle", () => {
   it("has foreign_keys ON for this connection", () => {
     // better-sqlite3's `.pragma(source, { simple: true })` runs
     // `PRAGMA <source>` and plucks the first column of the first row
-    // (see node_modules/better-sqlite3/lib/methods/pragma.js). For
-    // `PRAGMA foreign_keys` that is the boolean flag as an integer, so
-    // `1` here confirms the ON state set in helpers/db.ts, not a
-    // parameterized query result.
+    // (see node_modules/better-sqlite3/lib/methods/pragma.js). helpers/db.ts
+    // sets this via the shared src/db/pragmas.ts#applyPragmas, the same
+    // function src/db/client.ts uses for the production connection, so this
+    // asserts the real PRAGMA-setting code, not a parallel test-only
+    // reimplementation of it.
     const result = ctx.sqlite.pragma("foreign_keys", { simple: true });
+    expect(result).toBe(1);
+  });
+
+  it("has journal_mode WAL for this connection", () => {
+    // SQLite reports journal_mode back lowercase ("wal"), confirmed by
+    // reading it back on a real connection rather than assumed.
+    const result = ctx.sqlite.pragma("journal_mode", { simple: true });
+    expect(result).toBe("wal");
+  });
+
+  it("has busy_timeout 5000ms for this connection", () => {
+    const result = ctx.sqlite.pragma("busy_timeout", { simple: true });
+    expect(result).toBe(5000);
+  });
+
+  it("has synchronous NORMAL (1) for this connection", () => {
+    // `PRAGMA synchronous` reads back the numeric mode; NORMAL is 1 per
+    // SQLite's own docs, confirmed here by reading it back rather than
+    // hardcoded blind.
+    const result = ctx.sqlite.pragma("synchronous", { simple: true });
     expect(result).toBe(1);
   });
 

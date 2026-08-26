@@ -1532,14 +1532,19 @@ describe("claims CHECK constraints", () => {
 
     // Bypass the Drizzle/TS enum (which would reject this at compile time) by
     // going through the raw driver, to prove the DB-level CHECK is real and
-    // not just a TypeScript-level restriction.
+    // not just a TypeScript-level restriction. created_at/updated_at have no
+    // SQL-level DEFAULT (Drizzle's `.$defaultFn()` only fires through the
+    // query builder), so they must be supplied here or the insert fails on
+    // NOT NULL before ever reaching the CHECK constraint under test — see
+    // ledger, Task 10.
+    const now = Date.now();
     expect(() =>
       ctx.sqlite
         .prepare(
-          `INSERT INTO claims (subject_table, subject_id, field_key, state, source_id)
-           VALUES (?, ?, ?, ?, ?)`,
+          `INSERT INTO claims (subject_table, subject_id, field_key, state, source_id, created_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
         )
-        .run("not_a_real_table", fixture.program.id, "name", "known", fixture.source.id),
+        .run("not_a_real_table", fixture.program.id, "name", "known", fixture.source.id, now, now),
     ).toThrow(/CHECK constraint failed/);
   });
 });

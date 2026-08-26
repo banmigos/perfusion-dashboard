@@ -15,7 +15,7 @@
 - npm is the package manager (`CLAUDE.md`).
 - `drizzle/` migrations are committed; `data/` (the actual `.db`/WAL files) stays gitignored. Never `db.push()` — every schema change is a versioned migration (`CLAUDE.md`, `docs/plan.md` §6).
 - Integration tests run real migrations against a temp SQLite file (`docs/plan.md` §6).
-- `src/db/**` imports `server-only` — makes DB/schema access a compile error from a client component (`docs/plan.md` §2).
+- ~~`src/db/**` imports `server-only`~~ **Superseded by Task 4 ruling (see ledger):** `server-only` throws unconditionally when loaded outside Next's bundler (no `react-server` export condition), which breaks `drizzle-kit generate`, `tsx scripts/*.ts`, and Vitest — none of those load through Next's module graph. None of `src/db/schema/**`, `src/db/migrate.ts`, or `src/db/client.ts` import it. The client-component guard from `docs/plan.md` §2 is deferred to Phase 3+'s domain layer (`src/domain/**`), the actual boundary application code crosses to reach the database.
 - `PRAGMA foreign_keys = ON` per connection — SQLite defaults this OFF, which would silently void every FK constraint (`docs/data-model.md` §7).
 - `PRAGMA journal_mode = WAL`, `busy_timeout = 5000`, `synchronous = NORMAL` (`docs/data-model.md` §7).
 - Calendar dates (deadlines) are `TEXT` `YYYY-MM-DD`, never epoch timestamps. Audit instants are `INTEGER` epoch ms. Money is integer cents. Booleans are `INTEGER 0/1` via Drizzle's `{ mode: 'boolean' }` (`docs/data-model.md` §7, `CLAUDE.md`).
@@ -118,7 +118,6 @@ git commit -m "Phase 2: add Drizzle/SQLite dependencies and drizzle-kit config"
 - [ ] **Step 1: Write `src/db/schema/_helpers.ts`**
 
 ```ts
-import "server-only";
 import { integer, text } from "drizzle-orm/sqlite-core";
 
 export const id = () => integer().primaryKey({ autoIncrement: true });
@@ -151,7 +150,6 @@ export const canonicalStatus = () =>
 - [ ] **Step 2: Write `src/db/schema/canonical.ts`**
 
 ```ts
-import "server-only";
 import { index, integer, real, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
 import { archivedAt, canonicalStatus, createdAt, id, updatedAt } from "./_helpers";
 
@@ -344,7 +342,6 @@ git commit -m "Phase 2: add canonical schema (schools, programs, cycles, require
 - [ ] **Step 1: Write `src/db/schema/provenance.ts`**
 
 ```ts
-import "server-only";
 import { sql } from "drizzle-orm";
 import { check, index, integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
 import { createdAt, id, updatedAt } from "./_helpers";
@@ -436,7 +433,6 @@ export const claims = sqliteTable(
 - [ ] **Step 2: Write `src/db/schema/personal.ts`**
 
 ```ts
-import "server-only";
 import { index, integer, sqliteTable, text, unique } from "drizzle-orm/sqlite-core";
 import { createdAt, id, updatedAt } from "./_helpers";
 import { applicationCycles, programs, requirements, users } from "./canonical";
@@ -512,7 +508,6 @@ export const checklistItems = sqliteTable(
 - [ ] **Step 3: Write `src/db/schema/audit.ts`**
 
 ```ts
-import "server-only";
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { id } from "./_helpers";
 import { SUBJECT_TABLES } from "./provenance";
@@ -578,7 +573,6 @@ export const changeLog = sqliteTable(
 - [ ] **Step 4: Write `src/db/schema/index.ts`**
 
 ```ts
-import "server-only";
 
 export * from "./canonical";
 export * from "./provenance";
@@ -672,7 +666,6 @@ git commit -m "Phase 2: generate 0000_init migration, seed the single users row"
 - [ ] **Step 1: Write `src/db/migrate.ts`**
 
 ```ts
-import "server-only";
 import path from "node:path";
 import { migrate } from "drizzle-orm/better-sqlite3/migrator";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
@@ -687,7 +680,6 @@ export function runMigrations<TSchema extends Record<string, unknown>>(
 - [ ] **Step 2: Write `src/db/client.ts`**
 
 ```ts
-import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import Database from "better-sqlite3";
@@ -1695,7 +1687,7 @@ git commit -m "Phase 2: fix formatting/lint issues surfaced by npm run verify"
 
 ## Self-review
 
-**Spec coverage** — every table in `docs/data-model.md` §3 has a task: `users`/`schools`/`programs`/`application_cycles`/`requirements`/`prerequisite_courses`/`tuition_estimates` (Task 2), `sources`/`claims` (Task 3), `saved_programs`/`personal_checklists`/`checklist_items` (Task 3), `import_batches`/`import_conflicts`/`change_log` (Task 3). The three `claims` CHECK constraints (Task 3, tested in Task 10). Unique keys (Task 2/3, tested in Task 8). FK RESTRICT/CASCADE/SET NULL policy (Task 2/3, tested in Task 9). `PRAGMA foreign_keys/journal_mode/busy_timeout/synchronous` (Task 5, tested in Task 11). Soft-delete via `status='archived'` (tested in Task 11). The single seeded `users` row (Task 4, tested in Task 7). Zod mirror (Task 6). Real migrations, never `db.push()` (Task 4, Task 7). `src/db/**` importing `server-only` (every schema/client file). `docs/plan.md`'s Phase 2 gate — "constraint tests prove unique keys, FK restrict, and soft-delete work" — is Tasks 8, 9, and 11 respectively.
+**Spec coverage** — every table in `docs/data-model.md` §3 has a task: `users`/`schools`/`programs`/`application_cycles`/`requirements`/`prerequisite_courses`/`tuition_estimates` (Task 2), `sources`/`claims` (Task 3), `saved_programs`/`personal_checklists`/`checklist_items` (Task 3), `import_batches`/`import_conflicts`/`change_log` (Task 3). The three `claims` CHECK constraints (Task 3, tested in Task 10). Unique keys (Task 2/3, tested in Task 8). FK RESTRICT/CASCADE/SET NULL policy (Task 2/3, tested in Task 9). `PRAGMA foreign_keys/journal_mode/busy_timeout/synchronous` (Task 5, tested in Task 11). Soft-delete via `status='archived'` (tested in Task 11). The single seeded `users` row (Task 4, tested in Task 7). Zod mirror (Task 6). Real migrations, never `db.push()` (Task 4, Task 7). `src/db/**` does NOT import `server-only` — see the Global Constraints note on the Task 4 ruling that superseded this. `docs/plan.md`'s Phase 2 gate — "constraint tests prove unique keys, FK restrict, and soft-delete work" — is Tasks 8, 9, and 11 respectively.
 
 **Placeholder scan** — no `TBD`/"add error handling"/"similar to Task N" patterns; every step has literal code or a literal shell command.
 

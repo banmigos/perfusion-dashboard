@@ -61,7 +61,7 @@ My additions, each open to override:
 | SQLite driver | `better-sqlite3` | Synchronous, mature, ideal for a single-writer local app. Node 24's built-in `node:sqlite` is a viable zero-dependency alternative but has less Drizzle mileage. |
 | Build output | `output: 'standalone'` | Ships a self-contained server directory; no `node_modules` on the home server. |
 | Server writes | Server Actions | Avoids inventing HTTP endpoints, which also keeps the "no public API" rule easy to honor. |
-| DB access boundary | `src/db/**` imports `server-only` | Makes it a compile error to leak database access into a client component. |
+| DB access boundary | `src/domain/**` imports `server-only` (Phase 3+) | Deferred from `src/db/**`: `server-only` throws unconditionally outside Next's bundler, breaking `drizzle-kit`, `tsx`, and Vitest. `src/domain/**` is the actual boundary application code crosses to reach the database. |
 | Formatting / linting | Prettier + ESLint (`next/core-web-vitals`) | Matches the `CLAUDE.md` workflow rule. |
 | Dates | See `data-model.md` §7 | Deadlines are calendar dates, not instants. This distinction is load-bearing. |
 

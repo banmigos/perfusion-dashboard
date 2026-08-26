@@ -1,0 +1,734 @@
+{
+  "format": "legacy-capture/v1",
+  "captured_at": "2026-08-25",
+  "origin": {
+    "app": "Perfusion Application Hub (Google AI Studio), 2025-26 cycle",
+    "repo": "git.banmigos.dev/banmigos/perfusion-dashboard",
+    "commit": "91a83703442e9806c97b4fd323733384ac4bab56",
+    "file": "constants.tsx",
+    "exported_symbol": "SCHOOLS"
+  },
+  "import_policy": {
+    "verification": "draft",
+    "locked": false,
+    "claim_state": "known only for name/city/degree/url; every numeric or date field enters as 'unknown' until re-sourced",
+    "checked_at": null,
+    "rationale": "This corpus has one URL per school and no per-fact citation, quote, or check date. Nothing in it satisfies the CLAUDE.md rule that every fact retain an official source URL and a source_checked_at. It is a research lead list, not verified data. Import must never set verification=verified."
+  },
+  "known_issues": [
+    "Deadlines are unanchored strings (\"Mar 1\", \"Rolling\", \"CLOSED\", \"July 1 2025\") mixing three formats and mostly lacking a year.",
+    "GPA 3.0 appears in 17 of 23 records, strongly suggesting a placeholder rather than a sourced minimum.",
+    "Tuition mixes units: University of Iowa 2100 against University of Utah 120000 are not the same measure.",
+    "Baylor College of Medicine duplicates Texas Heart Institute (same URL, \"Certificate (via THI)\").",
+    "Vanderbilt is marked CLOSED for 2025-2027 and Baylor carries a July 1 2025 deadline; both are past-cycle.",
+    "Personal state in the old app was keyed by school NAME in localStorage, not by a stable id.",
+    "Credential values use four spellings for two things: Cert, Certificate, \"Certificate (via THI)\", alongside MS/MHS/MPS. Must normalise to the credential enum."
+  ],
+  "record_count": 23,
+  "records": [
+    {
+      "raw": {
+        "name": "Midwestern University",
+        "city": "Glendale, AZ",
+        "degree": "MS",
+        "deadline": "Mar 1",
+        "gpa": 2.75,
+        "gre": "Yes",
+        "tuition": 105250,
+        "classSize": 44,
+        "lat": 33.6601,
+        "lng": -112.1866,
+        "url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
+        "prereqs": [
+          "Bio I/II",
+          "Chem I/II",
+          "Anatomy",
+          "Physiology"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Mar 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "University of Arizona",
+        "city": "Tucson, AZ",
+        "degree": "MS",
+        "deadline": "Dec 1",
+        "gpa": 3.2,
+        "gre": "Yes",
+        "tuition": 72760,
+        "classSize": 4,
+        "lat": 32.2281,
+        "lng": -110.9747,
+        "url": "https://pharmacology.arizona.edu/perfusion-sciences-admissions",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics",
+          "Calc"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "SUNY Upstate Medical University",
+        "city": "Syracuse, NY",
+        "degree": "MS",
+        "deadline": "Feb 15",
+        "gpa": 2.8,
+        "gre": "No",
+        "tuition": 60650,
+        "classSize": 20,
+        "lat": 43.0481,
+        "lng": -76.1474,
+        "url": "https://www.upstate.edu/chp/programs/clinical-perfusion/apply-now.php",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Feb 15\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Hofstra University",
+        "city": "Hempstead, NY",
+        "degree": "MS",
+        "deadline": "Dec 31",
+        "gpa": 2.75,
+        "gre": "No",
+        "tuition": 109120,
+        "classSize": 12,
+        "lat": 40.7145,
+        "lng": -73.6003,
+        "url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Stats"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 31\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Medical University of South Carolina (MUSC)",
+        "city": "Charleston, SC",
+        "degree": "MS",
+        "deadline": "Dec 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 64155,
+        "classSize": 30,
+        "lat": 32.7765,
+        "lng": -79.9311,
+        "url": "https://chp.musc.edu/academics/cvp/entry-level/admissions",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Anatomy"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Quinnipiac University",
+        "city": "Hamden, CT",
+        "degree": "MHS",
+        "deadline": "Feb 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 59925,
+        "classSize": 10,
+        "lat": 41.4172,
+        "lng": -72.8943,
+        "url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Microbio"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Feb 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Rush University",
+        "city": "Chicago, IL",
+        "degree": "MS",
+        "deadline": "Dec 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 82758,
+        "classSize": 20,
+        "lat": 41.8744,
+        "lng": -87.6695,
+        "url": "https://www.rushu.rush.edu/college-health-sciences/college-health-sciences-admissions/ms-cardiovascular-perfusion",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "University of Nebraska Medical Center (UNMC)",
+        "city": "Omaha, NE",
+        "degree": "MPS",
+        "deadline": "Nov 3",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 85000,
+        "classSize": 20,
+        "lat": 41.2586,
+        "lng": -95.974,
+        "url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Anatomy"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Nov 3\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:85000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Milwaukee School of Engineering (MSOE)",
+        "city": "Milwaukee, WI",
+        "degree": "MS",
+        "deadline": "Dec 15",
+        "gpa": 3,
+        "gre": "Yes",
+        "tuition": 85000,
+        "classSize": 8,
+        "lat": 43.045,
+        "lng": -87.9103,
+        "url": "https://www.msoe.edu/academics/graduate-degrees/health/perfusion/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics",
+          "Calc"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 15\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:85000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Carlow University / UPMC Shadyside",
+        "city": "Pittsburgh, PA",
+        "degree": "MS",
+        "deadline": "Oct 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 73680,
+        "classSize": 20,
+        "lat": 40.4406,
+        "lng": -79.9959,
+        "url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Stats"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Oct 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Thomas Jefferson University",
+        "city": "Philadelphia, PA",
+        "degree": "MS",
+        "deadline": "Dec 15",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 84000,
+        "classSize": 8,
+        "lat": 39.9526,
+        "lng": -75.1652,
+        "url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 15\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:84000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "University of Utah",
+        "city": "Salt Lake City, UT",
+        "degree": "MS",
+        "deadline": "Rolling",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 120000,
+        "classSize": 7,
+        "lat": 40.7608,
+        "lng": -111.891,
+        "url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/requirements-prerequisites",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics",
+          "Anatomy"
+        ]
+      },
+      "triage": [
+        "deadline_non_date:\"Rolling\" — record as deadline_type, not a date",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:120000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Lawrence Technological University",
+        "city": "Southfield, MI",
+        "degree": "MS",
+        "deadline": "Dec 12",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 92000,
+        "classSize": 10,
+        "lat": 42.4725,
+        "lng": -83.2505,
+        "url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Stats"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 12\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:92000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Lipscomb University",
+        "city": "Nashville, TN",
+        "degree": "MS",
+        "deadline": "Dec 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 87000,
+        "classSize": 15,
+        "lat": 36.1042,
+        "lng": -86.7997,
+        "url": "https://lipscomb.edu/academics/programs/cardiovascular-perfusion",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Dec 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:87000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Northern Kentucky University",
+        "city": "Highland Heights, KY",
+        "degree": "MS",
+        "deadline": "Feb 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 70000,
+        "classSize": 10,
+        "lat": 39.0315,
+        "lng": -84.4646,
+        "url": "https://www.nku.edu/academics/chhs/programs/graduate/cardiovascular-perfusion.html",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Feb 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:70000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "University of Iowa",
+        "city": "Iowa City, IA",
+        "degree": "Cert",
+        "deadline": "Nov 1",
+        "gpa": 3.2,
+        "gre": "No",
+        "tuition": 2100,
+        "classSize": 5,
+        "lat": 41.6627,
+        "lng": -91.5549,
+        "url": "https://perfusion.medicine.uiowa.edu/prospective-students/admissions",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Anatomy"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Nov 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "tuition_unit_implausible:2100 — almost certainly per-credit or a fee, not program total",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Cleveland Clinic",
+        "city": "Cleveland, OH",
+        "degree": "Cert",
+        "deadline": "Sep 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 32000,
+        "classSize": 8,
+        "lat": 41.5043,
+        "lng": -81.6225,
+        "url": "https://my.clevelandclinic.org/departments/heart/medical-professionals/fellowship-residency/cardiovascular-perfusionist",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Anatomy"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Sep 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:32000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Texas Heart Institute",
+        "city": "Houston, TX",
+        "degree": "Cert",
+        "deadline": "Jul 1",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 25000,
+        "classSize": 8,
+        "lat": 29.71,
+        "lng": -95.3965,
+        "url": "https://www.texasheart.org/education/school-of-perfusion-technology/application-process/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Anatomy",
+          "Physiology"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Jul 1\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:25000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "UTHealth Houston (McGovern Medical School)",
+        "city": "Houston, TX",
+        "degree": "Cert",
+        "deadline": "July 15 2026",
+        "gpa": 3.2,
+        "gre": "No",
+        "tuition": 18000,
+        "classSize": 8,
+        "lat": 29.7081,
+        "lng": -95.398,
+        "url": "https://med.uth.edu/perfusion/education/prospective-applicants/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ],
+        "notes": "HIGHLY RECOMMENDED: 2 cases under CCP; CURRENTLY WAIVED due to hospital restrictions"
+      },
+      "triage": [
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Emory University",
+        "city": "Atlanta, GA",
+        "degree": "MS",
+        "deadline": "Jan 15",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 107000,
+        "classSize": 20,
+        "lat": 33.7925,
+        "lng": -84.324,
+        "url": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics",
+          "Anatomy"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Jan 15\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:107000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "University of Southern California (USC) Keck School of Medicine",
+        "city": "Los Angeles, CA",
+        "degree": "MS",
+        "deadline": "Sep 30",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 71515,
+        "classSize": 10,
+        "lat": 34.0624,
+        "lng": -118.2014,
+        "url": "https://keck.usc.edu/perfusion-sciences-program/apply/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ]
+      },
+      "triage": [
+        "deadline_no_year:\"Sep 30\" — cycle-ambiguous, must be re-anchored to a cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Vanderbilt University Medical Center",
+        "city": "Nashville, TN",
+        "degree": "Certificate",
+        "deadline": "CLOSED",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 39000,
+        "classSize": 3,
+        "lat": 36.1417,
+        "lng": -86.804,
+        "url": "https://www.vumc.org/perfusion-program/prospective-applicants",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physiology"
+        ],
+        "notes": "REQUIRED: Minimum 2 cases with licensed perfusionist (1 must be in OR); VUMC form required. CLOSED (not accepting 2025-2027)."
+      },
+      "triage": [
+        "deadline_non_date:\"CLOSED\" — record as deadline_type, not a date",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:39000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    },
+    {
+      "raw": {
+        "name": "Baylor College of Medicine",
+        "city": "Houston, TX",
+        "degree": "Certificate (via THI)",
+        "deadline": "July 1 2025",
+        "gpa": 3,
+        "gre": "No",
+        "tuition": 25000,
+        "classSize": 8,
+        "lat": 29.7118,
+        "lng": -95.4017,
+        "url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
+        "prereqs": [
+          "Bio",
+          "Chem",
+          "Physics"
+        ],
+        "notes": "REQUIRED: Same as Texas Heart Institute - minimum 1 open-heart observation. Start: January 15 2025."
+      },
+      "triage": [
+        "deadline_expired:\"July 1 2025\" — belongs to a past cycle",
+        "gpa_suspected_default:3.0 appears in 17/23 records — likely assumed, not sourced",
+        "tuition_suspiciously_round:25000 — likely an estimate",
+        "tuition_no_residency_tier — in-state vs out-of-state unknown",
+        "tuition_no_covers — total_program vs per_year not recorded",
+        "prereqs_abbreviated — no credits, lab, min grade, or recency",
+        "gre_binary — \"Yes\"/\"No\" cannot express not_published",
+        "class_size_unsourced",
+        "single_url_for_all_facts — one URL backs every field; no per-fact citation or quote"
+      ]
+    }
+  ]
+}

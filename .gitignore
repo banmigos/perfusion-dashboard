@@ -1,0 +1,31 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# production
+/build
+
+# env files — real values only, never committed
+.env
+.env*.local
+
+# database — never committed, see CLAUDE.md data rules
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# test artifacts
+/coverage
+/playwright-report
+/test-results
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*

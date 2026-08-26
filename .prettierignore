@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+coverage
+playwright-report
+test-results
+drizzle
+package-lock.json
+
+# Hand-authored planning docs and verbatim research capture — not scaffold
+# code, and the legacy JSON must stay byte-verbatim per CLAUDE.md.
+CLAUDE.md
+docs
+seed

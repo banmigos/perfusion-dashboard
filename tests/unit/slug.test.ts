@@ -19,9 +19,11 @@ describe("slugify", () => {
   });
 
   it("collapses runs of non-alphanumeric characters into one hyphen", () => {
-    expect(slugify("University of Southern California (USC) Keck School of Medicine")).toBe(
-      "university-of-southern-california-usc-keck-school-of-medicine",
-    );
+    expect(
+      slugify(
+        "University of Southern California (USC) Keck School of Medicine",
+      ),
+    ).toBe("university-of-southern-california-usc-keck-school-of-medicine");
   });
 
   it("trims leading and trailing hyphens", () => {

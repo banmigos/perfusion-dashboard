@@ -24,5 +24,7 @@ console.log(
 );
 console.log(`Skipped ${report.skipped} already-imported programs.`);
 if (!apply) {
-  console.log("\nDry run only — no changes written. Re-run with --apply to commit.");
+  console.log(
+    "\nDry run only — no changes written. Re-run with --apply to commit.",
+  );
 }

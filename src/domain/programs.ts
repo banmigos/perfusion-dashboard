@@ -1,5 +1,5 @@
 import "server-only";
-import { and, eq, inArray, like, ne, or, type SQL } from "drizzle-orm";
+import { and, desc, eq, inArray, like, ne, or, type SQL } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import { CREDENTIALS } from "@/db/schema/canonical";
@@ -90,4 +90,108 @@ export function listPrograms(
     .where(and(...conditions))
     .orderBy(schema.schools.name, schema.programs.name)
     .all();
+}
+
+export type ProgramDetail = {
+  school: typeof schema.schools.$inferSelect;
+  program: typeof schema.programs.$inferSelect;
+  cycles: Array<{
+    cycle: typeof schema.applicationCycles.$inferSelect;
+    requirements: (typeof schema.requirements.$inferSelect)[];
+    prerequisites: (typeof schema.prerequisiteCourses.$inferSelect)[];
+  }>;
+  tuitionEstimates: (typeof schema.tuitionEstimates.$inferSelect)[];
+  claims: Map<string, ClaimWithSource>;
+};
+
+export function getProgramDetail(
+  db: BetterSQLite3Database<typeof schema>,
+  schoolSlug: string,
+  programSlug: string,
+): ProgramDetail | null {
+  const [school] = db
+    .select()
+    .from(schema.schools)
+    .where(eq(schema.schools.slug, schoolSlug))
+    .all();
+  if (!school) {
+    return null;
+  }
+
+  const [program] = db
+    .select()
+    .from(schema.programs)
+    .where(
+      and(
+        eq(schema.programs.schoolId, school.id),
+        eq(schema.programs.slug, programSlug),
+      ),
+    )
+    .all();
+  if (!program) {
+    return null;
+  }
+
+  const cycleRows = db
+    .select()
+    .from(schema.applicationCycles)
+    .where(eq(schema.applicationCycles.programId, program.id))
+    .orderBy(desc(schema.applicationCycles.cycleLabel))
+    .all();
+  const cycleIds = cycleRows.map((c) => c.id);
+
+  const requirementRows = cycleIds.length
+    ? db
+        .select()
+        .from(schema.requirements)
+        .where(inArray(schema.requirements.cycleId, cycleIds))
+        .all()
+    : [];
+  const prerequisiteRows = cycleIds.length
+    ? db
+        .select()
+        .from(schema.prerequisiteCourses)
+        .where(inArray(schema.prerequisiteCourses.cycleId, cycleIds))
+        .all()
+    : [];
+  const tuitionRows = db
+    .select()
+    .from(schema.tuitionEstimates)
+    .where(eq(schema.tuitionEstimates.programId, program.id))
+    .all();
+
+  const cycles = cycleRows.map((cycle) => ({
+    cycle,
+    requirements: requirementRows.filter((r) => r.cycleId === cycle.id),
+    prerequisites: prerequisiteRows.filter((p) => p.cycleId === cycle.id),
+  }));
+
+  const subjects: SubjectRef[] = [
+    { subjectTable: "schools", subjectId: school.id },
+    { subjectTable: "programs", subjectId: program.id },
+    ...cycleRows.map((c) => ({
+      subjectTable: "application_cycles" as const,
+      subjectId: c.id,
+    })),
+    ...requirementRows.map((r) => ({
+      subjectTable: "requirements" as const,
+      subjectId: r.id,
+    })),
+    ...prerequisiteRows.map((p) => ({
+      subjectTable: "prerequisite_courses" as const,
+      subjectId: p.id,
+    })),
+    ...tuitionRows.map((t) => ({
+      subjectTable: "tuition_estimates" as const,
+      subjectId: t.id,
+    })),
+  ];
+
+  return {
+    school,
+    program,
+    cycles,
+    tuitionEstimates: tuitionRows,
+    claims: loadClaims(db, subjects),
+  };
 }

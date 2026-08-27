@@ -208,17 +208,18 @@ extended with `latitude`/`longitude`.
   fetch from the viewer's own device, not a server-side integration, and
   adds no analytics or tracking — no `CLAUDE.md` rule bars it.
 
-### 7.1 Coordinate backfill (one-time data task, not app code)
+### 7.1 Coordinates are already in the legacy corpus — correction
 
-Per your answer, before Phase 3 ships I will geocode the 23 legacy schools'
-city/state pairs (already `known`, already citation-exempt per
-`data-model.md` §1) and write `latitude`/`longitude` directly via a small
-one-off script (`scripts/backfill-coordinates.ts`, not part of `npm run
-verify`, deleted or left as a documented manual tool after use — team
-decision at implementation time). This is a data-entry action, not a design
-decision requiring its own migration or domain function: it's a plain
-`UPDATE programs SET latitude = ?, longitude = ? WHERE id = ?` for known
-city centroids.
+Original research for this design incorrectly concluded the legacy corpus
+carried no coordinates (a grep for the literal key `"latitude"` against
+`seed/legacy/2025-26-aistudio.json`, which actually uses `lat`/`lng`). All 23
+legacy records carry `lat`/`lng`, and the existing Phase 2.5 transform
+(`scripts/legacy-import/transform.ts:154-155`) already maps them into
+`programs.latitude`/`longitude` on import. **No backfill script is needed.**
+Running `npm run db:migrate` then `npm run import:legacy -- --apply` against
+a fresh dev database populates real coordinates for all 23 programs as a
+side effect of the import that already exists. The map component still needs
+the "no coordinates" path for any future program added without them.
 
 ## 8. Error handling
 

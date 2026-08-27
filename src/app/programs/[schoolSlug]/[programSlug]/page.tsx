@@ -7,18 +7,20 @@ import type { ClaimLike } from "@/lib/factState";
 
 const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
 
-function requirementValueAndField(
-  req: {
-    valueText: string | null;
-    valueNumber: number | null;
-    valueBool: boolean | null;
-    valueDate: string | null;
-  },
-): { value: string | number; fieldKey: string } {
-  if (req.valueText !== null) return { value: req.valueText, fieldKey: "value_text" };
-  if (req.valueNumber !== null) return { value: req.valueNumber, fieldKey: "value_number" };
-  if (req.valueBool !== null) return { value: req.valueBool ? "yes" : "no", fieldKey: "value_bool" };
-  if (req.valueDate !== null) return { value: req.valueDate, fieldKey: "value_date" };
+function requirementValueAndField(req: {
+  valueText: string | null;
+  valueNumber: number | null;
+  valueBool: boolean | null;
+  valueDate: string | null;
+}): { value: string | number; fieldKey: string } {
+  if (req.valueText !== null)
+    return { value: req.valueText, fieldKey: "value_text" };
+  if (req.valueNumber !== null)
+    return { value: req.valueNumber, fieldKey: "value_number" };
+  if (req.valueBool !== null)
+    return { value: req.valueBool ? "yes" : "no", fieldKey: "value_bool" };
+  if (req.valueDate !== null)
+    return { value: req.valueDate, fieldKey: "value_date" };
   return { value: "", fieldKey: "value_text" };
 }
 
@@ -38,7 +40,8 @@ export default async function ProgramDetailPage({
     subjectTable: string,
     subjectId: number,
     fieldKey: string,
-  ): ClaimLike | undefined => detail.claims.get(`${subjectTable}:${subjectId}:${fieldKey}`);
+  ): ClaimLike | undefined =>
+    detail.claims.get(`${subjectTable}:${subjectId}:${fieldKey}`);
 
   const [currentCycle, ...priorCycles] = detail.cycles;
 
@@ -83,7 +86,9 @@ export default async function ProgramDetailPage({
 
       {currentCycle && (
         <section className="mt-8">
-          <h2 className="text-lg font-semibold">{currentCycle.cycle.cycleLabel} cycle</h2>
+          <h2 className="text-lg font-semibold">
+            {currentCycle.cycle.cycleLabel} cycle
+          </h2>
           <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
             <dt className="text-zinc-500">Deadline</dt>
             <dd>
@@ -114,7 +119,10 @@ export default async function ProgramDetailPage({
                   {inCategory.map((req) => {
                     const { value, fieldKey } = requirementValueAndField(req);
                     return (
-                      <li key={req.id} className="flex items-center gap-2 text-sm">
+                      <li
+                        key={req.id}
+                        className="flex items-center gap-2 text-sm"
+                      >
                         <span>{req.label}</span>
                         <FactValue
                           value={value}
@@ -132,7 +140,9 @@ export default async function ProgramDetailPage({
 
           {currentCycle.prerequisites.length > 0 && (
             <>
-              <h3 className="mt-6 text-base font-semibold">Prerequisite courses</h3>
+              <h3 className="mt-6 text-base font-semibold">
+                Prerequisite courses
+              </h3>
               <ul className="mt-1 space-y-1">
                 {currentCycle.prerequisites.map((prereq) => (
                   <li key={prereq.id} className="text-sm">
@@ -153,7 +163,8 @@ export default async function ProgramDetailPage({
           <ul className="mt-2 space-y-1 text-sm">
             {detail.tuitionEstimates.map((t) => (
               <li key={t.id}>
-                {t.residency.replace("_", " ")}: ${(t.amountCents / 100).toLocaleString()} (
+                {t.residency.replace("_", " ")}: $
+                {(t.amountCents / 100).toLocaleString()} (
                 {t.covers.replace("_", " ")}, {t.asOfYear})
               </li>
             ))}

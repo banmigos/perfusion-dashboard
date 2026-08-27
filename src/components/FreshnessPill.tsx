@@ -15,8 +15,10 @@ export function FreshnessPill({
   verification: Verification;
   isStale: boolean;
 }) {
-  const label = isStale && verification !== "stale" ? "stale" : LABEL[verification];
-  const treatAsStale = isStale || verification === "stale" || verification === "needs_review";
+  const label =
+    isStale && verification !== "stale" ? "stale" : LABEL[verification];
+  const treatAsStale =
+    isStale || verification === "stale" || verification === "needs_review";
 
   const colorClass =
     verification === "verified" && !isStale
@@ -26,7 +28,9 @@ export function FreshnessPill({
         : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300";
 
   return (
-    <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${colorClass}`}>
+    <span
+      className={`rounded-full px-2 py-0.5 text-xs font-medium ${colorClass}`}
+    >
       {label}
     </span>
   );

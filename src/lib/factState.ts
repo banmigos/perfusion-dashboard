@@ -1,7 +1,9 @@
 import { isStale } from "@/lib/freshness";
 
-export type ClaimState = "known" | "unknown" | "not_published" | "not_applicable";
-export type Verification = "draft" | "needs_review" | "verified" | "stale" | "archived";
+export type ClaimState =
+  "known" | "unknown" | "not_published" | "not_applicable";
+export type Verification =
+  "draft" | "needs_review" | "verified" | "stale" | "archived";
 
 export type ClaimLike = {
   state: ClaimState;

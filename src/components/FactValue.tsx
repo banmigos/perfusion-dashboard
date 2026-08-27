@@ -38,7 +38,10 @@ export function FactValue({
       return (
         <span className="inline-flex flex-wrap items-center gap-2">
           <span>{value}</span>
-          <FreshnessPill verification={state.verification} isStale={state.isStale} />
+          <FreshnessPill
+            verification={state.verification}
+            isStale={state.isStale}
+          />
           {state.source && (
             <SourceBadge url={state.source.url} title={state.source.title} />
           )}

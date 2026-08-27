@@ -8,9 +8,7 @@ const ProgramMapInner = dynamic(
   () => import("./ProgramMapInner").then((mod) => mod.ProgramMapInner),
   {
     ssr: false,
-    loading: () => (
-      <p className="mt-4 text-sm text-zinc-500">Loading map…</p>
-    ),
+    loading: () => <p className="mt-4 text-sm text-zinc-500">Loading map…</p>,
   },
 );
 

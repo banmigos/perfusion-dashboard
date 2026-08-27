@@ -20,7 +20,10 @@ describe("factState", () => {
   });
 
   it("returns unknown for state=unknown", () => {
-    const c = claim({ state: "unknown", checkedAt: new Date("2026-08-20T00:00:00Z") });
+    const c = claim({
+      state: "unknown",
+      checkedAt: new Date("2026-08-20T00:00:00Z"),
+    });
     expect(factState(c, NOW, 180)).toEqual({
       kind: "unknown",
       checkedAt: c.checkedAt,

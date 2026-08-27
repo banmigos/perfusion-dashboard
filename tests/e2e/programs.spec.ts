@@ -5,7 +5,9 @@ test("directory search finds a program by name", async ({ page }) => {
   await page.getByPlaceholder("School or city").fill("Midwestern");
   await page.getByRole("button", { name: "Filter" }).click();
 
-  await expect(page.getByRole("link", { name: /Midwestern University/ })).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Midwestern University/ }),
+  ).toBeVisible();
 });
 
 test("credential filter narrows results", async ({ page }) => {
@@ -23,7 +25,9 @@ test("detail page shows a known fact with source, and a non-known fact distinctl
   await page.goto("/programs");
   await page.getByRole("link", { name: /Midwestern University/ }).click();
 
-  await expect(page.getByRole("heading", { name: /Midwestern University/ })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /Midwestern University/ }),
+  ).toBeVisible();
 
   // Credential is known (from the legacy import) and renders with a source badge.
   // Playwright's extended CSS engine supports :has-text() and adjacent-sibling

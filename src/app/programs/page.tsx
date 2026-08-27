@@ -2,6 +2,7 @@ import Link from "next/link";
 import { db } from "@/db/client";
 import { CREDENTIALS } from "@/db/schema/canonical";
 import { listPrograms, parseProgramListFilters } from "@/domain/programs";
+import { ProgramMap } from "@/components/ProgramMap";
 
 export default async function ProgramsPage({
   searchParams,
@@ -50,6 +51,8 @@ export default async function ProgramsPage({
         </button>
       </form>
 
+      <ProgramMap items={items} />
+
       {items.length === 0 ? (
         <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
           No programs match.
@@ -57,7 +60,10 @@ export default async function ProgramsPage({
       ) : (
         <ul className="mt-6 divide-y divide-zinc-200 dark:divide-zinc-800">
           {items.map((item) => (
-            <li key={`${item.school.slug}/${item.program.slug}`} className="py-3">
+            <li
+              key={`${item.school.slug}/${item.program.slug}`}
+              className="py-3"
+            >
               <Link
                 href={`/programs/${item.school.slug}/${item.program.slug}`}
                 className="font-medium hover:underline"

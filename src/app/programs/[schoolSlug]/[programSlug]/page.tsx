@@ -7,21 +7,61 @@ import type { ClaimLike } from "@/lib/factState";
 
 const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
 
-function requirementValueAndField(req: {
-  valueText: string | null;
-  valueNumber: number | null;
-  valueBool: boolean | null;
-  valueDate: string | null;
-}): { value: string | number; fieldKey: string } {
+const REQUIREMENT_CLAIM_FIELD_KEYS = [
+  "value_text",
+  "value_number",
+  "value_bool",
+  "value_date",
+] as const;
+
+function resolveRequirementFact(
+  req: {
+    id: number;
+    valueText: string | null;
+    valueNumber: number | null;
+    valueBool: boolean | null;
+    valueDate: string | null;
+  },
+  claimFor: (
+    subjectTable: string,
+    subjectId: number,
+    fieldKey: string,
+  ) => ClaimLike | undefined,
+): { value: string | number; claim: ClaimLike | undefined } {
   if (req.valueText !== null)
-    return { value: req.valueText, fieldKey: "value_text" };
+    return {
+      value: req.valueText,
+      claim: claimFor("requirements", req.id, "value_text"),
+    };
   if (req.valueNumber !== null)
-    return { value: req.valueNumber, fieldKey: "value_number" };
+    return {
+      value: req.valueNumber,
+      claim: claimFor("requirements", req.id, "value_number"),
+    };
   if (req.valueBool !== null)
-    return { value: req.valueBool ? "yes" : "no", fieldKey: "value_bool" };
+    return {
+      value: req.valueBool ? "yes" : "no",
+      claim: claimFor("requirements", req.id, "value_bool"),
+    };
   if (req.valueDate !== null)
-    return { value: req.valueDate, fieldKey: "value_date" };
-  return { value: "", fieldKey: "value_text" };
+    return {
+      value: req.valueDate,
+      claim: claimFor("requirements", req.id, "value_date"),
+    };
+
+  // No value_* column is populated: this requirement is either genuinely
+  // unresearched (no claim row at all) or its state is `unknown` (a claim
+  // row exists, but every value_* column is NULL by definition). We can't
+  // tell which field_key an `unknown` claim was recorded under just from
+  // the (empty) requirement row, so search all four candidates and use
+  // whichever one actually resolves to a claim.
+  for (const key of REQUIREMENT_CLAIM_FIELD_KEYS) {
+    const claim = claimFor("requirements", req.id, key);
+    if (claim) {
+      return { value: "", claim };
+    }
+  }
+  return { value: "", claim: undefined };
 }
 
 export default async function ProgramDetailPage({
@@ -117,7 +157,10 @@ export default async function ProgramDetailPage({
                 <h4 className="text-sm font-semibold capitalize">{category}</h4>
                 <ul className="mt-1 space-y-1">
                   {inCategory.map((req) => {
-                    const { value, fieldKey } = requirementValueAndField(req);
+                    const { value, claim } = resolveRequirementFact(
+                      req,
+                      claimFor,
+                    );
                     return (
                       <li
                         key={req.id}
@@ -126,7 +169,7 @@ export default async function ProgramDetailPage({
                         <span>{req.label}</span>
                         <FactValue
                           value={value}
-                          claim={claimFor("requirements", req.id, fieldKey)}
+                          claim={claim}
                           now={now}
                           staleAfterDays={STALE_AFTER_DAYS}
                         />

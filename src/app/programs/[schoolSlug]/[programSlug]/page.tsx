@@ -90,6 +90,7 @@ export default async function ProgramDetailPage({
 
   const savedProgram = getSavedProgram(db, detail.program.id);
   const hasChecklist =
+    currentCycle !== undefined &&
     savedProgram !== null &&
     listChecklistsForSavedProgram(db, savedProgram.id).some(
       (c) => c.checklist.cycleId === currentCycle.cycle.id,

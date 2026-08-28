@@ -1,5 +1,5 @@
 import "server-only";
-import { and, asc, desc, eq, ne } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, ne, sql } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import { CURRENT_USER_ID } from "./user";
@@ -95,4 +95,145 @@ export function generateChecklist(
 
     return checklist!;
   });
+}
+
+export type ChecklistItemStatus = (typeof schema.CHECKLIST_ITEM_STATUSES)[number];
+
+export function addChecklistItem(
+  db: BetterSQLite3Database<typeof schema>,
+  checklistId: number,
+  input: {
+    title: string;
+    detail?: string | null;
+    dueAt?: Date | null;
+    linkUrl?: string | null;
+  },
+): typeof schema.checklistItems.$inferSelect {
+  const [maxRow] = db
+    .select({
+      maxSort: sql<number | null>`max(${schema.checklistItems.sortOrder})`,
+    })
+    .from(schema.checklistItems)
+    .where(eq(schema.checklistItems.checklistId, checklistId))
+    .all();
+  const sortOrder = (maxRow?.maxSort ?? -1) + 1;
+
+  const [row] = db
+    .insert(schema.checklistItems)
+    .values({
+      checklistId,
+      title: input.title,
+      detail: input.detail ?? null,
+      dueAt: input.dueAt ?? null,
+      linkUrl: input.linkUrl ?? null,
+      sortOrder,
+    })
+    .returning()
+    .all();
+  return row!;
+}
+
+export function updateChecklistItem(
+  db: BetterSQLite3Database<typeof schema>,
+  itemId: number,
+  patch: {
+    title?: string;
+    detail?: string | null;
+    dueAt?: Date | null;
+    linkUrl?: string | null;
+    status?: ChecklistItemStatus;
+  },
+): void {
+  const values: Partial<typeof schema.checklistItems.$inferInsert> = {
+    ...patch,
+  };
+  if (patch.status !== undefined) {
+    values.completedAt = patch.status === "done" ? new Date() : null;
+  }
+  db.update(schema.checklistItems)
+    .set(values)
+    .where(eq(schema.checklistItems.id, itemId))
+    .run();
+}
+
+export function deleteChecklistItem(
+  db: BetterSQLite3Database<typeof schema>,
+  itemId: number,
+): void {
+  db.delete(schema.checklistItems)
+    .where(eq(schema.checklistItems.id, itemId))
+    .run();
+}
+
+export type ChecklistWithItems = {
+  checklist: typeof schema.personalChecklists.$inferSelect;
+  items: (typeof schema.checklistItems.$inferSelect)[];
+};
+
+export function listChecklistsForSavedProgram(
+  db: BetterSQLite3Database<typeof schema>,
+  savedProgramId: number,
+): ChecklistWithItems[] {
+  const checklists = db
+    .select()
+    .from(schema.personalChecklists)
+    .where(eq(schema.personalChecklists.savedProgramId, savedProgramId))
+    .orderBy(desc(schema.personalChecklists.createdAt))
+    .all();
+  const checklistIds = checklists.map((c) => c.id);
+  const items = checklistIds.length
+    ? db
+        .select()
+        .from(schema.checklistItems)
+        .where(inArray(schema.checklistItems.checklistId, checklistIds))
+        .orderBy(asc(schema.checklistItems.sortOrder))
+        .all()
+    : [];
+
+  return checklists.map((checklist) => ({
+    checklist,
+    items: items.filter((item) => item.checklistId === checklist.id),
+  }));
+}
+
+export type DueItem = {
+  item: typeof schema.checklistItems.$inferSelect;
+  program: Pick<typeof schema.programs.$inferSelect, "slug" | "name">;
+  school: Pick<typeof schema.schools.$inferSelect, "slug" | "name">;
+};
+
+export function listDueItems(
+  db: BetterSQLite3Database<typeof schema>,
+): DueItem[] {
+  return db
+    .select({
+      item: schema.checklistItems,
+      program: { slug: schema.programs.slug, name: schema.programs.name },
+      school: { slug: schema.schools.slug, name: schema.schools.name },
+    })
+    .from(schema.checklistItems)
+    .innerJoin(
+      schema.personalChecklists,
+      eq(schema.checklistItems.checklistId, schema.personalChecklists.id),
+    )
+    .innerJoin(
+      schema.savedPrograms,
+      eq(schema.personalChecklists.savedProgramId, schema.savedPrograms.id),
+    )
+    .innerJoin(
+      schema.programs,
+      eq(schema.savedPrograms.programId, schema.programs.id),
+    )
+    .innerJoin(schema.schools, eq(schema.programs.schoolId, schema.schools.id))
+    .where(
+      and(
+        eq(schema.savedPrograms.userId, CURRENT_USER_ID),
+        inArray(schema.checklistItems.status, ["todo", "in_progress", "blocked"]),
+      ),
+    )
+    .orderBy(
+      sql`${schema.checklistItems.dueAt} is null`,
+      asc(schema.checklistItems.dueAt),
+    )
+    .all();
 }

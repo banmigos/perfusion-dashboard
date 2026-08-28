@@ -3,7 +3,14 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { createTestDb, type TestDb } from "./helpers/db";
 import { seedFixtureSchool } from "../fixtures/school";
 import { saveProgram } from "@/domain/saved";
-import { addChecklistItem, deleteChecklistItem, generateChecklist, listChecklistsForSavedProgram, listDueItems, updateChecklistItem } from "@/domain/checklists";
+import {
+  addChecklistItem,
+  deleteChecklistItem,
+  generateChecklist,
+  listChecklistsForSavedProgram,
+  listDueItems,
+  updateChecklistItem,
+} from "@/domain/checklists";
 import * as schema from "@/db/schema";
 
 describe("generateChecklist", () => {

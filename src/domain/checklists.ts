@@ -97,7 +97,8 @@ export function generateChecklist(
   });
 }
 
-export type ChecklistItemStatus = (typeof schema.CHECKLIST_ITEM_STATUSES)[number];
+export type ChecklistItemStatus =
+  (typeof schema.CHECKLIST_ITEM_STATUSES)[number];
 
 export function addChecklistItem(
   db: BetterSQLite3Database<typeof schema>,
@@ -228,7 +229,11 @@ export function listDueItems(
     .where(
       and(
         eq(schema.savedPrograms.userId, CURRENT_USER_ID),
-        inArray(schema.checklistItems.status, ["todo", "in_progress", "blocked"]),
+        inArray(schema.checklistItems.status, [
+          "todo",
+          "in_progress",
+          "blocked",
+        ]),
       ),
     )
     .orderBy(

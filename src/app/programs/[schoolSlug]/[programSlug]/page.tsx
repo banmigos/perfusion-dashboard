@@ -4,6 +4,9 @@ import { getProgramDetail } from "@/domain/programs";
 import { FactValue } from "@/components/FactValue";
 import { REQUIREMENT_CATEGORIES } from "@/db/schema/canonical";
 import type { ClaimLike } from "@/lib/factState";
+import { getSavedProgram } from "@/domain/saved";
+import { listChecklistsForSavedProgram } from "@/domain/checklists";
+import { SaveProgramControl } from "@/components/SaveProgramControl";
 
 const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
 
@@ -85,6 +88,11 @@ export default async function ProgramDetailPage({
 
   const [currentCycle, ...priorCycles] = detail.cycles;
 
+  const savedProgram = getSavedProgram(db, detail.program.id);
+  const hasChecklist =
+    savedProgram !== null &&
+    listChecklistsForSavedProgram(db, savedProgram.id).length > 0;
+
   return (
     <div>
       <h1 className="text-2xl font-semibold">
@@ -93,6 +101,14 @@ export default async function ProgramDetailPage({
       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
         {detail.school.city}, {detail.school.state}
       </p>
+
+      <SaveProgramControl
+        programId={detail.program.id}
+        schoolSlug={schoolSlug}
+        programSlug={programSlug}
+        savedProgram={savedProgram}
+        hasChecklist={hasChecklist}
+      />
 
       <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
         <dt className="text-zinc-500">Credential</dt>

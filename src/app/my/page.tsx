@@ -6,6 +6,8 @@ import { generateChecklistAction } from "@/app/actions/checklists";
 import { ChecklistItemRow } from "@/components/ChecklistItemRow";
 import { AddChecklistItemForm } from "@/components/AddChecklistItemForm";
 
+export const dynamic = "force-dynamic";
+
 export default function MyApplicationsPage() {
   const savedPrograms = listSavedPrograms(db);
 

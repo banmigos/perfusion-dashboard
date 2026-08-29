@@ -4,14 +4,21 @@ import { listDueItems } from "@/domain/checklists";
 import { listSavedPrograms } from "@/domain/saved";
 import { ChecklistItemRow } from "@/components/ChecklistItemRow";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardPage() {
   const dueItems = listDueItems(db);
   const savedPrograms = listSavedPrograms(db);
 
-  const counts = { reach: 0, target: 0, likely: 0, dropped: 0 };
+  const counts = { reach: 0, target: 0, likely: 0 };
   for (const { savedProgram } of savedPrograms) {
-    if (savedProgram.priority) {
-      counts[savedProgram.priority] += 1;
+    const { priority } = savedProgram;
+    if (
+      priority === "reach" ||
+      priority === "target" ||
+      priority === "likely"
+    ) {
+      counts[priority] += 1;
     }
   }
 

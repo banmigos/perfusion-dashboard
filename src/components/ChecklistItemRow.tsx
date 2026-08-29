@@ -22,9 +22,15 @@ function formatDueDate(d: Date): string {
 }
 
 function isOverdue(d: Date | null, status: Item["status"]): boolean {
+  const now = new Date();
+  const todayUtcMidnight = Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate(),
+  );
   return (
     d !== null &&
-    d.getTime() < Date.now() &&
+    d.getTime() < todayUtcMidnight &&
     status !== "done" &&
     status !== "skipped"
   );

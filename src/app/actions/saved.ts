@@ -35,6 +35,8 @@ const updateSavedProgramSchema = z.object({
 
 export async function updateSavedProgramAction(
   savedProgramId: number,
+  schoolSlug: string,
+  programSlug: string,
   formData: FormData,
 ): Promise<void> {
   const parsed = updateSavedProgramSchema.parse({
@@ -47,5 +49,7 @@ export async function updateSavedProgramAction(
     personalNote:
       parsed.personalNote.trim() === "" ? null : parsed.personalNote,
   });
+  revalidatePath(`/programs/${schoolSlug}/${programSlug}`);
   revalidatePath("/my");
+  revalidatePath("/");
 }

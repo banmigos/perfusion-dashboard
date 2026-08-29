@@ -87,7 +87,12 @@ export function SaveProgramControl({
       </div>
 
       <form
-        action={updateSavedProgramAction.bind(null, savedProgram.id)}
+        action={updateSavedProgramAction.bind(
+          null,
+          savedProgram.id,
+          schoolSlug,
+          programSlug,
+        )}
         className="flex flex-wrap items-center gap-2"
       >
         <label className="flex items-center gap-1 text-xs">

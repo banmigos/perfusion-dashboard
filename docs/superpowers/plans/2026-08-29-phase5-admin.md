@@ -1573,33 +1573,35 @@ export type SourceInput = {
 export type SourcePatch = Partial<Omit<SourceInput, "url">>;
 export type Source = typeof schema.sources.$inferSelect;
 
-export function findOrCreateSource(
-  db: BetterSQLite3Database<typeof schema>,
-  input: SourceInput,
-): Source {
-  return db.transaction((tx) => {
-    const [existing] = tx
-      .select()
-      .from(schema.sources)
-      .where(eq(schema.sources.url, input.url))
-      .all();
-    if (existing) {
-      return existing;
-    }
+// Structural, not the full BetterSQLite3Database: this lets callers pass
+// either the outer `db` or an in-progress `tx` (Task 7's upsertClaim calls
+// this from inside its own db.transaction((tx) => ...), so this function
+// must not open a second transaction of its own — it just runs its two
+// queries against whichever executor it is given).
+type Executor = Pick<BetterSQLite3Database<typeof schema>, "select" | "insert">;
 
-    const [row] = tx
-      .insert(schema.sources)
-      .values({
-        url: input.url,
-        sourceType: input.sourceType,
-        title: input.title ?? null,
-        publisher: input.publisher ?? null,
-        notes: input.notes ?? null,
-      })
-      .returning()
-      .all();
-    return row!;
-  });
+export function findOrCreateSource(db: Executor, input: SourceInput): Source {
+  const [existing] = db
+    .select()
+    .from(schema.sources)
+    .where(eq(schema.sources.url, input.url))
+    .all();
+  if (existing) {
+    return existing;
+  }
+
+  const [row] = db
+    .insert(schema.sources)
+    .values({
+      url: input.url,
+      sourceType: input.sourceType,
+      title: input.title ?? null,
+      publisher: input.publisher ?? null,
+      notes: input.notes ?? null,
+    })
+    .returning()
+    .all();
+  return row!;
 }
 
 export function updateSource(
@@ -1902,24 +1904,10 @@ export function upsertClaim(
   return db.transaction((tx) => {
     let sourceId: number | null = null;
     if (input.sourceUrl) {
-      const [existingSource] = tx
-        .select()
-        .from(schema.sources)
-        .where(eq(schema.sources.url, input.sourceUrl))
-        .all();
-      if (existingSource) {
-        sourceId = existingSource.id;
-      } else {
-        const [newSource] = tx
-          .insert(schema.sources)
-          .values({
-            url: input.sourceUrl,
-            sourceType: input.sourceType ?? "other",
-          })
-          .returning()
-          .all();
-        sourceId = newSource!.id;
-      }
+      sourceId = findOrCreateSource(tx, {
+        url: input.sourceUrl,
+        sourceType: input.sourceType ?? "other",
+      }).id;
     }
 
     const [existingClaim] = tx
@@ -2077,11 +2065,14 @@ git commit -m "Phase 5: add claims upsert/verify with change_log; assert the pha
     source: typeof schema.sources.$inferSelect | null;
     subjectLabel: string;
     school: { slug: string; name: string } | null;
-    program: { slug: string; name: string } | null;
+    program: { slug: string; name: string; id: number } | null;
     deadlineDate: string | null;
     isSaved: boolean;
   };
   ```
+  (`program` carries `id` — not just `slug`/`name` — because `listVerifyQueue`
+  needs it to check membership against the saved-programs id set; Task 12's
+  `/verify` page only reads `.slug`/`.name` off it.)
   Ordering (from `docs/research-workflow.md` §6): claims on saved programs
   with a deadline, nearest first; then claims on saved programs with no
   deadline; then everything else (alphabetical by `subjectLabel` as a stable
@@ -2646,6 +2637,10 @@ export async function archiveCycleAction(cycleId: number): Promise<void> {
 
 // --- requirements ---
 
+const valueBoolFormSchema = z
+  .enum(["", "true", "false"])
+  .transform((v) => (v === "" ? null : v === "true"));
+
 const requirementFormSchema = z.object({
   category: z.enum(REQUIREMENT_CATEGORIES),
   label: z.string().trim().min(1, "label required"),
@@ -2654,6 +2649,7 @@ const requirementFormSchema = z.object({
     .string()
     .transform((v) => (v.trim() === "" ? null : Number(v)))
     .refine((v) => v === null || !Number.isNaN(v), "invalid number"),
+  valueBool: valueBoolFormSchema,
   valueDate: calendarDateSchema,
   isRequired: z.string().transform((v) => v === "on"),
 });
@@ -2667,6 +2663,7 @@ export async function createRequirementAction(
     label: formData.get("label") ?? "",
     valueText: formData.get("valueText") ?? "",
     valueNumber: formData.get("valueNumber") ?? "",
+    valueBool: formData.get("valueBool") ?? "",
     valueDate: formData.get("valueDate") ?? "",
     isRequired: formData.get("isRequired") ?? "",
   });
@@ -2683,6 +2680,7 @@ export async function updateRequirementAction(
     label: formData.get("label") ?? "",
     valueText: formData.get("valueText") ?? "",
     valueNumber: formData.get("valueNumber") ?? "",
+    valueBool: formData.get("valueBool") ?? "",
     valueDate: formData.get("valueDate") ?? "",
     isRequired: formData.get("isRequired") ?? "",
   });
@@ -3495,8 +3493,10 @@ import { requirementClaimFieldKey } from "@/domain/admin/requirements";
 import { ClaimsPanel } from "@/components/admin/ClaimsPanel";
 import {
   archiveCycleAction,
+  archiveRequirementAction,
   createRequirementAction,
   updateCycleAction,
+  updateRequirementAction,
 } from "@/app/actions/admin";
 import { REQUIREMENT_CATEGORIES } from "@/db/schema/canonical";
 
@@ -3612,9 +3612,76 @@ export default async function AdminCyclePage({
           );
           return (
             <li key={req.id} className="rounded border border-zinc-200 p-3 dark:border-zinc-800">
-              <div className="text-sm font-medium">
-                {req.label} <span className="text-xs text-zinc-500">({req.category})</span>
-              </div>
+              <form
+                action={updateRequirementAction.bind(null, req.id)}
+                className="flex flex-wrap items-end gap-2"
+              >
+                <select
+                  name="category"
+                  defaultValue={req.category}
+                  required
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                >
+                  {REQUIREMENT_CATEGORIES.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  type="text"
+                  name="label"
+                  defaultValue={req.label}
+                  required
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                />
+                <input
+                  type="text"
+                  name="valueText"
+                  placeholder="Text value"
+                  defaultValue={req.valueText ?? ""}
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                />
+                <input
+                  type="text"
+                  name="valueNumber"
+                  placeholder="Numeric value"
+                  defaultValue={req.valueNumber ?? ""}
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                />
+                <select
+                  name="valueBool"
+                  defaultValue={
+                    req.valueBool === null ? "" : req.valueBool ? "true" : "false"
+                  }
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                >
+                  <option value="">bool —</option>
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+                </select>
+                <input
+                  type="date"
+                  name="valueDate"
+                  defaultValue={req.valueDate ?? ""}
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                />
+                <label className="flex items-center gap-1 text-xs">
+                  <input type="checkbox" name="isRequired" defaultChecked={req.isRequired ?? false} />
+                  required
+                </label>
+                <button
+                  type="submit"
+                  className="rounded bg-zinc-900 px-2 py-1 text-xs text-white dark:bg-zinc-100 dark:text-zinc-900"
+                >
+                  Save
+                </button>
+              </form>
+              <form action={archiveRequirementAction.bind(null, req.id)} className="mt-1">
+                <button type="submit" className="text-xs text-red-600 underline dark:text-red-400">
+                  Archive requirement
+                </button>
+              </form>
               <ClaimsPanel subjectTable="requirements" subjectId={req.id} claims={reqClaims} />
             </li>
           );
@@ -3656,6 +3723,15 @@ export default async function AdminCyclePage({
           placeholder="Numeric value"
           className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
+        <select
+          name="valueBool"
+          defaultValue=""
+          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <option value="">bool —</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
         <input
           type="date"
           name="valueDate"

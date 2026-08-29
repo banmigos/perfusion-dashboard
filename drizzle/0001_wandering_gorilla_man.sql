@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `personal_checklists_saved_program_cycle_unique` ON `personal_checklists` (`saved_program_id`,`cycle_id`);

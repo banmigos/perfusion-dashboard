@@ -9,6 +9,7 @@ import {
   unsaveProgram,
   updateSavedProgram,
 } from "@/domain/saved";
+import { generateChecklist } from "@/domain/checklists";
 import * as schema from "@/db/schema";
 
 describe("saved programs", () => {
@@ -50,6 +51,29 @@ describe("saved programs", () => {
     unsaveProgram(db, fixture.program.id);
 
     expect(getSavedProgram(db, fixture.program.id)).toBeNull();
+  });
+
+  it("unsaveProgram cascade deletes checklists/items", async () => {
+    const fixture = await seedFixtureSchool(db);
+    const saved = saveProgram(db, fixture.program.id);
+    const checklist = generateChecklist(db, saved.id);
+
+    unsaveProgram(db, fixture.program.id);
+
+    expect(
+      db
+        .select()
+        .from(schema.personalChecklists)
+        .where(eq(schema.personalChecklists.id, checklist.id))
+        .all(),
+    ).toHaveLength(0);
+    expect(
+      db
+        .select()
+        .from(schema.checklistItems)
+        .where(eq(schema.checklistItems.checklistId, checklist.id))
+        .all(),
+    ).toHaveLength(0);
   });
 
   it("updateSavedProgram sets priority and personalNote", async () => {

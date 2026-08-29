@@ -38,22 +38,31 @@ export const savedPrograms = sqliteTable(
   ],
 );
 
-export const personalChecklists = sqliteTable("personal_checklists", {
-  id: id(),
-  userId: integer()
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  savedProgramId: integer()
-    .notNull()
-    .references(() => savedPrograms.id, { onDelete: "cascade" }),
-  cycleId: integer().references(() => applicationCycles.id, {
-    onDelete: "restrict",
-  }),
-  title: text().notNull(),
-  createdAt: integer({ mode: "timestamp_ms" })
-    .notNull()
-    .$defaultFn(() => new Date()),
-});
+export const personalChecklists = sqliteTable(
+  "personal_checklists",
+  {
+    id: id(),
+    userId: integer()
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    savedProgramId: integer()
+      .notNull()
+      .references(() => savedPrograms.id, { onDelete: "cascade" }),
+    cycleId: integer().references(() => applicationCycles.id, {
+      onDelete: "restrict",
+    }),
+    title: text().notNull(),
+    createdAt: integer({ mode: "timestamp_ms" })
+      .notNull()
+      .$defaultFn(() => new Date()),
+  },
+  (t) => [
+    unique("personal_checklists_saved_program_cycle_unique").on(
+      t.savedProgramId,
+      t.cycleId,
+    ),
+  ],
+);
 
 export const checklistItems = sqliteTable(
   "checklist_items",

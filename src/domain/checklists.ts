@@ -1,5 +1,5 @@
 import "server-only";
-import { and, asc, desc, eq, inArray, ne, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, ne, notInArray, sql } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import { CURRENT_USER_ID } from "./user";
@@ -35,16 +35,19 @@ export function generateChecklist(
     );
   }
 
-  const [existing] = db
-    .select()
-    .from(schema.personalChecklists)
-    .where(
-      and(
-        eq(schema.personalChecklists.savedProgramId, savedProgramId),
-        eq(schema.personalChecklists.cycleId, currentCycle.id),
-      ),
-    )
-    .all();
+  const findExistingChecklist = () =>
+    db
+      .select()
+      .from(schema.personalChecklists)
+      .where(
+        and(
+          eq(schema.personalChecklists.savedProgramId, savedProgramId),
+          eq(schema.personalChecklists.cycleId, currentCycle.id),
+        ),
+      )
+      .all()[0];
+
+  const existing = findExistingChecklist();
   if (existing) {
     return existing;
   }
@@ -68,18 +71,43 @@ export function generateChecklist(
     .all();
 
   return db.transaction((tx) => {
-    const [checklist] = tx
+    const [existingInTx] = tx
+      .select()
+      .from(schema.personalChecklists)
+      .where(
+        and(
+          eq(schema.personalChecklists.savedProgramId, savedProgramId),
+          eq(schema.personalChecklists.cycleId, currentCycle.id),
+        ),
+      )
+      .all();
+    if (existingInTx) {
+      return existingInTx;
+    }
+
+    const insertResult = tx
       .insert(schema.personalChecklists)
       .values({
-        userId: CURRENT_USER_ID,
+        userId: savedProgram.userId,
         savedProgramId,
         cycleId: currentCycle.id,
         title: `${program!.name} — ${currentCycle.cycleLabel}`,
       })
-      .returning()
+      .onConflictDoNothing()
+      .run();
+
+    const [checklist] = tx
+      .select()
+      .from(schema.personalChecklists)
+      .where(
+        and(
+          eq(schema.personalChecklists.savedProgramId, savedProgramId),
+          eq(schema.personalChecklists.cycleId, currentCycle.id),
+        ),
+      )
       .all();
 
-    if (requirementRows.length > 0) {
+    if (insertResult.changes > 0 && requirementRows.length > 0) {
       tx.insert(schema.checklistItems)
         .values(
           requirementRows.map((req, index) => ({
@@ -229,11 +257,7 @@ export function listDueItems(
     .where(
       and(
         eq(schema.savedPrograms.userId, CURRENT_USER_ID),
-        inArray(schema.checklistItems.status, [
-          "todo",
-          "in_progress",
-          "blocked",
-        ]),
+        notInArray(schema.checklistItems.status, ["done", "skipped"]),
       ),
     )
     .orderBy(

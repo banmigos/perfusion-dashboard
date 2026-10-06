@@ -14,7 +14,11 @@ import {
   updateCycleAction,
   updateRequirementAction,
 } from "@/app/actions/admin";
-import { REQUIREMENT_CATEGORIES } from "@/db/schema/canonical";
+import {
+  CAS_SERVICES,
+  DEADLINE_TYPES,
+  REQUIREMENT_CATEGORIES,
+} from "@/db/schema/canonical";
 
 export const dynamic = "force-dynamic";
 
@@ -117,6 +121,36 @@ export default async function AdminCyclePage({
             defaultValue={cycle.deadlineDate ?? ""}
             className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
+        </label>
+        <label className="flex flex-col text-xs">
+          deadline type
+          <select
+            name="deadlineType"
+            defaultValue={cycle.deadlineType ?? ""}
+            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          >
+            <option value="">—</option>
+            {DEADLINE_TYPES.map((v) => (
+              <option key={v} value={v}>
+                {v}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex flex-col text-xs">
+          CAS service
+          <select
+            name="casService"
+            defaultValue={cycle.casService ?? ""}
+            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          >
+            <option value="">—</option>
+            {CAS_SERVICES.map((v) => (
+              <option key={v} value={v}>
+                {v}
+              </option>
+            ))}
+          </select>
         </label>
         <button
           type="submit"

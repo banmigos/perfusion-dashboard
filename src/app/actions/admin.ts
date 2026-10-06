@@ -30,6 +30,7 @@ import {
 } from "@/db/schema/canonical";
 import { SOURCE_TYPES } from "@/db/schema/provenance";
 import { slugify } from "@/lib/slug";
+import { httpUrl, optionalHttpUrl } from "@/lib/zod/httpUrl";
 
 function revalidateAdmin(): void {
   revalidatePath("/admin", "layout");
@@ -47,7 +48,7 @@ const schoolFormSchema = z.object({
   name: z.string().trim().min(1, "name required"),
   city: optionalTrimmed,
   state: optionalTrimmed,
-  websiteUrl: optionalTrimmed,
+  websiteUrl: optionalHttpUrl,
 });
 
 export async function createSchoolAction(formData: FormData): Promise<void> {
@@ -93,7 +94,7 @@ const programFormSchema = z.object({
   modality: z
     .union([modalitySchema, z.literal("")])
     .transform((v) => (v === "" ? null : v)),
-  websiteUrl: optionalTrimmed,
+  websiteUrl: optionalHttpUrl,
 });
 
 export async function createProgramAction(
@@ -249,7 +250,7 @@ export async function archiveRequirementAction(
 // --- sources ---
 
 const sourceFormSchema = z.object({
-  url: z.string().trim().url("must be a valid URL"),
+  url: httpUrl,
   sourceType: z.enum(SOURCE_TYPES),
   title: optionalTrimmed,
   publisher: optionalTrimmed,

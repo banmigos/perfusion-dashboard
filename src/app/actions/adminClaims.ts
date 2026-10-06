@@ -5,8 +5,13 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/db/client";
 import { setClaimVerification, upsertClaim } from "@/domain/admin/claims";
-import { CLAIM_STATES, SOURCE_TYPES } from "@/db/schema/provenance";
+import {
+  CLAIM_STATES,
+  SOURCE_TYPES,
+  SUBJECT_TABLES,
+} from "@/db/schema/provenance";
 import type { SubjectTable } from "@/domain/claims";
+import { optionalHttpUrl } from "@/lib/zod/httpUrl";
 
 function revalidateAdmin(): void {
   revalidatePath("/admin", "layout");
@@ -23,16 +28,19 @@ const claimFormSchema = z
   .object({
     fieldKey: z.string().trim().min(1, "field key required"),
     state: z.enum(CLAIM_STATES),
-    sourceUrl: z.string().trim(),
+    sourceUrl: optionalHttpUrl,
     sourceType: z.union([z.enum(SOURCE_TYPES), z.literal("")]),
     quote: z.string().trim(),
     note: z.string().trim(),
     checkedAt: checkedAtSchema,
   })
-  .refine((v) => v.state !== "known" || v.sourceUrl !== "", {
+  .refine((v) => v.state !== "known" || v.sourceUrl !== null, {
     message: "a known fact requires a source URL",
     path: ["sourceUrl"],
   });
+
+const subjectTableSchema = z.enum(SUBJECT_TABLES);
+const idSchema = z.number().int().positive();
 
 export async function upsertClaimAction(
   subjectTable: SubjectTable,
@@ -50,17 +58,20 @@ export async function upsertClaimAction(
   });
 
   upsertClaim(db, {
-    subjectTable,
-    subjectId,
+    subjectTable: subjectTableSchema.parse(subjectTable),
+    subjectId: idSchema.parse(subjectId),
     fieldKey: parsed.fieldKey,
     state: parsed.state,
-    sourceUrl: parsed.sourceUrl === "" ? null : parsed.sourceUrl,
+    // Blank sourceUrl, quote, note and checkedAt all mean "keep existing":
+    // the form is not pre-filled, so blank is "not provided", not "clear".
+    // (A blank checkedAt must not become null, or upsertClaim would stamp
+    // today onto a kept-verified claim: a fabricated check date.)
+    sourceUrl: parsed.sourceUrl ?? undefined,
     sourceType: parsed.sourceType === "" ? undefined : parsed.sourceType,
-    quote: parsed.quote === "" ? null : parsed.quote,
-    // Empty note = keep the existing one: claims.note holds imported
-    // legacy/lead values that an edit must not wipe.
+    quote: parsed.quote === "" ? undefined : parsed.quote,
+    // claims.note holds imported legacy/lead values an edit must not wipe.
     note: parsed.note === "" ? undefined : parsed.note,
-    checkedAt: parsed.checkedAt,
+    checkedAt: parsed.checkedAt ?? undefined,
   });
   revalidateAdmin();
 }
@@ -73,7 +84,7 @@ export async function setClaimVerificationAction(
 ): Promise<void> {
   setClaimVerification(
     db,
-    claimId,
+    idSchema.parse(claimId),
     verificationActionSchema.parse(verification),
   );
   revalidateAdmin();

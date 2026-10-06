@@ -1,0 +1,457 @@
+{
+  "format": "directory-lead-capture/v1",
+  "captured_at": "2026-10-06",
+  "origin": {
+    "url": "https://perfusionprep.com/schools",
+    "title": "Perfusion School Directory | PerfusionSchools.com",
+    "publisher": "PerfusionSchools.com (AGS Perfusion LLC)",
+    "capture_method": "SingleFile page save, 2026-10-06; table cells transcribed verbatim"
+  },
+  "import_policy": {
+    "verification": "draft",
+    "locked": false,
+    "claim_state": "unknown for every field; the directory value is kept verbatim in claims.note",
+    "checked_at": null,
+    "rationale": "Aggregator directory, not an official program source (docs/research-workflow.md §1.5, docs/decisions.md assumption 5). No per-fact citation, quote, or check date; its own footer says to confirm everything with each institution and AC-PE. It is a lead list: it surfaces programs and values to re-source from official pages, never facts."
+  },
+  "known_issues": [
+    "Most website links are bare institution domains (e.g. midwestern.edu), not program pages; the legacy capture already holds deeper URLs for matched programs.",
+    "Deadlines are month/day strings with no year and no cycle; several disagree with the legacy capture (e.g. Midwestern Nov 1 here vs Mar 1 in legacy).",
+    "Tuition is 'verify' for 22 of 25 rows; the three values given use three different units (per year, per credit, total).",
+    "Min GPA is '—' for 13 of 25 rows.",
+    "Claims to list every US program; completeness is unverified against the AC-PE / CAAHEP accredited-program list.",
+    "'Texas Heart Institute at Baylor College of Medicine' is one row here; the legacy capture has both 'Texas Heart Institute' and 'Baylor College of Medicine'. This row maps to 'Texas Heart Institute'.",
+    "Three programs are absent from the legacy capture: Barry University, Baylor Scott & White (Plano), Virginia Commonwealth University. VCU is badged 'Not CAAHEP accredited - verify'.",
+    "The page is a marketing/lead-capture page for a test-prep service (PSPS)."
+  ],
+  "record_count": 25,
+  "records": [
+    {
+      "raw": {
+        "name": "Midwestern University",
+        "subtitle": "Cardiovascular Science / Perfusion",
+        "badge": null,
+        "director": null,
+        "location": "Glendale, AZ",
+        "degree": "MS Cardiovascular Science",
+        "length": "21 mo",
+        "deadline": "Nov 1 (priority)",
+        "min_gpa": "2.75",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's degree, 2.75 GPA",
+        "website_url": "https://midwestern.edu/"
+      },
+      "target": { "legacy_key": "Midwestern University" }
+    },
+    {
+      "raw": {
+        "name": "University of Arizona",
+        "subtitle": "Perfusion Sciences Graduate Program",
+        "badge": null,
+        "director": null,
+        "location": "Tucson, AZ",
+        "degree": "MA Medical Pharmacology–Perfusion Sci.",
+        "length": "24 mo",
+        "deadline": "Nov 15",
+        "min_gpa": "3.2",
+        "tuition": "verify",
+        "key_requirements": "3.2 GPA + shadowing + research experience",
+        "website_url": "https://pharmacology.arizona.edu/"
+      },
+      "target": { "legacy_key": "University of Arizona" }
+    },
+    {
+      "raw": {
+        "name": "Keck School of Medicine of USC",
+        "subtitle": "MS Perfusion Sciences",
+        "badge": "Seeking accreditation",
+        "director": null,
+        "location": "Los Angeles, CA",
+        "degree": "MS Perfusion Sciences",
+        "length": "20 mo",
+        "deadline": "Sep 30",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Science BA/BS, 3.0 GPA, 3 LORs, shadowing",
+        "website_url": "https://keck.usc.edu/"
+      },
+      "target": {
+        "legacy_key": "University of Southern California (USC) Keck School of Medicine"
+      }
+    },
+    {
+      "raw": {
+        "name": "Quinnipiac University",
+        "subtitle": "Cardiovascular Perfusion (MHS)",
+        "badge": null,
+        "director": "Tyler Wahl",
+        "location": "Hamden, CT",
+        "degree": "MHS Cardiovascular Perfusion",
+        "length": "20 mo",
+        "deadline": "Feb 1",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's, 3.0 GPA, 2 yrs direct patient care",
+        "website_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/"
+      },
+      "target": { "legacy_key": "Quinnipiac University" }
+    },
+    {
+      "raw": {
+        "name": "Barry University",
+        "subtitle": "Cardiovascular Perfusion",
+        "badge": null,
+        "director": null,
+        "location": "Miami Shores, FL",
+        "degree": "BS Cardiovascular Perfusion",
+        "length": "—",
+        "deadline": "Rolling",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "See program; bachelor's-level",
+        "website_url": "https://barry.edu/"
+      },
+      "target": { "create": { "credential": "BS" } }
+    },
+    {
+      "raw": {
+        "name": "Emory University (Nell Hodgson Woodruff School of Nursing)",
+        "subtitle": "Cardiovascular Perfusion Science",
+        "badge": null,
+        "director": null,
+        "location": "Atlanta, GA",
+        "degree": "Master in CV Perfusion Science",
+        "length": "21 mo",
+        "deadline": "Jun 1 / Sep 1",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Science/health BA/BS, 3.0 cum + 3.0 science GPA",
+        "website_url": "https://nursing.emory.edu/"
+      },
+      "target": { "legacy_key": "Emory University" }
+    },
+    {
+      "raw": {
+        "name": "University of Iowa (Carver College of Medicine)",
+        "subtitle": "Perfusion Technology",
+        "badge": "Est. 1992",
+        "director": null,
+        "location": "Iowa City, IA",
+        "degree": "MS / Perfusion Technology",
+        "length": "21 mo",
+        "deadline": "Dec 1",
+        "min_gpa": "—",
+        "tuition": "~$35k/yr (IA resident)",
+        "key_requirements": "Bachelor's w/ chem, biostats, precalc, physics, A&P",
+        "website_url": "https://perfusion.medicine.uiowa.edu/"
+      },
+      "target": { "legacy_key": "University of Iowa" }
+    },
+    {
+      "raw": {
+        "name": "Rush University",
+        "subtitle": "Cardiovascular Perfusion",
+        "badge": null,
+        "director": null,
+        "location": "Chicago, IL",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "21 mo",
+        "deadline": "Dec 1",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's, 3.0 GPA",
+        "website_url": "https://rushu.rush.edu/"
+      },
+      "target": { "legacy_key": "Rush University" }
+    },
+    {
+      "raw": {
+        "name": "Northern Kentucky University",
+        "subtitle": "MS Cardiovascular Perfusion",
+        "badge": "Accredited Mar 2024",
+        "director": null,
+        "location": "Highland Heights, KY",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "24 mo",
+        "deadline": "Feb 1",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's, 3.0 GPA",
+        "website_url": "https://nku.edu/"
+      },
+      "target": { "legacy_key": "Northern Kentucky University" }
+    },
+    {
+      "raw": {
+        "name": "Lawrence Technological University",
+        "subtitle": "MS Cardiovascular Perfusion",
+        "badge": "Michigan's only program",
+        "director": null,
+        "location": "Southfield, MI",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "24 mo",
+        "deadline": "Feb 1",
+        "min_gpa": "3.5",
+        "tuition": "verify",
+        "key_requirements": "3.5 GPA",
+        "website_url": "https://ltu.edu/"
+      },
+      "target": { "legacy_key": "Lawrence Technological University" }
+    },
+    {
+      "raw": {
+        "name": "University of Nebraska Medical Center",
+        "subtitle": "Perfusion Program",
+        "badge": null,
+        "director": null,
+        "location": "Omaha, NE",
+        "degree": "MS Perfusion Science",
+        "length": "21 mo",
+        "deadline": "Nov 1",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's, 3.0 cum GPA",
+        "website_url": "https://unmc.edu/"
+      },
+      "target": { "legacy_key": "University of Nebraska Medical Center (UNMC)" }
+    },
+    {
+      "raw": {
+        "name": "Hofstra University",
+        "subtitle": "Cardiovascular Sciences & Perfusion Medicine",
+        "badge": null,
+        "director": null,
+        "location": "Hempstead, NY",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "24 mo",
+        "deadline": "Dec 31 (preferred)",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's w/ Bio, Chem, A&P, Math, Physics",
+        "website_url": "https://hofstra.edu/"
+      },
+      "target": { "legacy_key": "Hofstra University" }
+    },
+    {
+      "raw": {
+        "name": "SUNY Upstate Medical University",
+        "subtitle": "Clinical Perfusion",
+        "badge": null,
+        "director": null,
+        "location": "Syracuse, NY",
+        "degree": "MS Clinical Perfusion",
+        "length": "19 mo",
+        "deadline": "Feb 15",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; observation recommended",
+        "website_url": "https://upstate.edu/"
+      },
+      "target": { "legacy_key": "SUNY Upstate Medical University" }
+    },
+    {
+      "raw": {
+        "name": "Cleveland Clinic",
+        "subtitle": "Cardiovascular Perfusion Program",
+        "badge": "Active - verified",
+        "director": "Christopher Koehler, CCP",
+        "location": "Cleveland, OH",
+        "degree": "Certificate in Cardiovascular Perfusion",
+        "length": "17 mo",
+        "deadline": "Sep 1",
+        "min_gpa": "—",
+        "tuition": "$32,000 (2025-26)",
+        "key_requirements": "Bachelor's from regionally accredited institution",
+        "website_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program"
+      },
+      "target": { "legacy_key": "Cleveland Clinic" }
+    },
+    {
+      "raw": {
+        "name": "Carlow University + UPMC Procirca",
+        "subtitle": "MS in Cardiovascular Perfusion",
+        "badge": "Joint accredited program",
+        "director": null,
+        "location": "Pittsburgh, PA",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "20 mo",
+        "deadline": "Oct 1 (apply anytime; fixed deadline)",
+        "min_gpa": "3.5",
+        "tuition": "$1,271/credit",
+        "key_requirements": "Prerequisites must be completed before consideration: Bio I-II, A&P I-II, Gen Chem I-II, Organic Chem I-II, Physics I-II, Microbiology, Pharmacology, Calculus, Medical Ethics; shadowing proof required",
+        "website_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/"
+      },
+      "target": { "legacy_key": "Carlow University / UPMC Shadyside" }
+    },
+    {
+      "raw": {
+        "name": "Thomas Jefferson University",
+        "subtitle": "Perfusion & Extracorporeal Technology",
+        "badge": null,
+        "director": null,
+        "location": "Philadelphia, PA",
+        "degree": "MS Perfusion",
+        "length": "~21 mo",
+        "deadline": "Dec 15",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's, 3.0 cum + 3.0 science GPA, observation hrs",
+        "website_url": "https://jefferson.edu/"
+      },
+      "target": { "legacy_key": "Thomas Jefferson University" }
+    },
+    {
+      "raw": {
+        "name": "Medical University of South Carolina (MUSC)",
+        "subtitle": "Cardiovascular Perfusion",
+        "badge": "Dr. Shackelford's clinical home",
+        "director": null,
+        "location": "Charleston, SC",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "~21 mo",
+        "deadline": "Dec 1 (fixed cycle)",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; science prerequisites",
+        "website_url": "https://chp.musc.edu/programs/master-science-cardiovascular-perfusion"
+      },
+      "target": { "legacy_key": "Medical University of South Carolina (MUSC)" }
+    },
+    {
+      "raw": {
+        "name": "Lipscomb University",
+        "subtitle": "Cardiovascular Perfusion",
+        "badge": "Recent initial accreditation",
+        "director": null,
+        "location": "Nashville, TN",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "—",
+        "deadline": "Oct 1",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; see program",
+        "website_url": "https://lipscomb.edu/"
+      },
+      "target": { "legacy_key": "Lipscomb University" }
+    },
+    {
+      "raw": {
+        "name": "Vanderbilt University Medical Center",
+        "subtitle": "Cardiovascular Perfusion Technology",
+        "badge": null,
+        "director": null,
+        "location": "Nashville, TN",
+        "degree": "MS Perfusion",
+        "length": "~21 mo",
+        "deadline": "Dec 1",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; science prerequisites",
+        "website_url": "https://vumc.org/"
+      },
+      "target": { "legacy_key": "Vanderbilt University Medical Center" }
+    },
+    {
+      "raw": {
+        "name": "Baylor Scott & White",
+        "subtitle": "Heart Hospital CV Institute Perfusion",
+        "badge": null,
+        "director": null,
+        "location": "Plano, TX",
+        "degree": "Certificate / MS pathway",
+        "length": "—",
+        "deadline": "Mar 31",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; 6 hrs A&P I & II; certificate/MS pathway",
+        "website_url": "https://bswhealth.com/"
+      },
+      "target": { "create": { "credential": "Certificate" } }
+    },
+    {
+      "raw": {
+        "name": "Texas Heart Institute at Baylor College of Medicine",
+        "subtitle": "Cardiovascular Perfusion Program",
+        "badge": "Current Baylor program",
+        "director": null,
+        "location": "Houston, TX",
+        "degree": "Certificate",
+        "length": "18 mo",
+        "deadline": "Jul 1 (fixed cycle)",
+        "min_gpa": "3.0",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; 3.0 GPA; Chem, Bio, A&P, Physics, Algebra, Statistics; 1 open-heart observation",
+        "website_url": "https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions"
+      },
+      "target": { "legacy_key": "Texas Heart Institute" }
+    },
+    {
+      "raw": {
+        "name": "UTHealth (McGovern Medical School)",
+        "subtitle": "Perfusion Program",
+        "badge": null,
+        "director": null,
+        "location": "Houston, TX",
+        "degree": "MS Perfusion",
+        "length": "—",
+        "deadline": "Jul 15",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; science prerequisites",
+        "website_url": "https://uth.edu/"
+      },
+      "target": { "legacy_key": "UTHealth Houston (McGovern Medical School)" }
+    },
+    {
+      "raw": {
+        "name": "University of Utah",
+        "subtitle": "MS Cardiovascular Perfusion",
+        "badge": null,
+        "director": null,
+        "location": "Salt Lake City, UT",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "—",
+        "deadline": "Nov 6",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; science prerequisites",
+        "website_url": "https://medicine.utah.edu/"
+      },
+      "target": { "legacy_key": "University of Utah" }
+    },
+    {
+      "raw": {
+        "name": "Virginia Commonwealth University (VCU)",
+        "subtitle": "Master of Science in Cardiovascular Perfusion",
+        "badge": "Not CAAHEP accredited - verify",
+        "director": null,
+        "location": "Richmond, VA",
+        "degree": "MS Cardiovascular Perfusion",
+        "length": "5 sem / 2 yr",
+        "deadline": "Mar 1",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "New program; accreditation not confirmed; verify CAAHEP/board eligibility before applying",
+        "website_url": "https://nrsa.chp.vcu.edu/programs/perfusion/"
+      },
+      "target": { "create": { "credential": "MS" } }
+    },
+    {
+      "raw": {
+        "name": "Milwaukee School of Engineering (MSOE)",
+        "subtitle": "Perfusion Program",
+        "badge": null,
+        "director": null,
+        "location": "Milwaukee, WI",
+        "degree": "MS Perfusion",
+        "length": "—",
+        "deadline": "Dec 15 (review)",
+        "min_gpa": "—",
+        "tuition": "verify",
+        "key_requirements": "Bachelor's; science prerequisites",
+        "website_url": "https://msoe.edu/"
+      },
+      "target": { "legacy_key": "Milwaukee School of Engineering (MSOE)" }
+    }
+  ]
+}

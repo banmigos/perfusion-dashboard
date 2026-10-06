@@ -4069,6 +4069,193 @@ git commit -m "Phase 5: add e2e coverage for the needs-verification queue"
 
 ---
 
+### Task 14: `programs.director_name` field
+
+Added 2026-10-06 at the user's request: the perfusionprep.com directory lists
+program directors, and the schema had nowhere to keep one. A director name is
+a program fact like any other — it lives in a typed column and its provenance
+lives in a `claims` row with `field_key = "director_name"`.
+
+**Files:**
+- Modify: `src/db/schema/canonical.ts` (programs table)
+- Create: `drizzle/0002_*.sql` + `drizzle/meta/*` (generated, committed)
+- Modify: `src/domain/admin/programs.ts` (`ProgramInput`, `createProgram`)
+- Modify: `src/app/actions/admin.ts` (`programFormSchema`, both program actions)
+- Modify: `src/app/admin/schools/[schoolSlug]/[programSlug]/page.tsx` (edit form)
+- Modify: `src/app/programs/[schoolSlug]/[programSlug]/page.tsx` (research detail)
+- Modify: `docs/data-model.md` (programs column list)
+- Test: `tests/integration/domain-admin-programs.test.ts`
+
+**Interfaces:**
+- Produces: `programs.directorName: string | null` (SQL column `director_name`,
+  nullable TEXT, no default); `ProgramInput.directorName?: string | null`;
+  claim field key `"director_name"` (consumed by Task 15).
+
+- [ ] **Step 1: Failing test.** In `tests/integration/domain-admin-programs.test.ts`
+  add `it("createProgram stores directorName and updateProgram logs its change", …)`:
+  create a program with `directorName: "Jane Doe, CCP"`, assert the row's
+  `directorName`; then `updateProgram(db, id, { directorName: "John Roe" })`
+  and assert exactly one `change_log` row with `action === "update"` for that
+  program (filter by `subjectTable === "programs"` too) whose
+  `beforeJson.directorName === "Jane Doe, CCP"` and
+  `afterJson.directorName === "John Roe"`. Run it; expect a type/compile or
+  assertion failure.
+- [ ] **Step 2: Schema + migration.** Add `directorName: text(),` to the
+  `programs` table directly after `name`/`legacyKey` (column order in the
+  table object only; SQLite appends it). Run `npm run db:generate`; confirm
+  the generated SQL is exactly one `ALTER TABLE \`programs\` ADD \`director_name\` text;`.
+  Never use `db.push()`.
+- [ ] **Step 3: Domain.** Add `directorName?: string | null` to `ProgramInput`
+  and `directorName: input.directorName ?? null` to `createProgram`'s values.
+  `updateProgram` already spreads the patch. Run the test; expect pass.
+- [ ] **Step 4: Admin form.** In `programFormSchema` add
+  `directorName: optionalTrimmed`; pass `directorName: formData.get("directorName") ?? ""`
+  in both `createProgramAction` and `updateProgramAction`. In the admin
+  program page's edit form add a `<label>director<input type="text"
+  name="directorName" defaultValue={program.directorName ?? ""} …/></label>`
+  with the same classes as the neighbouring `name` input.
+- [ ] **Step 5: Research detail.** In the public program detail page's `<dl>`,
+  add a `Director` row after `Credential` using `FactValue` with
+  `value={detail.program.directorName}` and
+  `claim={claimFor("programs", detail.program.id, "director_name")}`, same
+  props as its siblings. If `detail.program` comes from a query that selects
+  explicit columns, add `directorName` there.
+- [ ] **Step 6: Docs.** In `docs/data-model.md`, add `director_name` to the
+  programs column list (after `name`), with "(claim-backed, field_key
+  `director_name`)".
+- [ ] **Step 7: Verify + commit.** Run `npm run db:migrate` (worktree DB),
+  then `npm run verify`. Commit:
+  `Phase 5: add programs.director_name with admin form and detail display`
+
+---
+
+### Task 15: Import the perfusionprep.com directory as a lead bundle
+
+Added 2026-10-06. The user supplied https://perfusionprep.com/schools as a
+source of all US programs. Per `docs/research-workflow.md` §1.5 and
+`docs/decisions.md` assumption 5 ("aggregators are leads, not sources") and
+D8, the user chose to import it **as a lead bundle**: it may create rows for
+programs we lack and attach its values as notes on `unknown` claims, but it
+can never produce a `known` claim and never touches a verified/locked claim.
+
+The capture is already committed at `seed/leads/2026-10-06-perfusionprep.json`
+(format `directory-lead-capture/v1`, 25 records). Each record has `raw`
+(verbatim directory cells, `"—"`/`"verify"`/`null` meaning "no value") and
+`target`: either `{ "legacy_key": "<programs.legacy_key>" }` (22 records) or
+`{ "create": { "credential": "<CREDENTIALS member>" } }` (3 records: Barry
+University, Baylor Scott & White, Virginia Commonwealth University (VCU)).
+
+This is a narrow one-off importer in the shape of `scripts/legacy-import/`,
+not the Phase 6 generic import pipeline.
+
+**Files:**
+- Create: `scripts/lead-import/schema.ts` — Zod schema for the bundle (`.strict()` objects, like `scripts/legacy-import/schema.ts`)
+- Create: `scripts/lead-import/apply.ts` — `runLeadImport(db, capture, mode, sourceLabel, fileHash)` → report
+- Create: `scripts/import-leads.ts` — CLI: `npm run import:leads -- <file> [--apply]`, default file `seed/leads/2026-10-06-perfusionprep.json`
+- Modify: `package.json` — `"import:leads": "tsx scripts/import-leads.ts"`
+- Modify: `docs/research-workflow.md` — short subsection under the legacy-data section describing lead bundles and the command
+- Test: `tests/integration/lead-import.test.ts`
+
+**Rules (binding):**
+
+1. **Source.** Find-or-create one `sources` row by `url = origin.url`:
+   `sourceType: "other"`, `title`/`publisher` from `origin`, `fetchedAt` =
+   `captured_at` at 00:00 UTC, `notes`: `"Aggregator directory — lead only, not an official source (docs/research-workflow.md §1.5). Captured <captured_at>."`
+   Scripts cannot import `src/domain/**` (the `server-only` guard throws
+   outside the react-server condition), so do the lookup inline.
+2. **Lead line.** Every value is recorded as the exact string
+   `perfusionprep.com/schools (captured <captured_at>): "<value>"`.
+3. **Lead items per record** — `(subject, fieldKey, value)`; skip any whose
+   value is `null`, `"—"`, or (tuition only) `"verify"`:
+   | subject | fieldKey | value |
+   |---|---|---|
+   | program | `credential` | `raw.degree` |
+   | program | `program_length_months` | `raw.length` |
+   | program | `director_name` | `raw.director` |
+   | program | `directory_lead` | `[raw.subtitle, raw.badge, raw.key_requirements, raw.website_url].filter(Boolean).join(" · ")` |
+   | 2026-27 cycle | `deadline_date` | `raw.deadline` |
+   | GPA requirement | `value_number` | `raw.min_gpa` |
+   | tuition requirement | `value_number` | `raw.tuition` |
+   | school (create targets only) | `name`, `city`, `state` | `raw.name`, city part, state part of `raw.location` |
+4. **Claim rule** for each lead item, looking up the claim by
+   `(subjectTable, subjectId, fieldKey)`:
+   - none → insert `state: "unknown"`, `verification: "draft"`, `locked: false`,
+     `sourceId` = directory source, `checkedAt: null`, `note` = lead line. → `CREATE`
+   - `locked` or `verification === "verified"` → insert an `import_conflicts`
+     row (`currentJson` = the claim row, `proposedJson` = `{ note: <lead line> }`,
+     `reason: "lead import: claim is verified or locked"`) unless a `pending`
+     conflict with the same subject/fieldKey/proposedJson already exists. → `CONFLICT` / `UNCHANGED`
+   - `state === "known"` → no write. → `KEEP`
+   - otherwise → if `note` already contains the lead line, `UNCHANGED`; else
+     set `note` to `existing ? existing + "\n" + line : line`. Never change
+     `state`, `sourceId`, `verification`, `checkedAt`, or the value column. → `APPEND`
+5. **Targets.**
+   - `legacy_key`: program by `programs.legacy_key`; cycle by
+     `(programId, cycleLabel "2026-27")`. Missing program or cycle → throw
+     (`"run npm run import:legacy -- --apply first"`). GPA requirement = that
+     cycle's requirement labelled `"Minimum overall GPA"`; tuition requirement
+     = label `"Tuition (unit and residency tier not yet determined)"`. A
+     missing requirement is created (as in the create path).
+   - `create`: school slug = `slugify(raw.name)`. If the school exists, resolve
+     program `perfusion-<credential lowercased>` / cycle / requirements under it
+     (missing program → throw). Otherwise create: school (`name`, `city`,
+     `state` from `raw.location` split on the last comma, `websiteUrl: null`);
+     program (`slug: perfusion-<cred lowercased>`, `name: "<cred> in Cardiovascular Perfusion"`,
+     `credential`, `legacyKey: null`, `websiteUrl: null`, `latitude`/`longitude: null`
+     — no coordinates are invented); cycle (`"2026-27"`, `entryYear: 2027`,
+     `deadlineType: "unknown"`); requirements GPA (`category: "gpa"`,
+     `unit: "gpa"`) and tuition (`category: "other"`, `unit: null`) with the
+     labels above. No value column is ever set from the directory.
+6. **Audit.** An apply opens one transaction. First insert an `import_batches`
+   row (`mode: "apply"`, `sourceLabel`, `fileHash` = sha256 of the file bytes,
+   `status: "running"`); at the end update it to `status: "succeeded"`,
+   `finishedAt`, `summaryJson` = the counts. Every canonical insert
+   (school/program/cycle/requirement) and every claim insert/note-append writes
+   one `change_log` row with `batchId` = that batch, `actor: null`
+   (`action` `create`/`update`, `fieldKey` set for claim rows,
+   `subjectTable`/`subjectId` = the claim's subject). Write these inline
+   (`recordChange` is server-only and hard-codes `batchId: null`).
+7. **Dry run / no-op.** Dry run computes the full report inside the
+   transaction then rolls back (as `runLegacyImport` does). An apply whose
+   report has zero CREATE/APPEND/CONFLICT lines and created no source also
+   rolls back, so re-running the same bundle writes nothing, not even a batch row.
+8. Never `DELETE`. Never set `verification` other than `"draft"`, never
+   `state: "known"`.
+
+**Tests** (`tests/integration/lead-import.test.ts`; each test first runs the
+legacy import with `--apply` semantics via `runLegacyImport(db, plans, "apply")`):
+- dry run: report lists 3 program `CREATE`s; row counts of `schools`,
+  `programs`, `claims`, `change_log`, `import_batches`, `sources` unchanged.
+- apply: `schools` +3 (`barry-university`, `baylor-scott-white`,
+  `virginia-commonwealth-university-vcu`) with no value set beyond
+  name/city/state; Midwestern's 2026-27 `deadline_date` claim note contains
+  both its legacy line and `perfusionprep.com/schools (captured 2026-10-06): "Nov 1 (priority)"`,
+  and its `state` is still `unknown`; Quinnipiac and Cleveland Clinic each
+  have a `director_name` claim, `state: "unknown"`, note naming the director,
+  and `programs.director_name` is still NULL; Midwestern's `credential` claim
+  (known, from legacy) is byte-identical before/after; **no** claim whose
+  `sourceId` is the directory source has `state = "known"` or
+  `verification != "draft"`; every `change_log` row written has `batchId`
+  equal to the single new `import_batches` row, which is `succeeded`.
+- idempotency: a second apply reports zero CREATE/APPEND/CONFLICT and every
+  table's row count (including `import_batches`, `change_log`,
+  `import_conflicts`) is unchanged.
+- protection: mark Midwestern's `deadline_date` claim `verification: "verified"`,
+  `checkedAt: new Date()` directly, then apply → exactly one pending
+  `import_conflicts` row for it, its note unchanged; apply again → still one.
+
+- [ ] **Step 1:** Write `tests/integration/lead-import.test.ts` per above; run; expect failure (module missing).
+- [ ] **Step 2:** Implement `schema.ts`, `apply.ts`, `import-leads.ts`, the npm script.
+- [ ] **Step 3:** Run the test file until green. Then against the worktree DB:
+  `npm run import:leads` (dry run, read the report), `npm run import:leads -- --apply`,
+  and `npm run import:leads -- --apply` again — the second must report zero
+  changes. Paste all three outputs' summaries into the report.
+- [ ] **Step 4:** Update `docs/research-workflow.md`.
+- [ ] **Step 5:** `npm run verify`; commit:
+  `Phase 5: import perfusionprep.com directory as a lead bundle`
+
+---
+
 ## Self-Review Notes
 
 - **Spec coverage:** "CRUD for schools, programs, cycles, requirements,

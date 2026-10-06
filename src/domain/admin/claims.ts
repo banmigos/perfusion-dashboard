@@ -44,20 +44,6 @@ export function upsertClaim(
   input: ClaimUpsertInput,
 ): Claim {
   return db.transaction((tx) => {
-    let sourceId: number | null = null;
-    if (input.sourceUrl) {
-      sourceId = findOrCreateSource(tx, {
-        url: input.sourceUrl,
-        sourceType: input.sourceType ?? "other",
-      }).id;
-    }
-
-    // Satisfy claims_known_requires_source here rather than letting the DB
-    // reject the insert with an opaque constraint error.
-    if (input.state === "known" && sourceId === null) {
-      throw new Error("a known claim requires a source URL");
-    }
-
     const [existingClaim] = tx
       .select()
       .from(schema.claims)
@@ -66,9 +52,47 @@ export function upsertClaim(
       )
       .all();
 
+    // Update contract: a field that is `undefined` keeps its existing value, an
+    // explicit `null` clears it (so callers that never send `note` cannot wipe
+    // the legacy value stored there). Inserts treat `undefined` as null.
+    let sourceId: number | null = existingClaim?.sourceId ?? null;
+    if (input.sourceUrl === null || input.sourceUrl === "") {
+      sourceId = null;
+    } else if (input.sourceUrl !== undefined) {
+      sourceId = findOrCreateSource(tx, {
+        url: input.sourceUrl,
+        sourceType: input.sourceType ?? "other",
+      }).id;
+    }
+
+    // Satisfy claims_known_requires_source here rather than letting the DB
+    // reject the write with an opaque constraint error. Uses the merged
+    // sourceId, so a kept existing source passes.
+    if (input.state === "known" && sourceId === null) {
+      throw new Error("a known claim requires a source URL");
+    }
+
+    const quote =
+      input.quote === undefined ? (existingClaim?.quote ?? null) : input.quote;
+    const note =
+      input.note === undefined ? (existingClaim?.note ?? null) : input.note;
+
+    // An edit that changes state, source or quote is new content: "verified"
+    // means a human just re-read the source, so fall back to draft unless the
+    // caller states the verification explicitly.
+    const contentChanged =
+      existingClaim !== undefined &&
+      (existingClaim.state !== input.state ||
+        existingClaim.sourceId !== sourceId ||
+        existingClaim.quote !== quote);
     const resolvedVerification =
-      input.verification ?? existingClaim?.verification ?? "draft";
-    let resolvedCheckedAt = input.checkedAt ?? existingClaim?.checkedAt ?? null;
+      input.verification ??
+      (contentChanged ? "draft" : existingClaim?.verification) ??
+      "draft";
+    let resolvedCheckedAt =
+      input.checkedAt === undefined
+        ? (existingClaim?.checkedAt ?? null)
+        : input.checkedAt;
     if (resolvedVerification !== "draft" && resolvedCheckedAt === null) {
       resolvedCheckedAt = new Date();
     }
@@ -79,8 +103,8 @@ export function upsertClaim(
       fieldKey: input.fieldKey,
       state: input.state,
       sourceId,
-      quote: input.quote ?? null,
-      note: input.note ?? null,
+      quote,
+      note,
       checkedAt: resolvedCheckedAt,
       verification: resolvedVerification,
       locked: input.locked ?? existingClaim?.locked ?? false,

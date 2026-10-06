@@ -119,6 +119,83 @@ describe("claims admin", () => {
     expect(db.select().from(schema.changeLog).all()).toHaveLength(before);
   });
 
+  it("upsertClaim keeps an omitted note on update and clears it only for an explicit null", () => {
+    const base = {
+      subjectTable: "schools" as const,
+      subjectId: schoolId,
+      fieldKey: "city",
+      state: "unknown" as const,
+    };
+    upsertClaim(db, { ...base, note: "legacy: Boston" });
+
+    expect(upsertClaim(db, base).note).toBe("legacy: Boston");
+    expect(upsertClaim(db, { ...base, note: null }).note).toBeNull();
+  });
+
+  it("upsertClaim keeps the existing source and quote when they are omitted", () => {
+    const base = {
+      subjectTable: "schools" as const,
+      subjectId: schoolId,
+      fieldKey: "city",
+      state: "known" as const,
+    };
+    const first = upsertClaim(db, {
+      ...base,
+      sourceUrl: "https://acme.edu/about",
+      sourceType: "program_site",
+      quote: "Boston, MA",
+    });
+    const second = upsertClaim(db, { ...base, note: "x" });
+    expect(second.sourceId).toBe(first.sourceId);
+    expect(second.quote).toBe("Boston, MA");
+
+    expect(() => upsertClaim(db, { ...base, sourceUrl: null })).toThrow(
+      /source/,
+    );
+  });
+
+  it("upsertClaim resets verification to draft when state/source/quote change without an explicit verification, and keeps it otherwise", () => {
+    const base = {
+      subjectTable: "schools" as const,
+      subjectId: schoolId,
+      fieldKey: "city",
+      state: "known" as const,
+      sourceUrl: "https://acme.edu/about",
+      sourceType: "program_site" as const,
+      quote: "Boston",
+      checkedAt: new Date(),
+    };
+    const claim = upsertClaim(db, base);
+    setClaimVerification(db, claim.id, "verified");
+
+    expect(upsertClaim(db, { ...base, note: "n" }).verification).toBe(
+      "verified",
+    );
+    expect(upsertClaim(db, { ...base, quote: "Cambridge" }).verification).toBe(
+      "draft",
+    );
+
+    setClaimVerification(db, claim.id, "verified");
+    expect(
+      upsertClaim(db, { ...base, quote: "Cambridge", verification: "verified" })
+        .verification,
+    ).toBe("verified");
+  });
+
+  it("setClaimVerification auto-sets checkedAt when missing and supports needs_review", () => {
+    const claim = upsertClaim(db, {
+      subjectTable: "schools",
+      subjectId: schoolId,
+      fieldKey: "city",
+      state: "unknown",
+    });
+    expect(claim.checkedAt).toBeNull();
+
+    const after = setClaimVerification(db, claim.id, "needs_review");
+    expect(after.verification).toBe("needs_review");
+    expect(after.checkedAt).not.toBeNull();
+  });
+
   it("setClaimVerification moves a claim to verified and writes a verify change_log row", () => {
     const claim = upsertClaim(db, {
       subjectTable: "schools",

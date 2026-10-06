@@ -1,3 +1,5 @@
+export const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
+
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 export function isStale(

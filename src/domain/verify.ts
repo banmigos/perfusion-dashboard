@@ -2,6 +2,7 @@ import "server-only";
 import { eq, inArray } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
+import { isStale, STALE_AFTER_DAYS } from "@/lib/freshness";
 import type { SubjectTable } from "./claims";
 import { CURRENT_USER_ID } from "./user";
 
@@ -21,6 +22,9 @@ type SubjectContext = {
   program: { slug: string; name: string; id: number } | null;
   deadlineDate: string | null;
   subjectLabel: string;
+  // True when the subject or any ancestor (requirement -> cycle -> program ->
+  // school) has status 'archived'.
+  archived: boolean;
 };
 
 function resolveSubjectContext(
@@ -33,6 +37,7 @@ function resolveSubjectContext(
     program: null,
     deadlineDate: null,
     subjectLabel: `${subjectTable} ${subjectId}`,
+    archived: false,
   };
 
   if (subjectTable === "schools") {
@@ -47,6 +52,7 @@ function resolveSubjectContext(
       program: null,
       deadlineDate: null,
       subjectLabel: school.name,
+      archived: school.status === "archived",
     };
   }
 
@@ -70,6 +76,8 @@ function resolveSubjectContext(
       },
       deadlineDate: null,
       subjectLabel: row.program.name,
+      archived:
+        row.program.status === "archived" || row.school.status === "archived",
     };
   }
 
@@ -101,6 +109,10 @@ function resolveSubjectContext(
       },
       deadlineDate: row.cycle.deadlineDate,
       subjectLabel: `${row.program.name} — ${row.cycle.cycleLabel}`,
+      archived:
+        row.cycle.status === "archived" ||
+        row.program.status === "archived" ||
+        row.school.status === "archived",
     };
   }
 
@@ -137,6 +149,11 @@ function resolveSubjectContext(
       },
       deadlineDate: row.cycle.deadlineDate,
       subjectLabel: row.requirement.label,
+      archived:
+        row.requirement.status === "archived" ||
+        row.cycle.status === "archived" ||
+        row.program.status === "archived" ||
+        row.school.status === "archived",
     };
   }
 
@@ -173,6 +190,10 @@ function resolveSubjectContext(
       },
       deadlineDate: row.cycle.deadlineDate,
       subjectLabel: row.prereq.subject,
+      archived:
+        row.cycle.status === "archived" ||
+        row.program.status === "archived" ||
+        row.school.status === "archived",
     };
   }
 
@@ -201,6 +222,8 @@ function resolveSubjectContext(
     },
     deadlineDate: null,
     subjectLabel: `tuition (${row.tuition.residency})`,
+    archived:
+      row.program.status === "archived" || row.school.status === "archived",
   };
 }
 
@@ -210,17 +233,41 @@ function tier(item: VerifyQueueItem): 0 | 1 | 2 {
   return 2;
 }
 
+export type VerifyQueueOptions = {
+  now?: Date;
+  staleAfterDays?: number;
+};
+
+// Pending = flagged for work in storage (draft / needs_review / stale), or
+// "verified" but past the staleness threshold, which the UI shows as stale
+// regardless of stored verification (docs/research-workflow.md section 2).
+// Claims with verification 'archived', and claims on an archived subject or
+// ancestor, are excluded.
 export function listVerifyQueue(
   db: BetterSQLite3Database<typeof schema>,
+  opts: VerifyQueueOptions = {},
 ): VerifyQueueItem[] {
+  const now = opts.now ?? new Date();
+  const staleAfterDays = opts.staleAfterDays ?? STALE_AFTER_DAYS;
+
   const rows = db
     .select({ claim: schema.claims, source: schema.sources })
     .from(schema.claims)
     .leftJoin(schema.sources, eq(schema.claims.sourceId, schema.sources.id))
     .where(
-      inArray(schema.claims.verification, ["draft", "needs_review", "stale"]),
+      inArray(schema.claims.verification, [
+        "draft",
+        "needs_review",
+        "stale",
+        "verified",
+      ]),
     )
-    .all();
+    .all()
+    .filter(
+      ({ claim }) =>
+        claim.verification !== "verified" ||
+        isStale(claim.checkedAt, now, staleAfterDays),
+    );
 
   const savedProgramIds = new Set(
     db
@@ -231,9 +278,11 @@ export function listVerifyQueue(
       .map((r) => r.programId),
   );
 
-  const items: VerifyQueueItem[] = rows.map(({ claim, source }) => {
+  const items: VerifyQueueItem[] = [];
+  for (const { claim, source } of rows) {
     const ctx = resolveSubjectContext(db, claim.subjectTable, claim.subjectId);
-    return {
+    if (ctx.archived) continue;
+    items.push({
       claim,
       source,
       subjectLabel: ctx.subjectLabel,
@@ -241,8 +290,8 @@ export function listVerifyQueue(
       program: ctx.program,
       deadlineDate: ctx.deadlineDate,
       isSaved: ctx.program !== null && savedProgramIds.has(ctx.program.id),
-    };
-  });
+    });
+  }
 
   return items.sort((a, b) => {
     const ta = tier(a);

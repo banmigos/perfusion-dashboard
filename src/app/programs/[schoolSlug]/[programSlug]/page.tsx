@@ -8,8 +8,7 @@ import { getSavedProgram } from "@/domain/saved";
 import { listChecklistsForSavedProgram } from "@/domain/checklists";
 import { SaveProgramControl } from "@/components/SaveProgramControl";
 import { requirementClaimFieldKey } from "@/domain/admin/requirements";
-
-const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
+import { STALE_AFTER_DAYS } from "@/lib/freshness";
 
 const REQUIREMENT_CLAIM_FIELD_KEYS = [
   "value_text",

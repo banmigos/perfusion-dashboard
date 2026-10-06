@@ -14,7 +14,10 @@ describe("application cycles admin CRUD", () => {
   beforeEach(() => {
     ctx = createTestDb();
     db = ctx.db;
-    const schoolId = createSchool(db, { slug: "acme-u", name: "Acme University" }).id;
+    const schoolId = createSchool(db, {
+      slug: "acme-u",
+      name: "Acme University",
+    }).id;
     programId = createProgram(db, {
       schoolId,
       slug: "perfusion-ms",
@@ -40,7 +43,9 @@ describe("application cycles admin CRUD", () => {
       .from(schema.changeLog)
       .where(eq(schema.changeLog.subjectId, cycle.id))
       .all();
-    expect(logs.filter((l) => l.subjectTable === "application_cycles")).toHaveLength(1);
+    expect(
+      logs.filter((l) => l.subjectTable === "application_cycles"),
+    ).toHaveLength(1);
   });
 
   it("updateCycle changes the deadline and writes an update log row with before/after", () => {
@@ -54,6 +59,7 @@ describe("application cycles admin CRUD", () => {
       .from(schema.changeLog)
       .where(eq(schema.changeLog.subjectId, cycle.id))
       .all();
+    expect(logs.filter((l) => l.action === "update")).toHaveLength(1);
     const updateLog = logs.find((l) => l.action === "update")!;
     expect(
       (updateLog.beforeJson as { deadlineDate: string | null }).deadlineDate,
@@ -74,5 +80,17 @@ describe("application cycles admin CRUD", () => {
       .where(eq(schema.applicationCycles.id, cycle.id))
       .all();
     expect(row!.status).toBe("archived");
+
+    const logs = db
+      .select()
+      .from(schema.changeLog)
+      .where(eq(schema.changeLog.subjectId, cycle.id))
+      .all();
+    expect(logs.filter((l) => l.action === "archive")).toHaveLength(1);
+    const archiveLog = logs.find((l) => l.action === "archive")!;
+    expect((archiveLog.beforeJson as { status: string }).status).toBe("draft");
+    expect((archiveLog.afterJson as { status: string }).status).toBe(
+      "archived",
+    );
   });
 });

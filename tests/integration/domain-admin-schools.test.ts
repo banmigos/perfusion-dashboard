@@ -1,7 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { eq } from "drizzle-orm";
 import { createTestDb, type TestDb } from "./helpers/db";
-import { archiveSchool, createSchool, updateSchool } from "@/domain/admin/schools";
+import {
+  archiveSchool,
+  createSchool,
+  updateSchool,
+} from "@/domain/admin/schools";
 import * as schema from "@/db/schema";
 
 describe("schools admin CRUD", () => {
@@ -18,7 +22,10 @@ describe("schools admin CRUD", () => {
   });
 
   it("createSchool inserts a row and writes one create change_log row", () => {
-    const school = createSchool(db, { slug: "acme-u", name: "Acme University" });
+    const school = createSchool(db, {
+      slug: "acme-u",
+      name: "Acme University",
+    });
 
     expect(school.id).toBeGreaterThan(0);
     expect(school.status).toBe("draft");
@@ -36,7 +43,10 @@ describe("schools admin CRUD", () => {
   });
 
   it("updateSchool patches fields and writes one update change_log row with before/after", () => {
-    const school = createSchool(db, { slug: "acme-u", name: "Acme University" });
+    const school = createSchool(db, {
+      slug: "acme-u",
+      name: "Acme University",
+    });
 
     const updated = updateSchool(db, school.id, { city: "Springfield" });
 
@@ -55,7 +65,10 @@ describe("schools admin CRUD", () => {
   });
 
   it("archiveSchool sets status=archived and archived_at, and writes one archive log row", () => {
-    const school = createSchool(db, { slug: "acme-u", name: "Acme University" });
+    const school = createSchool(db, {
+      slug: "acme-u",
+      name: "Acme University",
+    });
 
     archiveSchool(db, school.id);
 

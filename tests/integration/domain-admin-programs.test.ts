@@ -49,7 +49,9 @@ describe("programs admin CRUD", () => {
       credential: "MS",
     });
 
-    const updated = updateProgram(db, program.id, { credential: "Certificate" });
+    const updated = updateProgram(db, program.id, {
+      credential: "Certificate",
+    });
     expect(updated.credential).toBe("Certificate");
 
     const logs = db
@@ -82,5 +84,17 @@ describe("programs admin CRUD", () => {
       .where(eq(schema.schools.id, schoolId))
       .all();
     expect(school!.status).toBe("draft");
+
+    const logs = db
+      .select()
+      .from(schema.changeLog)
+      .where(eq(schema.changeLog.subjectId, program.id))
+      .all();
+    expect(logs.filter((l) => l.action === "archive")).toHaveLength(1);
+    const archiveLog = logs.find((l) => l.action === "archive")!;
+    expect((archiveLog.beforeJson as { status: string }).status).toBe("draft");
+    expect((archiveLog.afterJson as { status: string }).status).toBe(
+      "archived",
+    );
   });
 });

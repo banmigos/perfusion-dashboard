@@ -7,6 +7,7 @@ import type { ClaimLike } from "@/lib/factState";
 import { getSavedProgram } from "@/domain/saved";
 import { listChecklistsForSavedProgram } from "@/domain/checklists";
 import { SaveProgramControl } from "@/components/SaveProgramControl";
+import { requirementClaimFieldKey } from "@/domain/admin/requirements";
 
 const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
 
@@ -31,26 +32,24 @@ function resolveRequirementFact(
     fieldKey: string,
   ) => ClaimLike | undefined,
 ): { value: string | number; claim: ClaimLike | undefined } {
-  if (req.valueText !== null)
+  const fieldKey = requirementClaimFieldKey(req);
+  const value =
+    fieldKey === "value_text"
+      ? req.valueText
+      : fieldKey === "value_number"
+        ? req.valueNumber
+        : fieldKey === "value_bool"
+          ? req.valueBool
+            ? "yes"
+            : "no"
+          : req.valueDate;
+
+  if (value !== null) {
     return {
-      value: req.valueText,
-      claim: claimFor("requirements", req.id, "value_text"),
+      value,
+      claim: claimFor("requirements", req.id, fieldKey),
     };
-  if (req.valueNumber !== null)
-    return {
-      value: req.valueNumber,
-      claim: claimFor("requirements", req.id, "value_number"),
-    };
-  if (req.valueBool !== null)
-    return {
-      value: req.valueBool ? "yes" : "no",
-      claim: claimFor("requirements", req.id, "value_bool"),
-    };
-  if (req.valueDate !== null)
-    return {
-      value: req.valueDate,
-      claim: claimFor("requirements", req.id, "value_date"),
-    };
+  }
 
   // No value_* column is populated: this requirement is either genuinely
   // unresearched (no claim row at all) or its state is `unknown` (a claim

@@ -2,6 +2,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db } from "@/db/client";
 import {
@@ -142,6 +143,7 @@ const cycleFormSchema = z.object({
   entryYear: z
     .string()
     .transform((v) => (v.trim() === "" ? null : Number(v)))
+    .refine((v) => v === null || Number.isFinite(v), "invalid year")
     .refine((v) => v === null || Number.isInteger(v), "invalid year"),
   deadlineDate: calendarDateSchema,
   deadlineType: z
@@ -169,6 +171,8 @@ export async function createCycleAction(
 
 export async function updateCycleAction(
   cycleId: number,
+  schoolSlug: string,
+  programSlug: string,
   formData: FormData,
 ): Promise<void> {
   const parsed = cycleFormSchema.parse({
@@ -180,6 +184,10 @@ export async function updateCycleAction(
   });
   updateCycle(db, cycleId, parsed);
   revalidateAdmin();
+  // The label is part of the URL; follow a rename. Outside any try/catch.
+  redirect(
+    `/admin/schools/${encodeURIComponent(schoolSlug)}/${encodeURIComponent(programSlug)}/${encodeURIComponent(parsed.cycleLabel)}`,
+  );
 }
 
 export async function archiveCycleAction(cycleId: number): Promise<void> {
@@ -200,10 +208,11 @@ const requirementFormSchema = z.object({
   valueNumber: z
     .string()
     .transform((v) => (v.trim() === "" ? null : Number(v)))
-    .refine((v) => v === null || !Number.isNaN(v), "invalid number"),
+    .refine((v) => v === null || Number.isFinite(v), "invalid number"),
   valueBool: valueBoolFormSchema,
   valueDate: calendarDateSchema,
-  isRequired: z.string().transform((v) => v === "on"),
+  // Tri-state: "" = unknown (null), never coerced to false.
+  isRequired: valueBoolFormSchema,
 });
 
 export async function createRequirementAction(

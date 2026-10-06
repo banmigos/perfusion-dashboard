@@ -15,9 +15,9 @@ function adminHref(item: VerifyQueueItem): string | null {
   if (item.claim.subjectTable === "programs") {
     return `/admin/schools/${item.school.slug}/${item.program.slug}`;
   }
-  // application_cycles, requirements, prerequisite_courses, tuition_estimates
-  // all live under a cycle page; without the cycle label handy here, link to
-  // the program page, which lists its cycles.
+  // application_cycles, requirements, prerequisite_courses and tuition_estimates
+  // link to the program page, which lists its cycles. This is a deliberate
+  // fallback: queue items carry no cycle label to build a cycle URL from.
   return `/admin/schools/${item.school.slug}/${item.program.slug}`;
 }
 

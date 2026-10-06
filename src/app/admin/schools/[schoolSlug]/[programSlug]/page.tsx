@@ -150,7 +150,7 @@ export default async function AdminProgramPage({
         {cycles.map((cycle) => (
           <li key={cycle.id}>
             <Link
-              href={`/admin/schools/${school.slug}/${program.slug}/${cycle.cycleLabel}`}
+              href={`/admin/schools/${school.slug}/${program.slug}/${encodeURIComponent(cycle.cycleLabel)}`}
               className="hover:underline"
             >
               {cycle.cycleLabel}

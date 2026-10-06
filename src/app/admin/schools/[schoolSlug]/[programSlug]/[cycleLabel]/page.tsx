@@ -31,7 +31,9 @@ export default async function AdminCyclePage({
     cycleLabel: string;
   }>;
 }) {
-  const { schoolSlug, programSlug, cycleLabel } = await params;
+  const { schoolSlug, programSlug, cycleLabel: rawCycleLabel } = await params;
+  // Next leaves dynamic segments percent-encoded; labels are free text.
+  const cycleLabel = decodeURIComponent(rawCycleLabel);
 
   const [school] = db
     .select()
@@ -91,7 +93,12 @@ export default async function AdminCyclePage({
       <h1 className="mt-1 text-2xl font-semibold">{cycle.cycleLabel}</h1>
 
       <form
-        action={updateCycleAction.bind(null, cycle.id)}
+        action={updateCycleAction.bind(
+          null,
+          cycle.id,
+          school.slug,
+          program.slug,
+        )}
         className="mt-4 flex flex-wrap items-end gap-2"
       >
         <label className="flex flex-col text-xs">
@@ -249,14 +256,21 @@ export default async function AdminCyclePage({
                   defaultValue={req.valueDate ?? ""}
                   className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
                 />
-                <label className="flex items-center gap-1 text-xs">
-                  <input
-                    type="checkbox"
-                    name="isRequired"
-                    defaultChecked={req.isRequired ?? false}
-                  />
-                  required
-                </label>
+                <select
+                  name="isRequired"
+                  defaultValue={
+                    req.isRequired === null
+                      ? ""
+                      : req.isRequired
+                        ? "true"
+                        : "false"
+                  }
+                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                >
+                  <option value="">required? unknown</option>
+                  <option value="true">required</option>
+                  <option value="false">not required</option>
+                </select>
                 <button
                   type="submit"
                   className="rounded bg-zinc-900 px-2 py-1 text-xs text-white dark:bg-zinc-100 dark:text-zinc-900"
@@ -334,10 +348,15 @@ export default async function AdminCyclePage({
           name="valueDate"
           className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
-        <label className="flex items-center gap-1 text-xs">
-          <input type="checkbox" name="isRequired" />
-          required
-        </label>
+        <select
+          name="isRequired"
+          defaultValue=""
+          className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+        >
+          <option value="">required? unknown</option>
+          <option value="true">required</option>
+          <option value="false">not required</option>
+        </select>
         <button
           type="submit"
           className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"

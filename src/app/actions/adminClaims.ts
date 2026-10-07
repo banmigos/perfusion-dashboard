@@ -5,39 +5,15 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/db/client";
 import { setClaimVerification, upsertClaim } from "@/domain/admin/claims";
-import {
-  CLAIM_STATES,
-  SOURCE_TYPES,
-  SUBJECT_TABLES,
-} from "@/db/schema/provenance";
+import { SUBJECT_TABLES } from "@/db/schema/provenance";
 import type { SubjectTable } from "@/domain/claims";
-import { optionalHttpUrl } from "@/lib/zod/httpUrl";
+import { claimFormSchema } from "@/lib/zod/claimForm";
 
 function revalidateAdmin(): void {
   revalidatePath("/admin", "layout");
   revalidatePath("/verify");
   revalidatePath("/programs", "layout");
 }
-
-const checkedAtSchema = z
-  .string()
-  .refine((v) => v === "" || /^\d{4}-\d{2}-\d{2}$/.test(v), "invalid date")
-  .transform((v) => (v === "" ? null : new Date(`${v}T00:00:00.000Z`)));
-
-const claimFormSchema = z
-  .object({
-    fieldKey: z.string().trim().min(1, "field key required"),
-    state: z.enum(CLAIM_STATES),
-    sourceUrl: optionalHttpUrl,
-    sourceType: z.union([z.enum(SOURCE_TYPES), z.literal("")]),
-    quote: z.string().trim(),
-    note: z.string().trim(),
-    checkedAt: checkedAtSchema,
-  })
-  .refine((v) => v.state !== "known" || v.sourceUrl !== null, {
-    message: "a known fact requires a source URL",
-    path: ["sourceUrl"],
-  });
 
 const subjectTableSchema = z.enum(SUBJECT_TABLES);
 const idSchema = z.number().int().positive();
@@ -61,6 +37,7 @@ export async function upsertClaimAction(
     subjectTable: subjectTableSchema.parse(subjectTable),
     subjectId: idSchema.parse(subjectId),
     fieldKey: parsed.fieldKey,
+    // Blank state = keep current state (undefined); required for a new claim.
     state: parsed.state,
     // Blank sourceUrl, quote, note and checkedAt all mean "keep existing":
     // the form is not pre-filled, so blank is "not provided", not "clear".

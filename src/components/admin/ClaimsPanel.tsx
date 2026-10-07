@@ -1,5 +1,6 @@
 // src/components/admin/ClaimsPanel.tsx
 import type { ClaimWithSource, SubjectTable } from "@/domain/claims";
+import { standardClaimFieldKeys } from "@/domain/admin/claims";
 import { CLAIM_STATES, SOURCE_TYPES } from "@/db/schema/provenance";
 import {
   upsertClaimAction,
@@ -19,6 +20,16 @@ export function ClaimsPanel({
   subjectId: number;
   claims: ClaimWithSource[];
 }) {
+  // Suggest keys already on this subject plus its standard fact columns, so
+  // a typo doesn't create an orphan claim nothing reads.
+  const fieldKeyOptions = [
+    ...new Set([
+      ...claims.map((c) => c.fieldKey),
+      ...standardClaimFieldKeys(subjectTable),
+    ]),
+  ];
+  const datalistId = `claim-field-keys-${subjectTable}-${subjectId}`;
+
   return (
     <div className="mt-4 rounded border border-zinc-200 p-3 dark:border-zinc-800">
       <h3 className="text-sm font-semibold">Claims</h3>
@@ -111,16 +122,24 @@ export function ClaimsPanel({
             type="text"
             name="fieldKey"
             required
+            list={datalistId}
             placeholder="e.g. deadline_date"
             className="rounded border border-zinc-300 px-2 py-1 dark:border-zinc-700 dark:bg-zinc-900"
           />
+          <datalist id={datalistId}>
+            {fieldKeyOptions.map((key) => (
+              <option key={key} value={key} />
+            ))}
+          </datalist>
         </label>
         <label className="flex flex-col text-xs">
           state
           <select
             name="state"
+            defaultValue=""
             className="rounded border border-zinc-300 px-2 py-1 dark:border-zinc-700 dark:bg-zinc-900"
           >
+            <option value="">— keep current state —</option>
             {CLAIM_STATES.map((s) => (
               <option key={s} value={s}>
                 {s}

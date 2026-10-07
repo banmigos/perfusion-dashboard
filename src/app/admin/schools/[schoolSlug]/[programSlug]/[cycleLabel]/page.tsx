@@ -5,7 +5,7 @@ import { and, asc, eq, ne } from "drizzle-orm";
 import { db } from "@/db/client";
 import * as schema from "@/db/schema";
 import { listClaimsForSubject } from "@/domain/admin/claims";
-import { requirementClaimFieldKey } from "@/domain/admin/requirements";
+import { resolveRequirementClaim } from "@/domain/admin/requirements";
 import { ClaimsPanel } from "@/components/admin/ClaimsPanel";
 import {
   archiveCycleAction,
@@ -187,12 +187,12 @@ export default async function AdminCyclePage({
       <h2 className="mt-6 text-sm font-semibold">Requirements</h2>
       <ul className="mt-2 space-y-4">
         {requirements.map((req) => {
-          const fieldKey = requirementClaimFieldKey(req);
-          const reqClaims = listClaimsForSubject(
-            db,
-            "requirements",
-            req.id,
-          ).filter((c) => c.fieldKey === fieldKey);
+          // Show every claim on the requirement: legacy/lead imports key
+          // claims on empty requirements by value_number/value_bool.
+          const reqClaims = listClaimsForSubject(db, "requirements", req.id);
+          const backing = resolveRequirementClaim(req, (key) =>
+            reqClaims.find((c) => c.fieldKey === key),
+          );
           return (
             <li
               key={req.id}
@@ -289,6 +289,11 @@ export default async function AdminCyclePage({
                   Archive requirement
                 </button>
               </form>
+              <p className="mt-1 text-xs text-zinc-500">
+                {backing.claim
+                  ? `value backed by claim: ${backing.fieldKey}`
+                  : "no claim backs this value yet"}
+              </p>
               <ClaimsPanel
                 subjectTable="requirements"
                 subjectId={req.id}

@@ -7,7 +7,7 @@
 // claim it demotes writes one additional, separate row (action "update",
 // fieldKey set, before/after = the claim rows).
 import "server-only";
-import { and, eq } from "drizzle-orm";
+import { and, eq, getTableColumns, type Table } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import type {
@@ -17,13 +17,18 @@ import type {
 } from "@/db/schema/provenance";
 import { recordChange } from "../changeLog";
 import { findOrCreateSource } from "./sources";
-import type { ClaimWithSource, SubjectTable } from "../claims";
+import {
+  REQUIREMENT_CLAIM_FIELD_KEYS,
+  type ClaimWithSource,
+  type SubjectTable,
+} from "../claims";
 
 export type ClaimUpsertInput = {
   subjectTable: SubjectTable;
   subjectId: number;
   fieldKey: string;
-  state: (typeof CLAIM_STATES)[number];
+  /** Required to create a claim; on update, undefined keeps the current state. */
+  state?: (typeof CLAIM_STATES)[number];
   sourceUrl?: string | null;
   sourceType?: (typeof SOURCE_TYPES)[number];
   quote?: string | null;
@@ -59,6 +64,13 @@ export function upsertClaim(
       )
       .all();
 
+    const state = input.state ?? existingClaim?.state;
+    if (state === undefined) {
+      throw new Error(
+        `a new claim requires a state (${input.subjectTable}:${input.subjectId}:${input.fieldKey})`,
+      );
+    }
+
     // Update contract: a field that is `undefined` keeps its existing value, an
     // explicit `null` clears it (so callers that never send `note` cannot wipe
     // the legacy value stored there). Inserts treat `undefined` as null.
@@ -75,7 +87,7 @@ export function upsertClaim(
     // Satisfy claims_known_requires_source here rather than letting the DB
     // reject the write with an opaque constraint error. Uses the merged
     // sourceId, so a kept existing source passes.
-    if (input.state === "known" && sourceId === null) {
+    if (state === "known" && sourceId === null) {
       throw new Error("a known claim requires a source URL");
     }
 
@@ -89,7 +101,7 @@ export function upsertClaim(
     // caller states the verification explicitly.
     const contentChanged =
       existingClaim !== undefined &&
-      (existingClaim.state !== input.state ||
+      (existingClaim.state !== state ||
         existingClaim.sourceId !== sourceId ||
         existingClaim.quote !== quote);
     const resolvedVerification =
@@ -108,7 +120,7 @@ export function upsertClaim(
       subjectTable: input.subjectTable,
       subjectId: input.subjectId,
       fieldKey: input.fieldKey,
-      state: input.state,
+      state,
       sourceId,
       quote,
       note,
@@ -233,6 +245,31 @@ const NON_FACT_COLUMNS = new Set([
   "latitude",
   "longitude",
 ]);
+
+const SUBJECT_TABLE_SCHEMAS: Record<
+  Exclude<SubjectTable, "requirements">,
+  Table
+> = {
+  schools: schema.schools,
+  programs: schema.programs,
+  application_cycles: schema.applicationCycles,
+  prerequisite_courses: schema.prerequisiteCourses,
+  tuition_estimates: schema.tuitionEstimates,
+};
+
+/**
+ * The field keys a claim on this subject would normally use: snake_case of
+ * every fact column (requirements: the four value_* keys). Offered as form
+ * suggestions to reduce typo'd, orphaned claims.
+ */
+export function standardClaimFieldKeys(subjectTable: SubjectTable): string[] {
+  if (subjectTable === "requirements") {
+    return [...REQUIREMENT_CLAIM_FIELD_KEYS];
+  }
+  return Object.keys(getTableColumns(SUBJECT_TABLE_SCHEMAS[subjectTable]))
+    .filter((column) => !NON_FACT_COLUMNS.has(column))
+    .map(snakeCase);
+}
 
 function snakeCase(column: string): string {
   return column.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`);

@@ -6,6 +6,7 @@ import { createSchool } from "@/domain/admin/schools";
 import {
   listClaimsForSubject,
   setClaimVerification,
+  standardClaimFieldKeys,
   upsertClaim,
 } from "@/domain/admin/claims";
 import { listVerifyQueue } from "@/domain/verify";
@@ -286,5 +287,56 @@ describe("claims admin", () => {
 
     setClaimVerification(db, claim.id, "verified");
     expect(db.select().from(schema.changeLog).all()).toHaveLength(before + 3);
+  });
+
+  it("upsertClaim with no state keeps the existing state (adding a note never promotes unknown to known)", () => {
+    const claim = upsertClaim(db, {
+      subjectTable: "schools",
+      subjectId: schoolId,
+      fieldKey: "city",
+      state: "unknown",
+      sourceUrl: "https://directory.example/acme",
+      sourceType: "other",
+      verification: "verified",
+    });
+
+    const after = upsertClaim(db, {
+      subjectTable: "schools",
+      subjectId: schoolId,
+      fieldKey: "city",
+      note: "called admissions, no answer",
+    });
+    expect(after.id).toBe(claim.id);
+    expect(after.state).toBe("unknown");
+    expect(after.note).toBe("called admissions, no answer");
+    // Not a content change (state/source/quote kept), so not reset to draft.
+    expect(after.verification).toBe("verified");
+  });
+
+  it("upsertClaim refuses to create a new claim without a state", () => {
+    expect(() =>
+      upsertClaim(db, {
+        subjectTable: "schools",
+        subjectId: schoolId,
+        fieldKey: "city",
+        note: "x",
+      }),
+    ).toThrow(/new claim requires a state/);
+    expect(db.select().from(schema.claims).all()).toHaveLength(0);
+  });
+
+  it("standardClaimFieldKeys lists a subject's fact columns as snake_case keys", () => {
+    const programKeys = standardClaimFieldKeys("programs");
+    expect(programKeys).toContain("credential");
+    expect(programKeys).toContain("program_length_months");
+    expect(programKeys).not.toContain("slug");
+    expect(programKeys).not.toContain("latitude");
+    expect(programKeys).not.toContain("school_id");
+    expect(standardClaimFieldKeys("requirements")).toEqual([
+      "value_text",
+      "value_number",
+      "value_bool",
+      "value_date",
+    ]);
   });
 });

@@ -8,6 +8,7 @@ import {
   archiveRequirement,
   createRequirement,
   requirementClaimFieldKey,
+  resolveRequirementClaim,
   updateRequirement,
 } from "@/domain/admin/requirements";
 import { upsertClaim } from "@/domain/admin/claims";
@@ -203,5 +204,37 @@ describe("requirements admin CRUD", () => {
         (l) => l.subjectTable === "requirements" && l.action === "update",
       );
     expect(claimLogs).toHaveLength(1);
+  });
+
+  it("resolveRequirementClaim finds a value_number claim on an empty requirement", () => {
+    const empty = {
+      valueText: null,
+      valueNumber: null,
+      valueBool: null,
+      valueDate: null,
+    };
+    const claims = new Map([["value_number", { id: 7 }]]);
+    expect(resolveRequirementClaim(empty, (k) => claims.get(k))).toEqual({
+      fieldKey: "value_number",
+      claim: { id: 7 },
+    });
+    // No claim under any key: unresearched.
+    expect(resolveRequirementClaim(empty, () => undefined)).toEqual({
+      fieldKey: null,
+      claim: undefined,
+    });
+  });
+
+  it("resolveRequirementClaim uses the populated column's key when a value is set", () => {
+    const claims = new Map([
+      ["value_text", { id: 1 }],
+      ["value_number", { id: 2 }],
+    ]);
+    expect(
+      resolveRequirementClaim(
+        { valueText: null, valueNumber: 3, valueBool: null, valueDate: null },
+        (k) => claims.get(k),
+      ),
+    ).toEqual({ fieldKey: "value_number", claim: { id: 2 } });
   });
 });

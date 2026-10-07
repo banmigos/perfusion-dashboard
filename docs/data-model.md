@@ -99,7 +99,8 @@ Present so that personal tables can carry a real `user_id` FK from day one.
 `status` (`draft|needs_review|verified|stale|archived`), `archived_at`, timestamps.
 
 **`programs`**
-`id`, `school_id` FK -> schools RESTRICT, `slug`, `name`, `legacy_key`,
+`id`, `school_id` FK -> schools RESTRICT, `slug`, `name`,
+`director_name` (claim-backed, field_key `director_name`), `legacy_key`,
 `credential` (`MS|MPS|MHS|BS|Certificate|Other`), `modality` (`in_person|hybrid|online`),
 `accreditation_status`, `cae_accredited` (bool), `program_length_months`, `class_size`,
 `website_url`, `latitude`, `longitude`, `status`, `archived_at`, timestamps.

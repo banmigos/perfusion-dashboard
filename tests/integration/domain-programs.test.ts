@@ -110,4 +110,36 @@ describe("getProgramDetail", () => {
       "2026-27",
     ]);
   });
+
+  it("omits archived cycles (with their prerequisites) and archived requirements", async () => {
+    const fixture = await seedFixtureSchool(db);
+    const [archivedCycle] = await db
+      .insert(schema.applicationCycles)
+      .values({
+        programId: fixture.program.id,
+        cycleLabel: "2027-28",
+        status: "archived",
+        archivedAt: new Date(),
+      })
+      .returning();
+    await db.insert(schema.prerequisiteCourses).values({
+      cycleId: archivedCycle!.id,
+      subject: "Chemistry",
+    });
+    await db.insert(schema.requirements).values({
+      cycleId: fixture.cycle.id,
+      category: "other",
+      label: "Archived requirement",
+      status: "archived",
+      archivedAt: new Date(),
+    });
+
+    const detail = getProgramDetail(db, "duke-university", "perfusion-ms")!;
+
+    expect(detail.cycles.map((c) => c.cycle.cycleLabel)).toEqual(["2026-27"]);
+    expect(detail.cycles[0]!.requirements.map((r) => r.id)).toEqual([
+      fixture.requirement.id,
+    ]);
+    expect(detail.cycles[0]!.prerequisites).toHaveLength(1);
+  });
 });

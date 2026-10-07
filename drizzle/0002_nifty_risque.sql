@@ -1,0 +1,1 @@
+ALTER TABLE `programs` ADD `director_name` text;

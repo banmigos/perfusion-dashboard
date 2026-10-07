@@ -89,6 +89,7 @@ export const programs = sqliteTable(
     slug: text().notNull(),
     name: text().notNull(),
     legacyKey: text(),
+    directorName: text(),
     credential: text({ enum: CREDENTIALS }),
     modality: text({ enum: MODALITIES }),
     accreditationStatus: text(),

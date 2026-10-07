@@ -11,6 +11,20 @@ export type SubjectRef = {
   subjectId: number;
 };
 
+/**
+ * The field keys a requirement's claim can be recorded under — one per
+ * value_* column. Legacy/lead imports key claims on empty requirements by
+ * value_number/value_bool, so readers must search all four.
+ */
+export const REQUIREMENT_CLAIM_FIELD_KEYS = [
+  "value_text",
+  "value_number",
+  "value_bool",
+  "value_date",
+] as const;
+export type RequirementClaimFieldKey =
+  (typeof REQUIREMENT_CLAIM_FIELD_KEYS)[number];
+
 export type ClaimWithSource = typeof schema.claims.$inferSelect & {
   source: typeof schema.sources.$inferSelect | null;
 };

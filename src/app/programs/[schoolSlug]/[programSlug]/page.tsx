@@ -7,15 +7,8 @@ import type { ClaimLike } from "@/lib/factState";
 import { getSavedProgram } from "@/domain/saved";
 import { listChecklistsForSavedProgram } from "@/domain/checklists";
 import { SaveProgramControl } from "@/components/SaveProgramControl";
-
-const STALE_AFTER_DAYS = Number(process.env.STALE_AFTER_DAYS ?? 180);
-
-const REQUIREMENT_CLAIM_FIELD_KEYS = [
-  "value_text",
-  "value_number",
-  "value_bool",
-  "value_date",
-] as const;
+import { resolveRequirementClaim } from "@/domain/admin/requirements";
+import { STALE_AFTER_DAYS } from "@/lib/freshness";
 
 function resolveRequirementFact(
   req: {
@@ -31,40 +24,25 @@ function resolveRequirementFact(
     fieldKey: string,
   ) => ClaimLike | undefined,
 ): { value: string | number; claim: ClaimLike | undefined } {
-  if (req.valueText !== null)
-    return {
-      value: req.valueText,
-      claim: claimFor("requirements", req.id, "value_text"),
-    };
-  if (req.valueNumber !== null)
-    return {
-      value: req.valueNumber,
-      claim: claimFor("requirements", req.id, "value_number"),
-    };
-  if (req.valueBool !== null)
-    return {
-      value: req.valueBool ? "yes" : "no",
-      claim: claimFor("requirements", req.id, "value_bool"),
-    };
-  if (req.valueDate !== null)
-    return {
-      value: req.valueDate,
-      claim: claimFor("requirements", req.id, "value_date"),
-    };
-
-  // No value_* column is populated: this requirement is either genuinely
-  // unresearched (no claim row at all) or its state is `unknown` (a claim
-  // row exists, but every value_* column is NULL by definition). We can't
-  // tell which field_key an `unknown` claim was recorded under just from
-  // the (empty) requirement row, so search all four candidates and use
-  // whichever one actually resolves to a claim.
-  for (const key of REQUIREMENT_CLAIM_FIELD_KEYS) {
-    const claim = claimFor("requirements", req.id, key);
-    if (claim) {
-      return { value: "", claim };
-    }
-  }
-  return { value: "", claim: undefined };
+  const { fieldKey, claim } = resolveRequirementClaim(req, (key) =>
+    claimFor("requirements", req.id, key),
+  );
+  // An empty requirement (unresearched, or unknown/not_published) has a
+  // NULL in every column, so value is "" and FactValue renders the claim's
+  // state instead. Never coerce a NULL bool to "no".
+  const value =
+    fieldKey === "value_number"
+      ? req.valueNumber
+      : fieldKey === "value_bool"
+        ? req.valueBool === null
+          ? null
+          : req.valueBool
+            ? "yes"
+            : "no"
+        : fieldKey === "value_date"
+          ? req.valueDate
+          : req.valueText;
+  return { value: value ?? "", claim };
 }
 
 export default async function ProgramDetailPage({
@@ -119,6 +97,15 @@ export default async function ProgramDetailPage({
           <FactValue
             value={detail.program.credential}
             claim={claimFor("programs", detail.program.id, "credential")}
+            now={now}
+            staleAfterDays={STALE_AFTER_DAYS}
+          />
+        </dd>
+        <dt className="text-zinc-500">Director</dt>
+        <dd>
+          <FactValue
+            value={detail.program.directorName}
+            claim={claimFor("programs", detail.program.id, "director_name")}
             now={now}
             staleAfterDays={STALE_AFTER_DAYS}
           />

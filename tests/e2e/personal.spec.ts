@@ -10,7 +10,9 @@ test("save a program, generate its checklist, complete a task, see it reflected 
   const unsaveButton = page.getByRole("button", { name: "Unsave" });
   if (await unsaveButton.isVisible().catch(() => false)) {
     await unsaveButton.click();
-    await expect(page.getByRole("button", { name: "Save program" })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: "Save program" }),
+    ).toBeVisible();
   }
 
   await page.getByRole("button", { name: "Save program" }).click();

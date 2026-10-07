@@ -135,16 +135,28 @@ export function getProgramDetail(
   const cycleRows = db
     .select()
     .from(schema.applicationCycles)
-    .where(eq(schema.applicationCycles.programId, program.id))
+    .where(
+      and(
+        eq(schema.applicationCycles.programId, program.id),
+        ne(schema.applicationCycles.status, "archived"),
+      ),
+    )
     .orderBy(desc(schema.applicationCycles.cycleLabel))
     .all();
+  // Archived cycles drop out here, which also drops their prerequisite rows
+  // (prerequisite_courses has no status of its own; it hangs off cycleIds).
   const cycleIds = cycleRows.map((c) => c.id);
 
   const requirementRows = cycleIds.length
     ? db
         .select()
         .from(schema.requirements)
-        .where(inArray(schema.requirements.cycleId, cycleIds))
+        .where(
+          and(
+            inArray(schema.requirements.cycleId, cycleIds),
+            ne(schema.requirements.status, "archived"),
+          ),
+        )
         .all()
     : [];
   const prerequisiteRows = cycleIds.length

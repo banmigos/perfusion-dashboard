@@ -4,6 +4,7 @@ import { createTestDb, type TestDb } from "./helpers/db";
 import { createSchool } from "@/domain/admin/schools";
 import { createProgram } from "@/domain/admin/programs";
 import { archiveCycle, createCycle, updateCycle } from "@/domain/admin/cycles";
+import { upsertClaim } from "@/domain/admin/claims";
 import * as schema from "@/db/schema";
 
 describe("application cycles admin CRUD", () => {
@@ -92,5 +93,31 @@ describe("application cycles admin CRUD", () => {
     expect((archiveLog.afterJson as { status: string }).status).toBe(
       "archived",
     );
+  });
+
+  it("updateCycle demotes a verified deadline_date claim when the deadline changes", () => {
+    const cycle = createCycle(db, {
+      programId,
+      cycleLabel: "2026-27",
+      deadlineDate: "2026-01-15",
+    });
+    const claim = upsertClaim(db, {
+      subjectTable: "application_cycles",
+      subjectId: cycle.id,
+      fieldKey: "deadline_date",
+      state: "known",
+      sourceUrl: "https://acme.edu/apply",
+      sourceType: "program_site",
+      verification: "verified",
+    });
+
+    updateCycle(db, cycle.id, { deadlineDate: "2026-02-01" });
+
+    const [after] = db
+      .select()
+      .from(schema.claims)
+      .where(eq(schema.claims.id, claim.id))
+      .all();
+    expect(after!.verification).toBe("needs_review");
   });
 });

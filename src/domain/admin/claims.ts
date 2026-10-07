@@ -1,4 +1,11 @@
 // src/domain/admin/claims.ts
+//
+// Claim writes (upsert, verify) each record one change_log row keyed by the
+// claim's fieldKey. demoteVerifiedClaimsForEdit is called from inside the
+// canonical update* transactions (schools/programs/cycles/requirements): the
+// canonical mutation still writes exactly its own one change_log row, and each
+// claim it demotes writes one additional, separate row (action "update",
+// fieldKey set, before/after = the claim rows).
 import "server-only";
 import { and, eq } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
@@ -159,8 +166,12 @@ export function setClaimVerification(
       throw new Error(`claim ${claimId} not found`);
     }
 
+    // "verified" means a human just re-read the source, so it always re-stamps
+    // checkedAt — otherwise re-verifying a stale claim would leave it stale
+    // and in the queue. needs_review only fills a missing checkedAt (DB check
+    // constraint claims_verified_requires_checked_at).
     const patch: Partial<typeof schema.claims.$inferInsert> = { verification };
-    if (before.checkedAt === null) {
+    if (verification === "verified" || before.checkedAt === null) {
       patch.checkedAt = new Date();
     }
 
@@ -204,4 +215,86 @@ export function listClaimsForSubject(
     .orderBy(schema.claims.fieldKey)
     .all()
     .map((row) => ({ ...row.claims, source: row.sources }));
+}
+
+// Columns that are bookkeeping, identity, foreign keys, or citation-exempt
+// display data: editing them never says anything about a sourced fact.
+const NON_FACT_COLUMNS = new Set([
+  "id",
+  "status",
+  "archivedAt",
+  "createdAt",
+  "updatedAt",
+  "slug",
+  "schoolId",
+  "programId",
+  "cycleId",
+  "sortOrder",
+  "latitude",
+  "longitude",
+]);
+
+function snakeCase(column: string): string {
+  return column.replace(/[A-Z]/g, (c) => `_${c.toLowerCase()}`);
+}
+
+function sameValue(a: unknown, b: unknown): boolean {
+  if (a instanceof Date && b instanceof Date) {
+    return a.getTime() === b.getTime();
+  }
+  return Object.is(a, b);
+}
+
+type ClaimExecutor = Pick<
+  BetterSQLite3Database<typeof schema>,
+  "select" | "update" | "insert"
+>;
+
+/**
+ * A value edit invalidates a human verification of the old value. For each
+ * fact column whose value actually changed between `before` and `after`,
+ * demote that column's `verified` claim to `needs_review` (checked_at is
+ * already set, satisfying claims_verified_requires_checked_at) and log it.
+ * `fieldKeyFor` maps a column to its claim field key (default: snake_case of
+ * the column name); returning null skips the column.
+ */
+export function demoteVerifiedClaimsForEdit(
+  tx: ClaimExecutor,
+  subjectTable: SubjectTable,
+  subjectId: number,
+  before: Record<string, unknown>,
+  after: Record<string, unknown>,
+  fieldKeyFor: (column: string) => string | null = snakeCase,
+): void {
+  for (const column of Object.keys(after)) {
+    if (NON_FACT_COLUMNS.has(column)) continue;
+    if (sameValue(before[column], after[column])) continue;
+    const fieldKey = fieldKeyFor(column);
+    if (fieldKey === null) continue;
+
+    const [claim] = tx
+      .select()
+      .from(schema.claims)
+      .where(subjectFieldEq(subjectTable, subjectId, fieldKey))
+      .all();
+    if (!claim || claim.verification !== "verified") continue;
+
+    tx.update(schema.claims)
+      .set({ verification: "needs_review" })
+      .where(eq(schema.claims.id, claim.id))
+      .run();
+    const [demoted] = tx
+      .select()
+      .from(schema.claims)
+      .where(eq(schema.claims.id, claim.id))
+      .all();
+    recordChange(tx, {
+      action: "update",
+      subjectTable,
+      subjectId,
+      fieldKey,
+      before: claim,
+      after: demoted,
+    });
+  }
 }

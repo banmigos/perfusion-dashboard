@@ -7,6 +7,7 @@ import {
   createProgram,
   updateProgram,
 } from "@/domain/admin/programs";
+import { upsertClaim } from "@/domain/admin/claims";
 import * as schema from "@/db/schema";
 
 describe("programs admin CRUD", () => {
@@ -89,6 +90,105 @@ describe("programs admin CRUD", () => {
     expect(
       (updates[0]!.afterJson as { directorName: string }).directorName,
     ).toBe("John Roe");
+  });
+
+  it("updateProgram demotes a verified claim on a changed column to needs_review with its own change_log row", () => {
+    const program = createProgram(db, {
+      schoolId,
+      slug: "perfusion-ms",
+      name: "MS in Perfusion",
+      credential: "MS",
+    });
+    const claim = upsertClaim(db, {
+      subjectTable: "programs",
+      subjectId: program.id,
+      fieldKey: "credential",
+      state: "known",
+      sourceUrl: "https://acme.edu/perfusion",
+      sourceType: "program_site",
+      verification: "verified",
+    });
+    const nameClaim = upsertClaim(db, {
+      subjectTable: "programs",
+      subjectId: program.id,
+      fieldKey: "name",
+      state: "known",
+      sourceUrl: "https://acme.edu/perfusion",
+      sourceType: "program_site",
+      verification: "verified",
+    });
+    const logCountBefore = db.select().from(schema.changeLog).all().length;
+
+    // name is passed but unchanged; only credential actually changes.
+    updateProgram(db, program.id, {
+      name: "MS in Perfusion",
+      credential: "Certificate",
+    });
+
+    const [demoted] = db
+      .select()
+      .from(schema.claims)
+      .where(eq(schema.claims.id, claim.id))
+      .all();
+    expect(demoted!.verification).toBe("needs_review");
+    expect(demoted!.checkedAt).toEqual(claim.checkedAt);
+
+    const [untouched] = db
+      .select()
+      .from(schema.claims)
+      .where(eq(schema.claims.id, nameClaim.id))
+      .all();
+    expect(untouched).toEqual(nameClaim);
+
+    const newLogs = db
+      .select()
+      .from(schema.changeLog)
+      .all()
+      .slice(logCountBefore);
+    expect(newLogs).toHaveLength(2);
+    const programLog = newLogs.find((l) => l.fieldKey === null)!;
+    expect(programLog.action).toBe("update");
+    expect(programLog.subjectTable).toBe("programs");
+    const claimLog = newLogs.find((l) => l.fieldKey === "credential")!;
+    expect(claimLog.action).toBe("update");
+    expect(claimLog.subjectTable).toBe("programs");
+    expect(claimLog.subjectId).toBe(program.id);
+    expect((claimLog.beforeJson as { verification: string }).verification).toBe(
+      "verified",
+    );
+    expect((claimLog.afterJson as { verification: string }).verification).toBe(
+      "needs_review",
+    );
+  });
+
+  it("updateProgram leaves non-verified claims and ignored columns alone", () => {
+    const program = createProgram(db, {
+      schoolId,
+      slug: "perfusion-ms",
+      name: "MS in Perfusion",
+      credential: "MS",
+    });
+    const draft = upsertClaim(db, {
+      subjectTable: "programs",
+      subjectId: program.id,
+      fieldKey: "credential",
+      state: "unknown",
+    });
+    const slugClaim = upsertClaim(db, {
+      subjectTable: "programs",
+      subjectId: program.id,
+      fieldKey: "slug",
+      state: "known",
+      sourceUrl: "https://acme.edu/perfusion",
+      sourceType: "program_site",
+      verification: "verified",
+    });
+
+    updateProgram(db, program.id, { credential: "Certificate", slug: "new" });
+
+    const rows = db.select().from(schema.claims).all();
+    expect(rows.find((c) => c.id === draft.id)).toEqual(draft);
+    expect(rows.find((c) => c.id === slugClaim.id)).toEqual(slugClaim);
   });
 
   it("archiveProgram archives without touching the parent school", () => {

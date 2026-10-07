@@ -10,6 +10,7 @@ import {
   requirementClaimFieldKey,
   updateRequirement,
 } from "@/domain/admin/requirements";
+import { upsertClaim } from "@/domain/admin/claims";
 import * as schema from "@/db/schema";
 
 describe("requirements admin CRUD", () => {
@@ -157,5 +158,50 @@ describe("requirements admin CRUD", () => {
         valueDate: null,
       }),
     ).toBe("value_text");
+  });
+
+  it("updateRequirement demotes the verified claim backing a changed value column", () => {
+    const req = createRequirement(db, {
+      cycleId,
+      category: "gpa",
+      label: "Minimum GPA",
+      valueNumber: 3.0,
+    });
+    const claim = upsertClaim(db, {
+      subjectTable: "requirements",
+      subjectId: req.id,
+      fieldKey: "value_number",
+      state: "known",
+      sourceUrl: "https://acme.edu/admissions",
+      sourceType: "program_site",
+      verification: "verified",
+    });
+
+    updateRequirement(db, req.id, { label: "Min GPA", valueNumber: 3.0 });
+    expect(
+      db
+        .select()
+        .from(schema.claims)
+        .where(eq(schema.claims.id, claim.id))
+        .all()[0]!.verification,
+    ).toBe("verified");
+
+    updateRequirement(db, req.id, { valueNumber: 3.2 });
+    expect(
+      db
+        .select()
+        .from(schema.claims)
+        .where(eq(schema.claims.id, claim.id))
+        .all()[0]!.verification,
+    ).toBe("needs_review");
+    const claimLogs = db
+      .select()
+      .from(schema.changeLog)
+      .where(eq(schema.changeLog.fieldKey, "value_number"))
+      .all()
+      .filter(
+        (l) => l.subjectTable === "requirements" && l.action === "update",
+      );
+    expect(claimLogs).toHaveLength(1);
   });
 });

@@ -4,6 +4,7 @@ import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import type { CAS_SERVICES, DEADLINE_TYPES } from "@/db/schema/canonical";
 import { recordChange } from "../changeLog";
+import { demoteVerifiedClaimsForEdit } from "./claims";
 
 export type CycleInput = {
   programId: number;
@@ -77,6 +78,7 @@ export function updateCycle(
       .from(schema.applicationCycles)
       .where(eq(schema.applicationCycles.id, id))
       .all();
+    demoteVerifiedClaimsForEdit(tx, "application_cycles", id, before, after!);
     recordChange(tx, {
       action: "update",
       subjectTable: "application_cycles",

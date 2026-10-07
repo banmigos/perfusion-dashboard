@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import { recordChange } from "../changeLog";
+import { demoteVerifiedClaimsForEdit } from "./claims";
 
 export type SchoolInput = {
   slug: string;
@@ -65,6 +66,7 @@ export function updateSchool(
       .from(schema.schools)
       .where(eq(schema.schools.id, id))
       .all();
+    demoteVerifiedClaimsForEdit(tx, "schools", id, before, after!);
     recordChange(tx, {
       action: "update",
       subjectTable: "schools",

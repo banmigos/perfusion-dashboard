@@ -6,6 +6,7 @@ import {
   createSchool,
   updateSchool,
 } from "@/domain/admin/schools";
+import { upsertClaim } from "@/domain/admin/claims";
 import * as schema from "@/db/schema";
 
 describe("schools admin CRUD", () => {
@@ -90,5 +91,31 @@ describe("schools admin CRUD", () => {
 
   it("updateSchool throws for an unknown id", () => {
     expect(() => updateSchool(db, 99999, { city: "Nowhere" })).toThrow();
+  });
+
+  it("updateSchool demotes a verified website_url claim when the URL changes", () => {
+    const school = createSchool(db, {
+      slug: "demo-u",
+      name: "Demo University",
+      websiteUrl: "https://demo.edu",
+    });
+    const claim = upsertClaim(db, {
+      subjectTable: "schools",
+      subjectId: school.id,
+      fieldKey: "website_url",
+      state: "known",
+      sourceUrl: "https://demo.edu",
+      sourceType: "program_site",
+      verification: "verified",
+    });
+
+    updateSchool(db, school.id, { websiteUrl: "https://www.demo.edu" });
+
+    const [after] = db
+      .select()
+      .from(schema.claims)
+      .where(eq(schema.claims.id, claim.id))
+      .all();
+    expect(after!.verification).toBe("needs_review");
   });
 });

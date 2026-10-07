@@ -4,6 +4,7 @@ import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
 import * as schema from "@/db/schema";
 import type { REQUIREMENT_CATEGORIES } from "@/db/schema/canonical";
 import { recordChange } from "../changeLog";
+import { demoteVerifiedClaimsForEdit } from "./claims";
 
 export type RequirementInput = {
   cycleId: number;
@@ -85,6 +86,14 @@ export function updateRequirement(
       .from(schema.requirements)
       .where(eq(schema.requirements.id, id))
       .all();
+    demoteVerifiedClaimsForEdit(
+      tx,
+      "requirements",
+      id,
+      before,
+      after!,
+      requirementValueFieldKey,
+    );
     recordChange(tx, {
       action: "update",
       subjectTable: "requirements",
@@ -128,6 +137,19 @@ export function archiveRequirement(
       after,
     });
   });
+}
+
+// Only the value_* columns carry a requirement's sourced fact; label,
+// category, unit and isRequired edits do not demote a verified claim.
+const REQUIREMENT_VALUE_COLUMN_KEYS: Record<string, string> = {
+  valueText: "value_text",
+  valueNumber: "value_number",
+  valueBool: "value_bool",
+  valueDate: "value_date",
+};
+
+function requirementValueFieldKey(column: string): string | null {
+  return REQUIREMENT_VALUE_COLUMN_KEYS[column] ?? null;
 }
 
 export function requirementClaimFieldKey(req: {

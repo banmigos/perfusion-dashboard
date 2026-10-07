@@ -8,6 +8,7 @@ import {
   setClaimVerification,
   upsertClaim,
 } from "@/domain/admin/claims";
+import { listVerifyQueue } from "@/domain/verify";
 import * as schema from "@/db/schema";
 
 describe("claims admin", () => {
@@ -194,6 +195,25 @@ describe("claims admin", () => {
     const after = setClaimVerification(db, claim.id, "needs_review");
     expect(after.verification).toBe("needs_review");
     expect(after.checkedAt).not.toBeNull();
+  });
+
+  it("setClaimVerification re-stamps checkedAt when re-verifying a stale claim so it leaves the verify queue", () => {
+    const longAgo = new Date(Date.now() - 200 * 24 * 60 * 60 * 1000);
+    const claim = upsertClaim(db, {
+      subjectTable: "schools",
+      subjectId: schoolId,
+      fieldKey: "city",
+      state: "known",
+      sourceUrl: "https://acme.edu/about",
+      sourceType: "program_site",
+      checkedAt: longAgo,
+      verification: "verified",
+    });
+    expect(listVerifyQueue(db).map((i) => i.claim.id)).toContain(claim.id);
+
+    const after = setClaimVerification(db, claim.id, "verified");
+    expect(after.checkedAt!.getTime()).toBeGreaterThan(longAgo.getTime());
+    expect(listVerifyQueue(db).map((i) => i.claim.id)).not.toContain(claim.id);
   });
 
   it("setClaimVerification moves a claim to verified and writes a verify change_log row", () => {

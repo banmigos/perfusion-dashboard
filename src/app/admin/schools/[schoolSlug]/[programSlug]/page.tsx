@@ -79,6 +79,15 @@ export default async function AdminProgramPage({
           />
         </label>
         <label className="flex flex-col text-xs">
+          director
+          <input
+            type="text"
+            name="directorName"
+            defaultValue={program.directorName ?? ""}
+            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          />
+        </label>
+        <label className="flex flex-col text-xs">
           credential
           <select
             name="credential"

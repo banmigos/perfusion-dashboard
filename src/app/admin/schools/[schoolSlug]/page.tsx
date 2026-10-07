@@ -149,6 +149,12 @@ export default async function AdminSchoolPage({
           required
           className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
+        <input
+          type="text"
+          name="directorName"
+          placeholder="Director"
+          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+        />
         <select
           name="credential"
           className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"

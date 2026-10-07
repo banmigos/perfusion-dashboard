@@ -62,6 +62,35 @@ describe("programs admin CRUD", () => {
     expect(logs.filter((l) => l.action === "update")).toHaveLength(1);
   });
 
+  it("createProgram stores directorName and updateProgram logs its change", () => {
+    const program = createProgram(db, {
+      schoolId,
+      slug: "perfusion-ms",
+      name: "MS in Perfusion",
+      directorName: "Jane Doe, CCP",
+    });
+    expect(program.directorName).toBe("Jane Doe, CCP");
+
+    const updated = updateProgram(db, program.id, {
+      directorName: "John Roe",
+    });
+    expect(updated.directorName).toBe("John Roe");
+
+    const updates = db
+      .select()
+      .from(schema.changeLog)
+      .where(eq(schema.changeLog.subjectId, program.id))
+      .all()
+      .filter((l) => l.subjectTable === "programs" && l.action === "update");
+    expect(updates).toHaveLength(1);
+    expect(
+      (updates[0]!.beforeJson as { directorName: string }).directorName,
+    ).toBe("Jane Doe, CCP");
+    expect(
+      (updates[0]!.afterJson as { directorName: string }).directorName,
+    ).toBe("John Roe");
+  });
+
   it("archiveProgram archives without touching the parent school", () => {
     const program = createProgram(db, {
       schoolId,

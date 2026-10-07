@@ -89,6 +89,7 @@ const modalitySchema = z.enum(MODALITIES);
 
 const programFormSchema = z.object({
   name: z.string().trim().min(1, "name required"),
+  directorName: optionalTrimmed,
   credential: z
     .union([credentialSchema, z.literal("")])
     .transform((v) => (v === "" ? null : v)),
@@ -104,6 +105,7 @@ export async function createProgramAction(
 ): Promise<void> {
   const parsed = programFormSchema.parse({
     name: formData.get("name") ?? "",
+    directorName: formData.get("directorName") ?? "",
     credential: formData.get("credential") ?? "",
     modality: formData.get("modality") ?? "",
     websiteUrl: formData.get("websiteUrl") ?? "",
@@ -118,6 +120,7 @@ export async function updateProgramAction(
 ): Promise<void> {
   const parsed = programFormSchema.parse({
     name: formData.get("name") ?? "",
+    directorName: formData.get("directorName") ?? "",
     credential: formData.get("credential") ?? "",
     modality: formData.get("modality") ?? "",
     websiteUrl: formData.get("websiteUrl") ?? "",

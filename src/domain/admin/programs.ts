@@ -9,6 +9,7 @@ export type ProgramInput = {
   schoolId: number;
   slug: string;
   name: string;
+  directorName?: string | null;
   credential?: (typeof CREDENTIALS)[number] | null;
   modality?: (typeof MODALITIES)[number] | null;
   accreditationStatus?: string | null;
@@ -33,6 +34,7 @@ export function createProgram(
         schoolId: input.schoolId,
         slug: input.slug,
         name: input.name,
+        directorName: input.directorName ?? null,
         credential: input.credential ?? null,
         modality: input.modality ?? null,
         accreditationStatus: input.accreditationStatus ?? null,

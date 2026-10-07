@@ -121,6 +121,15 @@ export default async function ProgramDetailPage({
             staleAfterDays={STALE_AFTER_DAYS}
           />
         </dd>
+        <dt className="text-zinc-500">Director</dt>
+        <dd>
+          <FactValue
+            value={detail.program.directorName}
+            claim={claimFor("programs", detail.program.id, "director_name")}
+            now={now}
+            staleAfterDays={STALE_AFTER_DAYS}
+          />
+        </dd>
         <dt className="text-zinc-500">Modality</dt>
         <dd>
           <FactValue

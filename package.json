@@ -17,7 +17,8 @@
     "verify": "npm run format:check && npm run typecheck && npm run lint && npm run test && npm run test:e2e",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.ts",
-    "import:legacy": "tsx scripts/import-legacy.ts"
+    "import:legacy": "tsx scripts/import-legacy.ts",
+    "import:leads": "tsx scripts/import-leads.ts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

@@ -177,6 +177,26 @@ GPA values are exactly `3.0`, which is not what 23 independently-researched scho
   These are real requirements — convert them into `requirements` rows under the `shadowing`
   category, with the note text as the starting quote to verify.
 
+### Directory lead bundles
+
+An aggregator directory (principle 5: the program's own site outranks it) can be captured as a
+**lead bundle** in `seed/leads/` (format `directory-lead-capture/v1`). The first is
+`seed/leads/2026-10-06-perfusionprep.json`, transcribed from perfusionprep.com/schools.
+
+```bash
+npm run import:leads                     # dry run of the default bundle
+npm run import:leads -- <file> --apply   # write, in one transaction
+```
+
+Requires the legacy import to have been applied first. The importer creates one `sources` row
+(`source_type='other'`) for the directory and records every directory value as a note line
+`perfusionprep.com/schools (captured 2026-10-06): "<value>"` on an `unknown`, `draft` claim —
+appended to an existing unknown claim's note, never replacing it. It may create schools/programs
+the legacy corpus lacks (name/city/state only; no coordinates, URLs, or values), but it never sets
+a value column, never creates a `known` claim, leaves `known` claims alone, and records an
+`import_conflicts` row instead of touching a verified or locked claim. Every write carries the
+run's `import_batches` id in `change_log`. Re-running the same bundle writes nothing.
+
 ### Rescuing personal state
 
 The old app's `localStorage` (`perfusion_app_state_v2`) holds your application statuses and

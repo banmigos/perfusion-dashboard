@@ -3,6 +3,7 @@ import Link from "next/link";
 import { db } from "@/db/client";
 import { listVerifyQueue, type VerifyQueueItem } from "@/domain/verify";
 import { setClaimVerificationAction } from "@/app/actions/adminClaims";
+import { ClaimEvidence } from "@/components/admin/ClaimEvidence";
 
 export const dynamic = "force-dynamic";
 
@@ -70,6 +71,13 @@ export default function VerifyPage() {
                   {item.claim.fieldKey} — {item.claim.state} —{" "}
                   {item.claim.verification}
                 </p>
+                <div className="text-xs">
+                  <ClaimEvidence
+                    sourceUrl={item.source?.url ?? null}
+                    quote={item.claim.quote}
+                    note={item.claim.note}
+                  />
+                </div>
                 <form
                   action={setClaimVerificationAction.bind(
                     null,

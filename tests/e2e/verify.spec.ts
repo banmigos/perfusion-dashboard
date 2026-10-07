@@ -71,6 +71,9 @@ test("creating an unverified claim lists it on /verify, and verifying it removes
   await claimForm
     .locator('select[name="sourceType"]')
     .selectOption("program_site");
+  await claimForm
+    .locator('input[name="quote"]')
+    .fill("Minimum GPA of 3.0 required");
   await claimForm.getByRole("button", { name: "Save claim" }).click();
 
   // The saved claim renders in the requirement's claim list before we leave.
@@ -83,6 +86,14 @@ test("creating an unverified claim lists it on /verify, and verifying it removes
   const queueRow = page.locator("li").filter({ hasText: requirementLabel });
   await expect(queueRow).toBeVisible();
   await expect(queueRow).toContainText(schoolName);
+  // The reviewer sees the evidence being verified: source link and quote.
+  const queueSource = queueRow.getByRole("link", { name: "source" });
+  await expect(queueSource).toHaveAttribute(
+    "href",
+    "https://example.edu/e2e-test-source",
+  );
+  await expect(queueSource).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(queueRow).toContainText("Minimum GPA of 3.0 required");
 
   await queueRow.getByRole("button", { name: "mark verified" }).click();
 

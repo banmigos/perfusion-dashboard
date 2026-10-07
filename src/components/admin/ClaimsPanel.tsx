@@ -1,6 +1,7 @@
 // src/components/admin/ClaimsPanel.tsx
 import type { ClaimWithSource, SubjectTable } from "@/domain/claims";
 import { standardClaimFieldKeys } from "@/domain/admin/claims";
+import { ClaimEvidence } from "./ClaimEvidence";
 import { CLAIM_STATES, SOURCE_TYPES } from "@/db/schema/provenance";
 import {
   upsertClaimAction,
@@ -49,25 +50,12 @@ export function ClaimsPanel({
                 <span className="rounded-full bg-zinc-100 px-2 py-0.5 dark:bg-zinc-800">
                   {claim.verification}
                 </span>
-                {claim.source && (
-                  <a
-                    href={claim.source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 underline dark:text-blue-400"
-                  >
-                    source
-                  </a>
-                )}
               </div>
-              {claim.quote && (
-                <p className="mt-1 italic">&ldquo;{claim.quote}&rdquo;</p>
-              )}
-              {claim.note && (
-                <p className="mt-1 whitespace-pre-line text-zinc-500">
-                  {claim.note}
-                </p>
-              )}
+              <ClaimEvidence
+                sourceUrl={claim.source?.url ?? null}
+                quote={claim.quote}
+                note={claim.note}
+              />
               {claim.checkedAt && (
                 <p className="mt-1 text-zinc-500">
                   checked {formatDate(claim.checkedAt)}

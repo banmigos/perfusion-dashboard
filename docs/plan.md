@@ -71,7 +71,7 @@ external analytics, trackers, ads, third-party auth, public APIs.
 ## 3. Recommended folder structure
 
 ```
-perfusion-dash/
+perfusion-dashboard/
 ├── CLAUDE.md
 ├── README.md
 ├── .env.example                  # placeholders only, committed
@@ -163,7 +163,7 @@ perfusion-dash/
 └── deploy/
     ├── caddy/Caddyfile.vps.example
     ├── caddy/Caddyfile.home.example
-    ├── systemd/perfusion-dash.service.example
+    ├── systemd/perfusion-dashboard.service.example
     ├── systemd/perfusion-backup.service.example
     ├── systemd/perfusion-backup.timer.example
     └── README.md

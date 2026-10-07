@@ -65,7 +65,7 @@ awkward to back up and easy to orphan.
 # Komodo stack — compose fragment
 services:
   perfusion:
-    image: <REGISTRY>/perfusion-dash:<TAG>
+    image: <REGISTRY>/perfusion-dashboard:<TAG>
     restart: unless-stopped
     user: "<APP_UID>:<APP_GID>"        # must own <DATA_DIR> on the host
     environment:
@@ -134,7 +134,7 @@ come from Forgejo Actions secrets.
 ### 3.2 systemd alternative
 
 If you prefer to drop Docker for this app, the equivalent unit is in
-`deploy/systemd/perfusion-dash.service.example`: `ExecStart=/usr/bin/node <APP_DIR>/server.js`
+`deploy/systemd/perfusion-dashboard.service.example`: `ExecStart=/usr/bin/node <APP_DIR>/server.js`
 with `Environment=HOSTNAME=127.0.0.1`, `EnvironmentFile=`, `Restart=on-failure`,
 `ProtectSystem=strict`, `ReadWritePaths=<DATA_DIR>`, `NoNewPrivileges=true`, and a dedicated
 non-login user. In this path `HOSTNAME=127.0.0.1` is literal and the publish-boundary caveat above
@@ -303,11 +303,11 @@ container is stopped, rebuilt, or rolled back.
 ### Restore
 
 ```
-docker compose stop perfusion        # or: systemctl stop perfusion-dash
+docker compose stop perfusion        # or: systemctl stop perfusion-dashboard
 gunzip -c <BACKUP_FILE>.gz > <DATA_DIR>/app.db
 rm -f <DATA_DIR>/app.db-wal <DATA_DIR>/app.db-shm
 sqlite3 <DATA_DIR>/app.db "PRAGMA integrity_check; PRAGMA foreign_key_check;"
-docker compose start perfusion       # or: systemctl start perfusion-dash
+docker compose start perfusion       # or: systemctl start perfusion-dashboard
 curl -s http://127.0.0.1:3000/api/health
 ```
 
@@ -330,7 +330,7 @@ dashboard renders and a known program's facts are intact. Record the date in thi
 ## 11. Release procedure
 
 1. `npm run verify` locally — everything green.
-2. Commit, tag, push to Forgejo. Actions builds and pushes `<REGISTRY>/perfusion-dash:<TAG>`.
+2. Commit, tag, push to Forgejo. Actions builds and pushes `<REGISTRY>/perfusion-dashboard:<TAG>`.
 3. **Back up first** (§10) — before any deploy that carries a migration.
 4. Komodo deploys the stack.
 5. `docker compose exec perfusion node scripts/migrate.js` — explicit, never automatic.

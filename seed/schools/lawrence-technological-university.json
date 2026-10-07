@@ -1,0 +1,106 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "lawrence-technological-university",
+    "name": "Lawrence Technological University",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Southfield",
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Southfield, MI\"; perfusionprep.com (captured 2026-10) said \"Southfield, MI\"",
+        "citation": {
+          "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+          "checked_at": "2026-08-25",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-ms",
+        "name": "MS in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "MS",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\"",
+            "citation": {
+              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://ltu.edu/programs/grad-cardiovascular-perfusion/\"; perfusionprep.com (captured 2026-10) said \"https://ltu.edu/\"",
+            "citation": {
+              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"24 mo\""
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "legacy_key": "Lawrence Technological University",
+        "latitude": 42.4725,
+        "longitude": -83.2505,
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard said \"Dec 12\"; perfusionprep.com (captured 2026-10) said \"Feb 1\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.5"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 92000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

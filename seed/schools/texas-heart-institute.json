@@ -1,0 +1,116 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "texas-heart-institute",
+    "name": "Texas Heart Institute",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Houston",
+        "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"Houston, TX\"; perfusionprep.com (captured 2026-10) said \"Houston, TX\"",
+        "citation": {
+          "source_url": "https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions",
+          "checked_at": "2026-10-06",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-certificate",
+        "name": "Certificate in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "Certificate",
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"Certificate\"",
+            "citation": {
+              "source_url": "https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions",
+              "checked_at": "2026-10-06",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions",
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.texasheart.org/education/school-of-perfusion-technology/application-process/\"; perfusionprep.com (captured 2026-10) said \"https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions\"",
+            "citation": {
+              "source_url": "https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions",
+              "checked_at": "2026-10-06",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"18 mo\""
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 8; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "legacy_key": "Texas Heart Institute",
+        "latitude": 29.71,
+        "longitude": -95.3965,
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard said \"Jul 1\"; legacy entry \"Baylor College of Medicine\" (same program, same URL) said \"July 1 2025\"; perfusionprep.com (captured 2026-10) said \"Jul 1 (fixed cycle)\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 25000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              },
+              {
+                "category": "shadowing",
+                "label": "Observation / shadowing hours",
+                "value": {
+                  "kind": "text",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no notes; legacy entry \"Baylor College of Medicine\" notes: \"REQUIRED: Same as Texas Heart Institute - minimum 1 open-heart observation. Start: January 15 2025.\"; perfusionprep.com (captured 2026-10) key requirements: \"Bachelor's; 3.0 GPA; Chem, Bio, A&P, Physics, Algebra, Statistics; 1 open-heart observation\""
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

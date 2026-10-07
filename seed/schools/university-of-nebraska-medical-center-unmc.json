@@ -1,0 +1,106 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "university-of-nebraska-medical-center-unmc",
+    "name": "University of Nebraska Medical Center (UNMC)",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Omaha",
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Omaha, NE\"; perfusionprep.com (captured 2026-10) said \"Omaha, NE\"",
+        "citation": {
+          "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+          "checked_at": "2026-08-25",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-mps",
+        "name": "MPS in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "MPS",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MPS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion Science\"",
+            "citation": {
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html\"; perfusionprep.com (captured 2026-10) said \"https://unmc.edu/\"",
+            "citation": {
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\""
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "legacy_key": "University of Nebraska Medical Center (UNMC)",
+        "latitude": 41.2586,
+        "longitude": -95.974,
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard said \"Nov 3\"; perfusionprep.com (captured 2026-10) said \"Nov 1\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 85000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

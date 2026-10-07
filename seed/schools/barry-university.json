@@ -1,0 +1,103 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "barry-university",
+    "name": "Barry University",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Miami Shores",
+        "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Miami Shores, FL\"",
+        "citation": {
+          "source_url": "https://barry.edu/",
+          "checked_at": "2026-10-06",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-bs",
+        "name": "BS in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "BS",
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"BS Cardiovascular Perfusion\"",
+            "citation": {
+              "source_url": "https://barry.edu/",
+              "checked_at": "2026-10-06",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://barry.edu/",
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"https://barry.edu/\"",
+            "citation": {
+              "source_url": "https://barry.edu/",
+              "checked_at": "2026-10-06",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "not in the legacy 2025-26 dashboard; perfusionprep.com (captured 2026-10) listed no value"
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Rolling\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) listed no value"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

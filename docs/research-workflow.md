@@ -87,6 +87,21 @@ npm run import -- seed/schools/<slug>.json --apply
 5. **Verify.** Re-run the dry run. It must report zero changes. If it does not, the import is not
    idempotent and that is a bug.
 
+### Bundle semantics worth knowing
+
+- **Bundles never delete.** A fact, row, or cycle absent from the bundle is left alone; archive by
+  hand. Plain fields (names, coordinates, sort order) can be changed by import but not cleared.
+- **Omitted optional claim fields mean "leave alone"** (`note`, `confidence`); a `citation` is
+  full-spec, so an omitted `quote` inside it clears the quote.
+- **Prerequisite and tuition rows are whole-record facts**, guarded by one `record` claim. A
+  verified or locked `record` claim blocks any change to the row.
+- **`verification` and `locked` are not in the format.** Import creates `draft` claims; export
+  drops both, so re-importing an export into a fresh database loses them. Values with no claim, and
+  claims with no slot in the format (for example lead-import's `directory_lead`), are not exported;
+  export prints a `WARN` for each.
+- A conflict that is already pending with an identical proposal is not recorded twice, which is what
+  keeps a re-run at zero changes.
+
 ### Export round trip
 
 `npm run export` writes the database back out to `seed/schools/*.json` in the same shape the

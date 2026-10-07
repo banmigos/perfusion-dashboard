@@ -1,0 +1,116 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "carlow-university-upmc-shadyside",
+    "name": "Carlow University / UPMC Shadyside",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Pittsburgh",
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Pittsburgh, PA\"; perfusionprep.com (captured 2026-10) said \"Pittsburgh, PA\"",
+        "citation": {
+          "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+          "checked_at": "2026-08-25",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-ms",
+        "name": "MS in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "MS",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\"",
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"; perfusionprep.com (captured 2026-10) said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"",
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"20 mo\""
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "legacy_key": "Carlow University / UPMC Shadyside",
+        "latitude": 40.4406,
+        "longitude": -79.9959,
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard said \"Oct 1\"; perfusionprep.com (captured 2026-10) said \"Oct 1 (apply anytime; fixed deadline)\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.5"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 73680; perfusionprep.com (captured 2026-10) said $1,271/credit; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              },
+              {
+                "category": "shadowing",
+                "label": "Observation / shadowing hours",
+                "value": {
+                  "kind": "text",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no notes; perfusionprep.com (captured 2026-10) key requirements: \"Prerequisites must be completed before consideration: Bio I-II, A&P I-II, Gen Chem I-II, Organic Chem I-II, Physics I-II, Microbiology, Pharmacology, Calculus, Medical Ethics; shadowing proof required\""
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

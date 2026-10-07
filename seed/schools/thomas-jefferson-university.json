@@ -1,0 +1,116 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "thomas-jefferson-university",
+    "name": "Thomas Jefferson University",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Philadelphia",
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Philadelphia, PA\"; perfusionprep.com (captured 2026-10) said \"Philadelphia, PA\"",
+        "citation": {
+          "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
+          "checked_at": "2026-08-25",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-ms",
+        "name": "MS in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "MS",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion\"",
+            "citation": {
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html\"; perfusionprep.com (captured 2026-10) said \"https://jefferson.edu/\"",
+            "citation": {
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"~21 mo\""
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 8; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "legacy_key": "Thomas Jefferson University",
+        "latitude": 39.9526,
+        "longitude": -75.1652,
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard said \"Dec 15\"; perfusionprep.com (captured 2026-10) said \"Dec 15\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 84000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              },
+              {
+                "category": "shadowing",
+                "label": "Observation / shadowing hours",
+                "value": {
+                  "kind": "text",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no notes; perfusionprep.com (captured 2026-10) key requirements: \"Bachelor's, 3.0 cum + 3.0 science GPA, observation hrs\""
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

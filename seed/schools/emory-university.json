@@ -1,0 +1,106 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "emory-university",
+    "name": "Emory University",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Atlanta",
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Atlanta, GA\"; perfusionprep.com (captured 2026-10) said \"Atlanta, GA\"",
+        "citation": {
+          "source_url": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
+          "checked_at": "2026-08-25",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-ms",
+        "name": "MS in Cardiovascular Perfusion",
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "MS",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"Master in CV Perfusion Science\"",
+            "citation": {
+              "source_url": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science\"; perfusionprep.com (captured 2026-10) said \"https://nursing.emory.edu/\"",
+            "citation": {
+              "source_url": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
+              "checked_at": "2026-08-25",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\""
+          },
+          "class_size": {
+            "state": "unknown",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+          }
+        },
+        "legacy_key": "Emory University",
+        "latitude": 33.7925,
+        "longitude": -84.324,
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "unknown",
+                "value": null,
+                "note": "legacy 2025-26 dashboard said \"Jan 15\"; perfusionprep.com (captured 2026-10) said \"Jun 1 / Sep 1\"; neither is confirmed for the 2026-27 cycle"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                }
+              },
+              {
+                "category": "other",
+                "label": "Tuition (unit and residency tier not yet determined)",
+                "value": {
+                  "kind": "number",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said 107000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

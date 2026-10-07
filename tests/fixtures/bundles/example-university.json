@@ -1,0 +1,140 @@
+{
+  "format": "school-bundle/v1",
+  "school": {
+    "slug": "example-university",
+    "name": "Example University",
+    "country": "US",
+    "facts": {
+      "city": {
+        "state": "known",
+        "value": "Durham",
+        "citation": {
+          "source_url": "https://example.edu/perfusion",
+          "checked_at": "2026-09-01T00:00:00.000Z",
+          "quote": "Located in Durham, North Carolina",
+          "source_type": "program_site"
+        }
+      }
+    },
+    "programs": [
+      {
+        "slug": "perfusion-ms",
+        "name": "MS in Cardiovascular Perfusion",
+        "latitude": 36.0014,
+        "longitude": -78.9382,
+        "facts": {
+          "credential": {
+            "state": "known",
+            "value": "MS",
+            "citation": {
+              "source_url": "https://example.edu/perfusion",
+              "checked_at": "2026-09-01T00:00:00.000Z",
+              "quote": "Master of Science in Perfusion",
+              "source_type": "program_site"
+            }
+          },
+          "class_size": {
+            "state": "not_published",
+            "value": null,
+            "note": "Admissions page gives no cohort size"
+          }
+        },
+        "cycles": [
+          {
+            "cycle_label": "2026-27",
+            "entry_year": 2027,
+            "facts": {
+              "deadline_date": {
+                "state": "known",
+                "value": "2026-11-01",
+                "citation": {
+                  "source_url": "https://example.edu/perfusion/apply",
+                  "checked_at": "2026-09-01T00:00:00.000Z",
+                  "quote": "Applications are due November 1, 2026",
+                  "source_type": "program_site"
+                }
+              },
+              "deadline_time_local": {
+                "state": "known",
+                "value": "17:00",
+                "citation": {
+                  "source_url": "https://example.edu/perfusion/apply",
+                  "checked_at": "2026-09-01T00:00:00.000Z",
+                  "quote": "by 5:00 PM Eastern",
+                  "source_type": "program_site"
+                }
+              },
+              "deadline_timezone": {
+                "state": "known",
+                "value": "America/New_York",
+                "citation": {
+                  "source_url": "https://example.edu/perfusion/apply",
+                  "checked_at": "2026-09-01T00:00:00.000Z",
+                  "quote": "by 5:00 PM Eastern",
+                  "source_type": "program_site"
+                }
+              },
+              "cas_service": {
+                "state": "unknown",
+                "value": null,
+                "note": "Page mentions CASPA in one place and a paper form in another"
+              }
+            },
+            "requirements": [
+              {
+                "category": "gpa",
+                "label": "Minimum overall GPA",
+                "unit": "gpa",
+                "is_required": true,
+                "sort_order": 0,
+                "value": {
+                  "kind": "number",
+                  "state": "known",
+                  "value": 3,
+                  "citation": {
+                    "source_url": "https://example.edu/perfusion/requirements",
+                    "checked_at": "2026-09-01T00:00:00.000Z",
+                    "quote": "A minimum cumulative GPA of 3.0",
+                    "source_type": "program_site"
+                  }
+                }
+              }
+            ],
+            "prerequisites": [
+              {
+                "subject": "General Chemistry",
+                "min_credits": 8,
+                "lab_required": true,
+                "min_grade": "C",
+                "recency_years": 7,
+                "sort_order": 0,
+                "citation": {
+                  "source_url": "https://example.edu/perfusion/requirements",
+                  "checked_at": "2026-09-01T00:00:00.000Z",
+                  "quote": "Two semesters of general chemistry with lab",
+                  "source_type": "program_site"
+                }
+              }
+            ]
+          }
+        ],
+        "tuition": [
+          {
+            "cycle_label": "2026-27",
+            "residency": "in_state",
+            "covers": "total_program",
+            "amount_cents": 4200000,
+            "currency": "USD",
+            "as_of_year": 2026,
+            "citation": {
+              "source_url": "https://example.edu/perfusion/tuition",
+              "checked_at": "2026-09-01T00:00:00.000Z",
+              "quote": "Total program tuition: $42,000 (in-state)",
+              "source_type": "program_site"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

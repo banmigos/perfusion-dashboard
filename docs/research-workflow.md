@@ -191,11 +191,15 @@ npm run import:leads -- <file> --apply   # write, in one transaction
 Requires the legacy import to have been applied first. The importer creates one `sources` row
 (`source_type='other'`) for the directory and records every directory value as a note line
 `perfusionprep.com/schools (captured 2026-10-06): "<value>"` on an `unknown`, `draft` claim —
-appended to an existing unknown claim's note, never replacing it. It may create schools/programs
-the legacy corpus lacks (name/city/state only; no coordinates, URLs, or values), but it never sets
-a value column, never creates a `known` claim, leaves `known` claims alone, and records an
-`import_conflicts` row instead of touching a verified or locked claim. Every write carries the
-run's `import_batches` id in `change_log`. Re-running the same bundle writes nothing.
+appended to an existing unknown claim's note, never replacing it. On existing rows it never sets a
+value column. The one accepted exception is the create path: for the programs the legacy corpus
+lacks (three in the first bundle) it must write the columns a row cannot exist without — school
+name/city/state, program name/credential/slug, and a cycle row with only its label, entry year and
+an `unknown` deadline type — but no coordinates, URLs, or requirement values, and the claims on
+those new rows stay `unknown`/`draft`. It never creates a `known` claim, leaves `known` claims
+alone, and records an `import_conflicts` row instead of touching a verified or locked claim. Every
+write carries the run's `import_batches` id in `change_log`. Re-running the same bundle writes
+nothing.
 
 ### Rescuing personal state
 

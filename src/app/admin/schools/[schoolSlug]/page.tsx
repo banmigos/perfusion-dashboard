@@ -178,6 +178,28 @@ export default async function AdminSchoolPage({
           ))}
         </select>
         <input
+          type="text"
+          name="accreditationStatus"
+          placeholder="Accreditation status"
+          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+        />
+        <input
+          type="number"
+          name="programLengthMonths"
+          min={1}
+          step={1}
+          placeholder="Length (months)"
+          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+        />
+        <input
+          type="number"
+          name="classSize"
+          min={1}
+          step={1}
+          placeholder="Class size"
+          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+        />
+        <input
           type="url"
           name="websiteUrl"
           placeholder="Website URL"

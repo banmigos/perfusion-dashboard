@@ -23,15 +23,18 @@ import {
 } from "@/domain/admin/requirements";
 import { findOrCreateSource, updateSource } from "@/domain/admin/sources";
 import {
-  CREDENTIALS,
   DEADLINE_TYPES,
-  MODALITIES,
   REQUIREMENT_CATEGORIES,
   CAS_SERVICES,
 } from "@/db/schema/canonical";
 import { SOURCE_TYPES } from "@/db/schema/provenance";
 import { slugify } from "@/lib/slug";
 import { httpUrl, optionalHttpUrl } from "@/lib/zod/httpUrl";
+import {
+  optionalTrimmed,
+  programFormInput,
+  programFormSchema,
+} from "@/lib/zod/programForm";
 
 function revalidateAdmin(): void {
   revalidatePath("/admin", "layout");
@@ -39,9 +42,9 @@ function revalidateAdmin(): void {
   revalidatePath("/programs", "layout");
 }
 
-const optionalTrimmed = z
-  .string()
-  .transform((v) => (v.trim() === "" ? null : v.trim()));
+// Bound arguments (ids, slugs) arrive from the client like any form field.
+const idSchema = z.number().int().positive();
+const slugSchema = z.string().min(1);
 
 // --- schools ---
 
@@ -73,44 +76,27 @@ export async function updateSchoolAction(
     state: formData.get("state") ?? "",
     websiteUrl: formData.get("websiteUrl") ?? "",
   });
-  updateSchool(db, schoolId, parsed);
+  updateSchool(db, idSchema.parse(schoolId), parsed);
   revalidateAdmin();
 }
 
 export async function archiveSchoolAction(schoolId: number): Promise<void> {
-  archiveSchool(db, schoolId);
+  archiveSchool(db, idSchema.parse(schoolId));
   revalidateAdmin();
 }
 
 // --- programs ---
 
-const credentialSchema = z.enum(CREDENTIALS);
-const modalitySchema = z.enum(MODALITIES);
-
-const programFormSchema = z.object({
-  name: z.string().trim().min(1, "name required"),
-  directorName: optionalTrimmed,
-  credential: z
-    .union([credentialSchema, z.literal("")])
-    .transform((v) => (v === "" ? null : v)),
-  modality: z
-    .union([modalitySchema, z.literal("")])
-    .transform((v) => (v === "" ? null : v)),
-  websiteUrl: optionalHttpUrl,
-});
-
 export async function createProgramAction(
   schoolId: number,
   formData: FormData,
 ): Promise<void> {
-  const parsed = programFormSchema.parse({
-    name: formData.get("name") ?? "",
-    directorName: formData.get("directorName") ?? "",
-    credential: formData.get("credential") ?? "",
-    modality: formData.get("modality") ?? "",
-    websiteUrl: formData.get("websiteUrl") ?? "",
+  const parsed = programFormSchema.parse(programFormInput(formData));
+  createProgram(db, {
+    schoolId: idSchema.parse(schoolId),
+    slug: slugify(parsed.name),
+    ...parsed,
   });
-  createProgram(db, { schoolId, slug: slugify(parsed.name), ...parsed });
   revalidateAdmin();
 }
 
@@ -118,19 +104,13 @@ export async function updateProgramAction(
   programId: number,
   formData: FormData,
 ): Promise<void> {
-  const parsed = programFormSchema.parse({
-    name: formData.get("name") ?? "",
-    directorName: formData.get("directorName") ?? "",
-    credential: formData.get("credential") ?? "",
-    modality: formData.get("modality") ?? "",
-    websiteUrl: formData.get("websiteUrl") ?? "",
-  });
-  updateProgram(db, programId, parsed);
+  const parsed = programFormSchema.parse(programFormInput(formData));
+  updateProgram(db, idSchema.parse(programId), parsed);
   revalidateAdmin();
 }
 
 export async function archiveProgramAction(programId: number): Promise<void> {
-  archiveProgram(db, programId);
+  archiveProgram(db, idSchema.parse(programId));
   revalidateAdmin();
 }
 
@@ -168,7 +148,7 @@ export async function createCycleAction(
     deadlineType: formData.get("deadlineType") ?? "",
     casService: formData.get("casService") ?? "",
   });
-  createCycle(db, { programId, ...parsed });
+  createCycle(db, { programId: idSchema.parse(programId), ...parsed });
   revalidateAdmin();
 }
 
@@ -185,16 +165,16 @@ export async function updateCycleAction(
     deadlineType: formData.get("deadlineType") ?? "",
     casService: formData.get("casService") ?? "",
   });
-  updateCycle(db, cycleId, parsed);
+  updateCycle(db, idSchema.parse(cycleId), parsed);
   revalidateAdmin();
   // The label is part of the URL; follow a rename. Outside any try/catch.
   redirect(
-    `/admin/schools/${encodeURIComponent(schoolSlug)}/${encodeURIComponent(programSlug)}/${encodeURIComponent(parsed.cycleLabel)}`,
+    `/admin/schools/${encodeURIComponent(slugSchema.parse(schoolSlug))}/${encodeURIComponent(slugSchema.parse(programSlug))}/${encodeURIComponent(parsed.cycleLabel)}`,
   );
 }
 
 export async function archiveCycleAction(cycleId: number): Promise<void> {
-  archiveCycle(db, cycleId);
+  archiveCycle(db, idSchema.parse(cycleId));
   revalidateAdmin();
 }
 
@@ -231,7 +211,7 @@ export async function createRequirementAction(
     valueDate: formData.get("valueDate") ?? "",
     isRequired: formData.get("isRequired") ?? "",
   });
-  createRequirement(db, { cycleId, ...parsed });
+  createRequirement(db, { cycleId: idSchema.parse(cycleId), ...parsed });
   revalidateAdmin();
 }
 
@@ -248,14 +228,14 @@ export async function updateRequirementAction(
     valueDate: formData.get("valueDate") ?? "",
     isRequired: formData.get("isRequired") ?? "",
   });
-  updateRequirement(db, requirementId, parsed);
+  updateRequirement(db, idSchema.parse(requirementId), parsed);
   revalidateAdmin();
 }
 
 export async function archiveRequirementAction(
   requirementId: number,
 ): Promise<void> {
-  archiveRequirement(db, requirementId);
+  archiveRequirement(db, idSchema.parse(requirementId));
   revalidateAdmin();
 }
 
@@ -266,6 +246,11 @@ const sourceFormSchema = z.object({
   sourceType: z.enum(SOURCE_TYPES),
   title: optionalTrimmed,
   publisher: optionalTrimmed,
+});
+
+const sourceUpdateFormSchema = sourceFormSchema.pick({
+  title: true,
+  publisher: true,
 });
 
 export async function createSourceAction(formData: FormData): Promise<void> {
@@ -283,15 +268,10 @@ export async function updateSourceAction(
   sourceId: number,
   formData: FormData,
 ): Promise<void> {
-  const title = formData.get("title");
-  const publisher = formData.get("publisher");
-  updateSource(db, sourceId, {
-    title:
-      typeof title === "string" && title.trim() !== "" ? title.trim() : null,
-    publisher:
-      typeof publisher === "string" && publisher.trim() !== ""
-        ? publisher.trim()
-        : null,
+  const parsed = sourceUpdateFormSchema.parse({
+    title: formData.get("title") ?? "",
+    publisher: formData.get("publisher") ?? "",
   });
+  updateSource(db, idSchema.parse(sourceId), parsed);
   revalidateAdmin();
 }

@@ -118,6 +118,37 @@ export default async function AdminProgramPage({
           </select>
         </label>
         <label className="flex flex-col text-xs">
+          accreditation status
+          <input
+            type="text"
+            name="accreditationStatus"
+            defaultValue={program.accreditationStatus ?? ""}
+            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          />
+        </label>
+        <label className="flex flex-col text-xs">
+          length (months)
+          <input
+            type="number"
+            name="programLengthMonths"
+            min={1}
+            step={1}
+            defaultValue={program.programLengthMonths ?? ""}
+            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          />
+        </label>
+        <label className="flex flex-col text-xs">
+          class size
+          <input
+            type="number"
+            name="classSize"
+            min={1}
+            step={1}
+            defaultValue={program.classSize ?? ""}
+            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+          />
+        </label>
+        <label className="flex flex-col text-xs">
           website
           <input
             type="url"

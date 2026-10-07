@@ -1,3 +1,6 @@
+// Sources are reference metadata shared across claims, not a subject a claim
+// is made about: they are not in SUBJECT_TABLES and deliberately write no
+// change_log rows.
 import "server-only";
 import { eq } from "drizzle-orm";
 import type { BetterSQLite3Database } from "drizzle-orm/better-sqlite3";
@@ -15,10 +18,10 @@ export type SourcePatch = Partial<Omit<SourceInput, "url">>;
 export type Source = typeof schema.sources.$inferSelect;
 
 // Structural, not the full BetterSQLite3Database: this lets callers pass
-// either the outer `db` or an in-progress `tx` (Task 7's upsertClaim calls
-// this from inside its own db.transaction((tx) => ...), so this function
-// must not open a second transaction of its own — it just runs its two
-// queries against whichever executor it is given).
+// either the outer `db` or an in-progress `tx` (upsertClaim calls this from
+// inside its own db.transaction((tx) => ...), so this function must not open
+// a second transaction of its own — it just runs its two queries against
+// whichever executor it is given).
 type Executor = Pick<BetterSQLite3Database<typeof schema>, "select" | "insert">;
 
 export function findOrCreateSource(db: Executor, input: SourceInput): Source {

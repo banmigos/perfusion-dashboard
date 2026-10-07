@@ -10,7 +10,7 @@ env:
 
 jobs:
   image:
-    runs-on: docker
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 

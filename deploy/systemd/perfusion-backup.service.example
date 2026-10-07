@@ -1,0 +1,19 @@
+# Runs on the HOST against the bind-mounted database — docs/deployment.md §10.
+[Unit]
+Description=Perfusion Path SQLite backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+User=<APP_USER>
+Group=<APP_GROUP>
+WorkingDirectory=<APP_DIR>
+Environment=DATABASE_URL=file:<DATA_DIR>/app.db
+Environment=BACKUP_DIR=<BACKUP_DIR>
+# Optional off-box copy (rsync target over Tailscale), e.g. user@host:/path/
+# Environment=BACKUP_REMOTE=<BACKUP_REMOTE>
+ExecStart=<APP_DIR>/node_modules/.bin/tsx scripts/backup.ts
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=<DATA_DIR> <BACKUP_DIR>
+PrivateTmp=true

@@ -1,0 +1,31 @@
+# Komodo stack template — docs/deployment.md §3. Copy, replace the <PLACEHOLDERS>,
+# never commit real values. deploy/komodo/compose.yaml is identical.
+services:
+  perfusion:
+    image: <REGISTRY>/perfusion-dashboard:<TAG> # pin a real tag, never :latest
+    restart: unless-stopped
+    user: "<APP_UID>:<APP_GID>" # must own <DATA_DIR> on the host
+    environment:
+      NODE_ENV: production
+      HOSTNAME: 0.0.0.0 # container-internal; loopback-only is enforced by `ports` below
+      PORT: 3000
+      DATABASE_URL: file:/data/app.db
+      STALE_AFTER_DAYS: 180
+    volumes:
+      - <DATA_DIR>:/data # host bind mount, NEVER a named volume
+    ports:
+      # Loopback ONLY. Omitting "127.0.0.1:" publishes on every interface and
+      # bypasses the host firewall via Docker's iptables rules.
+      # Verify after every deploy: ss -ltnp | grep 3000
+      - "127.0.0.1:3000:3000"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3

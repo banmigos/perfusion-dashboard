@@ -1,0 +1,33 @@
+# Never bake secrets, the database, or canonical research into the image.
+.env
+.env.*
+!.env.example
+data/
+seed/
+*.db
+*.db-wal
+*.db-shm
+
+.git
+.gitignore
+.forgejo
+.claude
+.superpowers
+node_modules
+.next
+out
+build
+coverage
+playwright-report
+test-results
+tsconfig.tsbuildinfo
+npm-debug.log*
+.DS_Store
+*.pem
+
+# Not needed to build or run
+tests
+docs
+deploy
+Dockerfile
+.dockerignore

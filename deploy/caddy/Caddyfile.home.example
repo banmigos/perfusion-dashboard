@@ -1,0 +1,20 @@
+# Home application server — docs/deployment.md §4.
+{
+	admin off
+}
+
+http://<HOME_TAILSCALE_IP>:80 {
+	# `bind` keeps this off the LAN interface. Without it Caddy listens on all
+	# interfaces and anything on the home network can reach the app.
+	bind <HOME_TAILSCALE_IP>
+
+	reverse_proxy 127.0.0.1:3000 {
+		health_uri /api/health
+		health_interval 30s
+		health_timeout 5s
+	}
+
+	log {
+		output file /var/log/caddy/perfusion.log
+	}
+}

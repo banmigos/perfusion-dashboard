@@ -20,7 +20,8 @@
     "import:legacy": "tsx scripts/import-legacy.ts",
     "import:leads": "tsx scripts/import-leads.ts",
     "import": "tsx scripts/import.ts",
-    "export": "tsx scripts/export.ts"
+    "export": "tsx scripts/export.ts",
+    "backup": "tsx scripts/backup.ts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

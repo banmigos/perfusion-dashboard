@@ -1,0 +1,42 @@
+name: build-and-push
+
+on:
+  push:
+    branches: [main]
+    tags: ["*"]
+
+env:
+  REGISTRY: git.banmigos.dev
+
+jobs:
+  image:
+    runs-on: docker
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute image tag
+        id: meta
+        run: |
+          # Release tag when pushed from a tag, otherwise the short commit SHA.
+          # Never :latest — a pinned tag is what makes Komodo rollback possible.
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            tag="${{ github.ref_name }}"
+          else
+            tag="sha-$(echo "${{ github.sha }}" | cut -c1-12)"
+          fi
+          repo="$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')"
+          echo "image=${REGISTRY}/${repo}/perfusion-dashboard:${tag}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.image }}

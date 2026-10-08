@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:e2e:live": "playwright test -c playwright.live.config.ts",
     "verify": "npm run format:check && npm run typecheck && npm run lint && npm run test && npm run test:e2e",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx scripts/migrate.ts",
@@ -21,7 +22,8 @@
     "import:leads": "tsx scripts/import-leads.ts",
     "import": "tsx scripts/import.ts",
     "export": "tsx scripts/export.ts",
-    "backup": "tsx scripts/backup.ts"
+    "backup": "tsx scripts/backup.ts",
+    "sweep": "tsx scripts/sweep-staleness.ts"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",

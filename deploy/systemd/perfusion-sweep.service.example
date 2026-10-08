@@ -1,0 +1,20 @@
+# Runs on the HOST against the bind-mounted database — docs/research-workflow.md §6.
+# Outbound HTTPS only (re-fetches cited source pages); it listens on nothing.
+[Unit]
+Description=Perfusion Path staleness sweep
+After=local-fs.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=<APP_USER>
+Group=<APP_GROUP>
+WorkingDirectory=<APP_DIR>
+Environment=DATABASE_URL=file:<DATA_DIR>/app.db
+# Exits non-zero if any source could not be fetched, so a failure shows in
+# `systemctl status` / journald.
+ExecStart=<APP_DIR>/node_modules/.bin/tsx scripts/sweep-staleness.ts
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=<DATA_DIR>
+PrivateTmp=true

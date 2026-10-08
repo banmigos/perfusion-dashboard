@@ -1,11 +1,6 @@
 @import "tailwindcss";
 
-/*
- * Dark-slate theme. The app is dark-only: tokens are defined once, and the
- * `dark:` variant is pinned on so older pages that still carry `dark:` classes
- * render the same regardless of the OS colour scheme.
- */
-@custom-variant dark (&:where(*));
+/* Dark-slate theme: the app is dark-only, with tokens defined once. */
 
 @theme inline {
   --color-canvas: #0b0f14;

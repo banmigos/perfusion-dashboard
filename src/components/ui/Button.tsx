@@ -1,13 +1,14 @@
 import type { ButtonHTMLAttributes } from "react";
 import { cn } from "./cn";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md";
 
 const VARIANT: Record<Variant, string> = {
   primary: "bg-accent text-canvas hover:bg-accent-strong",
   secondary: "border border-line-strong bg-raised text-fg hover:bg-line",
   ghost: "text-muted hover:bg-raised hover:text-fg",
+  danger: "text-danger hover:bg-raised",
 };
 
 const SIZE: Record<Size, string> = {

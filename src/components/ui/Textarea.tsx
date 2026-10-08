@@ -1,14 +1,14 @@
-import type { SelectHTMLAttributes } from "react";
+import type { TextareaHTMLAttributes } from "react";
 import { cn } from "./cn";
 import { FIELD_BASE, fieldSize } from "./Input";
 
-export function Select({
+export function Textarea({
   compact,
   className,
   ...props
-}: SelectHTMLAttributes<HTMLSelectElement> & { compact?: boolean }) {
+}: TextareaHTMLAttributes<HTMLTextAreaElement> & { compact?: boolean }) {
   return (
-    <select
+    <textarea
       className={cn(FIELD_BASE, fieldSize(compact), className)}
       {...props}
     />

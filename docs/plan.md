@@ -414,7 +414,8 @@ Do all of this:
    matching tsconfig.
 
 6. Configure Playwright for tests/e2e. Its webServer must start the dev server
-   bound to 127.0.0.1:3000 and baseURL must be http://127.0.0.1:3000.
+   bound to 127.0.0.1:3100 (3000 belongs to the production container) and baseURL
+   must be http://127.0.0.1:3100. It runs against a scratch database.
 
 7. Create the empty directory structure from docs/plan.md section 3 for the
    directories Phase 1 legitimately needs: src/app, src/components, src/lib,

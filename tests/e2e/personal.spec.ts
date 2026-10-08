@@ -28,19 +28,25 @@ test("save a program, generate its checklist, complete a task, see it reflected 
   await expect(
     page.getByRole("link", { name: /Midwestern University/ }),
   ).toBeVisible();
-  await expect(page.getByText("Minimum overall GPA")).toBeVisible();
-  await expect(page.getByText("GRE required")).toBeVisible();
+  await expect(page.getByText("Confirm GPA requirement")).toBeVisible();
+  await expect(
+    page.getByText("Confirm whether the GRE is required"),
+  ).toBeVisible();
 
   await page.goto("/");
-  await expect(page.getByText("Minimum overall GPA")).toBeVisible();
-  await expect(page.getByText("GRE required")).toBeVisible();
+  await expect(page.getByText("Confirm GPA requirement")).toBeVisible();
+  await expect(
+    page.getByText("Confirm whether the GRE is required"),
+  ).toBeVisible();
 
   await page.goto("/my");
-  const gpaRow = page.locator('li:has-text("Minimum overall GPA")').last();
+  const gpaRow = page.locator('li:has-text("Confirm GPA requirement")').last();
   await gpaRow.getByRole("combobox").selectOption("done");
   await expect(gpaRow.getByRole("combobox")).toHaveValue("done");
 
   await page.goto("/");
-  await expect(page.getByText("Minimum overall GPA")).toHaveCount(0);
-  await expect(page.getByText("GRE required")).toBeVisible();
+  await expect(page.getByText("Confirm GPA requirement")).toHaveCount(0);
+  await expect(
+    page.getByText("Confirm whether the GRE is required"),
+  ).toBeVisible();
 });

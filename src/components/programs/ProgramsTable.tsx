@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ProgramTableRow } from "@/lib/programRows";
-import { FactCell } from "./FactCell";
+import { FactCell } from "../FactCell";
 
 const HEADERS = [
   "School",

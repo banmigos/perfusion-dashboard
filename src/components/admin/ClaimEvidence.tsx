@@ -28,15 +28,15 @@ export function ClaimEvidence({
             href={sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 underline dark:text-blue-400"
+            className="text-accent hover:text-accent-strong hover:underline"
           >
             source
           </a>{" "}
-          <span className="text-zinc-500">{hostOf(sourceUrl)}</span>
+          <span className="text-subtle">{hostOf(sourceUrl)}</span>
         </p>
       )}
-      {quote && <p className="mt-1 italic">&ldquo;{quote}&rdquo;</p>}
-      {note && <p className="mt-1 whitespace-pre-line text-zinc-500">{note}</p>}
+      {quote && <p className="mt-1 text-fg italic">&ldquo;{quote}&rdquo;</p>}
+      {note && <p className="mt-1 whitespace-pre-line text-muted">{note}</p>}
     </>
   );
 }

@@ -1,13 +1,15 @@
 import type { ReactNode } from "react";
 import { factState, type ClaimLike } from "@/lib/factState";
-import { FreshnessPill } from "../FreshnessPill";
+import { FreshnessPill } from "./FreshnessPill";
+import { SourceBadge } from "./SourceBadge";
 
 function isoDate(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
 /**
- * Compact, table-oriented rendering of one fact. The four fact states stay
+ * Rendering of one fact, shared by the programs table (`compact`) and the
+ * detail page (`detail`, which spells out source title and check date). The four fact states stay
  * distinct: no claim → "Not researched"; unknown → "Unknown"; not_published →
  * "Not published"; known → the value, flagged unless verified and fresh.
  */
@@ -16,11 +18,13 @@ export function FactCell({
   claim,
   now,
   staleAfterDays,
+  variant = "compact",
 }: {
   value: ReactNode;
   claim: ClaimLike | undefined;
   now: Date;
   staleAfterDays: number;
+  variant?: "compact" | "detail";
 }) {
   const state = factState(claim, now, staleAfterDays);
 
@@ -40,6 +44,9 @@ export function FactCell({
           }
         >
           Unknown
+          {variant === "detail" && state.checkedAt
+            ? ` — checked ${isoDate(state.checkedAt)}`
+            : ""}
         </span>
       );
     case "not_published":
@@ -53,6 +60,9 @@ export function FactCell({
           }
         >
           Not published
+          {variant === "detail" && state.checkedAt
+            ? ` — checked ${isoDate(state.checkedAt)}`
+            : ""}
         </span>
       );
     case "not_applicable":
@@ -76,16 +86,16 @@ export function FactCell({
             isStale={state.isStale}
           />
           {state.source && (
-            <a
-              href={state.source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Source: ${state.source.title ?? state.source.url}`}
-              title={state.source.title ?? state.source.url}
-              className="text-xs text-accent hover:text-accent-strong"
-            >
-              src↗
-            </a>
+            <SourceBadge
+              url={state.source.url}
+              title={state.source.title}
+              label={variant === "compact" ? "src↗" : undefined}
+            />
+          )}
+          {variant === "detail" && state.checkedAt && (
+            <span className="text-xs text-subtle">
+              checked {isoDate(state.checkedAt)}
+            </span>
           )}
         </span>
       );

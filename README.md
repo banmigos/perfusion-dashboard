@@ -14,7 +14,7 @@ See [docs/plan.md](docs/plan.md) for the full phased implementation sequence.
 ```sh
 npm install
 cp .env.example .env.local   # edit with real local values; gitignored
-npm run dev                  # http://127.0.0.1:3000
+npm run dev                  # http://127.0.0.1:3100 (3000 is the production container)
 ```
 
 ## Scripts

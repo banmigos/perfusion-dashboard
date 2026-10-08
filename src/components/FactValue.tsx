@@ -1,12 +1,8 @@
 import type { ReactNode } from "react";
-import { factState, type ClaimLike } from "@/lib/factState";
-import { SourceBadge } from "./SourceBadge";
-import { FreshnessPill } from "./FreshnessPill";
+import type { ClaimLike } from "@/lib/factState";
+import { FactCell } from "./FactCell";
 
-function formatDate(d: Date): string {
-  return d.toISOString().slice(0, 10);
-}
-
+/** Detail-page fact: the same rendering as a table cell, with provenance spelled out. */
 export function FactValue({
   value,
   claim,
@@ -18,34 +14,13 @@ export function FactValue({
   now: Date;
   staleAfterDays: number;
 }) {
-  const state = factState(claim, now, staleAfterDays);
-
-  switch (state.kind) {
-    case "not_researched":
-      return <span className="text-subtle">—</span>;
-    case "unknown":
-      return (
-        <span className="text-warn">
-          unknown
-          {state.checkedAt ? ` — checked ${formatDate(state.checkedAt)}` : ""}
-        </span>
-      );
-    case "not_published":
-      return <span className="text-muted">not published</span>;
-    case "not_applicable":
-      return <span className="text-muted">n/a</span>;
-    case "known":
-      return (
-        <span className="inline-flex flex-wrap items-center gap-2">
-          <span>{value}</span>
-          <FreshnessPill
-            verification={state.verification}
-            isStale={state.isStale}
-          />
-          {state.source && (
-            <SourceBadge url={state.source.url} title={state.source.title} />
-          )}
-        </span>
-      );
-  }
+  return (
+    <FactCell
+      variant="detail"
+      value={value}
+      claim={claim}
+      now={now}
+      staleAfterDays={staleAfterDays}
+    />
+  );
 }

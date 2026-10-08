@@ -4,6 +4,11 @@ import { db } from "@/db/client";
 import { asc } from "drizzle-orm";
 import * as schema from "@/db/schema";
 import { createSchoolAction } from "@/app/actions/admin";
+import { Button, buttonClass } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
+import { PageHeader } from "@/components/shell/PageHeader";
+import { Input } from "@/components/ui/Input";
 
 export const dynamic = "force-dynamic";
 
@@ -16,67 +21,49 @@ export default function AdminPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">Admin</h1>
-      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-        Schools, programs, cycles, requirements, and sources.
-      </p>
+      <PageHeader
+        title="Admin"
+        description="Schools, programs, cycles, requirements, and sources."
+        actions={
+          <Link href="/admin/sources" className={buttonClass("secondary")}>
+            Manage sources
+          </Link>
+        }
+      />
 
-      <ul className="mt-6 space-y-1">
-        {schools.map((school) => (
-          <li key={school.id}>
-            <Link
-              href={`/admin/schools/${school.slug}`}
-              className="hover:underline"
-            >
-              {school.name}
-            </Link>
-            {school.status === "archived" && (
-              <span className="ml-2 text-xs text-zinc-500">archived</span>
-            )}
-          </li>
-        ))}
-      </ul>
+      <Card className="px-4">
+        <ul className="divide-y divide-line">
+          {schools.map((school) => (
+            <li key={school.id} className="py-2.5 text-sm">
+              <Link
+                href={`/admin/schools/${school.slug}`}
+                className="text-fg hover:text-accent-strong hover:underline"
+              >
+                {school.name}
+              </Link>
+              {school.status === "archived" && (
+                <Badge className="ml-2">archived</Badge>
+              )}
+            </li>
+          ))}
+        </ul>
+      </Card>
 
-      <h2 className="mt-6 text-sm font-semibold">Add a school</h2>
-      <form action={createSchoolAction} className="mt-2 flex flex-wrap gap-2">
-        <input
-          type="text"
-          name="name"
-          placeholder="School name"
-          required
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="text"
-          name="city"
-          placeholder="City"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="text"
-          name="state"
-          placeholder="State"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="url"
-          name="websiteUrl"
-          placeholder="Website URL"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+      <h2 className="mt-8 mb-2 text-base font-semibold text-fg">
+        Add a school
+      </h2>
+      <form
+        action={createSchoolAction}
+        className="flex flex-wrap gap-2 rounded-lg border border-line bg-surface p-4"
+      >
+        <Input type="text" name="name" placeholder="School name" required />
+        <Input type="text" name="city" placeholder="City" />
+        <Input type="text" name="state" placeholder="State" />
+        <Input type="url" name="websiteUrl" placeholder="Website URL" />
+        <Button type="submit" variant="primary">
           Add school
-        </button>
+        </Button>
       </form>
-
-      <p className="mt-4 text-sm">
-        <Link href="/admin/sources" className="underline">
-          Manage sources
-        </Link>
-      </p>
     </div>
   );
 }

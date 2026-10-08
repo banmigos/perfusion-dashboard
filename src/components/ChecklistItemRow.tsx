@@ -8,10 +8,17 @@ import {
   updateChecklistItemStatusAction,
 } from "@/app/actions/checklists";
 import { CHECKLIST_ITEM_STATUSES } from "@/db/schema/personal";
+import { taskTitle } from "@/lib/taskTitle";
+import { Button } from "./ui/Button";
+import { Input } from "./ui/Input";
+import { Select } from "./ui/Select";
+import { cn } from "./ui/cn";
 
 type Item = {
   id: number;
   title: string;
+  category?: string | null;
+  derivedFromRequirementId?: number | null;
   dueAt: Date | null;
   status: (typeof CHECKLIST_ITEM_STATUSES)[number];
   linkUrl: string | null;
@@ -46,51 +53,56 @@ export function ChecklistItemRow({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <li className="flex flex-wrap items-center gap-2 py-1.5 text-sm">
-      <select
+    <li className="flex flex-wrap items-center gap-x-3 gap-y-2 py-2.5 text-sm">
+      <Select
         value={item.status}
         disabled={isPending}
+        aria-label="Status"
         onChange={(e) =>
           startTransition(() => {
             void updateChecklistItemStatusAction(item.id, e.target.value);
           })
         }
-        className="rounded border border-zinc-300 px-1 py-0.5 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+        compact
       >
         {CHECKLIST_ITEM_STATUSES.map((s) => (
           <option key={s} value={s}>
             {s}
           </option>
         ))}
-      </select>
+      </Select>
 
       <span
-        className={item.status === "done" ? "text-zinc-400 line-through" : ""}
+        title={item.title}
+        className={cn(
+          "text-fg",
+          item.status === "done" && "text-subtle line-through",
+        )}
       >
-        {item.title}
+        {taskTitle(item)}
       </span>
 
       {programLabel && (
-        <span className="text-xs text-zinc-500">{programLabel}</span>
+        <span className="text-xs text-muted">{programLabel}</span>
       )}
 
       <form
         action={updateChecklistItemDueDateAction.bind(null, item.id)}
         className="flex items-center gap-1"
       >
-        <input
+        <Input
+          compact
           type="date"
           name="dueAt"
+          aria-label="Due date"
           defaultValue={item.dueAt ? formatDueDate(item.dueAt) : ""}
-          className={`rounded border px-1 py-0.5 text-xs dark:bg-zinc-900 ${
-            isOverdue(item.dueAt, item.status)
-              ? "border-red-400 text-red-600 dark:text-red-400"
-              : "border-zinc-300 dark:border-zinc-700"
-          }`}
+          className={cn(
+            isOverdue(item.dueAt, item.status) && "border-danger text-danger",
+          )}
         />
-        <button type="submit" className="text-xs text-zinc-500 underline">
+        <Button type="submit" variant="ghost" size="sm">
           set
-        </button>
+        </Button>
       </form>
 
       {item.linkUrl && (
@@ -98,24 +110,25 @@ export function ChecklistItemRow({
           href={item.linkUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-blue-600 underline dark:text-blue-400"
+          className="text-xs text-accent hover:text-accent-strong hover:underline"
         >
           link
         </a>
       )}
 
-      <button
-        type="button"
+      <Button
+        variant="danger"
+        size="sm"
         disabled={isPending}
         onClick={() =>
           startTransition(() => {
             void deleteChecklistItemAction(item.id);
           })
         }
-        className="ml-auto text-xs text-red-600 dark:text-red-400"
+        className="ml-auto"
       >
         delete
-      </button>
+      </Button>
     </li>
   );
 }

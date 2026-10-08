@@ -12,6 +12,12 @@ import {
   updateSchoolAction,
 } from "@/app/actions/admin";
 import { CREDENTIALS, MODALITIES } from "@/db/schema/canonical";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { Breadcrumb } from "@/components/shell/Breadcrumb";
+import { PageHeader } from "@/components/shell/PageHeader";
+import { Card } from "@/components/ui/Card";
 
 export const dynamic = "force-dynamic";
 
@@ -47,73 +53,46 @@ export default async function AdminSchoolPage({
 
   return (
     <div>
-      <p className="text-sm">
-        <Link href="/admin" className="underline">
-          Admin
-        </Link>
-      </p>
-      <h1 className="mt-1 text-2xl font-semibold">{school.name}</h1>
+      <Breadcrumb href="/admin" label="Admin" />
+      <PageHeader title={school.name} />
 
       <form
         action={updateSchoolAction.bind(null, school.id)}
-        className="mt-4 flex flex-wrap items-end gap-2"
+        className="flex flex-wrap items-end gap-3 rounded-lg border border-line bg-surface p-4"
       >
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           name
-          <input
-            type="text"
-            name="name"
-            defaultValue={school.name}
-            required
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          />
+          <Input type="text" name="name" defaultValue={school.name} required />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           city
-          <input
-            type="text"
-            name="city"
-            defaultValue={school.city ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          />
+          <Input type="text" name="city" defaultValue={school.city ?? ""} />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           state
-          <input
-            type="text"
-            name="state"
-            defaultValue={school.state ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          />
+          <Input type="text" name="state" defaultValue={school.state ?? ""} />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           website
-          <input
+          <Input
             type="url"
             name="websiteUrl"
             defaultValue={school.websiteUrl ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <Button type="submit" variant="primary">
           Save
-        </button>
+        </Button>
       </form>
 
       {school.status !== "archived" && (
         <form
           action={archiveSchoolAction.bind(null, school.id)}
-          className="mt-2"
+          className="mt-3"
         >
-          <button
-            type="submit"
-            className="text-xs text-red-600 underline dark:text-red-400"
-          >
+          <Button type="submit" variant="danger" size="sm">
             Archive school
-          </button>
+          </Button>
         </form>
       )}
 
@@ -123,94 +102,68 @@ export default async function AdminSchoolPage({
         claims={claims}
       />
 
-      <h2 className="mt-6 text-sm font-semibold">Programs</h2>
-      <ul className="mt-2 space-y-1">
-        {programs.map((program) => (
-          <li key={program.id}>
-            <Link
-              href={`/admin/schools/${school.slug}/${program.slug}`}
-              className="hover:underline"
-            >
-              {program.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h2 className="mt-8 mb-2 text-base font-semibold text-fg">Programs</h2>
+      <Card className="px-4">
+        <ul className="divide-y divide-line">
+          {programs.map((program) => (
+            <li key={program.id} className="py-2.5 text-sm">
+              <Link
+                href={`/admin/schools/${school.slug}/${program.slug}`}
+                className="text-fg hover:text-accent-strong hover:underline"
+              >
+                {program.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Card>
 
-      <h3 className="mt-4 text-xs font-semibold">Add a program</h3>
+      <h3 className="mt-6 mb-2 text-sm font-medium text-fg">Add a program</h3>
       <form
         action={createProgramAction.bind(null, school.id)}
-        className="mt-2 flex flex-wrap gap-2"
+        className="flex flex-wrap gap-2 rounded-lg border border-line bg-surface p-4"
       >
-        <input
-          type="text"
-          name="name"
-          placeholder="Program name"
-          required
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="text"
-          name="directorName"
-          placeholder="Director"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <select
-          name="credential"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        >
+        <Input type="text" name="name" placeholder="Program name" required />
+        <Input type="text" name="directorName" placeholder="Director" />
+        <Select name="credential">
           <option value="">credential —</option>
           {CREDENTIALS.map((c) => (
             <option key={c} value={c}>
               {c}
             </option>
           ))}
-        </select>
-        <select
-          name="modality"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        >
+        </Select>
+        <Select name="modality">
           <option value="">modality —</option>
           {MODALITIES.map((m) => (
             <option key={m} value={m}>
               {m}
             </option>
           ))}
-        </select>
-        <input
+        </Select>
+        <Input
           type="text"
           name="accreditationStatus"
           placeholder="Accreditation status"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
-        <input
+        <Input
           type="number"
           name="programLengthMonths"
           min={1}
           step={1}
           placeholder="Length (months)"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
-        <input
+        <Input
           type="number"
           name="classSize"
           min={1}
           step={1}
           placeholder="Class size"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
-        <input
-          type="url"
-          name="websiteUrl"
-          placeholder="Website URL"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <Input type="url" name="websiteUrl" placeholder="Website URL" />
+        <Button type="submit" variant="primary">
           Add program
-        </button>
+        </Button>
       </form>
     </div>
   );

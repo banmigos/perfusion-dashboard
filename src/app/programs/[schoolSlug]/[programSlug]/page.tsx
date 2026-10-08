@@ -9,6 +9,11 @@ import { listChecklistsForSavedProgram } from "@/domain/checklists";
 import { SaveProgramControl } from "@/components/SaveProgramControl";
 import { resolveRequirementClaim } from "@/domain/admin/requirements";
 import { STALE_AFTER_DAYS } from "@/lib/freshness";
+import { FactCell } from "@/components/FactCell";
+import { PageHeader } from "@/components/shell/PageHeader";
+import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
+import { formatUsdCents } from "@/lib/programFormat";
 
 function resolveRequirementFact(
   req: {
@@ -74,69 +79,76 @@ export default async function ProgramDetailPage({
       (c) => c.checklist.cycleId === currentCycle.cycle.id,
     );
 
+  const fact = { now, staleAfterDays: STALE_AFTER_DAYS };
+
   return (
-    <div>
-      <h1 className="text-2xl font-semibold">
-        {detail.school.name} — {detail.program.name}
-      </h1>
-      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-        {detail.school.city}, {detail.school.state}
-      </p>
+    <div className="space-y-8">
+      <div>
+        <PageHeader
+          title={`${detail.school.name} — ${detail.program.name}`}
+          description={
+            [detail.school.city, detail.school.state]
+              .filter(Boolean)
+              .join(", ") || undefined
+          }
+        />
+        <SaveProgramControl
+          programId={detail.program.id}
+          schoolSlug={schoolSlug}
+          programSlug={programSlug}
+          savedProgram={savedProgram}
+          hasChecklist={hasChecklist}
+        />
+      </div>
 
-      <SaveProgramControl
-        programId={detail.program.id}
-        schoolSlug={schoolSlug}
-        programSlug={programSlug}
-        savedProgram={savedProgram}
-        hasChecklist={hasChecklist}
-      />
-
-      <dl className="mt-4 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
-        <dt className="text-zinc-500">Credential</dt>
-        <dd>
-          <FactValue
-            value={detail.program.credential}
-            claim={claimFor("programs", detail.program.id, "credential")}
-            now={now}
-            staleAfterDays={STALE_AFTER_DAYS}
-          />
-        </dd>
-        <dt className="text-zinc-500">Director</dt>
-        <dd>
-          <FactValue
-            value={detail.program.directorName}
-            claim={claimFor("programs", detail.program.id, "director_name")}
-            now={now}
-            staleAfterDays={STALE_AFTER_DAYS}
-          />
-        </dd>
-        <dt className="text-zinc-500">Modality</dt>
-        <dd>
-          <FactValue
-            value={detail.program.modality}
-            claim={claimFor("programs", detail.program.id, "modality")}
-            now={now}
-            staleAfterDays={STALE_AFTER_DAYS}
-          />
-        </dd>
-        <dt className="text-zinc-500">Class size</dt>
-        <dd>
-          <FactValue
-            value={detail.program.classSize}
-            claim={claimFor("programs", detail.program.id, "class_size")}
-            now={now}
-            staleAfterDays={STALE_AFTER_DAYS}
-          />
-        </dd>
-      </dl>
+      <Card className="p-5">
+        <h2 className="mb-3 text-base font-semibold text-fg">Program</h2>
+        <dl className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-3 text-sm">
+          <dt className="text-muted">Credential</dt>
+          <dd>
+            <FactValue
+              value={detail.program.credential}
+              claim={claimFor("programs", detail.program.id, "credential")}
+              {...fact}
+            />
+          </dd>
+          <dt className="text-muted">Director</dt>
+          <dd>
+            <FactValue
+              value={detail.program.directorName}
+              claim={claimFor("programs", detail.program.id, "director_name")}
+              {...fact}
+            />
+          </dd>
+          <dt className="text-muted">Modality</dt>
+          <dd>
+            <FactValue
+              value={detail.program.modality}
+              claim={claimFor("programs", detail.program.id, "modality")}
+              {...fact}
+            />
+          </dd>
+          <dt className="text-muted">Class size</dt>
+          <dd>
+            <FactValue
+              value={detail.program.classSize}
+              claim={claimFor("programs", detail.program.id, "class_size")}
+              {...fact}
+            />
+          </dd>
+        </dl>
+      </Card>
 
       {currentCycle && (
-        <section className="mt-8">
-          <h2 className="text-lg font-semibold">
-            {currentCycle.cycle.cycleLabel} cycle
-          </h2>
-          <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 text-sm">
-            <dt className="text-zinc-500">Deadline</dt>
+        <Card className="p-5">
+          <div className="mb-3 flex items-center gap-2">
+            <h2 className="text-base font-semibold text-fg">
+              Application cycle
+            </h2>
+            <Badge tone="accent">{currentCycle.cycle.cycleLabel}</Badge>
+          </div>
+          <dl className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-3 text-sm">
+            <dt className="text-muted">Deadline</dt>
             <dd>
               <FactValue
                 value={currentCycle.cycle.deadlineDate}
@@ -145,13 +157,14 @@ export default async function ProgramDetailPage({
                   currentCycle.cycle.id,
                   "deadline_date",
                 )}
-                now={now}
-                staleAfterDays={STALE_AFTER_DAYS}
+                {...fact}
               />
             </dd>
           </dl>
 
-          <h3 className="mt-6 text-base font-semibold">Requirements</h3>
+          <h3 className="mt-6 mb-1 text-sm font-semibold text-fg">
+            Requirements
+          </h3>
           {REQUIREMENT_CATEGORIES.map((category) => {
             const inCategory = currentCycle.requirements.filter(
               (r) => r.category === category,
@@ -160,8 +173,10 @@ export default async function ProgramDetailPage({
 
             return (
               <div key={category} className="mt-4">
-                <h4 className="text-sm font-semibold capitalize">{category}</h4>
-                <ul className="mt-1 space-y-1">
+                <h4 className="text-xs font-medium tracking-wide text-muted uppercase">
+                  {category}
+                </h4>
+                <ul className="mt-1 divide-y divide-line">
                   {inCategory.map((req) => {
                     const { value, claim } = resolveRequirementFact(
                       req,
@@ -170,15 +185,10 @@ export default async function ProgramDetailPage({
                     return (
                       <li
                         key={req.id}
-                        className="flex items-center gap-2 text-sm"
+                        className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 text-sm"
                       >
-                        <span>{req.label}</span>
-                        <FactValue
-                          value={value}
-                          claim={claim}
-                          now={now}
-                          staleAfterDays={STALE_AFTER_DAYS}
-                        />
+                        <span className="text-fg">{req.label}</span>
+                        <FactValue value={value} claim={claim} {...fact} />
                       </li>
                     );
                   })}
@@ -189,12 +199,12 @@ export default async function ProgramDetailPage({
 
           {currentCycle.prerequisites.length > 0 && (
             <>
-              <h3 className="mt-6 text-base font-semibold">
+              <h3 className="mt-6 mb-1 text-sm font-semibold text-fg">
                 Prerequisite courses
               </h3>
-              <ul className="mt-1 space-y-1">
+              <ul className="divide-y divide-line">
                 {currentCycle.prerequisites.map((prereq) => (
-                  <li key={prereq.id} className="text-sm">
+                  <li key={prereq.id} className="py-2 text-sm text-fg">
                     {prereq.subject}
                     {prereq.minCredits ? ` — ${prereq.minCredits} credits` : ""}
                     {prereq.labRequired ? " (lab required)" : ""}
@@ -203,33 +213,47 @@ export default async function ProgramDetailPage({
               </ul>
             </>
           )}
-        </section>
+        </Card>
       )}
 
       {detail.tuitionEstimates.length > 0 && (
-        <section className="mt-8">
-          <h2 className="text-lg font-semibold">Tuition</h2>
-          <ul className="mt-2 space-y-1 text-sm">
+        <Card className="p-5">
+          <h2 className="mb-3 text-base font-semibold text-fg">Tuition</h2>
+          <ul className="divide-y divide-line">
             {detail.tuitionEstimates.map((t) => (
-              <li key={t.id}>
-                {t.residency.replace("_", " ")}: $
-                {(t.amountCents / 100).toLocaleString()} (
-                {t.covers.replace("_", " ")}, {t.asOfYear})
+              <li
+                key={t.id}
+                className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2 text-sm"
+              >
+                <span className="text-fg capitalize">
+                  {t.residency.replace("_", " ")}
+                </span>
+                <FactCell
+                  variant="detail"
+                  value={formatUsdCents(t.amountCents)}
+                  claim={claimFor("tuition_estimates", t.id, "amount_cents")}
+                  {...fact}
+                />
+                <span className="text-xs text-subtle">
+                  {t.covers.replace("_", " ")} · {t.asOfYear}
+                </span>
               </li>
             ))}
           </ul>
-        </section>
+        </Card>
       )}
 
       {priorCycles.length > 0 && (
-        <section className="mt-8">
-          <h2 className="text-lg font-semibold">History</h2>
-          <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <Card className="p-5">
+          <h2 className="mb-3 text-base font-semibold text-fg">History</h2>
+          <ul className="flex flex-wrap gap-2">
             {priorCycles.map(({ cycle }) => (
-              <li key={cycle.id}>{cycle.cycleLabel}</li>
+              <li key={cycle.id}>
+                <Badge>{cycle.cycleLabel}</Badge>
+              </li>
             ))}
           </ul>
-        </section>
+        </Card>
       )}
     </div>
   );

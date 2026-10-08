@@ -8,6 +8,10 @@ import {
 } from "@/app/actions/saved";
 import { generateChecklistAction } from "@/app/actions/checklists";
 import { PRIORITIES } from "@/db/schema/personal";
+import { Button } from "./ui/Button";
+import { Card } from "./ui/Card";
+import { Select } from "./ui/Select";
+import { Textarea } from "./ui/Textarea";
 
 type SavedProgramState = {
   id: number;
@@ -32,54 +36,51 @@ export function SaveProgramControl({
 
   if (!savedProgram) {
     return (
-      <button
-        type="button"
+      <Button
+        variant="primary"
         disabled={isPending}
         onClick={() =>
           startTransition(() => {
             void saveProgramAction(programId, schoolSlug, programSlug);
           })
         }
-        className="mt-2 rounded bg-zinc-900 px-3 py-1.5 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
       >
         Save program
-      </button>
+      </Button>
     );
   }
 
   return (
-    <div className="mt-2 flex flex-col gap-2 rounded border border-zinc-200 p-3 text-sm dark:border-zinc-800">
+    <Card className="flex flex-col gap-3 p-3 text-sm">
       <div className="flex flex-wrap items-center gap-2">
-        <button
-          type="button"
+        <Button
+          size="sm"
           disabled={isPending}
           onClick={() =>
             startTransition(() => {
               void unsaveProgramAction(programId, schoolSlug, programSlug);
             })
           }
-          className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700"
         >
           Unsave
-        </button>
+        </Button>
 
-        <button
-          type="button"
+        <Button
+          size="sm"
           disabled={isPending || hasChecklist}
           onClick={() =>
             startTransition(() => {
               void generateChecklistAction(savedProgram.id);
             })
           }
-          className="rounded border border-zinc-300 px-2 py-1 text-xs disabled:opacity-50 dark:border-zinc-700"
         >
           {hasChecklist ? "Checklist generated" : "Generate checklist"}
-        </button>
+        </Button>
 
         {hasChecklist && (
           <a
             href="/my"
-            className="text-xs text-blue-600 underline dark:text-blue-400"
+            className="text-xs text-accent hover:text-accent-strong hover:underline"
           >
             View on My Applications
           </a>
@@ -95,12 +96,12 @@ export function SaveProgramControl({
         )}
         className="flex flex-wrap items-center gap-2"
       >
-        <label className="flex items-center gap-1 text-xs">
+        <label className="flex items-center gap-2 text-xs text-muted">
           Priority
-          <select
+          <Select
             name="priority"
             defaultValue={savedProgram.priority ?? ""}
-            className="rounded border border-zinc-300 px-1 py-0.5 dark:border-zinc-700 dark:bg-zinc-900"
+            compact
           >
             <option value="">unset</option>
             {PRIORITIES.map((p) => (
@@ -108,22 +109,20 @@ export function SaveProgramControl({
                 {p}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
-        <textarea
+        <Textarea
           name="personalNote"
           defaultValue={savedProgram.personalNote ?? ""}
           placeholder="Personal note"
           rows={2}
-          className="w-full rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+          compact
+          className="w-full"
         />
-        <button
-          type="submit"
-          className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700"
-        >
+        <Button type="submit" size="sm">
           Save note
-        </button>
+        </Button>
       </form>
-    </div>
+    </Card>
   );
 }

@@ -1,5 +1,4 @@
 // src/app/admin/schools/[schoolSlug]/[programSlug]/[cycleLabel]/page.tsx
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { and, asc, eq, ne } from "drizzle-orm";
 import { db } from "@/db/client";
@@ -19,6 +18,12 @@ import {
   DEADLINE_TYPES,
   REQUIREMENT_CATEGORIES,
 } from "@/db/schema/canonical";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { Card } from "@/components/ui/Card";
+import { Breadcrumb } from "@/components/shell/Breadcrumb";
+import { PageHeader } from "@/components/shell/PageHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -82,15 +87,11 @@ export default async function AdminCyclePage({
 
   return (
     <div>
-      <p className="text-sm">
-        <Link
-          href={`/admin/schools/${school.slug}/${program.slug}`}
-          className="underline"
-        >
-          {program.name}
-        </Link>
-      </p>
-      <h1 className="mt-1 text-2xl font-semibold">{cycle.cycleLabel}</h1>
+      <Breadcrumb
+        href={`/admin/schools/${school.slug}/${program.slug}`}
+        label={program.name}
+      />
+      <PageHeader title={cycle.cycleLabel} />
 
       <form
         action={updateCycleAction.bind(
@@ -99,82 +100,65 @@ export default async function AdminCyclePage({
           school.slug,
           program.slug,
         )}
-        className="mt-4 flex flex-wrap items-end gap-2"
+        className="flex flex-wrap items-end gap-3 rounded-lg border border-line bg-surface p-4"
       >
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           cycle label
-          <input
+          <Input
             type="text"
             name="cycleLabel"
             defaultValue={cycle.cycleLabel}
             required
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           entry year
-          <input
+          <Input
             type="number"
             name="entryYear"
             defaultValue={cycle.entryYear ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           deadline
-          <input
+          <Input
             type="date"
             name="deadlineDate"
             defaultValue={cycle.deadlineDate ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           deadline type
-          <select
-            name="deadlineType"
-            defaultValue={cycle.deadlineType ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          >
+          <Select name="deadlineType" defaultValue={cycle.deadlineType ?? ""}>
             <option value="">—</option>
             {DEADLINE_TYPES.map((v) => (
               <option key={v} value={v}>
                 {v}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           CAS service
-          <select
-            name="casService"
-            defaultValue={cycle.casService ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          >
+          <Select name="casService" defaultValue={cycle.casService ?? ""}>
             <option value="">—</option>
             {CAS_SERVICES.map((v) => (
               <option key={v} value={v}>
                 {v}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <Button type="submit" variant="primary">
           Save
-        </button>
+        </Button>
       </form>
 
       {cycle.status !== "archived" && (
-        <form action={archiveCycleAction.bind(null, cycle.id)} className="mt-2">
-          <button
-            type="submit"
-            className="text-xs text-red-600 underline dark:text-red-400"
-          >
+        <form action={archiveCycleAction.bind(null, cycle.id)} className="mt-3">
+          <Button type="submit" variant="danger" size="sm">
             Archive cycle
-          </button>
+          </Button>
         </form>
       )}
 
@@ -184,7 +168,9 @@ export default async function AdminCyclePage({
         claims={cycleClaims}
       />
 
-      <h2 className="mt-6 text-sm font-semibold">Requirements</h2>
+      <h2 className="mt-8 mb-2 text-base font-semibold text-fg">
+        Requirements
+      </h2>
       <ul className="mt-2 space-y-4">
         {requirements.map((req) => {
           // Show every claim on the requirement: legacy/lead imports key
@@ -194,180 +180,145 @@ export default async function AdminCyclePage({
             reqClaims.find((c) => c.fieldKey === key),
           );
           return (
-            <li
-              key={req.id}
-              className="rounded border border-zinc-200 p-3 dark:border-zinc-800"
-            >
-              <form
-                action={updateRequirementAction.bind(null, req.id)}
-                className="flex flex-wrap items-end gap-2"
-              >
-                <select
-                  name="category"
-                  defaultValue={req.category}
-                  required
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+            <li key={req.id}>
+              <Card className="p-4">
+                <form
+                  action={updateRequirementAction.bind(null, req.id)}
+                  className="flex flex-wrap items-end gap-2"
                 >
-                  {REQUIREMENT_CATEGORIES.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="text"
-                  name="label"
-                  defaultValue={req.label}
-                  required
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
+                  <Select
+                    name="category"
+                    defaultValue={req.category}
+                    required
+                    compact
+                  >
+                    {REQUIREMENT_CATEGORIES.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </Select>
+                  <Input
+                    type="text"
+                    name="label"
+                    defaultValue={req.label}
+                    required
+                    compact
+                  />
+                  <Input
+                    type="text"
+                    name="valueText"
+                    placeholder="Text value"
+                    defaultValue={req.valueText ?? ""}
+                    compact
+                  />
+                  <Input
+                    type="text"
+                    name="valueNumber"
+                    placeholder="Numeric value"
+                    defaultValue={req.valueNumber ?? ""}
+                    compact
+                  />
+                  <Select
+                    name="valueBool"
+                    defaultValue={
+                      req.valueBool === null
+                        ? ""
+                        : req.valueBool
+                          ? "true"
+                          : "false"
+                    }
+                    compact
+                  >
+                    <option value="">bool —</option>
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                  </Select>
+                  <Input
+                    type="date"
+                    name="valueDate"
+                    defaultValue={req.valueDate ?? ""}
+                    compact
+                  />
+                  <Select
+                    name="isRequired"
+                    defaultValue={
+                      req.isRequired === null
+                        ? ""
+                        : req.isRequired
+                          ? "true"
+                          : "false"
+                    }
+                    compact
+                  >
+                    <option value="">required? unknown</option>
+                    <option value="true">required</option>
+                    <option value="false">not required</option>
+                  </Select>
+                  <Button type="submit" variant="primary" size="sm">
+                    Save
+                  </Button>
+                </form>
+                <form
+                  action={archiveRequirementAction.bind(null, req.id)}
+                  className="mt-1"
+                >
+                  <Button type="submit" variant="danger" size="sm">
+                    Archive requirement
+                  </Button>
+                </form>
+                <p className="mt-2 text-xs text-muted">
+                  {backing.claim
+                    ? `value backed by claim: ${backing.fieldKey}`
+                    : "no claim backs this value yet"}
+                </p>
+                <ClaimsPanel
+                  subjectTable="requirements"
+                  subjectId={req.id}
+                  claims={reqClaims}
                 />
-                <input
-                  type="text"
-                  name="valueText"
-                  placeholder="Text value"
-                  defaultValue={req.valueText ?? ""}
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                />
-                <input
-                  type="text"
-                  name="valueNumber"
-                  placeholder="Numeric value"
-                  defaultValue={req.valueNumber ?? ""}
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                />
-                <select
-                  name="valueBool"
-                  defaultValue={
-                    req.valueBool === null
-                      ? ""
-                      : req.valueBool
-                        ? "true"
-                        : "false"
-                  }
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                >
-                  <option value="">bool —</option>
-                  <option value="true">true</option>
-                  <option value="false">false</option>
-                </select>
-                <input
-                  type="date"
-                  name="valueDate"
-                  defaultValue={req.valueDate ?? ""}
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                />
-                <select
-                  name="isRequired"
-                  defaultValue={
-                    req.isRequired === null
-                      ? ""
-                      : req.isRequired
-                        ? "true"
-                        : "false"
-                  }
-                  className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-                >
-                  <option value="">required? unknown</option>
-                  <option value="true">required</option>
-                  <option value="false">not required</option>
-                </select>
-                <button
-                  type="submit"
-                  className="rounded bg-zinc-900 px-2 py-1 text-xs text-white dark:bg-zinc-100 dark:text-zinc-900"
-                >
-                  Save
-                </button>
-              </form>
-              <form
-                action={archiveRequirementAction.bind(null, req.id)}
-                className="mt-1"
-              >
-                <button
-                  type="submit"
-                  className="text-xs text-red-600 underline dark:text-red-400"
-                >
-                  Archive requirement
-                </button>
-              </form>
-              <p className="mt-1 text-xs text-zinc-500">
-                {backing.claim
-                  ? `value backed by claim: ${backing.fieldKey}`
-                  : "no claim backs this value yet"}
-              </p>
-              <ClaimsPanel
-                subjectTable="requirements"
-                subjectId={req.id}
-                claims={reqClaims}
-              />
+              </Card>
             </li>
           );
         })}
       </ul>
 
-      <h3 className="mt-4 text-xs font-semibold">Add a requirement</h3>
+      <h3 className="mt-6 mb-2 text-sm font-medium text-fg">
+        Add a requirement
+      </h3>
       <form
         action={createRequirementAction.bind(null, cycle.id)}
-        className="mt-2 flex flex-wrap gap-2"
+        className="flex flex-wrap gap-2 rounded-lg border border-line bg-surface p-4"
       >
-        <select
-          name="category"
-          required
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        >
+        <Select name="category" required>
           {REQUIREMENT_CATEGORIES.map((c) => (
             <option key={c} value={c}>
               {c}
             </option>
           ))}
-        </select>
-        <input
+        </Select>
+        <Input
           type="text"
           name="label"
           placeholder="Label, e.g. Minimum overall GPA"
           required
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
         />
-        <input
-          type="text"
-          name="valueText"
-          placeholder="Text value"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="text"
-          name="valueNumber"
-          placeholder="Numeric value"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <select
-          name="valueBool"
-          defaultValue=""
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        >
+        <Input type="text" name="valueText" placeholder="Text value" />
+        <Input type="text" name="valueNumber" placeholder="Numeric value" />
+        <Select name="valueBool" defaultValue="">
           <option value="">bool —</option>
           <option value="true">true</option>
           <option value="false">false</option>
-        </select>
-        <input
-          type="date"
-          name="valueDate"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <select
-          name="isRequired"
-          defaultValue=""
-          className="rounded border border-zinc-300 px-2 py-1 text-xs dark:border-zinc-700 dark:bg-zinc-900"
-        >
+        </Select>
+        <Input type="date" name="valueDate" />
+        <Select name="isRequired" defaultValue="" compact>
           <option value="">required? unknown</option>
           <option value="true">required</option>
           <option value="false">not required</option>
-        </select>
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        </Select>
+        <Button type="submit" variant="primary">
           Add requirement
-        </button>
+        </Button>
       </form>
     </div>
   );

@@ -12,6 +12,12 @@ import {
   updateProgramAction,
 } from "@/app/actions/admin";
 import { CREDENTIALS, MODALITIES } from "@/db/schema/canonical";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { Card } from "@/components/ui/Card";
+import { Breadcrumb } from "@/components/shell/Breadcrumb";
+import { PageHeader } from "@/components/shell/PageHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -57,125 +63,96 @@ export default async function AdminProgramPage({
 
   return (
     <div>
-      <p className="text-sm">
-        <Link href={`/admin/schools/${school.slug}`} className="underline">
-          {school.name}
-        </Link>
-      </p>
-      <h1 className="mt-1 text-2xl font-semibold">{program.name}</h1>
+      <Breadcrumb href={`/admin/schools/${school.slug}`} label={school.name} />
+      <PageHeader title={program.name} />
 
       <form
         action={updateProgramAction.bind(null, program.id)}
-        className="mt-4 flex flex-wrap items-end gap-2"
+        className="flex flex-wrap items-end gap-3 rounded-lg border border-line bg-surface p-4"
       >
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           name
-          <input
-            type="text"
-            name="name"
-            defaultValue={program.name}
-            required
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          />
+          <Input type="text" name="name" defaultValue={program.name} required />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           director
-          <input
+          <Input
             type="text"
             name="directorName"
             defaultValue={program.directorName ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           credential
-          <select
-            name="credential"
-            defaultValue={program.credential ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          >
+          <Select name="credential" defaultValue={program.credential ?? ""}>
             <option value="">—</option>
             {CREDENTIALS.map((v) => (
               <option key={v} value={v}>
                 {v}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           modality
-          <select
-            name="modality"
-            defaultValue={program.modality ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-          >
+          <Select name="modality" defaultValue={program.modality ?? ""}>
             <option value="">—</option>
             {MODALITIES.map((v) => (
               <option key={v} value={v}>
                 {v}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           accreditation status
-          <input
+          <Input
             type="text"
             name="accreditationStatus"
             defaultValue={program.accreditationStatus ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           length (months)
-          <input
+          <Input
             type="number"
             name="programLengthMonths"
             min={1}
             step={1}
             defaultValue={program.programLengthMonths ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           class size
-          <input
+          <Input
             type="number"
             name="classSize"
             min={1}
             step={1}
             defaultValue={program.classSize ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <label className="flex flex-col text-xs">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           website
-          <input
+          <Input
             type="url"
             name="websiteUrl"
             defaultValue={program.websiteUrl ?? ""}
-            className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
           />
         </label>
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <Button type="submit" variant="primary">
           Save
-        </button>
+        </Button>
       </form>
 
       {program.status !== "archived" && (
         <form
           action={archiveProgramAction.bind(null, program.id)}
-          className="mt-2"
+          className="mt-3"
         >
-          <button
-            type="submit"
-            className="text-xs text-red-600 underline dark:text-red-400"
-          >
+          <Button type="submit" variant="danger" size="sm">
             Archive program
-          </button>
+          </Button>
         </form>
       )}
 
@@ -185,50 +162,34 @@ export default async function AdminProgramPage({
         claims={claims}
       />
 
-      <h2 className="mt-6 text-sm font-semibold">Cycles</h2>
-      <ul className="mt-2 space-y-1">
-        {cycles.map((cycle) => (
-          <li key={cycle.id}>
-            <Link
-              href={`/admin/schools/${school.slug}/${program.slug}/${encodeURIComponent(cycle.cycleLabel)}`}
-              className="hover:underline"
-            >
-              {cycle.cycleLabel}
-              {cycle.deadlineDate ? ` — due ${cycle.deadlineDate}` : ""}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h2 className="mt-8 mb-2 text-base font-semibold text-fg">Cycles</h2>
+      <Card className="px-4">
+        <ul className="divide-y divide-line">
+          {cycles.map((cycle) => (
+            <li key={cycle.id} className="py-2.5 text-sm">
+              <Link
+                href={`/admin/schools/${school.slug}/${program.slug}/${encodeURIComponent(cycle.cycleLabel)}`}
+                className="text-fg hover:text-accent-strong hover:underline"
+              >
+                {cycle.cycleLabel}
+                {cycle.deadlineDate ? ` — due ${cycle.deadlineDate}` : ""}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Card>
 
-      <h3 className="mt-4 text-xs font-semibold">Add a cycle</h3>
+      <h3 className="mt-6 mb-2 text-sm font-medium text-fg">Add a cycle</h3>
       <form
         action={createCycleAction.bind(null, program.id)}
-        className="mt-2 flex flex-wrap gap-2"
+        className="flex flex-wrap gap-2 rounded-lg border border-line bg-surface p-4"
       >
-        <input
-          type="text"
-          name="cycleLabel"
-          placeholder="2026-27"
-          required
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="number"
-          name="entryYear"
-          placeholder="Entry year"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <input
-          type="date"
-          name="deadlineDate"
-          className="rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <Input type="text" name="cycleLabel" placeholder="2026-27" required />
+        <Input type="number" name="entryYear" placeholder="Entry year" />
+        <Input type="date" name="deadlineDate" />
+        <Button type="submit" variant="primary">
           Add cycle
-        </button>
+        </Button>
       </form>
     </div>
   );

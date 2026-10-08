@@ -22,18 +22,18 @@ export function FactValue({
 
   switch (state.kind) {
     case "not_researched":
-      return <span className="text-zinc-400">—</span>;
+      return <span className="text-subtle">—</span>;
     case "unknown":
       return (
-        <span className="text-amber-600 dark:text-amber-400">
+        <span className="text-warn">
           unknown
           {state.checkedAt ? ` — checked ${formatDate(state.checkedAt)}` : ""}
         </span>
       );
     case "not_published":
-      return <span className="text-zinc-500">not published</span>;
+      return <span className="text-muted">not published</span>;
     case "not_applicable":
-      return <span className="text-zinc-500">n/a</span>;
+      return <span className="text-muted">n/a</span>;
     case "known":
       return (
         <span className="inline-flex flex-wrap items-center gap-2">

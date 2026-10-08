@@ -1,4 +1,5 @@
 import type { Verification } from "@/lib/factState";
+import { Badge, type BadgeTone } from "./ui/Badge";
 
 const LABEL: Record<Verification, string> = {
   draft: "draft",
@@ -20,18 +21,12 @@ export function FreshnessPill({
   const treatAsStale =
     isStale || verification === "stale" || verification === "needs_review";
 
-  const colorClass =
+  const tone: BadgeTone =
     verification === "verified" && !isStale
-      ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+      ? "ok"
       : treatAsStale
-        ? "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200"
-        : "bg-zinc-100 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300";
+        ? "warn"
+        : "neutral";
 
-  return (
-    <span
-      className={`rounded-full px-2 py-0.5 text-xs font-medium ${colorClass}`}
-    >
-      {label}
-    </span>
-  );
+  return <Badge tone={tone}>{label}</Badge>;
 }

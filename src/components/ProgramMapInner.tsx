@@ -39,7 +39,7 @@ export function ProgramMapInner({ items }: { items: ProgramListItem[] }) {
 
   if (located.length === 0) {
     return (
-      <p className="mt-4 text-sm text-zinc-500">
+      <p className="text-sm text-muted">
         No located programs match this filter.
       </p>
     );
@@ -55,7 +55,7 @@ export function ProgramMapInner({ items }: { items: ProgramListItem[] }) {
       center={center}
       zoom={4}
       scrollWheelZoom={false}
-      className="mt-4 h-96 w-full rounded"
+      className="h-[32rem] w-full rounded-lg border border-line"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

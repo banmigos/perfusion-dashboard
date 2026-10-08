@@ -1,8 +1,39 @@
 import Link from "next/link";
 import { db } from "@/db/client";
 import { CREDENTIALS } from "@/db/schema/canonical";
-import { listPrograms, parseProgramListFilters } from "@/domain/programs";
+import {
+  getProgramDetail,
+  listPrograms,
+  parseProgramListFilters,
+} from "@/domain/programs";
 import { ProgramMap } from "@/components/ProgramMap";
+import { ProgramsTable } from "@/components/programs/ProgramsTable";
+import { PageHeader } from "@/components/shell/PageHeader";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { Input } from "@/components/ui/Input";
+import { Select } from "@/components/ui/Select";
+import { cn } from "@/components/ui/cn";
+import { STALE_AFTER_DAYS } from "@/lib/freshness";
+import { buildProgramRow, type ProgramTableRow } from "@/lib/programRows";
+
+type View = "table" | "map";
+
+function parseView(raw: string | string[] | undefined): View {
+  return raw === "map" ? "map" : "table";
+}
+
+function viewHref(
+  view: View,
+  filters: { q?: string; credential?: string },
+): string {
+  const params = new URLSearchParams();
+  if (filters.q) params.set("q", filters.q);
+  if (filters.credential) params.set("credential", filters.credential);
+  if (view === "map") params.set("view", "map");
+  const qs = params.toString();
+  return qs ? `/programs?${qs}` : "/programs";
+}
 
 export default async function ProgramsPage({
   searchParams,
@@ -11,72 +42,100 @@ export default async function ProgramsPage({
 }) {
   const rawParams = await searchParams;
   const filters = parseProgramListFilters(rawParams);
+  const view = parseView(rawParams.view);
   const items = listPrograms(db, filters);
+
+  const now = new Date();
+  const rows: ProgramTableRow[] =
+    view === "table"
+      ? items.flatMap((item) => {
+          const detail = getProgramDetail(
+            db,
+            item.school.slug,
+            item.program.slug,
+          );
+          return detail ? [buildProgramRow(detail)] : [];
+        })
+      : [];
+
+  const toggle = (target: View, label: string) => (
+    <Link
+      href={viewHref(target, filters)}
+      aria-current={view === target ? "page" : undefined}
+      className={cn(
+        "rounded px-3 py-1 text-sm font-medium transition-colors",
+        view === target
+          ? "bg-accent-soft text-accent-strong"
+          : "text-muted hover:text-fg",
+      )}
+    >
+      {label}
+    </Link>
+  );
+
+  const unlocated = items.filter(
+    (i) => i.program.latitude === null || i.program.longitude === null,
+  ).length;
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">Programs</h1>
+      <PageHeader
+        title="Programs"
+        description={`${items.length} ${items.length === 1 ? "program" : "programs"}`}
+        actions={
+          <div className="flex rounded-md border border-line bg-surface p-0.5">
+            {toggle("table", "Table")}
+            {toggle("map", "Map")}
+          </div>
+        }
+      />
 
-      <form method="get" className="mt-4 flex flex-wrap items-end gap-4">
-        <label className="flex flex-col text-sm">
+      <form method="get" className="mb-6 flex flex-wrap items-end gap-4">
+        {view === "map" && <input type="hidden" name="view" value="map" />}
+        <label className="flex flex-col gap-1 text-xs text-muted">
           Search
-          <input
+          <Input
             type="text"
             name="q"
             defaultValue={filters.q ?? ""}
             placeholder="School or city"
-            className="mt-1 rounded border border-zinc-300 px-2 py-1 dark:border-zinc-700 dark:bg-zinc-900"
+            className="w-56"
           />
         </label>
-        <label className="flex flex-col text-sm">
+        <label className="flex flex-col gap-1 text-xs text-muted">
           Credential
-          <select
-            name="credential"
-            defaultValue={filters.credential ?? ""}
-            className="mt-1 rounded border border-zinc-300 px-2 py-1 dark:border-zinc-700 dark:bg-zinc-900"
-          >
+          <Select name="credential" defaultValue={filters.credential ?? ""}>
             <option value="">All</option>
             {CREDENTIALS.map((credential) => (
               <option key={credential} value={credential}>
                 {credential}
               </option>
             ))}
-          </select>
+          </Select>
         </label>
-        <button
-          type="submit"
-          className="rounded bg-zinc-900 px-3 py-1.5 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
+        <Button type="submit" variant="primary">
           Filter
-        </button>
+        </Button>
       </form>
 
-      <ProgramMap items={items} />
-
       {items.length === 0 ? (
-        <p className="mt-6 text-sm text-zinc-600 dark:text-zinc-400">
-          No programs match.
-        </p>
+        <Card className="p-6 text-sm text-muted">No programs match.</Card>
+      ) : view === "map" ? (
+        <div>
+          <ProgramMap items={items} />
+          {unlocated > 0 && (
+            <p className="mt-3 text-xs text-subtle">
+              {unlocated} {unlocated === 1 ? "program has" : "programs have"} no
+              coordinates and {unlocated === 1 ? "is" : "are"} not shown.
+            </p>
+          )}
+        </div>
       ) : (
-        <ul className="mt-6 divide-y divide-zinc-200 dark:divide-zinc-800">
-          {items.map((item) => (
-            <li
-              key={`${item.school.slug}/${item.program.slug}`}
-              className="py-3"
-            >
-              <Link
-                href={`/programs/${item.school.slug}/${item.program.slug}`}
-                className="font-medium hover:underline"
-              >
-                {item.school.name} — {item.program.name}
-              </Link>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                {item.school.city}, {item.school.state} ·{" "}
-                {item.program.credential ?? "credential unknown"}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <ProgramsTable
+          rows={rows}
+          now={now}
+          staleAfterDays={STALE_AFTER_DAYS}
+        />
       )}
     </div>
   );

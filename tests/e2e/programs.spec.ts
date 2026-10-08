@@ -13,10 +13,12 @@ test("directory search finds a program by name", async ({ page }) => {
 test("credential filter narrows results", async ({ page }) => {
   await page.goto("/programs?credential=MS");
 
-  const links = page.getByRole("link");
-  await expect(links.first()).toBeVisible();
-  // Every visible result row's credential text should read "MS".
-  await expect(page.getByText("· MS").first()).toBeVisible();
+  const cells = page.locator('td[data-col="credential"]');
+  await expect(cells.first()).toBeVisible();
+  // Every visible result row's credential cell should read "MS".
+  for (const cell of await cells.all()) {
+    await expect(cell).toContainText("MS");
+  }
 });
 
 test("detail page shows a known fact with source, and a non-known fact distinctly", async ({
@@ -49,8 +51,29 @@ test("detail page shows a known fact with source, and a non-known fact distinctl
   await expect(gpaRow.getByRole("link")).toHaveCount(0);
 });
 
-test("map renders and a marker links to its detail page", async ({ page }) => {
+test("programs default to a table with the research columns", async ({
+  page,
+}) => {
   await page.goto("/programs");
+
+  for (const name of [
+    "School",
+    "Location",
+    "Credential",
+    "Length",
+    "Deadline",
+    "GPA",
+    "Tuition",
+  ]) {
+    await expect(page.getByRole("columnheader", { name })).toBeVisible();
+  }
+  await expect(page.locator(".leaflet-container")).toHaveCount(0);
+});
+
+test("map renders from the map view toggle", async ({ page }) => {
+  await page.goto("/programs");
+  await page.getByRole("link", { name: "Map" }).click();
+  await expect(page).toHaveURL(/view=map/);
 
   await expect(page.locator(".leaflet-container")).toBeVisible();
   await expect(page.locator(".leaflet-marker-icon").first()).toBeVisible();

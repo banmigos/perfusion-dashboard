@@ -101,7 +101,7 @@
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
-                  "note": "legacy 2025-26 dashboard said 60650; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                  "note": "2025-26 per-semester rates converted to program totals (owner-authorized); quote unverified, see tuition rows."
                 }
               },
               {
@@ -115,6 +115,36 @@
                 }
               }
             ]
+          }
+        ],
+        "tuition": [
+          {
+            "residency": "in_state",
+            "covers": "total_program",
+            "amount_cents": 2827500,
+            "currency": "USD",
+            "as_of_year": 2025,
+            "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. 2025-26 full-time graduate semester rate x 5 semesters (curriculum is five enrollment periods of 15+ credits). Tuition only; college, activity, technology and health fees are separate. UNVERIFIED QUOTE: the page is behind a Cloudflare challenge from this environment, so the quote comes from the owner's research file and was not checked against the live page. NY resident $5,655 x 5 = $28,275.",
+            "citation": {
+              "source_url": "https://www.upstate.edu/currentstudents/financial_resources/accounts/rates.php",
+              "checked_at": "2026-10-12",
+              "quote": "Graduate | $5,655.00 | $12,870.00",
+              "source_type": "program_site"
+            }
+          },
+          {
+            "residency": "out_of_state",
+            "covers": "total_program",
+            "amount_cents": 6435000,
+            "currency": "USD",
+            "as_of_year": 2025,
+            "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. 2025-26 full-time graduate semester rate x 5 semesters (curriculum is five enrollment periods of 15+ credits). Tuition only; college, activity, technology and health fees are separate. UNVERIFIED QUOTE: the page is behind a Cloudflare challenge from this environment, so the quote comes from the owner's research file and was not checked against the live page. Non-resident $12,870 x 5 = $64,350.",
+            "citation": {
+              "source_url": "https://www.upstate.edu/currentstudents/financial_resources/accounts/rates.php",
+              "checked_at": "2026-10-12",
+              "quote": "Graduate | $5,655.00 | $12,870.00",
+              "source_type": "program_site"
+            }
           }
         ]
       }

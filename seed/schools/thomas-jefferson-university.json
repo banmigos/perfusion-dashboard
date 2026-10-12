@@ -100,7 +100,7 @@
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
-                  "note": "legacy 2025-26 dashboard said 84000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                  "note": "Per-year Direct Entry tuition recorded in the tuition row; the Post-Professional track is $1,263 per credit and is a different pathway."
                 }
               },
               {
@@ -114,6 +114,22 @@
                 }
               }
             ]
+          }
+        ],
+        "tuition": [
+          {
+            "residency": "flat",
+            "covers": "per_year",
+            "amount_cents": 4679000,
+            "currency": "USD",
+            "as_of_year": 2026,
+            "fees_note": "2026-27 Direct Entry rate for new students; returning students $46,340. Listed separately: IT fee $664 and library fee $477 per year.",
+            "citation": {
+              "source_url": "https://www.jefferson.edu/tuition-and-financial-aid/tuition-information.html",
+              "checked_at": "2026-10-12",
+              "quote": "Master of Science in Cardiovascular Perfusion – Direct Entry New students $46,790",
+              "source_type": "program_site"
+            }
           }
         ]
       }

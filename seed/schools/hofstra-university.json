@@ -100,10 +100,26 @@
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
-                  "note": "Official pages state only that tuition is the graduate per-credit rate (62 credits); the bursar page lists a general graduate rate that is not named for the perfusion program, so no figure is recorded. Confirm with the program or Student Financial Services."
+                  "note": "Per-credit rate recorded in the tuition row (owner-approved; applies by exclusion from the Zarb and Special Programs rates)."
                 }
               }
             ]
+          }
+        ],
+        "tuition": [
+          {
+            "residency": "flat",
+            "covers": "per_credit",
+            "amount_cents": 182600,
+            "currency": "USD",
+            "as_of_year": 2026,
+            "fees_note": "2026-27 general graduate rate. Applies to the perfusion program by exclusion, not by name: the page applies it to all graduate programs except the Zarb School of Business and the listed Special Programs, and perfusion appears in neither (the word does not occur on the page). The program is 62 credits per the program FAQ; total and fees not stated.",
+            "citation": {
+              "source_url": "https://www.hofstra.edu/campus-life/student-services-here-to-help/student-financial-services/bursar/tuition-fees/",
+              "checked_at": "2026-10-12",
+              "quote": "Graduate, 200-level and above courses All graduate programs except those in the Zarb School of Business and Special Programs listed below. $1,826.00 per credit hour",
+              "source_type": "program_site"
+            }
           }
         ]
       }

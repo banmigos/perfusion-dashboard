@@ -56,6 +56,17 @@
             "state": "unknown",
             "value": null,
             "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "accreditation_status": {
+            "state": "known",
+            "value": "candidacy",
+            "note": "Accreditation not confirmed; verify CAAHEP/board eligibility before applying.",
+            "citation": {
+              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
+              "checked_at": "2026-10-12",
+              "quote": "is currently in Candidacy Status with the Accreditation Committee for Perfusion Education (AC-PE)",
+              "source_type": "program_site"
+            }
           }
         },
         "cycles": [
@@ -98,7 +109,7 @@
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
-                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                  "note": "Program page lists only non-tuition costs (books, BLS, ACLS, scrubs, parking) and points to the VCU Bulletin for tuition; not confirmed as unpublished, so unknown."
                 }
               }
             ]

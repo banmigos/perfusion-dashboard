@@ -109,6 +109,22 @@
               }
             ]
           }
+        ],
+        "tuition": [
+          {
+            "residency": "flat",
+            "covers": "per_credit",
+            "amount_cents": 253900,
+            "currency": "USD",
+            "as_of_year": 2026,
+            "fees_note": "School year 2026-2027; tuition cost increases annually.",
+            "citation": {
+              "source_url": "https://keck.usc.edu/perfusion-sciences-program/financial-aid/",
+              "checked_at": "2026-10-12",
+              "quote": "$2,539 per credit",
+              "source_type": "program_site"
+            }
+          }
         ]
       }
     ]

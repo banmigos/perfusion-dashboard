@@ -41,9 +41,16 @@
             }
           },
           "program_length_months": {
-            "state": "unknown",
-            "value": null,
-            "note": "not in the legacy 2025-26 dashboard; perfusionprep.com (captured 2026-10) said \"5 sem / 2 yr\""
+            "state": "known",
+            "value": 24,
+            "note": "Page states \"2-year\"/\"two-year\", not months; 24 months is the owner-approved conversion.",
+            "citation": {
+              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
+              "checked_at": "2026-10-12",
+              "quote": "full-time, two-year program",
+              "source_type": "program_site"
+            },
+            "confidence": "medium"
           },
           "class_size": {
             "state": "unknown",

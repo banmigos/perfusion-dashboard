@@ -41,9 +41,15 @@
             }
           },
           "program_length_months": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"24 mo\""
+            "state": "known",
+            "value": 21,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"24 mo\"",
+            "citation": {
+              "source_url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
+              "checked_at": "2026-10-12",
+              "quote": "It is a full-time 21-month program, a total of 62 credits.",
+              "source_type": "program_site"
+            }
           },
           "class_size": {
             "state": "unknown",

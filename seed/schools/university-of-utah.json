@@ -41,9 +41,15 @@
             }
           },
           "program_length_months": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) listed no value"
+            "state": "known",
+            "value": 24,
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) listed no value",
+            "citation": {
+              "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies",
+              "checked_at": "2026-10-12",
+              "quote": "24-month (6-semester), post-baccalaureate degree",
+              "source_type": "program_site"
+            }
           },
           "class_size": {
             "state": "unknown",

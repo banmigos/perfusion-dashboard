@@ -60,6 +60,11 @@
                 "state": "unknown",
                 "value": null,
                 "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Rolling\"; neither is confirmed for the 2026-27 cycle"
+              },
+              "deadline_type": {
+                "state": "unknown",
+                "value": null,
+                "note": "Owner reports this program is closed; kept as a historical record, not deleted. No official source confirming closure has been captured."
               }
             },
             "requirements": [

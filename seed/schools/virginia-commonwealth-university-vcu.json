@@ -23,48 +23,72 @@
           "credential": {
             "state": "known",
             "value": "MS",
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\"",
             "citation": {
-              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-              "checked_at": "2026-10-06",
+              "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/",
+              "checked_at": "2026-10-13",
+              "quote": "Cardiovascular Perfusion, Master of Science (M.S.)",
               "source_type": "program_site"
             }
           },
           "website_url": {
             "state": "known",
-            "value": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"https://nrsa.chp.vcu.edu/programs/perfusion/\"",
+            "value": "https://go.vcu.edu/perfusion",
             "citation": {
-              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-              "checked_at": "2026-10-06",
+              "source_url": "https://go.vcu.edu/perfusion",
+              "checked_at": "2026-10-13",
+              "quote": "Master of Science in Cardiovascular Perfusion",
               "source_type": "program_site"
             }
           },
           "program_length_months": {
             "state": "known",
             "value": 24,
-            "note": "Page states \"2-year\"/\"two-year\", not months; 24 months is the owner-approved conversion.",
             "citation": {
-              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-              "checked_at": "2026-10-12",
-              "quote": "full-time, two-year program",
+              "source_url": "https://www.vcuhealth.org/news/training-the-next-generation-of-cardiac-perfusionists-at-vcu/",
+              "checked_at": "2026-10-13",
+              "quote": "Through this two year program, students will learn to manage life support interventions used in the care of adults and children undergoing cardiac surgery.",
               "source_type": "program_site"
             },
+            "note": "Page states \"2-year\"/\"two-year\", not months; 24 months is the owner-approved conversion.",
             "confidence": "medium"
           },
           "class_size": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "known",
+            "value": 10,
+            "citation": {
+              "source_url": "https://www.vcuhealth.org/news/vcu-to-offer-virginias-first-graduate-program-in-key-cardiac-specialty/",
+              "checked_at": "2026-10-13",
+              "quote": "VCU will enroll its first cohort of 10 students in early 2026, with future cohorts expanding to 12.",
+              "source_type": "program_site"
+            }
           },
           "accreditation_status": {
             "state": "known",
-            "value": "candidacy",
-            "note": "Accreditation not confirmed; verify CAAHEP/board eligibility before applying.",
+            "value": "Candidacy",
             "citation": {
-              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-              "checked_at": "2026-10-12",
-              "quote": "is currently in Candidacy Status with the Accreditation Committee for Perfusion Education (AC-PE)",
+              "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
+              "checked_at": "2026-10-13",
+              "quote": "The programs below hold Candidacy status through the AC-PE:\nVirginia Commonwealth University\n1200 West Broad St., Richmond, VA, 23219",
+              "source_type": "other"
+            }
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Keith Pelletier",
+            "citation": {
+              "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/cardio-perfusion-ms.pdf",
+              "checked_at": "2026-10-13",
+              "quote": "Keith Pelletier, Ph.D., MBA, MHS, CCP\nProgram director",
+              "source_type": "program_site"
+            }
+          },
+          "modality": {
+            "state": "known",
+            "value": "in_person",
+            "citation": {
+              "source_url": "https://bov.vcu.edu/media/bov/assets/pdfs/agendas/academic-and-health-affairs-committee/AHACMarch21,2025-OpenSession.pdf",
+              "checked_at": "2026-10-13",
+              "quote": "The proposed program will be offered in a face-to-face delivery format.",
               "source_type": "program_site"
             }
           }

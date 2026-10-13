@@ -23,38 +23,72 @@
           "credential": {
             "state": "known",
             "value": "MS",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\"",
             "citation": {
-              "source_url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
-              "checked_at": "2026-08-25",
+              "source_url": "https://www.hofstra.edu/nursing-physician-assistant/ms-cardiovascular-perfusion.html",
+              "checked_at": "2026-10-13",
+              "quote": "Cardiovascular Sciences and Perfusion Medicine, MS",
               "source_type": "program_site"
             }
           },
           "website_url": {
             "state": "known",
-            "value": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html\"; perfusionprep.com (captured 2026-10) said \"https://hofstra.edu/\"",
+            "value": "https://www.hofstra.edu/nursing-physician-assistant/ms-cardiovascular-perfusion.html",
             "citation": {
-              "source_url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
-              "checked_at": "2026-08-25",
+              "source_url": "https://www.hofstra.edu/nursing-physician-assistant/ms-cardiovascular-perfusion.html",
+              "checked_at": "2026-10-13",
+              "quote": "Cardiovascular Sciences and Perfusion Medicine, MS",
               "source_type": "program_site"
             }
           },
           "program_length_months": {
             "state": "known",
             "value": 21,
-            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"24 mo\"",
             "citation": {
               "source_url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-13",
               "quote": "It is a full-time 21-month program, a total of 62 credits.",
               "source_type": "program_site"
             }
           },
           "class_size": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard said 12; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "known",
+            "value": 12,
+            "citation": {
+              "source_url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
+              "checked_at": "2026-10-13",
+              "quote": "The program accepts 12 students each year.",
+              "source_type": "program_site"
+            }
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Edward Delaney",
+            "citation": {
+              "source_url": "https://news.hofstra.edu/2026/03/02/hofstra-students-share-virtual-reality-research-at-national-perfusion-meeting/",
+              "checked_at": "2026-10-13",
+              "quote": "Edward Delaney, assistant professor of cardiovascular sciences and perfusion medicine and graduate program director",
+              "source_type": "program_site"
+            }
+          },
+          "modality": {
+            "state": "known",
+            "value": "in_person",
+            "citation": {
+              "source_url": "https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html",
+              "checked_at": "2026-10-13",
+              "quote": "It is a full-time 21-month program, a total of 62 credits.",
+              "source_type": "program_site"
+            }
+          },
+          "accreditation_status": {
+            "state": "known",
+            "value": "Accredited",
+            "citation": {
+              "source_url": "https://www.hofstra.edu/nursing-physician-assistant/ms-cardiovascular-perfusion.html",
+              "checked_at": "2026-10-13",
+              "quote": "The Program is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP), 25400 US Highway 19 North, Suite 158, Clearwater, FL; 727-210-2350; https://caahep.org.",
+              "source_type": "program_site"
+            }
           }
         },
         "legacy_key": "Hofstra University",

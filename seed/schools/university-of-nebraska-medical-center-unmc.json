@@ -23,38 +23,72 @@
           "credential": {
             "state": "known",
             "value": "MPS",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MPS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion Science\"",
             "citation": {
-              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
-              "checked_at": "2026-08-25",
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/index.html",
+              "checked_at": "2026-10-13",
+              "quote": "Degree: Master of Perfusion Science",
               "source_type": "program_site"
             }
           },
           "website_url": {
             "state": "known",
-            "value": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html\"; perfusionprep.com (captured 2026-10) said \"https://unmc.edu/\"",
+            "value": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/index.html",
             "citation": {
-              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
-              "checked_at": "2026-08-25",
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/index.html",
+              "checked_at": "2026-10-13",
+              "quote": "Clinical Perfusion",
               "source_type": "program_site"
             }
           },
           "program_length_months": {
             "state": "known",
             "value": 21,
-            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\"",
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/index.html",
-              "checked_at": "2026-10-12",
-              "quote": "Duration 21 months (5 semesters)",
+              "checked_at": "2026-10-13",
+              "quote": "Duration\n21 months (5 semesters)",
               "source_type": "program_site"
             }
           },
           "class_size": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "known",
+            "value": 22,
+            "citation": {
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/index.html",
+              "checked_at": "2026-10-13",
+              "quote": "Clinical Perfusion\nDegree: Master of Perfusion Science | Length: 21 months (5 semesters) |\nProgram Start: Fall semester |\nClass Size: 22 |\nLocation: Omaha",
+              "source_type": "program_site"
+            }
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Scott Sanderson",
+            "citation": {
+              "source_url": "https://www.unmc.edu/alliedhealth/faculty/cpe.html",
+              "checked_at": "2026-10-13",
+              "quote": "Scott Sanderson, MPS, CCP, LP\nProgram Director & Staff Perfusionist\nAssociate Professor (Adjunct)",
+              "source_type": "program_site"
+            }
+          },
+          "modality": {
+            "state": "known",
+            "value": "in_person",
+            "citation": {
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/mpsdao/faqs.html",
+              "checked_at": "2026-10-13",
+              "quote": "The program recognizes that it is difficult, and most of the time impossible, for working Perfusionists to attend on-campus traditional programs.",
+              "source_type": "program_site"
+            }
+          },
+          "accreditation_status": {
+            "state": "known",
+            "value": "Accredited",
+            "citation": {
+              "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/accreditation.html",
+              "checked_at": "2026-10-13",
+              "quote": "The UNMC Clinical Perfusion Education Program is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee for Perfusion Education (AC-PE).",
+              "source_type": "program_site"
+            }
           }
         },
         "legacy_key": "University of Nebraska Medical Center (UNMC)",

@@ -23,39 +23,72 @@
           "credential": {
             "state": "known",
             "value": "MS",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\"",
             "citation": {
               "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-08-25",
+              "checked_at": "2026-10-13",
+              "quote": "MS in Cardiovascular Perfusion",
               "source_type": "program_site"
             }
           },
           "website_url": {
             "state": "known",
             "value": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"; perfusionprep.com (captured 2026-10) said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"",
             "citation": {
               "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-08-25",
+              "checked_at": "2026-10-13",
+              "quote": "MS in Cardiovascular Perfusion",
               "source_type": "program_site"
             }
           },
           "program_length_months": {
             "state": "known",
             "value": 20,
-            "note": "Page states a minimum (\"as few as\"), not a fixed length.",
             "citation": {
               "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-12",
-              "quote": "As few as 20 months",
+              "checked_at": "2026-10-13",
+              "quote": "Time to degree:\n\nAs few as 20 months",
               "source_type": "program_site"
-            },
-            "confidence": "low"
+            }
           },
           "class_size": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "known",
+            "value": 15,
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/biology-major/",
+              "checked_at": "2026-10-13",
+              "quote": "Up to 15 students per year are accepted into the Master of Science program.",
+              "source_type": "program_site"
+            }
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Beth Surlow",
+            "citation": {
+              "source_url": "https://www.carlow.edu/about/administration/faculty-directory/beth-surlow/",
+              "checked_at": "2026-10-13",
+              "quote": "Beth Surlow, PhD\nAssociate Professor of Biology, Program Director of Cardiovascular Perfusion",
+              "source_type": "program_site"
+            }
+          },
+          "modality": {
+            "state": "known",
+            "value": "hybrid",
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+              "checked_at": "2026-10-13",
+              "quote": "Delivery:\n\nOn campus, some online",
+              "source_type": "program_site"
+            }
+          },
+          "accreditation_status": {
+            "state": "known",
+            "value": "Accredited",
+            "citation": {
+              "source_url": "https://www.procirca.com/perfusion-services/school-of-cardiovascular-perfusion/",
+              "checked_at": "2026-10-13",
+              "quote": "Through a consortium sponsorship model, UPMC Procirca and Carlow University serve as Co-Sponsors of the CAAHEP-accredited ‘Carlow University and UPMC Presbyterian Shadyside Cardiovascular Perfusion Program’, which prepares graduates to earn a Master of Science in Cardiovascular Perfusion degree, issued by Carlow University.",
+              "source_type": "program_site"
+            }
           }
         },
         "legacy_key": "Carlow University / UPMC Shadyside",

@@ -23,38 +23,66 @@
           "credential": {
             "state": "known",
             "value": "MS",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion\"",
             "citation": {
-              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
-              "checked_at": "2026-08-25",
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
+              "checked_at": "2026-10-13",
+              "quote": "Degree\nMaster of Science",
               "source_type": "program_site"
             }
           },
           "website_url": {
             "state": "known",
-            "value": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html\"; perfusionprep.com (captured 2026-10) said \"https://jefferson.edu/\"",
+            "value": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
             "citation": {
-              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
-              "checked_at": "2026-08-25",
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
+              "checked_at": "2026-10-13",
+              "quote": "Entry-Level MS in Cardiovascular Perfusion",
               "source_type": "program_site"
             }
           },
           "program_length_months": {
             "state": "known",
             "value": 21,
-            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"~21 mo\"",
             "citation": {
-              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
-              "checked_at": "2026-10-12",
-              "quote": "Duration 21 Months",
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
+              "checked_at": "2026-10-13",
+              "quote": "Duration\n21 Months",
               "source_type": "program_site"
             }
           },
           "class_size": {
-            "state": "unknown",
-            "value": null,
-            "note": "legacy 2025-26 dashboard said 8; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "not_published",
+            "value": null
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Brian Schwartz",
+            "citation": {
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
+              "checked_at": "2026-10-13",
+              "quote": "Name: Brian Schwartz, CCP, RN, MBA\nPosition: Program Director",
+              "source_type": "program_site"
+            }
+          },
+          "modality": {
+            "state": "known",
+            "value": "in_person",
+            "citation": {
+              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
+              "checked_at": "2026-10-13",
+              "quote": "Format\nOn Campus",
+              "source_type": "program_site"
+            }
+          },
+          "accreditation_status": {
+            "state": "known",
+            "value": "Accredited",
+            "citation": {
+              "source_url": "https://www.jefferson.edu/content/dam/academic/life-at-jefferson/handbooks/catalog/university-catalog-20220809.pdf",
+              "checked_at": "2026-10-13",
+              "quote": "Commission on Accreditation of Allied Health Education Programs (CAAHEP)\nCardiac Sonography (BS); Cytotechnology (BS); Cytotechnology (MS); Abdomen-Extended & OB/GYN (BS); Perfusion (Certificate, MS); Vascular Sonography (BS)",
+              "source_type": "program_site"
+            }
           }
         },
         "legacy_key": "Thomas Jefferson University",

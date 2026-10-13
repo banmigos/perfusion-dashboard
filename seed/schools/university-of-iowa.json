@@ -23,38 +23,67 @@
           "credential": {
             "state": "known",
             "value": "Certificate",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"MS / Perfusion Technology\"",
             "citation": {
-              "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students/admissions",
-              "checked_at": "2026-08-25",
+              "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students",
+              "checked_at": "2026-10-13",
+              "quote": "The University of Iowa Perfusion Education Program is a 21-month, five-semester post-baccalaureate certificate program designed to prepare students for entry into the perfusion profession.",
               "source_type": "program_site"
             }
           },
           "website_url": {
             "state": "known",
-            "value": "https://perfusion.medicine.uiowa.edu/prospective-students/admissions",
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://perfusion.medicine.uiowa.edu/prospective-students/admissions\"; perfusionprep.com (captured 2026-10) said \"https://perfusion.medicine.uiowa.edu/\"",
+            "value": "https://perfusion.medicine.uiowa.edu/",
             "citation": {
-              "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students/admissions",
-              "checked_at": "2026-08-25",
+              "source_url": "https://perfusion.medicine.uiowa.edu/",
+              "checked_at": "2026-10-13",
+              "quote": "Perfusion Education Program",
               "source_type": "program_site"
             }
           },
           "program_length_months": {
             "state": "known",
             "value": 21,
-            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\"",
             "citation": {
-              "source_url": "https://perfusion.medicine.uiowa.edu/",
-              "checked_at": "2026-10-12",
-              "quote": "21 Month Post-baccalaureate program",
+              "source_url": "https://perfusion.medicine.uiowa.edu/about-perfusion-education-program/disclosures-and-statistics",
+              "checked_at": "2026-10-13",
+              "quote": "Program Length\n21 months",
               "source_type": "program_site"
             }
           },
           "class_size": {
             "state": "unknown",
             "value": null,
-            "note": "legacy 2025-26 dashboard said 5; perfusionprep.com (captured 2026-10) has no class-size column"
+            "note": "Four to five students are admitted each year (https://perfusion.medicine.uiowa.edu/prospective-students, checked 2026-10-13)"
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Shahna Helmick",
+            "citation": {
+              "source_url": "https://perfusion.medicine.uiowa.edu/people/shahna-helmick",
+              "checked_at": "2026-10-13",
+              "quote": "Shahna Helmick, CCP\nProgram Director, Perfusion Education Program",
+              "source_type": "program_site"
+            }
+          },
+          "modality": {
+            "state": "known",
+            "value": "in_person",
+            "citation": {
+              "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students",
+              "checked_at": "2026-10-13",
+              "quote": "extensive hands-on training... Clinical education includes blood conservation techniques",
+              "source_type": "program_site"
+            }
+          },
+          "accreditation_status": {
+            "state": "known",
+            "value": "Probationary Accreditation",
+            "citation": {
+              "source_url": "https://perfusion.medicine.uiowa.edu/about-perfusion-education-program/accreditation",
+              "checked_at": "2026-10-13",
+              "quote": "The program has been placed on Probationary Accreditation as of September 20, 2024.",
+              "source_type": "program_site"
+            }
           }
         },
         "legacy_key": "University of Iowa",

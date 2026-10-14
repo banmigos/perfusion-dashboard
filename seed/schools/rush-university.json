@@ -147,11 +147,11 @@
             "amount_cents": 109200,
             "currency": "USD",
             "as_of_year": 2026,
-            "fees_note": "2026-27 tuition rates page.",
+            "fees_note": "Academic year not stated on the page; as_of_year is the year the page was checked.",
             "citation": {
-              "source_url": "https://www.rushu.rush.edu/student-life/student-affairs/student-business-office/tuition/2026-2027-tuition-rates",
-              "checked_at": "2026-10-13",
-              "quote": "Cardiovascular Perfusion (MS) | $1,092",
+              "source_url": "https://rushu.rush.edu/college-health-sciences/academic-programs/cardiovascular-perfusion-masters-degree-program",
+              "checked_at": "2026-10-12",
+              "quote": "Tuition for the Master of Science (MS) in Cardiovascular Perfusion program is $1,092 per credit.",
               "source_type": "program_site"
             }
           }

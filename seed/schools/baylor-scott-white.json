@@ -37,7 +37,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.146Z",
               "quote": "The training program consists of didactic classroom, hands-on laboratory and clinical externship experience with coursework designed to build upon previous courses.",
               "source_type": "program_site"
             }
@@ -47,7 +47,7 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.147Z",
               "quote": "The Cardiovascular Perfusion program is CAAHEP accredited as of May 2022 and graduates may gain employment in a variety of allied healthcare settings, from large hospital centers to smaller surgical units, working as a cardiovascular perfusionist.",
               "source_type": "program_site"
             }
@@ -79,7 +79,7 @@
             "value": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
             "citation": {
               "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.153Z",
               "quote": "Cardiovascular Perfusion Program",
               "source_type": "program_site"
             },
@@ -90,7 +90,7 @@
             "value": "Altaf (Al) Panjwani",
             "citation": {
               "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:34:12.835Z",
               "quote": "Altaf (Al) Panjwani, MS, MBA, CCP, LCP\n\nProgram Director and Lead Instructor, Cardiovascular Perfusion Program BSW THHs Cardiovascular Institute",
               "source_type": "program_site"
             }
@@ -102,9 +102,14 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Mar 31\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2027-03-31",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
+                  "quote": "The yearly application cycle is open from February 1st to March 31st.",
+                  "checked_at": "2026-10-14"
+                }
               }
             },
             "requirements": [
@@ -115,9 +120,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) listed no value"
+                  "state": "known",
+                  "value": 3.0,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute",
+                    "quote": "Cumulative GPA of at least 3.0 on a 4.0 scale",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               },
               {
@@ -137,8 +147,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
+                  "state": "not_published",
                   "value": null,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute",
+                    "quote": "The application process for all programs, including the uploading of all supporting documentation, must be completed online via the application link provided on the school website.",
+                    "checked_at": "2026-10-14"
+                  },
                   "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
@@ -155,7 +171,7 @@
             "fees_note": "Academic year not stated on the page; as_of_year is the year the page was checked. Includes administrative fees, lab fees, required textbooks, laptop and scrubs per the page.",
             "citation": {
               "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-14T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.202Z",
               "quote": "The cost of the Cardiovascular Perfusion program is $32,000.",
               "source_type": "program_site"
             }

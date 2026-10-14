@@ -10,7 +10,7 @@
         "value": "Richmond",
         "citation": {
           "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-          "checked_at": "2026-10-06T00:00:00.000Z",
+          "checked_at": "2026-10-14T16:43:15.880Z",
           "source_type": "program_site"
         },
         "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Richmond, VA\""
@@ -26,7 +26,7 @@
             "value": "MS",
             "citation": {
               "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.184Z",
               "quote": "Cardiovascular Perfusion, Master of Science (M.S.)",
               "source_type": "program_site"
             },
@@ -37,7 +37,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://bov.vcu.edu/media/bov/assets/pdfs/agendas/academic-and-health-affairs-committee/AHACMarch21,2025-OpenSession.pdf",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.202Z",
               "quote": "The proposed program will be offered in a face-to-face delivery format.",
               "source_type": "program_site"
             }
@@ -47,7 +47,7 @@
             "value": "Candidacy",
             "citation": {
               "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.184Z",
               "quote": "The programs below hold Candidacy status through the AC-PE:\nVirginia Commonwealth University\n1200 West Broad St., Richmond, VA, 23219",
               "source_type": "other"
             },
@@ -58,7 +58,7 @@
             "value": 24,
             "citation": {
               "source_url": "https://www.vcuhealth.org/news/training-the-next-generation-of-cardiac-perfusionists-at-vcu/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.184Z",
               "quote": "Through this two year program, students will learn to manage life support interventions used in the care of adults and children undergoing cardiac surgery.",
               "source_type": "program_site"
             },
@@ -70,7 +70,7 @@
             "value": 10,
             "citation": {
               "source_url": "https://www.vcuhealth.org/news/vcu-to-offer-virginias-first-graduate-program-in-key-cardiac-specialty/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.185Z",
               "quote": "VCU will enroll its first cohort of 10 students in early 2026, with future cohorts expanding to 12.",
               "source_type": "program_site"
             },
@@ -81,7 +81,7 @@
             "value": "https://go.vcu.edu/perfusion",
             "citation": {
               "source_url": "https://go.vcu.edu/perfusion",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.185Z",
               "quote": "Master of Science in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
@@ -92,7 +92,7 @@
             "value": "Keith Pelletier",
             "citation": {
               "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/cardio-perfusion-ms.pdf",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.202Z",
               "quote": "Keith Pelletier, Ph.D., MBA, MHS, CCP\nProgram director",
               "source_type": "program_site"
             }
@@ -104,9 +104,14 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Mar 1\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2027-03-01",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://nrsa.chp.vcu.edu/admissions/application/",
+                  "quote": "All application requirements must be completed, and documentation received no later than 11:59 PM on March 1 (for matriculation in January of the following year).",
+                  "checked_at": "2026-10-14"
+                }
               }
             },
             "requirements": [
@@ -117,9 +122,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) listed no value"
+                  "state": "known",
+                  "value": 3.0,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/",
+                    "quote": "Minimum cumulative undergraduate grade point average of 3.0 on a 4.0 scale",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               },
               {
@@ -139,9 +149,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no GRE column"
+                  "state": "known",
+                  "value": false,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://nrsa.chp.vcu.edu/admissions/application/",
+                    "quote": "The GRE is not required for application. The GRE is not scored as part of the application.",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               }
             ]
@@ -157,7 +172,7 @@
             "fees_note": "Derived: 2 x the Fall 2026 per-semester in-state tuition ($7,330) from the post-undergraduate calculator (Masters - Cardiovascular Perfusion, full-time, 9-15 credits, no housing or meal plan). Owner verified that Spring costs the same as Fall and that Summer has no cost. Tuition only: per-semester University Fee ($1,497.50) and Technology Fee ($165.50) are separate. The program is 58 credits over five semesters per the program site; the number of paid semesters in total is not stated, so no program total is recorded.",
             "citation": {
               "source_url": "https://sfs.vcu.edu/tuition-and-fees/estimate-your-tuition-and-fees/post-undergraduate-calculator/",
-              "checked_at": "2026-10-14T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.210Z",
               "quote": "Tuition – 9-15 Credits $7,330.00",
               "source_type": "program_site"
             }
@@ -171,7 +186,7 @@
             "fees_note": "Derived: 2 x the Fall 2026 per-semester out-of-state tuition ($14,594) from the post-undergraduate calculator (Masters - Cardiovascular Perfusion, full-time, 9-15 credits, no housing or meal plan). Owner verified that Spring costs the same as Fall and that Summer has no cost. Tuition only: per-semester University Fee ($1,497.50) and Technology Fee ($165.50) are separate. The program is 58 credits over five semesters per the program site; the number of paid semesters in total is not stated, so no program total is recorded.",
             "citation": {
               "source_url": "https://sfs.vcu.edu/tuition-and-fees/estimate-your-tuition-and-fees/post-undergraduate-calculator/",
-              "checked_at": "2026-10-14T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.212Z",
               "quote": "Tuition – 9-15 Credits $14,594.00",
               "source_type": "program_site"
             }

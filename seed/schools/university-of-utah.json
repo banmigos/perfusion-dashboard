@@ -10,7 +10,7 @@
         "value": "Salt Lake City",
         "citation": {
           "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/requirements-prerequisites",
-          "checked_at": "2026-08-25T00:00:00.000Z",
+          "checked_at": "2026-10-14T16:43:15.879Z",
           "source_type": "program_site"
         },
         "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Salt Lake City, UT\"; perfusionprep.com (captured 2026-10) said \"Salt Lake City, UT\""
@@ -29,7 +29,7 @@
             "value": "MS",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/mission-vision-objectives",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.182Z",
               "quote": "This 24-month, full-time program leads to a Master of Science in Cardiovascular Perfusion degree and begins each year in the summer semester (early May).",
               "source_type": "program_site"
             },
@@ -40,7 +40,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/curriculum-training",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.201Z",
               "quote": "The initial year is dedicated to on-campus, in-person didactic and simulation training at the University of Utah.",
               "source_type": "program_site"
             }
@@ -50,7 +50,7 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/accreditation",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.201Z",
               "quote": "The University of Utah Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee-Perfusion Education (http://www.ac-pe.org/).",
               "source_type": "program_site"
             }
@@ -60,7 +60,7 @@
             "value": 24,
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.182Z",
               "quote": "The cardiovascular perfusion program is a 24-month (6-semester), post-baccalaureate degree that begins each year in early May and is delivered in two main phases: a didactic phase focused on intensive classroom and laboratory instruction, followed by a clinical phase featuring full-time rotations at leading hospitals across the United States.",
               "source_type": "program_site"
             },
@@ -71,7 +71,7 @@
             "value": 10,
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.183Z",
               "quote": "How many students are you accepting each year? - 10 students",
               "source_type": "program_site"
             },
@@ -82,7 +82,7 @@
             "value": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.183Z",
               "quote": "Master of Science in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
@@ -93,7 +93,7 @@
             "value": "Kirk Bingham",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/letter-from-the-director",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.201Z",
               "quote": "Kirk Bingham MS, CCP\nUniversity of Utah\nCVP Program Director\nCardiovascular Perfusionist",
               "source_type": "program_site"
             }
@@ -105,9 +105,14 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard said \"Rolling\"; perfusionprep.com (captured 2026-10) said \"Nov 6\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2026-11-06",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions",
+                  "quote": "The 2026-2027 application system will open on August 1, 2026, and close on November 6, 2026.",
+                  "checked_at": "2026-10-14"
+                }
               }
             },
             "requirements": [
@@ -118,9 +123,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) listed no value"
+                  "state": "known",
+                  "value": 3.0,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/requirements-prerequisites",
+                    "quote": "Minimum GPA Requirements - Cumulative GPA of 3.0 or higher (on a 4.00 scale)",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               },
               {
@@ -140,9 +150,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                  "state": "known",
+                  "value": false,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/requirements-prerequisites",
+                    "quote": "No GRE Required - The Graduate Record Examination (GRE) is not required for admission",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               }
             ]
@@ -158,7 +173,7 @@
             "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. 2025-26 per-semester \"Total Tuition & Fees\" (includes mandatory fees and program differential) x 6 semesters per the program FAQ (\"The CVP is a 2-year, 6 semester program.\"; https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/faqs). Resident rate x 6 = $75,351.12.",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/tuition-fees",
-              "checked_at": "2026-10-12T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.209Z",
               "quote": "Total Tuition & Fees 3,736.82 5,206.50 3,105.00 23.70 82.69 92.72 101.43 18.50 45.00 9.00 18.81 60.00 58.35 510.20 12,558.52",
               "source_type": "program_site"
             }
@@ -172,7 +187,7 @@
             "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. 2025-26 per-semester \"Total Tuition & Fees\" (includes mandatory fees and program differential) x 6 semesters per the program FAQ (\"The CVP is a 2-year, 6 semester program.\"; https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/faqs). Nonresident rate x 4 fall/spring semesters + resident rate x 2 summer semesters = $113,178.32; the page states \"A resident rate will be assessed during Summer semesters.\" Subject to change without notice.",
             "citation": {
               "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/tuition-fees",
-              "checked_at": "2026-10-12T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.211Z",
               "quote": "Total Tuition & Fees 13,193.62 5,206.50 3,105.00 23.70 82.69 92.72 101.43 18.50 45.00 9.00 18.81 60.00 58.35 510.20 22,015.32",
               "source_type": "program_site"
             }

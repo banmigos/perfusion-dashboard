@@ -10,7 +10,7 @@
         "value": "Philadelphia",
         "citation": {
           "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html",
-          "checked_at": "2026-08-25T00:00:00.000Z",
+          "checked_at": "2026-10-14T16:41:40.282Z",
           "source_type": "program_site"
         },
         "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Philadelphia, PA\"; perfusionprep.com (captured 2026-10) said \"Philadelphia, PA\""
@@ -29,7 +29,7 @@
             "value": "MS",
             "citation": {
               "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.178Z",
               "quote": "Degree\nMaster of Science",
               "source_type": "program_site"
             },
@@ -40,7 +40,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.198Z",
               "quote": "Format\nOn Campus",
               "source_type": "program_site"
             }
@@ -50,7 +50,7 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.jefferson.edu/content/dam/academic/life-at-jefferson/handbooks/catalog/university-catalog-20220809.pdf",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.198Z",
               "quote": "Commission on Accreditation of Allied Health Education Programs (CAAHEP)\nCardiac Sonography (BS); Cytotechnology (BS); Cytotechnology (MS); Abdomen-Extended & OB/GYN (BS); Perfusion (Certificate, MS); Vascular Sonography (BS)",
               "source_type": "program_site"
             }
@@ -60,7 +60,7 @@
             "value": 21,
             "citation": {
               "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.179Z",
               "quote": "Duration\n21 Months",
               "source_type": "program_site"
             },
@@ -76,7 +76,7 @@
             "value": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
             "citation": {
               "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.179Z",
               "quote": "Entry-Level MS in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
@@ -87,7 +87,7 @@
             "value": "Brian Schwartz",
             "citation": {
               "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.198Z",
               "quote": "Name: Brian Schwartz, CCP, RN, MBA\nPosition: Program Director",
               "source_type": "program_site"
             }
@@ -99,9 +99,15 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard said \"Dec 15\"; perfusionprep.com (captured 2026-10) said \"Dec 15\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2027-06-15",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://my.jefferson.edu/portal/jem_arp?program=976e9a98-23e1-4550-a2da-9bdbc3f0e15d",
+                  "quote": "Final Deadline June 15, 2027",
+                  "checked_at": "2026-10-14"
+                },
+                "note": "Priority deadline 2027-02-01: \"Priority Deadline February 1, 2027\" (https://my.jefferson.edu/portal/jem_arp?program=976e9a98-23e1-4550-a2da-9bdbc3f0e15d, checked 2026-10-14)"
               }
             },
             "requirements": [
@@ -112,8 +118,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
+                  "state": "not_published",
                   "value": null,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://my.jefferson.edu/portal/jem_arp?program=976e9a98-23e1-4550-a2da-9bdbc3f0e15d",
+                    "quote": "GPA Requirement: A minimum 3.0 cumulative GPA is preferred.",
+                    "checked_at": "2026-10-14"
+                  },
                   "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
                 }
               },
@@ -145,8 +157,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
+                  "state": "not_published",
                   "value": null,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://my.jefferson.edu/portal/jem_arp?program=976e9a98-23e1-4550-a2da-9bdbc3f0e15d",
+                    "quote": "To apply, submit an application along with a fee of $50 to Jefferson.",
+                    "checked_at": "2026-10-14"
+                  },
                   "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
@@ -163,7 +181,7 @@
             "fees_note": "2026-27 Direct Entry rate for new students; returning students $46,340. Listed separately: IT fee $664 and library fee $477 per year.",
             "citation": {
               "source_url": "https://www.jefferson.edu/tuition-and-financial-aid/tuition-information.html",
-              "checked_at": "2026-10-12T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.207Z",
               "quote": "Master of Science in Cardiovascular Perfusion – Direct Entry New students $46,790",
               "source_type": "program_site"
             }

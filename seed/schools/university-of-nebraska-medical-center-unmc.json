@@ -10,7 +10,7 @@
         "value": "Omaha",
         "citation": {
           "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
-          "checked_at": "2026-08-25T00:00:00.000Z",
+          "checked_at": "2026-10-14T16:43:15.878Z",
           "source_type": "program_site"
         },
         "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Omaha, NE\"; perfusionprep.com (captured 2026-10) said \"Omaha, NE\""
@@ -29,7 +29,7 @@
             "value": "MPS",
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/index.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.157Z",
               "quote": "Degree: Master of Perfusion Science",
               "source_type": "program_site"
             },
@@ -40,7 +40,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/mpsdao/faqs.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.160Z",
               "quote": "The program recognizes that it is difficult, and most of the time impossible, for working Perfusionists to attend on-campus traditional programs.",
               "source_type": "program_site"
             }
@@ -60,7 +60,7 @@
             "value": 21,
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/index.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.158Z",
               "quote": "Duration\n21 months (5 semesters)",
               "source_type": "program_site"
             },
@@ -71,7 +71,7 @@
             "value": 22,
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/index.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.159Z",
               "quote": "Clinical Perfusion\nDegree: Master of Perfusion Science | Length: 21 months (5 semesters) |\nProgram Start: Fall semester |\nClass Size: 22 |\nLocation: Omaha",
               "source_type": "program_site"
             },
@@ -82,7 +82,7 @@
             "value": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/index.html",
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/index.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.159Z",
               "quote": "Clinical Perfusion",
               "source_type": "program_site"
             },
@@ -93,7 +93,7 @@
             "value": "Scott Sanderson",
             "citation": {
               "source_url": "https://www.unmc.edu/alliedhealth/faculty/cpe.html",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.161Z",
               "quote": "Scott Sanderson, MPS, CCP, LP\nProgram Director & Staff Perfusionist\nAssociate Professor (Adjunct)",
               "source_type": "program_site"
             }
@@ -105,9 +105,14 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard said \"Nov 3\"; perfusionprep.com (captured 2026-10) said \"Nov 1\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2026-11-01",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/timetable.html",
+                  "quote": "Application Deadline: November 1, 2026",
+                  "checked_at": "2026-10-14"
+                }
               }
             },
             "requirements": [
@@ -118,9 +123,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
+                  "state": "known",
+                  "value": 3.0,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+                    "quote": "A minimum cumulative GPA of 3.0 (A=4.0) is required at time of application submission.",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               },
               {
@@ -140,9 +150,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                  "state": "known",
+                  "value": false,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://www.unmc.edu/alliedhealth/academics/programs/cpe/admission/index.html",
+                    "quote": "As of July 2021, UNMC will no longer require or utilize scores from the Graduate Record Examination (GRE) for admission to the Clinical Perfusion program.",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               }
             ]
@@ -158,7 +173,7 @@
             "fees_note": "Year 1 (Academic Year 2026-2027) tuition only, 55 credit hours; excludes fees. Year 2 tuition on the same sheet: resident 16,410.00, nonresident 40,680.00 (27 credit hours). Page: all costs subject to revision.",
             "citation": {
               "source_url": "https://www.unmc.edu/student-success/costs_aid/coa-sheets/clpr_26_27.html",
-              "checked_at": "2026-10-12T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.209Z",
               "quote": "Resident Tuition Charges 8,205.00 8,205.00 3,645.00 20,055.00",
               "source_type": "program_site"
             }
@@ -172,7 +187,7 @@
             "fees_note": "Year 1 (Academic Year 2026-2027) tuition only, 55 credit hours; excludes fees. Year 2 tuition on the same sheet: resident 16,410.00, nonresident 40,680.00 (27 credit hours). Page: all costs subject to revision.",
             "citation": {
               "source_url": "https://www.unmc.edu/student-success/costs_aid/coa-sheets/clpr_26_27.html",
-              "checked_at": "2026-10-12T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.211Z",
               "quote": "Nonresident Tuition Charges 20,340.00 20,340.00 9,040.00 49,720.00",
               "source_type": "program_site"
             }

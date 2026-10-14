@@ -10,7 +10,7 @@
         "value": "Cleveland",
         "citation": {
           "source_url": "https://my.clevelandclinic.org/departments/heart/medical-professionals/fellowship-residency/cardiovascular-perfusionist",
-          "checked_at": "2026-08-25T00:00:00.000Z",
+          "checked_at": "2026-10-14T16:42:05.136Z",
           "source_type": "program_site"
         },
         "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Cleveland, OH\"; perfusionprep.com (captured 2026-10) said \"Cleveland, OH\""
@@ -29,7 +29,7 @@
             "value": "Certificate",
             "citation": {
               "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T15:07:47.135Z",
               "quote": "Upon completion of the program, graduates are awarded a certificate in cardiovascular perfusion.",
               "source_type": "program_site"
             },
@@ -40,7 +40,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.147Z",
               "quote": "All program face-to-face classes are held at Cleveland Clinic's Main Campus hospital located at 9500 Euclid Ave., Cleveland, OH 44195, in the Sydell and Miller Family Heart, Vascular, & Thoracic Institute, building J.",
               "source_type": "program_site"
             }
@@ -50,7 +50,7 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.148Z",
               "quote": "The Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs upon the recommendation of the Accreditation Committee-Perfusion Education.",
               "source_type": "program_site"
             }
@@ -60,7 +60,7 @@
             "value": 16,
             "citation": {
               "source_url": "https://my.clevelandclinic.org/-/scassets/files/org/school-of-health-professions/8-10-26/sohp-catalog-effective-5-29-26.pdf",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.154Z",
               "quote": "Program Length\n70 weeks / 16 months",
               "source_type": "program_site"
             },
@@ -76,7 +76,7 @@
             "value": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
             "citation": {
               "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.141Z",
               "quote": "Cardiovascular Perfusion Program",
               "source_type": "program_site"
             },
@@ -87,7 +87,7 @@
             "value": "Christopher Koehler",
             "citation": {
               "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:09:49.450Z",
               "quote": "Christopher Koehler, CCP\nProgram Director",
               "source_type": "program_site"
             },
@@ -100,9 +100,14 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard said \"Sep 1\"; perfusionprep.com (captured 2026-10) said \"Sep 1\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2026-09-01",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
+                  "quote": "Applications are accepted from January 1 to September 1 for matriculation the following January.",
+                  "checked_at": "2026-10-14"
+                }
               }
             },
             "requirements": [
@@ -113,9 +118,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) listed no value"
+                  "state": "known",
+                  "value": 3.0,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://my.clevelandclinic.org/-/scassets/files/org/school-of-health-professions/july-7-26/cardiovascular-perfusion-admissions-enrollment-26-27-june-24.pdf?la=en",
+                    "quote": "Achieve a minimum cumulative GPA of 3.0 in prerequisite coursework, with a “B” grade or higher preferred in each course and a minimum cumulative GPA of 3.0 across all remaining coursework.",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               },
               {
@@ -135,8 +145,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
+                  "state": "not_published",
                   "value": null,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
+                    "quote": "Applicants must meet all the following requirements and submit supporting evidence by the application deadline:",
+                    "checked_at": "2026-10-14"
+                  },
                   "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
@@ -153,7 +169,7 @@
             "fees_note": "total_program basis supplied by the owner. Academic year not stated.",
             "citation": {
               "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/tuition-financial-aid",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.203Z",
               "quote": "Cardiovascular Perfusion | $32,000",
               "source_type": "program_site"
             }

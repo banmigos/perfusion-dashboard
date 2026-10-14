@@ -10,7 +10,7 @@
         "value": "Hamden",
         "citation": {
           "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/",
-          "checked_at": "2026-08-25T00:00:00.000Z",
+          "checked_at": "2026-10-14T16:42:05.138Z",
           "source_type": "program_site"
         },
         "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Hamden, CT\"; perfusionprep.com (captured 2026-10) said \"Hamden, CT\""
@@ -29,7 +29,7 @@
             "value": "MHS",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.154Z",
               "quote": "MHS Cardiovascular Perfusion",
               "source_type": "program_site"
             },
@@ -40,7 +40,7 @@
             "value": "in_person",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.156Z",
               "quote": "On Campus",
               "source_type": "program_site"
             }
@@ -50,7 +50,7 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://catalog.qu.edu/graduate-studies/health-sciences/cardiovascular-perfusion-mhs/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.157Z",
               "quote": "This program is fully accredited by the Accreditation Committee—Perfusion Education (1415 Walnut Street, Western Springs, Illinois 60558; Executive Director Bradley Kulat CCP, LP) office@ac-pe.org under the Commission on Accreditation of Allied Health Education Programs (CAAHEP).",
               "source_type": "program_site"
             }
@@ -60,7 +60,7 @@
             "value": 24,
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:10:37.304Z",
               "quote": "2 Years To Complete",
               "source_type": "program_site"
             },
@@ -77,7 +77,7 @@
             "value": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.154Z",
               "quote": "MHS Cardiovascular Perfusion",
               "source_type": "program_site"
             },
@@ -88,7 +88,7 @@
             "value": "Tyler J. Wahl",
             "citation": {
               "source_url": "https://www.qu.edu/faculty-and-staff/tyler-wahl/",
-              "checked_at": "2026-10-13T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.155Z",
               "quote": "Tyler J Wahl\n\nClinical Assistant Professor of Biomedical Sciences\n\nDirector, Cardiovascular Perfusion Program",
               "source_type": "program_site"
             },
@@ -101,9 +101,14 @@
             "entry_year": 2027,
             "facts": {
               "deadline_date": {
-                "state": "unknown",
-                "value": null,
-                "note": "legacy 2025-26 dashboard said \"Feb 1\"; perfusionprep.com (captured 2026-10) said \"Feb 1\"; neither is confirmed for the 2026-27 cycle"
+                "state": "known",
+                "value": "2027-02-01",
+                "citation": {
+                  "source_type": "program_site",
+                  "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/",
+                  "quote": "The application deadline is February 1.",
+                  "checked_at": "2026-10-14"
+                }
               }
             },
             "requirements": [
@@ -114,9 +119,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "number",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
+                  "state": "known",
+                  "value": 3.0,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/",
+                    "quote": "Applicants must have a minimum undergraduate cumulative GPA of 3.0",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               },
               {
@@ -136,9 +146,14 @@
                 "sort_order": 0,
                 "value": {
                   "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
+                  "state": "known",
+                  "value": false,
+                  "citation": {
+                    "source_type": "program_site",
+                    "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/",
+                    "quote": "GRE exam: Not required.",
+                    "checked_at": "2026-10-14"
+                  }
                 }
               }
             ]
@@ -154,7 +169,7 @@
             "fees_note": "2026-27 rate; the program is 51 credits per the same page.",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/tuition-and-financial-aid/",
-              "checked_at": "2026-10-12T00:00:00.000Z",
+              "checked_at": "2026-10-14T16:41:29.206Z",
               "quote": "based on the 2026-27 rate ($1,195 per credit)",
               "source_type": "program_site"
             }

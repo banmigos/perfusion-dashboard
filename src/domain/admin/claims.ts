@@ -209,6 +209,22 @@ export function setClaimVerification(
   });
 }
 
+/**
+ * Verify many claims in one transaction (all-or-nothing). Each claim goes
+ * through setClaimVerification, so it is re-stamped and logged individually.
+ * Duplicate ids are collapsed; an unknown id aborts the whole batch.
+ */
+export function verifyClaims(
+  db: BetterSQLite3Database<typeof schema>,
+  claimIds: number[],
+): number {
+  const ids = [...new Set(claimIds)];
+  return db.transaction((tx) => {
+    for (const id of ids) setClaimVerification(tx, id, "verified");
+    return ids.length;
+  });
+}
+
 export function listClaimsForSubject(
   db: BetterSQLite3Database<typeof schema>,
   subjectTable: SubjectTable,

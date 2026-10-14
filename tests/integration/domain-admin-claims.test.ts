@@ -8,6 +8,7 @@ import {
   setClaimVerification,
   standardClaimFieldKeys,
   upsertClaim,
+  verifyClaims,
 } from "@/domain/admin/claims";
 import { listVerifyQueue } from "@/domain/verify";
 import * as schema from "@/db/schema";
@@ -338,5 +339,37 @@ describe("claims admin", () => {
       "value_bool",
       "value_date",
     ]);
+  });
+
+  it("verifyClaims verifies each claim with its own change_log row and is all-or-nothing", () => {
+    const mk = (fieldKey: string) =>
+      upsertClaim(db, {
+        subjectTable: "schools",
+        subjectId: schoolId,
+        fieldKey,
+        state: "unknown",
+      });
+    const a = mk("city");
+    const b = mk("state");
+
+    expect(() => verifyClaims(db, [a.id, 999999])).toThrow();
+    expect(
+      db
+        .select()
+        .from(schema.claims)
+        .where(eq(schema.claims.id, a.id))
+        .all()[0]!.verification,
+    ).toBe("draft");
+
+    expect(verifyClaims(db, [a.id, b.id, a.id])).toBe(2);
+    const rows = db.select().from(schema.claims).all();
+    expect(rows.every((r) => r.verification === "verified")).toBe(true);
+    expect(rows.every((r) => r.checkedAt !== null)).toBe(true);
+    const logs = db
+      .select()
+      .from(schema.changeLog)
+      .where(eq(schema.changeLog.action, "verify"))
+      .all();
+    expect(logs).toHaveLength(2);
   });
 });

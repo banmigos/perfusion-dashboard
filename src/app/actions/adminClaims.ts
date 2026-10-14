@@ -4,7 +4,11 @@
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/db/client";
-import { setClaimVerification, upsertClaim } from "@/domain/admin/claims";
+import {
+  setClaimVerification,
+  upsertClaim,
+  verifyClaims,
+} from "@/domain/admin/claims";
 import { SUBJECT_TABLES } from "@/db/schema/provenance";
 import type { SubjectTable } from "@/domain/claims";
 import { claimFormSchema } from "@/lib/zod/claimForm";
@@ -64,5 +68,15 @@ export async function setClaimVerificationAction(
     idSchema.parse(claimId),
     verificationActionSchema.parse(verification),
   );
+  revalidateAdmin();
+}
+
+const claimIdsSchema = z.array(idSchema).min(1).max(500);
+
+export async function verifyClaimsAction(formData: FormData): Promise<void> {
+  const ids = claimIdsSchema.parse(
+    formData.getAll("claimId").map((v) => Number(v)),
+  );
+  verifyClaims(db, ids);
   revalidateAdmin();
 }

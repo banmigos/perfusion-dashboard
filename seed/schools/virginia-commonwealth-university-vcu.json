@@ -138,6 +138,36 @@
               }
             ]
           }
+        ],
+        "tuition": [
+          {
+            "residency": "in_state",
+            "covers": "per_year",
+            "amount_cents": 1466000,
+            "currency": "USD",
+            "as_of_year": 2026,
+            "fees_note": "Derived: 2 x the Fall 2026 per-semester in-state tuition ($7,330) from the post-undergraduate calculator (Masters - Cardiovascular Perfusion, full-time, 9-15 credits, no housing or meal plan). Owner verified that Spring costs the same as Fall and that Summer has no cost. Tuition only: per-semester University Fee ($1,497.50) and Technology Fee ($165.50) are separate. The program is 58 credits over five semesters per the program site; the number of paid semesters in total is not stated, so no program total is recorded.",
+            "citation": {
+              "source_url": "https://sfs.vcu.edu/tuition-and-fees/estimate-your-tuition-and-fees/post-undergraduate-calculator/",
+              "checked_at": "2026-10-14",
+              "quote": "Tuition – 9-15 Credits $7,330.00",
+              "source_type": "program_site"
+            }
+          },
+          {
+            "residency": "out_of_state",
+            "covers": "per_year",
+            "amount_cents": 2918800,
+            "currency": "USD",
+            "as_of_year": 2026,
+            "fees_note": "Derived: 2 x the Fall 2026 per-semester out-of-state tuition ($14,594) from the post-undergraduate calculator (Masters - Cardiovascular Perfusion, full-time, 9-15 credits, no housing or meal plan). Owner verified that Spring costs the same as Fall and that Summer has no cost. Tuition only: per-semester University Fee ($1,497.50) and Technology Fee ($165.50) are separate. The program is 58 credits over five semesters per the program site; the number of paid semesters in total is not stated, so no program total is recorded.",
+            "citation": {
+              "source_url": "https://sfs.vcu.edu/tuition-and-fees/estimate-your-tuition-and-fees/post-undergraduate-calculator/",
+              "checked_at": "2026-10-14",
+              "quote": "Tuition – 9-15 Credits $14,594.00",
+              "source_type": "program_site"
+            }
+          }
         ]
       }
     ]

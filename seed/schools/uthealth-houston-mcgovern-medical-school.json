@@ -157,13 +157,14 @@
             "amount_cents": 2500000,
             "currency": "USD",
             "as_of_year": 2026,
-            "fees_note": "Class of 2027 entering cohort; paid in 3 installments; page labels these \"total program fees\".",
+            "fees_note": "Class of 2027 entering cohort; page labels these \"total program fees\", paid in 3 installments: a $2,500 non-refundable deposit due before mid-November once admission is confirmed, $10,000 by January 8, and $12,500 by June 1. A separate $150 application fee applies.",
             "citation": {
               "source_url": "https://med.uth.edu/perfusion/education/program-fees/",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-14",
               "quote": "The total program fees for the incoming trainees will be $25,000",
               "source_type": "program_site"
-            }
+            },
+            "deposit_cents": 250000
           }
         ]
       }

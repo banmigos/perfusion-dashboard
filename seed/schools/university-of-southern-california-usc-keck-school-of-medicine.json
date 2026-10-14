@@ -151,10 +151,10 @@
             "amount_cents": 253900,
             "currency": "USD",
             "as_of_year": 2026,
-            "fees_note": "School year 2026-2027; tuition cost increases annually.",
+            "fees_note": "School year 2026-2027; tuition cost increases annually. Cost-of-attendance page lists program tuition of $58,397 for year 1 (23 credits) and $96,482 for year 2 (38 credits, marked with an asterisk the page does not explain in the captured view); no program total is stated.",
             "citation": {
               "source_url": "https://keck.usc.edu/perfusion-sciences-program/financial-aid/",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-14",
               "quote": "$2,539 per credit",
               "source_type": "program_site"
             }

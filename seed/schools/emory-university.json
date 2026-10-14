@@ -144,14 +144,14 @@
           {
             "residency": "flat",
             "covers": "per_credit",
-            "amount_cents": 162500,
+            "amount_cents": 172400,
             "currency": "USD",
             "as_of_year": 2026,
-            "fees_note": "Academic year not stated on the page; as_of_year is the year the page was checked. Plus a $600 perfusion simulation lab technology fee each semester.",
+            "fees_note": "Academic year not stated on the page; as_of_year is the year the page was checked. Plus a $600 perfusion simulation lab technology fee each semester. Supersedes $1,625/credit from the program-details page.",
             "citation": {
-              "source_url": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-12",
-              "quote": "Tuition is $1625/credit hours.",
+              "source_url": "https://www.nursing.emory.edu/admissions/tuition-and-funding",
+              "checked_at": "2026-10-13",
+              "quote": "Cardiovascular Perfusion Science Tuition Expense Cost $1,724/hour",
               "source_type": "program_site"
             }
           }

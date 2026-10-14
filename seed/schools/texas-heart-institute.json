@@ -157,11 +157,11 @@
             "amount_cents": 3000000,
             "currency": "USD",
             "as_of_year": 2026,
-            "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. $10,000 tuition x 3 stages (CVP1, CVP2, CVP3); the fourth column is a separate spring-entry CVP1 cohort. Tuition only: health insurance and the other direct charges are separate. One rate, no residency split.",
+            "fees_note": "The page states the $30,000 total directly: three $10,000 installments invoiced at the start of each semester (due by October 15 or March 15) over an 18-month program. Academic year not stated. Living expenses of about $40,000-$45,000 are separate. Non-degree certificate program; federal financial aid is not available. One rate, no residency split.",
             "citation": {
-              "source_url": "https://www.bcm.edu/education/school-of-health-professions/tuition-and-fees",
-              "checked_at": "2026-10-12",
-              "quote": "Tuition $10,000 $10,000 $10,000 $10,000",
+              "source_url": "https://www.texasheart.org/about-the-program-dev/",
+              "checked_at": "2026-10-14",
+              "quote": "Tuition is $30,000, payable in three $10,000 installments invoiced at the beginning of each semester due in full by October 15 or March 15.",
               "source_type": "program_site"
             }
           }

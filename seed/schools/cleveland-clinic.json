@@ -141,12 +141,12 @@
             "amount_cents": 3200000,
             "currency": "USD",
             "as_of_year": 2026,
-            "fees_note": "Aggregator (perfusion.com) lists the same $32,000 for in-state and out-of-state; total_program basis supplied by the owner. Academic year not stated.",
+            "fees_note": "total_program basis supplied by the owner. Academic year not stated.",
             "citation": {
-              "source_url": "https://perfusion.com/perfusion-school/cleveland-clinic-cardiovascular-perfusion-program/",
-              "checked_at": "2026-10-12",
-              "quote": "In State Tuition: $32,000 Out of State Tuition: $32,000",
-              "source_type": "other"
+              "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/tuition-financial-aid",
+              "checked_at": "2026-10-13",
+              "quote": "Cardiovascular Perfusion | $32,000",
+              "source_type": "program_site"
             }
           }
         ]

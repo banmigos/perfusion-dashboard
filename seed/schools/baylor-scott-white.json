@@ -105,11 +105,12 @@
                 "state": "known",
                 "value": "2027-03-31",
                 "citation": {
-                  "source_type": "program_site",
                   "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
+                  "checked_at": "2026-10-14T22:19:19.815Z",
                   "quote": "The yearly application cycle is open from February 1st to March 31st.",
-                  "checked_at": "2026-10-14"
-                }
+                  "source_type": "program_site"
+                },
+                "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Mar 31\"; neither is confirmed for the 2026-27 cycle"
               }
             },
             "requirements": [
@@ -121,13 +122,14 @@
                 "value": {
                   "kind": "number",
                   "state": "known",
-                  "value": 3.0,
+                  "value": 3,
                   "citation": {
-                    "source_type": "program_site",
                     "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute",
+                    "checked_at": "2026-10-14T22:19:19.829Z",
                     "quote": "Cumulative GPA of at least 3.0 on a 4.0 scale",
-                    "checked_at": "2026-10-14"
-                  }
+                    "source_type": "program_site"
+                  },
+                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) listed no value"
                 }
               },
               {
@@ -150,10 +152,10 @@
                   "state": "not_published",
                   "value": null,
                   "citation": {
-                    "source_type": "program_site",
                     "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute",
+                    "checked_at": "2026-10-14T00:00:00.000Z",
                     "quote": "The application process for all programs, including the uploading of all supporting documentation, must be completed online via the application link provided on the school website.",
-                    "checked_at": "2026-10-14"
+                    "source_type": "program_site"
                   },
                   "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no GRE column"
                 }

@@ -108,10 +108,10 @@
                 "state": "known",
                 "value": "2027-01-15",
                 "citation": {
-                  "source_type": "program_site",
                   "source_url": "https://www.nursing.emory.edu/admissions/apply-now",
+                  "checked_at": "2026-10-14T22:19:19.842Z",
                   "quote": "Round 3 (PERFUSION ONLY) | January 15, 2027 | Interviews scheduled for February/March",
-                  "checked_at": "2026-10-14"
+                  "source_type": "program_site"
                 },
                 "note": "Priority deadline 2026-06-01: \"Round 1 | June 1, 2026 | Interviews scheduled for July/August\" (https://www.nursing.emory.edu/admissions/apply-now, checked 2026-10-14)"
               }
@@ -125,13 +125,14 @@
                 "value": {
                   "kind": "number",
                   "state": "known",
-                  "value": 3.0,
+                  "value": 3,
                   "citation": {
-                    "source_type": "program_site",
                     "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
+                    "checked_at": "2026-10-14T22:19:19.830Z",
                     "quote": "3.0 or higher overall GPA",
-                    "checked_at": "2026-10-14"
-                  }
+                    "source_type": "program_site"
+                  },
+                  "note": "legacy 2025-26 dashboard said 3.0; perfusionprep.com (captured 2026-10) said 3.0"
                 }
               },
               {
@@ -154,11 +155,12 @@
                   "state": "known",
                   "value": false,
                   "citation": {
-                    "source_type": "program_site",
                     "source_url": "https://www.nursing.emory.edu/admissions/apply-now",
+                    "checked_at": "2026-10-14T22:19:19.821Z",
                     "quote": "Test scores are waived for Emory applicants, partner school applicants, and transfer applicants with a cumulative 3.5 GPA.",
-                    "checked_at": "2026-10-14"
-                  }
+                    "source_type": "program_site"
+                  },
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]

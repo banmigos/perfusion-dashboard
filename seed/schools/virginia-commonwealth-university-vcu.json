@@ -3,16 +3,17 @@
   "school": {
     "slug": "virginia-commonwealth-university-vcu",
     "name": "Virginia Commonwealth University (VCU)",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Richmond",
-        "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Richmond, VA\"",
         "citation": {
           "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
-          "checked_at": "2026-10-06",
+          "checked_at": "2026-10-06T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Richmond, VA\""
       }
     },
     "programs": [
@@ -25,27 +26,39 @@
             "value": "MS",
             "citation": {
               "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Cardiovascular Perfusion, Master of Science (M.S.)",
+              "source_type": "program_site"
+            },
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+          },
+          "modality": {
+            "state": "known",
+            "value": "in_person",
+            "citation": {
+              "source_url": "https://bov.vcu.edu/media/bov/assets/pdfs/agendas/academic-and-health-affairs-committee/AHACMarch21,2025-OpenSession.pdf",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "The proposed program will be offered in a face-to-face delivery format.",
               "source_type": "program_site"
             }
           },
-          "website_url": {
+          "accreditation_status": {
             "state": "known",
-            "value": "https://go.vcu.edu/perfusion",
+            "value": "Candidacy",
             "citation": {
-              "source_url": "https://go.vcu.edu/perfusion",
-              "checked_at": "2026-10-13",
-              "quote": "Master of Science in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            }
+              "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "The programs below hold Candidacy status through the AC-PE:\nVirginia Commonwealth University\n1200 West Broad St., Richmond, VA, 23219",
+              "source_type": "other"
+            },
+            "note": "Accreditation not confirmed; verify CAAHEP/board eligibility before applying."
           },
           "program_length_months": {
             "state": "known",
             "value": 24,
             "citation": {
               "source_url": "https://www.vcuhealth.org/news/training-the-next-generation-of-cardiac-perfusionists-at-vcu/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Through this two year program, students will learn to manage life support interventions used in the care of adults and children undergoing cardiac surgery.",
               "source_type": "program_site"
             },
@@ -57,38 +70,30 @@
             "value": 10,
             "citation": {
               "source_url": "https://www.vcuhealth.org/news/vcu-to-offer-virginias-first-graduate-program-in-key-cardiac-specialty/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "VCU will enroll its first cohort of 10 students in early 2026, with future cohorts expanding to 12.",
               "source_type": "program_site"
-            }
+            },
+            "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no class-size column"
           },
-          "accreditation_status": {
+          "website_url": {
             "state": "known",
-            "value": "Candidacy",
+            "value": "https://go.vcu.edu/perfusion",
             "citation": {
-              "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
-              "checked_at": "2026-10-13",
-              "quote": "The programs below hold Candidacy status through the AC-PE:\nVirginia Commonwealth University\n1200 West Broad St., Richmond, VA, 23219",
-              "source_type": "other"
-            }
+              "source_url": "https://go.vcu.edu/perfusion",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Master of Science in Cardiovascular Perfusion",
+              "source_type": "program_site"
+            },
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"https://nrsa.chp.vcu.edu/programs/perfusion/\""
           },
           "director_name": {
             "state": "known",
             "value": "Keith Pelletier",
             "citation": {
               "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/cardio-perfusion-ms.pdf",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Keith Pelletier, Ph.D., MBA, MHS, CCP\nProgram director",
-              "source_type": "program_site"
-            }
-          },
-          "modality": {
-            "state": "known",
-            "value": "in_person",
-            "citation": {
-              "source_url": "https://bov.vcu.edu/media/bov/assets/pdfs/agendas/academic-and-health-affairs-committee/AHACMarch21,2025-OpenSession.pdf",
-              "checked_at": "2026-10-13",
-              "quote": "The proposed program will be offered in a face-to-face delivery format.",
               "source_type": "program_site"
             }
           }
@@ -109,6 +114,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -117,23 +123,25 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
                   "note": "Program page lists only non-tuition costs (books, BLS, ACLS, scrubs, parking) and points to the VCU Bulletin for tuition; not confirmed as unpublished, so unknown."
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -149,7 +157,7 @@
             "fees_note": "Derived: 2 x the Fall 2026 per-semester in-state tuition ($7,330) from the post-undergraduate calculator (Masters - Cardiovascular Perfusion, full-time, 9-15 credits, no housing or meal plan). Owner verified that Spring costs the same as Fall and that Summer has no cost. Tuition only: per-semester University Fee ($1,497.50) and Technology Fee ($165.50) are separate. The program is 58 credits over five semesters per the program site; the number of paid semesters in total is not stated, so no program total is recorded.",
             "citation": {
               "source_url": "https://sfs.vcu.edu/tuition-and-fees/estimate-your-tuition-and-fees/post-undergraduate-calculator/",
-              "checked_at": "2026-10-14",
+              "checked_at": "2026-10-14T00:00:00.000Z",
               "quote": "Tuition – 9-15 Credits $7,330.00",
               "source_type": "program_site"
             }
@@ -163,7 +171,7 @@
             "fees_note": "Derived: 2 x the Fall 2026 per-semester out-of-state tuition ($14,594) from the post-undergraduate calculator (Masters - Cardiovascular Perfusion, full-time, 9-15 credits, no housing or meal plan). Owner verified that Spring costs the same as Fall and that Summer has no cost. Tuition only: per-semester University Fee ($1,497.50) and Technology Fee ($165.50) are separate. The program is 58 credits over five semesters per the program site; the number of paid semesters in total is not stated, so no program total is recorded.",
             "citation": {
               "source_url": "https://sfs.vcu.edu/tuition-and-fees/estimate-your-tuition-and-fees/post-undergraduate-calculator/",
-              "checked_at": "2026-10-14",
+              "checked_at": "2026-10-14T00:00:00.000Z",
               "quote": "Tuition – 9-15 Credits $14,594.00",
               "source_type": "program_site"
             }

@@ -3,79 +3,44 @@
   "school": {
     "slug": "uthealth-houston-mcgovern-medical-school",
     "name": "UTHealth Houston (McGovern Medical School)",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Houston",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Houston, TX\"; perfusionprep.com (captured 2026-10) said \"Houston, TX\"",
         "citation": {
           "source_url": "https://med.uth.edu/perfusion/education/prospective-applicants/",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-08-25T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Houston, TX\"; perfusionprep.com (captured 2026-10) said \"Houston, TX\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-certificate",
         "name": "Certificate in Cardiovascular Perfusion",
+        "legacy_key": "UTHealth Houston (McGovern Medical School)",
+        "latitude": 29.7081,
+        "longitude": -95.398,
         "facts": {
           "credential": {
             "state": "known",
             "value": "Certificate",
             "citation": {
               "source_url": "https://med.uth.edu/perfusion/education/prospective-applicants/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The program offers a Certificate in Cardiovascular Perfusion (12-month post-baccalaureate program), satisfying the requirements to sit for the American Board of Cardiovascular Perfusion exams.",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://med.uth.edu/perfusion/",
-            "citation": {
-              "source_url": "https://med.uth.edu/perfusion/",
-              "checked_at": "2026-10-13",
-              "quote": "Cardiovascular Perfusion Program",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 12,
-            "citation": {
-              "source_url": "https://med.uth.edu/perfusion/education/curriculum/",
-              "checked_at": "2026-10-13",
-              "quote": "Trainees in The UTHealth Cardiovascular Perfusion Program at McGovern Medical School will be required to complete a full-time 12-month program composed of academic and clinical training.",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "known",
-            "value": 8,
-            "citation": {
-              "source_url": "https://med.uth.edu/perfusion/2022/09/09/specialized-training-programs-fill-niche/",
-              "checked_at": "2026-10-13",
-              "quote": "The program has graduated nearly 30 students and accepts six trainees per class. About eight students make up each class – offered twice a year, starting in January and July, with the capacity for up to 12.",
-              "source_type": "program_site"
-            }
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Richard Price",
-            "citation": {
-              "source_url": "https://med.uth.edu/perfusion/2022/12/07/richard-price-ba-ccp-lp/",
-              "checked_at": "2026-10-13",
-              "quote": "Richard Price MS, CCP, LP\nDirector of Perfusion School, Cardiovascular Perfusion Program",
-              "source_type": "program_site"
-            }
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion\""
           },
           "modality": {
             "state": "known",
             "value": "in_person",
             "citation": {
               "source_url": "https://med.uth.edu/perfusion/education/curriculum/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Trainees in The UTHealth Cardiovascular Perfusion Program at McGovern Medical School will be required to complete a full-time 12-month program composed of academic and clinical training.",
               "source_type": "program_site"
             }
@@ -85,15 +50,55 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://med.uth.edu/perfusion/education/prospective-applicants/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The Cardiovascular Perfusion Program at McGovern Medical School is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee for Perfusion Education (AC-PE).",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 12,
+            "citation": {
+              "source_url": "https://med.uth.edu/perfusion/education/curriculum/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Trainees in The UTHealth Cardiovascular Perfusion Program at McGovern Medical School will be required to complete a full-time 12-month program composed of academic and clinical training.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) listed no value"
+          },
+          "class_size": {
+            "state": "known",
+            "value": 8,
+            "citation": {
+              "source_url": "https://med.uth.edu/perfusion/2022/09/09/specialized-training-programs-fill-niche/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "The program has graduated nearly 30 students and accepts six trainees per class. About eight students make up each class – offered twice a year, starting in January and July, with the capacity for up to 12.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 8; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://med.uth.edu/perfusion/",
+            "citation": {
+              "source_url": "https://med.uth.edu/perfusion/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Cardiovascular Perfusion Program",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://med.uth.edu/perfusion/education/prospective-applicants/\"; perfusionprep.com (captured 2026-10) said \"https://uth.edu/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Richard Price",
+            "citation": {
+              "source_url": "https://med.uth.edu/perfusion/2022/12/07/richard-price-ba-ccp-lp/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Richard Price MS, CCP, LP\nDirector of Perfusion School, Cardiovascular Perfusion Program",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "UTHealth Houston (McGovern Medical School)",
-        "latitude": 29.7081,
-        "longitude": -95.398,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -110,6 +115,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -118,18 +124,9 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -140,11 +137,23 @@
               {
                 "category": "shadowing",
                 "label": "Observation / shadowing hours",
+                "sort_order": 0,
                 "value": {
                   "kind": "text",
                   "state": "unknown",
                   "value": null,
                   "note": "legacy 2025-26 dashboard notes: \"HIGHLY RECOMMENDED: 2 cases under CCP; CURRENTLY WAIVED due to hospital restrictions\"; perfusionprep.com (captured 2026-10) listed nothing on observation"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -157,14 +166,14 @@
             "amount_cents": 2500000,
             "currency": "USD",
             "as_of_year": 2026,
+            "deposit_cents": 250000,
             "fees_note": "Class of 2027 entering cohort; page labels these \"total program fees\", paid in 3 installments: a $2,500 non-refundable deposit due before mid-November once admission is confirmed, $10,000 by January 8, and $12,500 by June 1. A separate $150 application fee applies.",
             "citation": {
               "source_url": "https://med.uth.edu/perfusion/education/program-fees/",
-              "checked_at": "2026-10-14",
+              "checked_at": "2026-10-14T00:00:00.000Z",
               "quote": "The total program fees for the incoming trainees will be $25,000",
               "source_type": "program_site"
-            },
-            "deposit_cents": 250000
+            }
           }
         ]
       }

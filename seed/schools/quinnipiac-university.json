@@ -3,75 +3,44 @@
   "school": {
     "slug": "quinnipiac-university",
     "name": "Quinnipiac University",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Hamden",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Hamden, CT\"; perfusionprep.com (captured 2026-10) said \"Hamden, CT\"",
         "citation": {
           "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-08-25T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Hamden, CT\"; perfusionprep.com (captured 2026-10) said \"Hamden, CT\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-mhs",
         "name": "MHS in Cardiovascular Perfusion",
+        "legacy_key": "Quinnipiac University",
+        "latitude": 41.4172,
+        "longitude": -72.8943,
         "facts": {
           "credential": {
             "state": "known",
             "value": "MHS",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "MHS Cardiovascular Perfusion",
-              "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-            "citation": {
-              "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
-              "quote": "MHS Cardiovascular Perfusion",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 24,
-            "citation": {
-              "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
-              "quote": "2 Years To Complete",
               "source_type": "program_site"
             },
-            "note": "Page states \"2-year\"/\"two-year\", not months; 24 months is the owner-approved conversion.",
-            "confidence": "medium"
-          },
-          "class_size": {
-            "state": "not_published",
-            "value": null
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Tyler J. Wahl",
-            "citation": {
-              "source_url": "https://www.qu.edu/faculty-and-staff/tyler-wahl/",
-              "checked_at": "2026-10-13",
-              "quote": "Tyler J Wahl\n\nClinical Assistant Professor of Biomedical Sciences\n\nDirector, Cardiovascular Perfusion Program",
-              "source_type": "program_site"
-            }
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MHS\"; perfusionprep.com (captured 2026-10) said \"MHS Cardiovascular Perfusion\""
           },
           "modality": {
             "state": "known",
             "value": "in_person",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "On Campus",
               "source_type": "program_site"
             }
@@ -81,15 +50,51 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://catalog.qu.edu/graduate-studies/health-sciences/cardiovascular-perfusion-mhs/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "This program is fully accredited by the Accreditation Committee—Perfusion Education (1415 Walnut Street, Western Springs, Illinois 60558; Executive Director Bradley Kulat CCP, LP) office@ac-pe.org under the Commission on Accreditation of Allied Health Education Programs (CAAHEP).",
               "source_type": "program_site"
             }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 24,
+            "citation": {
+              "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "2 Years To Complete",
+              "source_type": "program_site"
+            },
+            "note": "Page states \"2-year\"/\"two-year\", not months; 24 months is the owner-approved conversion.",
+            "confidence": "medium"
+          },
+          "class_size": {
+            "state": "not_published",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
+            "citation": {
+              "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "MHS Cardiovascular Perfusion",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/\"; perfusionprep.com (captured 2026-10) said \"https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Tyler J. Wahl",
+            "citation": {
+              "source_url": "https://www.qu.edu/faculty-and-staff/tyler-wahl/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Tyler J Wahl\n\nClinical Assistant Professor of Biomedical Sciences\n\nDirector, Cardiovascular Perfusion Program",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Tyler Wahl\""
           }
         },
-        "legacy_key": "Quinnipiac University",
-        "latitude": 41.4172,
-        "longitude": -72.8943,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -106,6 +111,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -114,23 +120,25 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
                   "note": "legacy 2025-26 dashboard said 59925; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -146,7 +154,7 @@
             "fees_note": "2026-27 rate; the program is 51 credits per the same page.",
             "citation": {
               "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/tuition-and-financial-aid/",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-12T00:00:00.000Z",
               "quote": "based on the 2026-27 rate ($1,195 per credit)",
               "source_type": "program_site"
             }

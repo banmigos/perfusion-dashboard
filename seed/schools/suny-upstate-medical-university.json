@@ -3,79 +3,44 @@
   "school": {
     "slug": "suny-upstate-medical-university",
     "name": "SUNY Upstate Medical University",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Syracuse",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Syracuse, NY\"; perfusionprep.com (captured 2026-10) said \"Syracuse, NY\"",
         "citation": {
           "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/apply-now.php",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-08-25T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Syracuse, NY\"; perfusionprep.com (captured 2026-10) said \"Syracuse, NY\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-ms",
         "name": "MS in Cardiovascular Perfusion",
+        "legacy_key": "SUNY Upstate Medical University",
+        "latitude": 43.0481,
+        "longitude": -76.1474,
         "facts": {
           "credential": {
             "state": "known",
             "value": "MS",
             "citation": {
               "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/about.php",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Our Clinical Perfusion program is 5 semesters long and leads to a Master of Science degree.",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://www.upstate.edu/chp/programs/clinical-perfusion/index.php",
-            "citation": {
-              "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/index.php",
-              "checked_at": "2026-10-13",
-              "quote": "Clinical Perfusion - Master of Science",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 21,
-            "citation": {
-              "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/curriculum.php",
-              "checked_at": "2026-10-13",
-              "quote": "The first year begins in the fall, and the program of study includes a minimum of 86.5 credit hours over 21 months (including summer).",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "known",
-            "value": 20,
-            "citation": {
-              "source_url": "https://www.upstate.edu/informed/2025/021625-radioshow.php",
-              "checked_at": "2026-10-13",
-              "quote": "Our program is a master's degree, and we're currently accepting about 20 students per year.",
-              "source_type": "program_site"
-            }
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Bruce Searles",
-            "citation": {
-              "source_url": "https://www.upstate.edu/news/articles/2024/2024-07-25-silverman.php",
-              "checked_at": "2026-10-13",
-              "quote": "Cardiovascular Perfusion Program Director Bruce Searles, PhD, CCP, said the teaching space has been greatly transformed.",
-              "source_type": "program_site"
-            }
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Clinical Perfusion\""
           },
           "modality": {
             "state": "known",
             "value": "in_person",
             "citation": {
               "source_url": "https://www.upstate.edu/chp/about/news/program-spotlight-clinical-perfusion.php",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "When students arrive, they spend the first two and a half semesters on campus.",
               "source_type": "program_site"
             }
@@ -85,15 +50,56 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/accreditation-program-data.php",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "SUNY Upstate’s Clinical Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP).",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 21,
+            "citation": {
+              "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/curriculum.php",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "The first year begins in the fall, and the program of study includes a minimum of 86.5 credit hours over 21 months (including summer).",
+              "source_type": "program_site"
+            },
+            "note": "Aggregator (Liv Perfusion, copyright 2023); the official Upstate pages were not retrievable (Cloudflare 403).",
+            "confidence": "low"
+          },
+          "class_size": {
+            "state": "known",
+            "value": 20,
+            "citation": {
+              "source_url": "https://www.upstate.edu/informed/2025/021625-radioshow.php",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Our program is a master's degree, and we're currently accepting about 20 students per year.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.upstate.edu/chp/programs/clinical-perfusion/index.php",
+            "citation": {
+              "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/index.php",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Clinical Perfusion - Master of Science",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.upstate.edu/chp/programs/clinical-perfusion/apply-now.php\"; perfusionprep.com (captured 2026-10) said \"https://upstate.edu/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Bruce Searles",
+            "citation": {
+              "source_url": "https://www.upstate.edu/news/articles/2024/2024-07-25-silverman.php",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Cardiovascular Perfusion Program Director Bruce Searles, PhD, CCP, said the teaching space has been greatly transformed.",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "SUNY Upstate Medical University",
-        "latitude": 43.0481,
-        "longitude": -76.1474,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -110,6 +116,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -118,18 +125,9 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -140,11 +138,23 @@
               {
                 "category": "shadowing",
                 "label": "Observation / shadowing hours",
+                "sort_order": 0,
                 "value": {
                   "kind": "text",
                   "state": "unknown",
                   "value": null,
                   "note": "legacy 2025-26 dashboard had no notes; perfusionprep.com (captured 2026-10) key requirements: \"Bachelor's; observation recommended\""
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -160,7 +170,7 @@
             "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. 2025-26 full-time graduate semester rate x 5 semesters (curriculum is five enrollment periods of 15+ credits). Tuition only; college, activity, technology and health fees are separate. UNVERIFIED QUOTE: the page is behind a Cloudflare challenge from this environment, so the quote comes from the owner's research file and was not checked against the live page. NY resident $5,655 x 5 = $28,275.",
             "citation": {
               "source_url": "https://www.upstate.edu/currentstudents/financial_resources/accounts/rates.php",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-12T00:00:00.000Z",
               "quote": "Graduate | $5,655.00 | $12,870.00",
               "source_type": "program_site"
             }
@@ -174,7 +184,7 @@
             "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. 2025-26 full-time graduate semester rate x 5 semesters (curriculum is five enrollment periods of 15+ credits). Tuition only; college, activity, technology and health fees are separate. UNVERIFIED QUOTE: the page is behind a Cloudflare challenge from this environment, so the quote comes from the owner's research file and was not checked against the live page. Non-resident $12,870 x 5 = $64,350.",
             "citation": {
               "source_url": "https://www.upstate.edu/currentstudents/financial_resources/accounts/rates.php",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-12T00:00:00.000Z",
               "quote": "Graduate | $5,655.00 | $12,870.00",
               "source_type": "program_site"
             }

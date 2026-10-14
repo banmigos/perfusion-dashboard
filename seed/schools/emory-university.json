@@ -3,79 +3,44 @@
   "school": {
     "slug": "emory-university",
     "name": "Emory University",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Atlanta",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Atlanta, GA\"; perfusionprep.com (captured 2026-10) said \"Atlanta, GA\"",
         "citation": {
           "source_url": "https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-08-25T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Atlanta, GA\"; perfusionprep.com (captured 2026-10) said \"Atlanta, GA\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-ms",
         "name": "MS in Cardiovascular Perfusion",
+        "legacy_key": "Emory University",
+        "latitude": 33.7925,
+        "longitude": -84.324,
         "facts": {
           "credential": {
             "state": "known",
             "value": "MS",
             "citation": {
               "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Master in Cardiovascular Perfusion Science",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-            "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
-              "quote": "Master in Cardiovascular Perfusion Science",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 22,
-            "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
-              "quote": "This is a structured, in-person, 22-month program designed for bachelor’s-prepared individuals seeking to develop knowledge and skills in cardiovascular perfusion.",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "known",
-            "value": 18,
-            "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
-              "quote": "We enroll 15-20 full-time students.",
-              "source_type": "program_site"
-            }
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Erick McNair",
-            "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
-              "quote": "Program Director\n\nErick McNair",
-              "source_type": "program_site"
-            }
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"Master in CV Perfusion Science\""
           },
           "modality": {
             "state": "known",
             "value": "hybrid",
             "citation": {
               "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "In-Person (Year 1) Remote (Year 2 during clinicals) Full-Time - 5 Semesters",
               "source_type": "program_site"
             }
@@ -85,15 +50,55 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The Emory University Master in Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee – Perfusion Education.",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 22,
+            "citation": {
+              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "This is a structured, in-person, 22-month program designed for bachelor’s-prepared individuals seeking to develop knowledge and skills in cardiovascular perfusion.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\""
+          },
+          "class_size": {
+            "state": "known",
+            "value": 18,
+            "citation": {
+              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "We enroll 15-20 full-time students.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
+            "citation": {
+              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Master in Cardiovascular Perfusion Science",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science\"; perfusionprep.com (captured 2026-10) said \"https://nursing.emory.edu/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Erick McNair",
+            "citation": {
+              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Program Director\n\nErick McNair",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "Emory University",
-        "latitude": 33.7925,
-        "longitude": -84.324,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -110,6 +115,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -118,23 +124,25 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
                   "note": "legacy 2025-26 dashboard said 107000; perfusionprep.com (captured 2026-10) listed no value; unit (total/per-year/per-credit) and residency tier undetermined"
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -150,7 +158,7 @@
             "fees_note": "Academic year not stated on the page; as_of_year is the year the page was checked. Plus a $600 perfusion simulation lab technology fee each semester. Supersedes $1,625/credit from the program-details page.",
             "citation": {
               "source_url": "https://www.nursing.emory.edu/admissions/tuition-and-funding",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Cardiovascular Perfusion Science Tuition Expense Cost $1,724/hour",
               "source_type": "program_site"
             }

@@ -3,73 +3,44 @@
   "school": {
     "slug": "lawrence-technological-university",
     "name": "Lawrence Technological University",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Southfield",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Southfield, MI\"; perfusionprep.com (captured 2026-10) said \"Southfield, MI\"",
         "citation": {
           "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-08-25T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Southfield, MI\"; perfusionprep.com (captured 2026-10) said \"Southfield, MI\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-ms",
         "name": "MS in Cardiovascular Perfusion",
+        "legacy_key": "Lawrence Technological University",
+        "latitude": 42.4725,
+        "longitude": -83.2505,
         "facts": {
           "credential": {
             "state": "known",
             "value": "MS",
             "citation": {
               "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Cardiovascular Perfusion Master of Science",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-            "citation": {
-              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
-              "quote": "Cardiovascular Perfusion Master of Science",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 21,
-            "citation": {
-              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
-              "quote": "The program is 21 months long and takes place over 5 consecutive semesters.",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "not_published",
-            "value": null
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Kristen Fanelli",
-            "citation": {
-              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
-              "quote": "Kristen\n\nFanelli\n\nProgram Director",
-              "source_type": "program_site"
-            }
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
           },
           "modality": {
             "state": "known",
             "value": "in_person",
             "citation": {
               "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The program is 21 months long and takes place over 5 consecutive semesters.",
               "source_type": "program_site"
             }
@@ -79,15 +50,49 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The Master of Science in Cardiovascular Perfusion Program at LTU is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee-Perfusion Education (AC-PE).",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 21,
+            "citation": {
+              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "The program is 21 months long and takes place over 5 consecutive semesters.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"24 mo\""
+          },
+          "class_size": {
+            "state": "not_published",
+            "value": null,
+            "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+            "citation": {
+              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Cardiovascular Perfusion Master of Science",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://ltu.edu/programs/grad-cardiovascular-perfusion/\"; perfusionprep.com (captured 2026-10) said \"https://ltu.edu/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Kristen Fanelli",
+            "citation": {
+              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Kristen\n\nFanelli\n\nProgram Director",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "Lawrence Technological University",
-        "latitude": 42.4725,
-        "longitude": -83.2505,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -104,6 +109,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -112,23 +118,25 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
                   "note": "Per-credit rate recorded in the tuition row (owner-approved); clinical credits are billed at half rate and the credit split is unstated, so no program total is given."
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -144,7 +152,7 @@
             "fees_note": "Owner-approved: the 2026-27 schedule sets tuition by course, not by program, and lists College of Engineering graduate courses at $1650 per credit hour (columns: Freshman, Sophomore, Junior, Senior, Graduate, Doctoral). The perfusion program page refers to the Engineering/Graduate per-credit rate, charges clinical hours at half the didactic rate (so $825 per clinical credit is implied, not stated) and totals 90 credits with the didactic/clinical split unstated. Registration and other fees are separate; cohort-program rates on page 2 of the schedule were not checked. Quote is from the PDF text layer.",
             "citation": {
               "source_url": "https://ltu.edu/wp-content/uploads/2026/04/2026-2027-Tuition-and-Fees_V3.pdf",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-12T00:00:00.000Z",
               "quote": "College of Engineering** $1515 $1605 $1620 $1635 $1650 $1670",
               "source_type": "program_site"
             }

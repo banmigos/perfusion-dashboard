@@ -3,79 +3,44 @@
   "school": {
     "slug": "midwestern-university",
     "name": "Midwestern University",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Glendale",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Glendale, AZ\"; perfusionprep.com (captured 2026-10) said \"Glendale, AZ\"",
         "citation": {
           "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-08-25T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Glendale, AZ\"; perfusionprep.com (captured 2026-10) said \"Glendale, AZ\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-ms",
         "name": "MS in Cardiovascular Perfusion",
+        "legacy_key": "Midwestern University",
+        "latitude": 33.6601,
+        "longitude": -112.1866,
         "facts": {
           "credential": {
             "state": "known",
             "value": "MS",
             "citation": {
               "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Degree M.S. (Master of Science in Cardiovascular Science)",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-            "citation": {
-              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-13",
-              "quote": "Master of Science in Cardiovascular Science Program",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 21,
-            "citation": {
-              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-13",
-              "quote": "Duration 21 Months (Continuous) Including 48-Weeks of Clinical Rotations",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "known",
-            "value": 44,
-            "citation": {
-              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-13",
-              "quote": "Class Size Approximation 44",
-              "source_type": "program_site"
-            }
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Kyle W. Dana",
-            "citation": {
-              "source_url": "https://facultyprofiles.midwestern.edu/372-kyle-w-dana/grants",
-              "checked_at": "2026-10-13",
-              "quote": "Kyle W. Dana, D.C., CP Program Director Cardiovascular Science",
-              "source_type": "program_site"
-            }
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Science\""
           },
           "modality": {
             "state": "known",
             "value": "in_person",
             "citation": {
               "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Modality - In-Person",
               "source_type": "program_site"
             }
@@ -85,15 +50,55 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.midwestern.edu/academics/accreditation",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The Cardiovascular Science Program is accredited by the Commission on Accreditation of Allied Health Education Programs (caahep.org) upon the recommendation of the Accreditation Committee-Perfusion Education.",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 21,
+            "citation": {
+              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Duration 21 Months (Continuous) Including 48-Weeks of Clinical Rotations",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\""
+          },
+          "class_size": {
+            "state": "known",
+            "value": 44,
+            "citation": {
+              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Class Size Approximation 44",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 44; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
+            "citation": {
+              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Master of Science in Cardiovascular Science Program",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program\"; perfusionprep.com (captured 2026-10) said \"https://midwestern.edu/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Kyle W. Dana",
+            "citation": {
+              "source_url": "https://facultyprofiles.midwestern.edu/372-kyle-w-dana/grants",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Kyle W. Dana, D.C., CP Program Director Cardiovascular Science",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "Midwestern University",
-        "latitude": 33.6601,
-        "longitude": -112.1866,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -110,6 +115,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -118,23 +124,25 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = Yes; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
                   "value": null,
                   "note": "Glendale 2026-27 tuition recorded in the tuition row (owner-authorized two-year total)."
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = Yes; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -150,7 +158,7 @@
             "fees_note": "Total is an owner-authorized conversion (published rate x terms), assuming the current rate holds for the whole program; not a figure the page states. $50,836 per program year x 2 years (2026-27 Glendale budget lists $50,836 for both years; the annual amount is split across quarters, not multiplied by seven). Tuition only; mandatory fees ($3,038 year 1, $1,540 year 2) are separate. Glendale campus.",
             "citation": {
               "source_url": "https://www.midwestern.edu/admissions/paying-college/cost-attendance/glendale-campus-budgets/costs-cardiovascular-science-glendale",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-12T00:00:00.000Z",
               "quote": "Tuition $50,836 $50,836",
               "source_type": "program_site"
             }

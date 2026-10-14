@@ -3,79 +3,44 @@
   "school": {
     "slug": "carlow-university-upmc-shadyside",
     "name": "Carlow University / UPMC Shadyside",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Pittsburgh",
-        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Pittsburgh, PA\"; perfusionprep.com (captured 2026-10) said \"Pittsburgh, PA\"",
         "citation": {
           "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-          "checked_at": "2026-08-25",
+          "checked_at": "2026-10-13T21:34:13.189Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Pittsburgh, PA\"; perfusionprep.com (captured 2026-10) said \"Pittsburgh, PA\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-ms",
         "name": "MS in Cardiovascular Perfusion",
+        "legacy_key": "Carlow University / UPMC Shadyside",
+        "latitude": 40.4406,
+        "longitude": -79.9959,
         "facts": {
           "credential": {
             "state": "known",
             "value": "MS",
             "citation": {
               "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "MS in Cardiovascular Perfusion",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-            "citation": {
-              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-13",
-              "quote": "MS in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 20,
-            "citation": {
-              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-13",
-              "quote": "Time to degree:\n\nAs few as 20 months",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "known",
-            "value": 15,
-            "citation": {
-              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/biology-major/",
-              "checked_at": "2026-10-13",
-              "quote": "Up to 15 students per year are accepted into the Master of Science program.",
-              "source_type": "program_site"
-            }
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Beth Surlow",
-            "citation": {
-              "source_url": "https://www.carlow.edu/about/administration/faculty-directory/beth-surlow/",
-              "checked_at": "2026-10-13",
-              "quote": "Beth Surlow, PhD\nAssociate Professor of Biology, Program Director of Cardiovascular Perfusion",
-              "source_type": "program_site"
-            }
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
           },
           "modality": {
             "state": "known",
             "value": "hybrid",
             "citation": {
               "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Delivery:\n\nOn campus, some online",
               "source_type": "program_site"
             }
@@ -85,15 +50,56 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.procirca.com/perfusion-services/school-of-cardiovascular-perfusion/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "Through a consortium sponsorship model, UPMC Procirca and Carlow University serve as Co-Sponsors of the CAAHEP-accredited ‘Carlow University and UPMC Presbyterian Shadyside Cardiovascular Perfusion Program’, which prepares graduates to earn a Master of Science in Cardiovascular Perfusion degree, issued by Carlow University.",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 20,
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Time to degree:\n\nAs few as 20 months",
+              "source_type": "program_site"
+            },
+            "note": "Page states a minimum (\"as few as\"), not a fixed length.",
+            "confidence": "low"
+          },
+          "class_size": {
+            "state": "known",
+            "value": 15,
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/biology-major/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Up to 15 students per year are accepted into the Master of Science program.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 20; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+            "citation": {
+              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "MS in Cardiovascular Perfusion",
+              "source_type": "program_site"
+            },
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"; perfusionprep.com (captured 2026-10) said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Beth Surlow",
+            "citation": {
+              "source_url": "https://www.carlow.edu/about/administration/faculty-directory/beth-surlow/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Beth Surlow, PhD\nAssociate Professor of Biology, Program Director of Cardiovascular Perfusion",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "Carlow University / UPMC Shadyside",
-        "latitude": 40.4406,
-        "longitude": -79.9959,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -110,6 +116,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -118,18 +125,9 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -140,11 +138,23 @@
               {
                 "category": "shadowing",
                 "label": "Observation / shadowing hours",
+                "sort_order": 0,
                 "value": {
                   "kind": "text",
                   "state": "unknown",
                   "value": null,
                   "note": "legacy 2025-26 dashboard had no notes; perfusionprep.com (captured 2026-10) key requirements: \"Prerequisites must be completed before consideration: Bio I-II, A&P I-II, Gen Chem I-II, Organic Chem I-II, Physics I-II, Microbiology, Pharmacology, Calculus, Medical Ethics; shadowing proof required\""
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -160,7 +170,7 @@
             "fees_note": "Academic year not stated on the page; as_of_year is the year the page was checked.",
             "citation": {
               "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-12",
+              "checked_at": "2026-10-12T00:00:00.000Z",
               "quote": "$1,271/credit",
               "source_type": "program_site"
             }

@@ -3,79 +3,44 @@
   "school": {
     "slug": "texas-heart-institute",
     "name": "Texas Heart Institute",
+    "country": "US",
     "facts": {
       "city": {
         "state": "known",
         "value": "Houston",
-        "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"Houston, TX\"; perfusionprep.com (captured 2026-10) said \"Houston, TX\"",
         "citation": {
           "source_url": "https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions",
-          "checked_at": "2026-10-06",
+          "checked_at": "2026-10-06T00:00:00.000Z",
           "source_type": "program_site"
-        }
+        },
+        "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"Houston, TX\"; perfusionprep.com (captured 2026-10) said \"Houston, TX\""
       }
     },
     "programs": [
       {
         "slug": "perfusion-certificate",
         "name": "Certificate in Cardiovascular Perfusion",
+        "legacy_key": "Texas Heart Institute",
+        "latitude": 29.71,
+        "longitude": -95.3965,
         "facts": {
           "credential": {
             "state": "known",
             "value": "Certificate",
             "citation": {
               "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The Texas Heart Institute Cardiovascular Perfusion Program at Baylor College of Medicine offers a post-baccalaureate certificate in perfusion technology.",
               "source_type": "program_site"
-            }
-          },
-          "website_url": {
-            "state": "known",
-            "value": "https://www.texasheart.org/education/school-of-perfusion-technology/",
-            "citation": {
-              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
-              "checked_at": "2026-10-13",
-              "quote": "School of Perfusion Technology",
-              "source_type": "program_site"
-            }
-          },
-          "program_length_months": {
-            "state": "known",
-            "value": 18,
-            "citation": {
-              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/about-the-program/",
-              "checked_at": "2026-10-13",
-              "quote": "The 18-month course trains students to use the cardiopulmonary bypass machine and other equipment associated with open-heart surgery.",
-              "source_type": "program_site"
-            }
-          },
-          "class_size": {
-            "state": "known",
-            "value": 8,
-            "citation": {
-              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/application-process/",
-              "checked_at": "2026-10-13",
-              "quote": "For each class, we accept a maximum of 8 students.",
-              "source_type": "program_site"
-            }
-          },
-          "director_name": {
-            "state": "known",
-            "value": "Deborah Lowery Adams",
-            "citation": {
-              "source_url": "https://www.texasheart.org/people/deborah-lowery-adams/",
-              "checked_at": "2026-10-13",
-              "quote": "Deborah Lowery Adams, MA, LP, CCP\n\nDirector and Clinical Coordinator, Cardiovascular Perfusion Program",
-              "source_type": "program_site"
-            }
+            },
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"Certificate\""
           },
           "modality": {
             "state": "known",
             "value": "in_person",
             "citation": {
               "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/about-the-program/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The 18-month course trains students to use the cardiopulmonary bypass machine and other equipment associated with open-heart surgery.",
               "source_type": "program_site"
             }
@@ -85,15 +50,55 @@
             "value": "Accredited",
             "citation": {
               "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
-              "checked_at": "2026-10-13",
+              "checked_at": "2026-10-13T00:00:00.000Z",
               "quote": "The Texas Heart Institute Cardiovascular Perfusion Program at Baylor College of Medicine is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP) upon the recommendation of the Accreditation Committee for Perfusion Education (ACPE), and graduates are eligible to become a Certified Clinical Perfusionist after they take the national certification examination, which is given by the American Board of Cardiovascular Perfusion.",
+              "source_type": "program_site"
+            }
+          },
+          "program_length_months": {
+            "state": "known",
+            "value": 18,
+            "citation": {
+              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/about-the-program/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "The 18-month course trains students to use the cardiopulmonary bypass machine and other equipment associated with open-heart surgery.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"18 mo\""
+          },
+          "class_size": {
+            "state": "known",
+            "value": 8,
+            "citation": {
+              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/application-process/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "For each class, we accept a maximum of 8 students.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 8; perfusionprep.com (captured 2026-10) has no class-size column"
+          },
+          "website_url": {
+            "state": "known",
+            "value": "https://www.texasheart.org/education/school-of-perfusion-technology/",
+            "citation": {
+              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "School of Perfusion Technology",
+              "source_type": "program_site"
+            },
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.texasheart.org/education/school-of-perfusion-technology/application-process/\"; perfusionprep.com (captured 2026-10) said \"https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions\""
+          },
+          "director_name": {
+            "state": "known",
+            "value": "Deborah Lowery Adams",
+            "citation": {
+              "source_url": "https://www.texasheart.org/people/deborah-lowery-adams/",
+              "checked_at": "2026-10-13T00:00:00.000Z",
+              "quote": "Deborah Lowery Adams, MA, LP, CCP\n\nDirector and Clinical Coordinator, Cardiovascular Perfusion Program",
               "source_type": "program_site"
             }
           }
         },
-        "legacy_key": "Texas Heart Institute",
-        "latitude": 29.71,
-        "longitude": -95.3965,
         "cycles": [
           {
             "cycle_label": "2026-27",
@@ -110,6 +115,7 @@
                 "category": "gpa",
                 "label": "Minimum overall GPA",
                 "unit": "gpa",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -118,18 +124,9 @@
                 }
               },
               {
-                "category": "test",
-                "label": "GRE required",
-                "value": {
-                  "kind": "bool",
-                  "state": "unknown",
-                  "value": null,
-                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
-                }
-              },
-              {
                 "category": "other",
                 "label": "Tuition (unit and residency tier not yet determined)",
+                "sort_order": 0,
                 "value": {
                   "kind": "number",
                   "state": "unknown",
@@ -140,11 +137,23 @@
               {
                 "category": "shadowing",
                 "label": "Observation / shadowing hours",
+                "sort_order": 0,
                 "value": {
                   "kind": "text",
                   "state": "unknown",
                   "value": null,
                   "note": "legacy 2025-26 dashboard had no notes; legacy entry \"Baylor College of Medicine\" notes: \"REQUIRED: Same as Texas Heart Institute - minimum 1 open-heart observation. Start: January 15 2025.\"; perfusionprep.com (captured 2026-10) key requirements: \"Bachelor's; 3.0 GPA; Chem, Bio, A&P, Physics, Algebra, Statistics; 1 open-heart observation\""
+                }
+              },
+              {
+                "category": "test",
+                "label": "GRE required",
+                "sort_order": 0,
+                "value": {
+                  "kind": "bool",
+                  "state": "unknown",
+                  "value": null,
+                  "note": "legacy 2025-26 dashboard said GRE required = No; perfusionprep.com (captured 2026-10) has no GRE column"
                 }
               }
             ]
@@ -160,7 +169,7 @@
             "fees_note": "The page states the $30,000 total directly: three $10,000 installments invoiced at the start of each semester (due by October 15 or March 15) over an 18-month program. Academic year not stated. Living expenses of about $40,000-$45,000 are separate. Non-degree certificate program; federal financial aid is not available. One rate, no residency split.",
             "citation": {
               "source_url": "https://www.texasheart.org/about-the-program-dev/",
-              "checked_at": "2026-10-14",
+              "checked_at": "2026-10-14T00:00:00.000Z",
               "quote": "Tuition is $30,000, payable in three $10,000 installments invoiced at the beginning of each semester due in full by October 15 or March 15.",
               "source_type": "program_site"
             }

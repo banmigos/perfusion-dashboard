@@ -231,7 +231,7 @@ export default async function ProgramDetailPage({
                 <FactCell
                   variant="detail"
                   value={formatUsdCents(t.amountCents)}
-                  claim={claimFor("tuition_estimates", t.id, "amount_cents")}
+                  claim={claimFor("tuition_estimates", t.id, "record")}
                   {...fact}
                 />
                 <span className="text-xs text-subtle">

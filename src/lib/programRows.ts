@@ -90,7 +90,7 @@ export function buildProgramRow(detail: ProgramDetail): ProgramTableRow {
     tuition: detail.tuitionEstimates.map((t) => ({
       label: `${t.residency.replace("_", " ")} · ${t.covers.replace("_", " ")} · ${t.asOfYear}`,
       value: formatUsdCents(t.amountCents),
-      claim: claimFor("tuition_estimates", t.id, "amount_cents"),
+      claim: claimFor("tuition_estimates", t.id, "record"),
     })),
   };
 }

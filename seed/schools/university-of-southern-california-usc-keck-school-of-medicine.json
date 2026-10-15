@@ -67,9 +67,15 @@
             "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"20 mo\""
           },
           "class_size": {
-            "state": "not_published",
-            "value": null,
-            "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "known",
+            "value": 8,
+            "citation": {
+              "source_url": "https://keck.usc.edu/perfusion-sciences-program/faq/",
+              "checked_at": "2026-10-15",
+              "quote": "How many students do you accept? We accept approximately 8 students per year.",
+              "source_type": "program_site"
+            },
+            "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column Quote says approximately 8; the integer is that approximate figure."
           },
           "website_url": {
             "state": "known",
@@ -150,7 +156,7 @@
                   "value": null,
                   "citation": {
                     "source_url": "https://keck.usc.edu/perfusion-sciences-program/apply/",
-                    "checked_at": "2026-10-14T00:00:00.000Z",
+                    "checked_at": "2026-10-14T22:26:07.002Z",
                     "quote": "Applications must include:",
                     "source_type": "program_site"
                   },

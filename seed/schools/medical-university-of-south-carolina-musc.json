@@ -68,9 +68,15 @@
             "confidence": "low"
           },
           "class_size": {
-            "state": "not_published",
-            "value": null,
-            "note": "legacy 2025-26 dashboard said 30; perfusionprep.com (captured 2026-10) has no class-size column"
+            "state": "known",
+            "value": 26,
+            "citation": {
+              "source_url": "https://www.livperfusion.com/programs",
+              "checked_at": "2026-10-15",
+              "quote": "* Medical University of South Carolina. Master's 21 months. $130,000. Twenty-six students.",
+              "source_type": "other"
+            },
+            "note": "legacy 2025-26 dashboard said 30; perfusionprep.com (captured 2026-10) has no class-size column Aggregator listing (livperfusion.com), not an official page."
           },
           "website_url": {
             "state": "known",

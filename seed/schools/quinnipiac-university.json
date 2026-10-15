@@ -68,8 +68,14 @@
             "confidence": "medium"
           },
           "class_size": {
-            "state": "not_published",
-            "value": null,
+            "state": "known",
+            "value": 10,
+            "citation": {
+              "source_url": "https://perfusion.com/perfusion-school/quinnipiac-university-cardiovascular-perfusion-program/",
+              "checked_at": "2026-10-15",
+              "quote": "Students Admitted:10",
+              "source_type": "other"
+            },
             "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column"
           },
           "website_url": {

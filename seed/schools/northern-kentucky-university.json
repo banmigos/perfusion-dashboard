@@ -67,8 +67,14 @@
             "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"24 mo\""
           },
           "class_size": {
-            "state": "not_published",
-            "value": null,
+            "state": "known",
+            "value": 12,
+            "citation": {
+              "source_url": "https://perfusion.com/perfusion-school/northern-kentucky-university-nku/",
+              "checked_at": "2026-10-15",
+              "quote": "Students Admitted:12",
+              "source_type": "other"
+            },
             "note": "legacy 2025-26 dashboard said 10; perfusionprep.com (captured 2026-10) has no class-size column"
           },
           "website_url": {

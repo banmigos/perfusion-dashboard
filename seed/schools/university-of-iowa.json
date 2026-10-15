@@ -67,9 +67,15 @@
             "note": "legacy 2025-26 dashboard has no length field; perfusionprep.com (captured 2026-10) said \"21 mo\""
           },
           "class_size": {
-            "state": "unknown",
-            "value": null,
-            "note": "Four to five students are admitted each year (https://perfusion.medicine.uiowa.edu/prospective-students, checked 2026-10-13)"
+            "state": "known",
+            "value": 5,
+            "citation": {
+              "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students",
+              "checked_at": "2026-10-15",
+              "quote": "Four to five students are admitted each year and begin the program in the fall semester.",
+              "source_type": "program_site"
+            },
+            "note": "Four to five students are admitted each year (https://perfusion.medicine.uiowa.edu/prospective-students, checked 2026-10-13) Quote gives a range (four to five); the integer is the upper bound."
           },
           "website_url": {
             "state": "known",
@@ -122,7 +128,7 @@
                   "value": null,
                   "citation": {
                     "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students/admissions",
-                    "checked_at": "2026-10-14T00:00:00.000Z",
+                    "checked_at": "2026-10-14T22:26:14.285Z",
                     "quote": "Successful applicants have historically presented strong academic records, with undergraduate GPAs generally ranging from 3.2 to 4.0.",
                     "source_type": "program_site"
                   },
@@ -150,7 +156,7 @@
                   "value": null,
                   "citation": {
                     "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students/admissions",
-                    "checked_at": "2026-10-14T00:00:00.000Z",
+                    "checked_at": "2026-10-14T22:26:06.065Z",
                     "quote": "Each application is reviewed holistically by the Admissions Committee, with consideration given to:",
                     "source_type": "program_site"
                   },

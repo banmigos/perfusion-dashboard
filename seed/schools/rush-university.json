@@ -25,15 +25,14 @@
         "longitude": -87.6695,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.rushu.rush.edu/college-health-sciences/academic-programs/cardiovascular-perfusion-masters-degree-program",
-              "checked_at": "2026-10-14T16:41:29.175Z",
-              "quote": "Master of Science (MS) in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.rushu.rush.edu/college-health-sciences/college-health-sciences-admissions/ms-cardiovascular-perfusion/ms-cardiovascular-perfusion-accreditation-and-licensure",
-              "checked_at": "2026-10-14T16:41:29.196Z",
-              "quote": "The Rush University Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs upon the recommendation of the Accreditation Committee-Perfusion Education.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: October 28, 1993 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: October 28, 1993"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Master of Science (MS) in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.rushu.rush.edu/college-health-sciences/college-health-sciences-admissions/ms-cardiovascular-perfusion\"; perfusionprep.com (captured 2026-10) said \"https://rushu.rush.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.rushu.rush.edu/college-health-sciences/college-health-sciences-admissions/ms-cardiovascular-perfusion\"; perfusionprep.com (captured 2026-10) said \"https://rushu.rush.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.rushu.rush.edu/college-health-sciences/academic-programs/cardiovascular-perfusion-masters-degree-program"
           },
           "director_name": {
+            "value": "Julie Collins, CCP, LP, MS",
             "state": "known",
-            "value": "Julie Collins",
             "citation": {
-              "source_url": "https://www.rushu.rush.edu/college-health-sciences/academic-programs/cardiovascular-perfusion-masters-degree-program",
-              "checked_at": "2026-10-14T16:41:29.197Z",
-              "quote": "Julie Collins, CCP, LP, MS\nProgram Director, MS in Cardiovascular Perfusion",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Julie Collins CCP | Phone: 312-942-2305 | Email: Julie_A_Collins@rush.edu"
+            },
+            "note": "Phone: 312-942-2305 | Email: Julie_A_Collins@rush.edu | Address: 600 South Paulina Street, Suite 1001, Chicago, IL 60612"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Rush University | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Continuing | Initial Accreditation Date: October 28, 1993"
             }
           }
         },

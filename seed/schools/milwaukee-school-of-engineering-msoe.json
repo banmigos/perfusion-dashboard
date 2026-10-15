@@ -25,15 +25,14 @@
         "longitude": -87.9103,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.msoe.edu/academics/graduate-degrees/health/perfusion/",
-              "checked_at": "2026-10-14T16:41:29.173Z",
-              "quote": "M.S. in Perfusion",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.msoe.edu/academics/graduate-degrees/health/perfusion/",
-              "checked_at": "2026-10-14T16:41:29.195Z",
-              "quote": "This program is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: April 28, 1995 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: April 28, 1995"
           },
           "program_length_months": {
             "state": "known",
@@ -87,16 +87,27 @@
               "quote": "M.S. in Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.msoe.edu/academics/graduate-degrees/health/perfusion/\"; perfusionprep.com (captured 2026-10) said \"https://msoe.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.msoe.edu/academics/graduate-degrees/health/perfusion/\"; perfusionprep.com (captured 2026-10) said \"https://msoe.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.msoe.edu/academics/graduate-degrees/health/perfusion/"
           },
           "director_name": {
+            "value": "Ron Gerrits, PhD",
             "state": "known",
-            "value": "Ronald Gerrits",
             "citation": {
-              "source_url": "https://www.msoe.edu/academics/graduate-degrees/health/perfusion/",
-              "checked_at": "2026-10-14T16:41:29.195Z",
-              "quote": "Dr. Ron Gerrits\n\nAcademic Program Director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Ron Gerrits PhD | Phone: (414) 277-7561 | Email: gerrits@msoe.edu"
+            },
+            "note": "Phone: (414) 277-7561 | Email: gerrits@msoe.edu | Address: 1025 North Broadway Street, Milwaukee, WI 53202"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Milwaukee School of Engineering | Perfusion — Master of Science in Perfusion | Status: Continuing | Initial Accreditation Date: April 28, 1995"
             }
           }
         },

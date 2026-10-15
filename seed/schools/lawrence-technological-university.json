@@ -25,15 +25,14 @@
         "longitude": -83.2505,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-14T16:41:29.167Z",
-              "quote": "Cardiovascular Perfusion Master of Science",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-14T16:41:29.190Z",
-              "quote": "The Master of Science in Cardiovascular Perfusion Program at LTU is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee-Perfusion Education (AC-PE).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: March 15, 2024 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: March 15, 2024"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Cardiovascular Perfusion Master of Science",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://ltu.edu/programs/grad-cardiovascular-perfusion/\"; perfusionprep.com (captured 2026-10) said \"https://ltu.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://ltu.edu/programs/grad-cardiovascular-perfusion/\"; perfusionprep.com (captured 2026-10) said \"https://ltu.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): https://www.ltu.edu/engineering/biomedical/grad-cardiovascular-perfusion"
           },
           "director_name": {
+            "value": "Kristen Fanelli, MS, BScN, CCP, RN",
             "state": "known",
-            "value": "Kristen Fanelli",
             "citation": {
-              "source_url": "https://ltu.edu/programs/grad-cardiovascular-perfusion/",
-              "checked_at": "2026-10-14T16:41:29.190Z",
-              "quote": "Kristen\n\nFanelli\n\nProgram Director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Kristen Fanelli MS, BScN, CCP, RN | Phone: (248) 204-2592 | Email: kfanelli@ltu.edu"
+            },
+            "note": "Phone: (248) 204-2592 | Email: kfanelli@ltu.edu | Address: 21000 West 10 Mile Road, Southfield, MI 48075"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Lawrence Technological University | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Initial | Initial Accreditation Date: March 15, 2024"
             }
           }
         },

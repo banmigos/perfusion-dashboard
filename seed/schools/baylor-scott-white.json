@@ -22,15 +22,14 @@
         "name": "Certificate in Cardiovascular Perfusion",
         "facts": {
           "credential": {
-            "state": "known",
             "value": "Certificate",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-13T21:34:14.900Z",
-              "quote": "The Cardiovascular Perfusion program is a certificate-level, 51-week program divided into three semesters 15-17 weeks in length – Fall, Spring and Summer.",
-              "source_type": "program_site"
-            },
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Certificate / MS pathway\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Cardiovascular Perfusion Certificate | Award: Certificate"
+            }
           },
           "modality": {
             "state": "known",
@@ -43,14 +42,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-14T16:41:29.147Z",
-              "quote": "The Cardiovascular Perfusion program is CAAHEP accredited as of May 2022 and graduates may gain employment in a variety of allied healthcare settings, from large hospital centers to smaller surgical units, working as a cardiovascular perfusionist.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: May 20, 2022 | Award: Certificate"
+            },
+            "note": "Initial Accreditation Date: May 20, 2022"
           },
           "program_length_months": {
             "state": "known",
@@ -83,16 +83,27 @@
               "quote": "Cardiovascular Perfusion Program",
               "source_type": "program_site"
             },
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"https://bswhealth.com/\""
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"https://bswhealth.com/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.bswhealth.med/education/Pages/allied-health/plano/cardiovascular-perfusion-program.aspx"
           },
           "director_name": {
+            "value": "Altaf Panjwani, MA, MBA, CCP, LCP",
             "state": "known",
-            "value": "Altaf (Al) Panjwani",
             "citation": {
-              "source_url": "https://www.bswhealth.com/medical-professionals/education/allied-health/cardiovascular-institute/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-14T16:34:12.835Z",
-              "quote": "Altaf (Al) Panjwani, MS, MBA, CCP, LCP\n\nProgram Director and Lead Instructor, Cardiovascular Perfusion Program BSW THHs Cardiovascular Institute",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Altaf Panjwani MA, MBA, CCP, LCP | Phone: 469-814-3603 | Email: Altaf.Panjwani@BSWHealth.org"
+            },
+            "note": "Phone: 469-814-3603 | Email: Altaf.Panjwani@BSWHealth.org | Address: 1100 Allied Drive, Plano, TX 75093"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Baylor Scott & White The Heart Hospital-Plano | Perfusion — Cardiovascular Perfusion Certificate | Status: Initial | Initial Accreditation Date: May 20, 2022"
             }
           }
         },

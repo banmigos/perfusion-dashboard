@@ -25,15 +25,14 @@
         "longitude": -112.1866,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-14T16:41:29.172Z",
-              "quote": "Degree M.S. (Master of Science in Cardiovascular Science)",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Science\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Science | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.midwestern.edu/academics/accreditation",
-              "checked_at": "2026-10-14T16:41:29.193Z",
-              "quote": "The Cardiovascular Science Program is accredited by the Commission on Accreditation of Allied Health Education Programs (caahep.org) upon the recommendation of the Accreditation Committee-Perfusion Education.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: April 10, 2003 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: April 10, 2003"
           },
           "program_length_months": {
             "state": "known",
@@ -78,24 +78,34 @@
             "note": "legacy 2025-26 dashboard said 44; perfusionprep.com (captured 2026-10) has no class-size column"
           },
           "website_url": {
-            "state": "known",
             "value": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program",
-              "checked_at": "2026-10-14T16:41:29.173Z",
-              "quote": "Master of Science in Cardiovascular Science Program",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program\"; perfusionprep.com (captured 2026-10) said \"https://midwestern.edu/\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "View Institution: https://www.midwestern.edu/academics/degrees-programs/college-health-sciences/master-science-cardiovascular-science-program"
+            }
           },
           "director_name": {
+            "value": "Kyle Dana, DC, CP",
             "state": "known",
-            "value": "Kyle W. Dana",
             "citation": {
-              "source_url": "https://facultyprofiles.midwestern.edu/372-kyle-w-dana/grants",
-              "checked_at": "2026-10-14T16:41:29.193Z",
-              "quote": "Kyle W. Dana, D.C., CP Program Director Cardiovascular Science",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Kyle Dana DC, CP | Phone: (623) 572-3691 | Email: kdana@midwestern.edu"
+            },
+            "note": "Phone: (623) 572-3691 | Email: kdana@midwestern.edu | Address: 19555 N 59th Avenue, Glendale, AZ 85308"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Midwestern University | Perfusion — Master of Science in Cardiovascular Science | Status: Continuing | Initial Accreditation Date: April 10, 2003"
             }
           }
         },

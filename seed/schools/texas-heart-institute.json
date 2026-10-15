@@ -25,15 +25,14 @@
         "longitude": -95.3965,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "Certificate",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
-              "checked_at": "2026-10-14T16:09:35.574Z",
-              "quote": "The Texas Heart Institute Cardiovascular Perfusion Program at Baylor College of Medicine offers a post-baccalaureate certificate in perfusion technology.",
-              "source_type": "program_site"
-            },
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"Certificate\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Perfusion Technology Certificate | Award: Certificate"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.texasheart.org/education/school-of-perfusion-technology/",
-              "checked_at": "2026-10-14T16:41:29.149Z",
-              "quote": "The Texas Heart Institute Cardiovascular Perfusion Program at Baylor College of Medicine is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP) upon the recommendation of the Accreditation Committee for Perfusion Education (ACPE), and graduates are eligible to become a Certified Clinical Perfusionist after they take the national certification examination, which is given by the American Board of Cardiovascular Perfusion.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: October 24, 1984 | Award: Certificate"
+            },
+            "note": "Initial Accreditation Date: October 24, 1984"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "School of Perfusion Technology",
               "source_type": "program_site"
             },
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.texasheart.org/education/school-of-perfusion-technology/application-process/\"; perfusionprep.com (captured 2026-10) said \"https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions\""
+            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.texasheart.org/education/school-of-perfusion-technology/application-process/\"; perfusionprep.com (captured 2026-10) said \"https://www.bcm.edu/education/school-of-health-professions/cardiovascular-perfusion-program/admissions\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.texasheart.org/education/school-of-perfusion-technology/about-the-program/"
           },
           "director_name": {
+            "value": "Deborah Lowery Adams, MA, CCP",
             "state": "known",
-            "value": "Deborah Lowery Adams",
             "citation": {
-              "source_url": "https://www.texasheart.org/people/deborah-lowery-adams/",
-              "checked_at": "2026-10-14T16:41:29.149Z",
-              "quote": "Deborah Lowery Adams, MA, LP, CCP\n\nDirector and Clinical Coordinator, Cardiovascular Perfusion Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Deborah Lowery Adams MA, CCP | Phone: (832) 355-7606 | Email: dadams@texasheart.org"
+            },
+            "note": "Phone: (832) 355-7606 | Email: dadams@texasheart.org | Address: 6770 Bertner Avenue, Houston, TX 77030"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Baylor College of Medicine | Perfusion — Perfusion Technology Certificate | Status: Continuing | Initial Accreditation Date: October 24, 1984"
             }
           }
         },

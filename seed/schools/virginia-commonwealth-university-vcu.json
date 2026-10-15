@@ -22,15 +22,14 @@
         "name": "MS in Cardiovascular Perfusion",
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
+              "source_type": "program_site",
               "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/",
-              "checked_at": "2026-10-14T16:41:29.184Z",
-              "quote": "Cardiovascular Perfusion, Master of Science (M.S.)",
-              "source_type": "program_site"
-            },
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "checked_at": "2026-10-15",
+              "quote": "Cardiovascular Perfusion, Master of Science (M.S.)"
+            }
           },
           "modality": {
             "state": "known",
@@ -43,15 +42,15 @@
             }
           },
           "accreditation_status": {
-            "state": "known",
             "value": "Candidacy",
+            "state": "known",
             "citation": {
+              "source_type": "accreditor",
               "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
-              "checked_at": "2026-10-14T16:41:29.184Z",
-              "quote": "The programs below hold Candidacy status through the AC-PE:\nVirginia Commonwealth University\n1200 West Broad St., Richmond, VA, 23219",
-              "source_type": "other"
+              "checked_at": "2026-10-15",
+              "quote": "The programs below hold Candidacy status through the AC-PE: Virginia Commonwealth University, 1200 West Broad St., Richmond, VA, 23219"
             },
-            "note": "Accreditation not confirmed; verify CAAHEP/board eligibility before applying."
+            "note": "Candidacy status is recognized by the AC-PE and is not yet a CAAHEP accreditation status."
           },
           "program_length_months": {
             "state": "known",
@@ -77,24 +76,34 @@
             "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) has no class-size column"
           },
           "website_url": {
+            "value": "https://nrsa.chp.vcu.edu/programs/perfusion/",
             "state": "known",
-            "value": "https://go.vcu.edu/perfusion",
             "citation": {
-              "source_url": "https://go.vcu.edu/perfusion",
-              "checked_at": "2026-10-14T16:41:29.185Z",
-              "quote": "Master of Science in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            },
-            "note": "taken from perfusionprep.com (captured 2026-10), not re-fetched or verified; legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"https://nrsa.chp.vcu.edu/programs/perfusion/\""
+              "source_type": "program_site",
+              "source_url": "https://nrsa.chp.vcu.edu/programs/perfusion/",
+              "checked_at": "2026-10-15",
+              "quote": "Master of Science in Cardiovascular Perfusion"
+            }
           },
           "director_name": {
+            "value": "Keith Pelletier, PhD, MBA, MHS, CCP",
             "state": "known",
-            "value": "Keith Pelletier",
             "citation": {
-              "source_url": "https://bulletin.vcu.edu/graduate/school-allied-health-professions/nurse-anesthesia/cardio-perfusion-ms/cardio-perfusion-ms.pdf",
-              "checked_at": "2026-10-14T16:41:29.202Z",
-              "quote": "Keith Pelletier, Ph.D., MBA, MHS, CCP\nProgram director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Keith Pelletier PhD, MBA, MHS, CCP"
+            },
+            "note": "Address: 1200 West Broad St., Richmond, VA 23219"
+          },
+          "cae_accredited": {
+            "value": false,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://ac-pe.org/programs-with-candidacy-status/",
+              "checked_at": "2026-10-15",
+              "quote": "Candidacy status is recognized by the AC-PE and is not a Commission on Accreditation of Allied Health Education Programs (CAAHEP) accreditation status."
             }
           }
         },

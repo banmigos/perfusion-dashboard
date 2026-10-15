@@ -25,15 +25,14 @@
         "longitude": -73.6003,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.hofstra.edu/nursing-physician-assistant/ms-cardiovascular-perfusion.html",
-              "checked_at": "2026-10-14T16:41:29.165Z",
-              "quote": "Cardiovascular Sciences and Perfusion Medicine, MS",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Sciences and Perfusion Medicine | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.hofstra.edu/nursing-physician-assistant/ms-cardiovascular-perfusion.html",
-              "checked_at": "2026-10-14T16:41:29.188Z",
-              "quote": "The Program is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP), 25400 US Highway 19 North, Suite 158, Clearwater, FL; 727-210-2350; https://caahep.org.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: May 15, 2020 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: May 15, 2020"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Cardiovascular Sciences and Perfusion Medicine, MS",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html\"; perfusionprep.com (captured 2026-10) said \"https://hofstra.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.hofstra.edu/master-cardiovascular-perfusion/faq.html\"; perfusionprep.com (captured 2026-10) said \"https://hofstra.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.hofstra.edu/graduate/programs/health/cardiovascular-sciences-perfusion-medicine.html"
           },
           "director_name": {
+            "value": "Edward Delaney, MS, MBA, LP, CCP",
             "state": "known",
-            "value": "Edward Delaney",
             "citation": {
-              "source_url": "https://news.hofstra.edu/2026/03/02/hofstra-students-share-virtual-reality-research-at-national-perfusion-meeting/",
-              "checked_at": "2026-10-14T16:41:29.189Z",
-              "quote": "Edward Delaney, assistant professor of cardiovascular sciences and perfusion medicine and graduate program director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Edward Delaney MS, MBA, LP, CCP | Phone: (203) 804-8659 | Email: Edward.Delaney@hofstra.edu"
+            },
+            "note": "Phone: (203) 804-8659 | Email: Edward.Delaney@hofstra.edu | Address: 152 Hofstra University, Hempstead, NY 11579"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Hofstra University | Perfusion — Master of Science in Cardiovascular Sciences and Perfusion Medicine | Status: Continuing | Initial Accreditation Date: May 15, 2020"
             }
           }
         },

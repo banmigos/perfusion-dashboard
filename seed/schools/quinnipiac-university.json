@@ -25,15 +25,14 @@
         "longitude": -72.8943,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MHS",
+            "state": "known",
             "citation": {
-              "source_url": "https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/",
-              "checked_at": "2026-10-14T16:41:29.154Z",
-              "quote": "MHS Cardiovascular Perfusion",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MHS\"; perfusionprep.com (captured 2026-10) said \"MHS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Health Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://catalog.qu.edu/graduate-studies/health-sciences/cardiovascular-perfusion-mhs/",
-              "checked_at": "2026-10-14T16:41:29.157Z",
-              "quote": "This program is fully accredited by the Accreditation Committee—Perfusion Education (1415 Walnut Street, Western Springs, Illinois 60558; Executive Director Bradley Kulat CCP, LP) office@ac-pe.org under the Commission on Accreditation of Allied Health Education Programs (CAAHEP).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: October 18, 1989 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: October 18, 1989"
           },
           "program_length_months": {
             "state": "known",
@@ -87,18 +87,28 @@
               "quote": "MHS Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/\"; perfusionprep.com (captured 2026-10) said \"https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/admissions/\"; perfusionprep.com (captured 2026-10) said \"https://grad.qu.edu/programs/masters-degree/cardiovascular-perfusion/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.qu.edu/schools/health-sciences/programs/masters-degree/cardiovascular-perfusion/"
           },
           "director_name": {
+            "value": "Tyler Wahl, MHS, CCP",
             "state": "known",
-            "value": "Tyler J. Wahl",
             "citation": {
-              "source_url": "https://www.qu.edu/faculty-and-staff/tyler-wahl/",
-              "checked_at": "2026-10-14T16:41:29.155Z",
-              "quote": "Tyler J Wahl\n\nClinical Assistant Professor of Biomedical Sciences\n\nDirector, Cardiovascular Perfusion Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Tyler Wahl MHS, CCP | Phone: (203) 582-7290 | Email: tyler.wahl@quinnipiac.edu"
             },
-            "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Tyler Wahl\""
+            "note": "Phone: (203) 582-7290 | Email: tyler.wahl@quinnipiac.edu | Address: 275 Mt Carmel Avenue, Hamden, CT 06518"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Quinnipiac University | Perfusion — Master of Health Science in Cardiovascular Perfusion | Status: Continuing | Initial Accreditation Date: October 18, 1989"
+            }
           }
         },
         "cycles": [

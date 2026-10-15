@@ -25,15 +25,14 @@
         "longitude": -75.1652,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-14T16:41:29.178Z",
-              "quote": "Degree\nMaster of Science",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.jefferson.edu/content/dam/academic/life-at-jefferson/handbooks/catalog/university-catalog-20220809.pdf",
-              "checked_at": "2026-10-14T16:41:29.198Z",
-              "quote": "Commission on Accreditation of Allied Health Education Programs (CAAHEP)\nCardiac Sonography (BS); Cytotechnology (BS); Cytotechnology (MS); Abdomen-Extended & OB/GYN (BS); Perfusion (Certificate, MS); Vascular Sonography (BS)",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: January 11, 2018 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: January 11, 2018"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Entry-Level MS in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html\"; perfusionprep.com (captured 2026-10) said \"https://jefferson.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/ms-cardiovascular-perfusion/entry-level/applying.html\"; perfusionprep.com (captured 2026-10) said \"https://jefferson.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/emerging-health-professions/academic-programs/ms-cardiovascular-perfusion.html"
           },
           "director_name": {
+            "value": "Brian Schwartz, CCP, RN, MBA",
             "state": "known",
-            "value": "Brian Schwartz",
             "citation": {
-              "source_url": "https://www.jefferson.edu/academics/colleges-schools-institutes/health-professions/departments-programs/cardiovascular-pulmonary-sciences/degrees-programs/cardiovascular-perfusion-ms/entry-level.html",
-              "checked_at": "2026-10-14T16:41:29.198Z",
-              "quote": "Name: Brian Schwartz, CCP, RN, MBA\nPosition: Program Director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Brian Schwartz CCP, RN, MBA | Phone: 215-503-7312 | Email: brian.schwartz@jefferson.edu"
+            },
+            "note": "Phone: 215-503-7312 | Email: brian.schwartz@jefferson.edu | Address: 901 Walnut Street, 11th Floor, Philadelphia, PA 19107"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Thomas Jefferson University | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Continuing | Initial Accreditation Date: January 11, 2018"
             }
           }
         },

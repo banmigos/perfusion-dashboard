@@ -25,15 +25,14 @@
         "longitude": -84.4646,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://onlinecatalog.nku.edu/preview_program.php?catoid=28&poid=4555&returnto=4577",
-              "checked_at": "2026-10-13T21:45:49.132Z",
-              "quote": "The Master of Science in Cardiovascular Perfusion Program is an allied health science program that educates and prepares students in the knowledge and skills necessary to conduct cardiopulmonary bypass and associated cardiovascular procedures including cardiac life support.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.nku.edu/academics/programs/cardiovascular-perfusion/master-cardio-perfusion.html",
-              "checked_at": "2026-10-14T16:41:29.195Z",
-              "quote": "Northern Kentucky University’s cardiovascular perfusion program is accredited by the Committee of Accreditation of Allied Health and Education Programs (CAAHEP) through the Accreditation Committee-Perfusion Education (AC-PE).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: March 15, 2024 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: March 15, 2024"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Cardiovascular Perfusion, MS",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.nku.edu/academics/chhs/programs/graduate/cardiovascular-perfusion.html\"; perfusionprep.com (captured 2026-10) said \"https://nku.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.nku.edu/academics/chhs/programs/graduate/cardiovascular-perfusion.html\"; perfusionprep.com (captured 2026-10) said \"https://nku.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): https://www.nku.edu/academics/chhs/programs/graduate/cardiovascular-perfusion.html"
           },
           "director_name": {
+            "value": "Jeremy Engel, DHSc, MHS, CCP",
             "state": "known",
-            "value": "Jeremy Engel",
             "citation": {
-              "source_url": "https://www.nku.edu/academics/programs/cardiovascular-perfusion/master-cardio-perfusion.html",
-              "checked_at": "2026-10-14T16:41:29.196Z",
-              "quote": "Jeremy Engel, DHSc, MHS, CCP\nDeveloper and Director, Clinical Assistant Professor\nMS Cardiovascular Perfusion Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Jeremy Engel DHSc, MHS, CCP | Phone: (859) 572-5726 | Email: engelj1@nku.edu"
+            },
+            "note": "Phone: (859) 572-5726 | Email: engelj1@nku.edu | Address: 1 Nunn Drive, Highland Heights, KY 41009"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Northern Kentucky University | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Initial | Initial Accreditation Date: March 15, 2024"
             }
           }
         },

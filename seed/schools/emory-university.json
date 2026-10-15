@@ -25,15 +25,14 @@
         "longitude": -84.324,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-14T16:41:29.163Z",
-              "quote": "Master in Cardiovascular Perfusion Science",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"Master in CV Perfusion Science\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master in Cardiovascular Perfusion Science | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-14T16:41:29.187Z",
-              "quote": "The Emory University Master in Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee – Perfusion Education.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: March 21, 2025 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: March 21, 2025"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Master in Cardiovascular Perfusion Science",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science\"; perfusionprep.com (captured 2026-10) said \"https://nursing.emory.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science\"; perfusionprep.com (captured 2026-10) said \"https://nursing.emory.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): https://www.nursing.emory.edu/program-details/master-in-cardiovascular-perfusion-science"
           },
           "director_name": {
+            "value": "Erick McNair, PhD, CCP, LP, FICA",
             "state": "known",
-            "value": "Erick McNair",
             "citation": {
-              "source_url": "https://www.nursing.emory.edu/degrees-programs/health-professions/master-cardiovascular-perfusion-science",
-              "checked_at": "2026-10-14T16:41:29.187Z",
-              "quote": "Program Director\n\nErick McNair",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Erick McNair PhD, CCP, LP, FICA | Phone: (470) 334-4707 | Email: erick.mcnair@emory.edu"
+            },
+            "note": "Phone: (470) 334-4707 | Email: erick.mcnair@emory.edu | Address: 1520 Clifton Road NE, Atlanta, GA 30322"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Emory University | Perfusion — Master in Cardiovascular Perfusion Science | Status: Initial | Initial Accreditation Date: March 21, 2025"
             }
           }
         },

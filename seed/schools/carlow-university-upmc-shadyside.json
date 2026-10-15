@@ -25,15 +25,14 @@
         "longitude": -79.9959,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/",
-              "checked_at": "2026-10-14T16:41:29.161Z",
-              "quote": "MS in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.procirca.com/perfusion-services/school-of-cardiovascular-perfusion/",
-              "checked_at": "2026-10-14T16:41:29.186Z",
-              "quote": "Through a consortium sponsorship model, UPMC Procirca and Carlow University serve as Co-Sponsors of the CAAHEP-accredited ‘Carlow University and UPMC Presbyterian Shadyside Cardiovascular Perfusion Program’, which prepares graduates to earn a Master of Science in Cardiovascular Perfusion degree, issued by Carlow University.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: April 25, 1985 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: April 25, 1985"
           },
           "program_length_months": {
             "state": "known",
@@ -87,16 +87,27 @@
               "quote": "MS in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"; perfusionprep.com (captured 2026-10) said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"; perfusionprep.com (captured 2026-10) said \"https://www.carlow.edu/academic-programs/stem-degrees/cardiovascular-perfusion-masters-program/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.procirca.com/perfusion-services/Pages/perfusion-school.aspx"
           },
           "director_name": {
+            "value": "Ryan Dzadony, MEd, CCP, LP",
             "state": "known",
-            "value": "Beth Surlow",
             "citation": {
-              "source_url": "https://www.carlow.edu/about/administration/faculty-directory/beth-surlow/",
-              "checked_at": "2026-10-14T16:41:29.186Z",
-              "quote": "Beth Surlow, PhD\nAssociate Professor of Biology, Program Director of Cardiovascular Perfusion",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Ryan Dzadony MEd, CCP, LP | Phone: (412) 623-2482 | Email: DzadonyRJ@UPMC.edu"
+            },
+            "note": "CAAHEP Clinical/Program Director: Ryan Dzadony, MEd, CCP, LP (UPMC Shadyside) | Carlow Academic Director: Beth Surlow, PhD | Phone: (412) 623-2482 | Email: DzadonyRJ@UPMC.edu | Address: 3600 Forbes @ Meyran Avenue, Pittsburgh, PA 15213"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Carlow University and UPMC Presbyterian Shadyside | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Initial | Initial Accreditation Date: April 25, 1985"
             }
           }
         },

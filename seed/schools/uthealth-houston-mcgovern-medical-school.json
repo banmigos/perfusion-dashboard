@@ -25,15 +25,14 @@
         "longitude": -95.398,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "Certificate",
+            "state": "known",
             "citation": {
-              "source_url": "https://med.uth.edu/perfusion/education/prospective-applicants/",
-              "checked_at": "2026-10-14T16:41:29.144Z",
-              "quote": "The program offers a Certificate in Cardiovascular Perfusion (12-month post-baccalaureate program), satisfying the requirements to sit for the American Board of Cardiovascular Perfusion exams.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Certificate in Cardiovascular Perfusion | Award: Certificate"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://med.uth.edu/perfusion/education/prospective-applicants/",
-              "checked_at": "2026-10-14T16:41:29.152Z",
-              "quote": "The Cardiovascular Perfusion Program at McGovern Medical School is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee for Perfusion Education (AC-PE).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: November 20, 2015 | Award: Certificate"
+            },
+            "note": "Initial Accreditation Date: November 20, 2015"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Cardiovascular Perfusion Program",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://med.uth.edu/perfusion/education/prospective-applicants/\"; perfusionprep.com (captured 2026-10) said \"https://uth.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://med.uth.edu/perfusion/education/prospective-applicants/\"; perfusionprep.com (captured 2026-10) said \"https://uth.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://med.uth.edu/perfusion/education/outcomes/"
           },
           "director_name": {
+            "value": "Rick L. Price, CCP, LP",
             "state": "known",
-            "value": "Richard Price",
             "citation": {
-              "source_url": "https://med.uth.edu/perfusion/2022/12/07/richard-price-ba-ccp-lp/",
-              "checked_at": "2026-10-14T16:41:29.152Z",
-              "quote": "Richard Price MS, CCP, LP\nDirector of Perfusion School, Cardiovascular Perfusion Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Rick L. Price CCP, LP | Phone: (713) 486-6856 | Email: richard.price@uth.tmc.edu"
+            },
+            "note": "Phone: (713) 486-6856 | Email: richard.price@uth.tmc.edu | Address: 6410 Fannin Street, Suite 703, Houston, TX 77030"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "The University of Texas Health Science Center at Houston | Perfusion — Certificate in Cardiovascular Perfusion | Status: Continuing | Initial Accreditation Date: November 20, 2015"
             }
           }
         },

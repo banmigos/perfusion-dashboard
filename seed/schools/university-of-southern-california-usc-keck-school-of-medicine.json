@@ -25,15 +25,14 @@
         "longitude": -118.2014,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://keck.usc.edu/perfusion-sciences-program/",
-              "checked_at": "2026-10-14T16:41:29.181Z",
-              "quote": "Master of Science in Perfusion Sciences (MSPS)",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Perfusion Sciences\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Perfusion Sciences | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://keck.usc.edu/perfusion-sciences-program/faq/",
-              "checked_at": "2026-10-14T16:41:29.200Z",
-              "quote": "As of May 15, 2026, The Master of Science (M.S.) in Perfusion Sciences program at the University of Southern California is a fully accredited perfusion program by the Accreditation Committee for Perfusion Education (AC-PE), 1415 Walnut St. Western Springs, IL. 60558 of the Commission on Accreditation of Allied Health Education Programs (CAAHEP), 9355 – 113th St. N, #7709, Seminole, FL 33775.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: May 15, 2026 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: May 15, 2026"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Master of Science in Perfusion Sciences (MSPS)",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://keck.usc.edu/perfusion-sciences-program/apply/\"; perfusionprep.com (captured 2026-10) said \"https://keck.usc.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://keck.usc.edu/perfusion-sciences-program/apply/\"; perfusionprep.com (captured 2026-10) said \"https://keck.usc.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): https://keck.usc.edu/perfusion-sciences-program"
           },
           "director_name": {
+            "value": "Julie Juliani, MHA, CCP, FPP",
             "state": "known",
-            "value": "Julie Tinius Juliani",
             "citation": {
-              "source_url": "https://keck.usc.edu/perfusion-sciences-program/",
-              "checked_at": "2026-10-14T16:41:29.200Z",
-              "quote": "Julie Tinius Juliani, MHA CCP FPP\nProgram Director, Perfusion Sciences Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Julie Juliani MHA, CCP, FPP | Phone: 323-442-5857 | Email: julie.juliani@med.usc.edu"
+            },
+            "note": "Phone: 323-442-5857 | Email: julie.juliani@med.usc.edu | Address: 1520 San Pablo Street, Los Angeles, CA 91604"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "University of Southern California | Perfusion — Master of Science in Perfusion Sciences | Status: Initial | Initial Accreditation Date: May 15, 2026"
             }
           }
         },

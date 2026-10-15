@@ -25,15 +25,14 @@
         "longitude": -76.1474,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/about.php",
-              "checked_at": "2026-10-14T16:41:29.177Z",
-              "quote": "Our Clinical Perfusion program is 5 semesters long and leads to a Master of Science degree.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Clinical Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Clinical Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://www.upstate.edu/chp/programs/clinical-perfusion/accreditation-program-data.php",
-              "checked_at": "2026-10-14T16:41:29.197Z",
-              "quote": "SUNY Upstate’s Clinical Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs (CAAHEP).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: October 24, 1984 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: October 24, 1984"
           },
           "program_length_months": {
             "state": "known",
@@ -87,16 +87,27 @@
               "quote": "Clinical Perfusion - Master of Science",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.upstate.edu/chp/programs/clinical-perfusion/apply-now.php\"; perfusionprep.com (captured 2026-10) said \"https://upstate.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://www.upstate.edu/chp/programs/clinical-perfusion/apply-now.php\"; perfusionprep.com (captured 2026-10) said \"https://upstate.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.upstate.edu/chp/programs/cp/program-data.php"
           },
           "director_name": {
+            "value": "Bruce Searles, PhD, CCP",
             "state": "known",
-            "value": "Bruce Searles",
             "citation": {
-              "source_url": "https://www.upstate.edu/news/articles/2024/2024-07-25-silverman.php",
-              "checked_at": "2026-10-14T16:41:29.198Z",
-              "quote": "Cardiovascular Perfusion Program Director Bruce Searles, PhD, CCP, said the teaching space has been greatly transformed.",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Bruce Searles PhD, CCP | Phone: (315) 464-6933 | Email: searlesb@upstate.edu"
+            },
+            "note": "Phone: (315) 464-6933 | Email: searlesb@upstate.edu | Address: 750 East Adams Street, Syracuse, NY 13210"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "SUNY Upstate Medical University | Perfusion — Master of Science in Clinical Perfusion | Status: Continuing | Initial Accreditation Date: October 24, 1984"
             }
           }
         },

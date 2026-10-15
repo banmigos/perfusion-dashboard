@@ -25,15 +25,14 @@
         "longitude": -91.5549,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "Certificate",
+            "state": "known",
             "citation": {
-              "source_url": "https://perfusion.medicine.uiowa.edu/prospective-students",
-              "checked_at": "2026-10-14T16:41:29.143Z",
-              "quote": "The University of Iowa Perfusion Education Program is a 21-month, five-semester post-baccalaureate certificate program designed to prepare students for entry into the perfusion profession.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"MS / Perfusion Technology\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Perfusion Technology Certificate | Award: Certificate"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
-            "state": "known",
             "value": "Probationary Accreditation",
+            "state": "known",
             "citation": {
-              "source_url": "https://perfusion.medicine.uiowa.edu/about-perfusion-education-program/accreditation",
-              "checked_at": "2026-10-14T16:41:29.150Z",
-              "quote": "The program has been placed on Probationary Accreditation as of September 20, 2024.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Probation | Initial Accreditation Date: May 19, 1994 | Award: Certificate"
+            },
+            "note": "Initial Accreditation Date: May 19, 1994"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Perfusion Education Program",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://perfusion.medicine.uiowa.edu/prospective-students/admissions\"; perfusionprep.com (captured 2026-10) said \"https://perfusion.medicine.uiowa.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://perfusion.medicine.uiowa.edu/prospective-students/admissions\"; perfusionprep.com (captured 2026-10) said \"https://perfusion.medicine.uiowa.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://medicine.uiowa.edu/perfusion/about-us/disclosures-and-statistics"
           },
           "director_name": {
+            "value": "Shahna Helmick, BS, CCP",
             "state": "known",
-            "value": "Shahna Helmick",
             "citation": {
-              "source_url": "https://perfusion.medicine.uiowa.edu/people/shahna-helmick",
-              "checked_at": "2026-10-14T16:41:29.151Z",
-              "quote": "Shahna Helmick, CCP\nProgram Director, Perfusion Education Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Shahna Helmick BS, CCP | Phone: 319-356-8496 | Email: shahna-helmick@uiowa.edu"
+            },
+            "note": "Phone: 319-356-8496 | Email: shahna-helmick@uiowa.edu | Address: 200 Hawkins Drive, Iowa City, IA 52242-1062"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "University of Iowa | Perfusion — Perfusion Technology Certificate | Status: Probation | Initial Accreditation Date: May 19, 1994"
             }
           }
         },

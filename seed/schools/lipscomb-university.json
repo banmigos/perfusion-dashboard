@@ -25,15 +25,14 @@
         "longitude": -86.7997,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://lipscomb.edu/academics/programs/cardiovascular-perfusion",
-              "checked_at": "2026-10-14T16:41:29.169Z",
-              "quote": "Degree:\nMaster of Science in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion Studies | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://lipscomb.edu/academics/programs/cardiovascular-perfusion",
-              "checked_at": "2026-10-14T16:41:29.191Z",
-              "quote": "The Lipscomb University Master of Science in Cardiovascular Perfusion program is accredited by the Commission on Accreditation of Allied Health Programs, CAAHEP.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: March 17, 2023 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: March 17, 2023"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://lipscomb.edu/academics/programs/cardiovascular-perfusion\"; perfusionprep.com (captured 2026-10) said \"https://lipscomb.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://lipscomb.edu/academics/programs/cardiovascular-perfusion\"; perfusionprep.com (captured 2026-10) said \"https://lipscomb.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://www.lipscomb.edu/academics/programs/cardiovascular-perfusion"
           },
           "director_name": {
-            "state": "known",
             "value": "Chad Smith",
+            "state": "known",
             "citation": {
-              "source_url": "https://lipscomb.edu/academics/programs/cardiovascular-perfusion",
-              "checked_at": "2026-10-14T16:41:29.191Z",
-              "quote": "Chad Smith\n\nProgram Director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Chad Smith | Phone: 615-966-1005 | Email: csmith8@lipscomb.edu"
+            },
+            "note": "Phone: 615-966-1005 | Email: csmith8@lipscomb.edu | Address: One University Park Drive, Nashville, TN 37204"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Lipscomb University | Perfusion — Master of Science in Cardiovascular Perfusion Studies | Status: Initial | Initial Accreditation Date: March 17, 2023"
             }
           }
         },

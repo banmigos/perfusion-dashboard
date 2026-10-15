@@ -25,15 +25,14 @@
         "longitude": -111.891,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/mission-vision-objectives",
-              "checked_at": "2026-10-14T16:41:29.182Z",
-              "quote": "This 24-month, full-time program leads to a Master of Science in Cardiovascular Perfusion degree and begins each year in the summer semester (early May).",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Initial Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/accreditation",
-              "checked_at": "2026-10-14T16:41:29.201Z",
-              "quote": "The University of Utah Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs (www.caahep.org) upon the recommendation of the Accreditation Committee-Perfusion Education (http://www.ac-pe.org/).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Initial | Initial Accreditation Date: January 20, 2022 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: January 20, 2022"
           },
           "program_length_months": {
             "state": "known",
@@ -86,16 +86,27 @@
               "quote": "Master of Science in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/requirements-prerequisites\"; perfusionprep.com (captured 2026-10) said \"https://medicine.utah.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/admissions/requirements-prerequisites\"; perfusionprep.com (captured 2026-10) said \"https://medicine.utah.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/"
           },
           "director_name": {
+            "value": "Kirk Bingham, MS, CCP",
             "state": "known",
-            "value": "Kirk Bingham",
             "citation": {
-              "source_url": "https://medicine.utah.edu/surgery/cardiothoracic/perfusion-studies/letter-from-the-director",
-              "checked_at": "2026-10-14T16:41:29.201Z",
-              "quote": "Kirk Bingham MS, CCP\nUniversity of Utah\nCVP Program Director\nCardiovascular Perfusionist",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Kirk Bingham MS, CCP | Phone: 801-581-4222 | Email: kirk.bingham@hsc.utah.edu"
+            },
+            "note": "Phone: 801-581-4222 | Email: kirk.bingham@hsc.utah.edu | Address: 30 North Mario Capecchi Drive, Salt Lake City, UT 84112"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "University of Utah | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Initial | Initial Accreditation Date: January 20, 2022"
             }
           }
         },

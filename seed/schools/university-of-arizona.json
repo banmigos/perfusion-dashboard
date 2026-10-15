@@ -25,15 +25,14 @@
         "longitude": -110.9747,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://pharmacology.arizona.edu/medical-pharmacology-perfusion-sciences-graduate-program",
-              "checked_at": "2026-10-14T16:41:29.179Z",
-              "quote": "Our perfusion program is the first in the United States that is structured with a dual track, resulting in a Master's of Science degree in Medical Pharmacology, plus technical and clinical training in Cardiovascular Perfusion.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MA Medical Pharmacology–Perfusion Sci.\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Medical Pharmacology-Perfusion Sciences | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://pharmacology.arizona.edu/medical-pharmacology-perfusion-sciences-graduate-program",
-              "checked_at": "2026-10-14T16:41:29.199Z",
-              "quote": "technical and clinical training in Cardiovascular Perfusion",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: October 9, 1991 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: October 9, 1991"
           },
           "program_length_months": {
             "state": "known",
@@ -87,16 +87,27 @@
               "quote": "Medical Pharmacology - Perfusion Sciences Graduate Program",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://pharmacology.arizona.edu/perfusion-sciences-admissions\"; perfusionprep.com (captured 2026-10) said \"https://pharmacology.arizona.edu/\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://pharmacology.arizona.edu/perfusion-sciences-admissions\"; perfusionprep.com (captured 2026-10) said \"https://pharmacology.arizona.edu/\"; CAAHEP directory 'View Institution' link (2026-10-15): http://pharmacology.arizona.edu/medical-pharmacology-perfusion-sciences-graduate-program//"
           },
           "director_name": {
+            "value": "Raymond Wong, PhD, CCP",
             "state": "known",
-            "value": "Raymond K. Wong",
             "citation": {
-              "source_url": "https://pharmacology.arizona.edu/perfusion-sciences-admissions",
-              "checked_at": "2026-10-14T16:41:29.199Z",
-              "quote": "Raymond Wong, PhD, CCP\nDirector, Perfusion Sciences Graduate Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Raymond Wong PhD, CCP | Phone: (520) 626-2188 | Email: rkwong@email.arizona.edu"
+            },
+            "note": "Phone: (520) 626-2188 | Email: rkwong@email.arizona.edu | Address: 1501 North Campbell Avenue, Tucson, AZ 85724"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "University of Arizona | Perfusion — Master of Science in Medical Pharmacology-Perfusion Sciences | Status: Continuing | Initial Accreditation Date: October 9, 1991"
             }
           }
         },

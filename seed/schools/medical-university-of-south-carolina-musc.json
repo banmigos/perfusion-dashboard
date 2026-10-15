@@ -25,15 +25,14 @@
         "longitude": -79.9311,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "MS",
+            "state": "known",
             "citation": {
-              "source_url": "https://chp.musc.edu/programs/master-science-cardiovascular-perfusion",
-              "checked_at": "2026-10-14T16:41:29.171Z",
-              "quote": "MUSC’s Master of Science in Cardiovascular Perfusion (MS-CVP) prepares you to become a Certified Clinical Perfusionist (CCP), operating the heart-lung machine and delivering cardiopulmonary life support during cardiac surgery.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"MS\"; perfusionprep.com (captured 2026-10) said \"MS Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Master of Science in Cardiovascular Perfusion | Award: Masters"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://chp.musc.edu/programs/master-science-cardiovascular-perfusion",
-              "checked_at": "2026-10-14T16:41:29.192Z",
-              "quote": "The Master of Science in Cardiovascular Perfusion program at the Medical University of South Carolina is accredited by the Commission on Accreditation of Allied Health Education Programs (caahep.org) upon the recommendation of the Committee on Accreditation of Perfusion Education (AC-PE).",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: July 28, 1982 | Award: Masters"
+            },
+            "note": "Initial Accreditation Date: July 28, 1982"
           },
           "program_length_months": {
             "state": "known",
@@ -87,16 +87,27 @@
               "quote": "Master of Science in Cardiovascular Perfusion",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://chp.musc.edu/academics/cvp/entry-level/admissions\"; perfusionprep.com (captured 2026-10) said \"https://chp.musc.edu/programs/master-science-cardiovascular-perfusion\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://chp.musc.edu/academics/cvp/entry-level/admissions\"; perfusionprep.com (captured 2026-10) said \"https://chp.musc.edu/programs/master-science-cardiovascular-perfusion\"; CAAHEP directory 'View Institution' link (2026-10-15): https://chp.musc.edu/departments/clinical-sciences/divisions/cardiovascular-perfusion"
           },
           "director_name": {
+            "value": "Laura Dell'Aiera, DHSc, MHA, CCP",
             "state": "known",
-            "value": "Laura Dell'Aiera",
             "citation": {
-              "source_url": "https://chp.musc.edu/programs/master-science-cardiovascular-perfusion",
-              "checked_at": "2026-10-14T16:41:29.192Z",
-              "quote": "Laura Dell'Aiera, DHSc, MHA, CCP\n\nDirector and Assistant Professor, Division of Cardiovascular Perfusion Director, Extracorporeal Science Program",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Laura Dell'Aiera DHSc, MHA, CCP | Phone: (843) 792-8508 | Email: dellaier@musc.edu"
+            },
+            "note": "Phone: (843) 792-8508 | Email: dellaier@musc.edu | Address: 151B Rutledge Avenue, Charleston, SC 29425"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Medical University of South Carolina | Perfusion — Master of Science in Cardiovascular Perfusion | Status: Continuing | Initial Accreditation Date: July 28, 1982"
             }
           }
         },

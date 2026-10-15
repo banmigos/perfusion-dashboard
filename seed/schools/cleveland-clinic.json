@@ -25,15 +25,14 @@
         "longitude": -81.6225,
         "facts": {
           "credential": {
-            "state": "known",
             "value": "Certificate",
+            "state": "known",
             "citation": {
-              "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-14T15:07:47.135Z",
-              "quote": "Upon completion of the program, graduates are awarded a certificate in cardiovascular perfusion.",
-              "source_type": "program_site"
-            },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"Cert\"; perfusionprep.com (captured 2026-10) said \"Certificate in Cardiovascular Perfusion\""
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Perfusion — Cardiovascular Perfusion Certificate | Award: Certificate"
+            }
           },
           "modality": {
             "state": "known",
@@ -46,14 +45,15 @@
             }
           },
           "accreditation_status": {
+            "value": "Continuing Accreditation",
             "state": "known",
-            "value": "Accredited",
             "citation": {
-              "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-14T16:41:29.148Z",
-              "quote": "The Cardiovascular Perfusion Program is accredited by the Commission on Accreditation of Allied Health Education Programs upon the recommendation of the Accreditation Committee-Perfusion Education.",
-              "source_type": "program_site"
-            }
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Status: Continuing | Initial Accreditation Date: October 24, 1985 | Award: Certificate"
+            },
+            "note": "Initial Accreditation Date: October 24, 1985"
           },
           "program_length_months": {
             "state": "known",
@@ -86,18 +86,28 @@
               "quote": "Cardiovascular Perfusion Program",
               "source_type": "program_site"
             },
-            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://my.clevelandclinic.org/departments/heart/medical-professionals/fellowship-residency/cardiovascular-perfusionist\"; perfusionprep.com (captured 2026-10) said \"https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program\""
+            "note": "carried over from the legacy 2025-26 dashboard, not re-fetched or verified; legacy 2025-26 dashboard said \"https://my.clevelandclinic.org/departments/heart/medical-professionals/fellowship-residency/cardiovascular-perfusionist\"; perfusionprep.com (captured 2026-10) said \"https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program\"; CAAHEP directory 'View Institution' link (2026-10-15): http://my.clevelandclinic.org/departments/heart/medical-professionals/fellowship-residency/cardiovascular-perfusionist"
           },
           "director_name": {
+            "value": "Christopher Koehler, CCP",
             "state": "known",
-            "value": "Christopher Koehler",
             "citation": {
-              "source_url": "https://my.clevelandclinic.org/departments/education/school-health-professions/programs/cardiovascular-perfusion-program",
-              "checked_at": "2026-10-14T16:09:49.450Z",
-              "quote": "Christopher Koehler, CCP\nProgram Director",
-              "source_type": "program_site"
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "Program Director: Christopher Koehler CCP | Phone: 216-894-6697 | Email: KOEHLEC@ccf.org"
             },
-            "note": "legacy 2025-26 dashboard had no entry; perfusionprep.com (captured 2026-10) said \"Christopher Koehler, CCP\""
+            "note": "Phone: 216-894-6697 | Email: KOEHLEC@ccf.org | Address: 9500 Euclid Ave, Cleveland, OH 44195"
+          },
+          "cae_accredited": {
+            "value": true,
+            "state": "known",
+            "citation": {
+              "source_type": "accreditor",
+              "source_url": "https://www.caahep.org/students/find-an-accredited-program",
+              "checked_at": "2026-10-15",
+              "quote": "The Cleveland Clinic Foundation | Perfusion — Cardiovascular Perfusion Certificate | Status: Continuing | Initial Accreditation Date: October 24, 1985"
+            }
           }
         },
         "cycles": [

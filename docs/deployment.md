@@ -74,6 +74,7 @@ services:
       PORT: 3000
       DATABASE_URL: file:/data/app.db
       STALE_AFTER_DAYS: 180
+      APP_TIME_ZONE: <IANA_TIME_ZONE> # e.g. America/New_York; sets "today" for deadline countdowns
     volumes:
       - <DATA_DIR>:/data               # bind mount, not a named volume
     ports:

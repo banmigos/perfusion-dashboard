@@ -10,7 +10,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-lg border",
+        "rounded-md border",
         inset ? "border-line bg-canvas" : "border-line bg-surface",
         className,
       )}

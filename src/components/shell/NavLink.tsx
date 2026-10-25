@@ -15,15 +15,17 @@ export function NavLink({
   const pathname = usePathname();
   const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  // The active page carries a venous rule on its leading edge, like the line
+  // the eye follows on a chart; no filled pill.
   return (
     <Link
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "block rounded-md px-3 py-1.5 text-sm font-medium transition-colors",
+        "block border-l-2 px-2 py-1 text-sm whitespace-nowrap transition-colors",
         active
-          ? "bg-accent-soft text-accent-strong"
-          : "text-muted hover:bg-raised hover:text-fg",
+          ? "border-accent font-medium text-fg"
+          : "border-transparent text-muted hover:border-line-strong hover:text-fg",
       )}
     >
       {children}

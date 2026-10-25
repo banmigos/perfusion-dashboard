@@ -22,7 +22,7 @@ export function buttonClass(
   extra?: string,
 ): string {
   return cn(
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+    "inline-flex items-center justify-center rounded font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
     VARIANT[variant],
     SIZE[size],
     extra,

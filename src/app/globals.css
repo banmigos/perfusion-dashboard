@@ -1,43 +1,187 @@
 @import "tailwindcss";
 
-/* Dark-slate theme: the app is dark-only, with tokens defined once. */
-
-@theme inline {
-  --color-canvas: #0b0f14;
-  --color-surface: #121820;
-  --color-raised: #19212b;
-  --color-line: #263140;
-  --color-line-strong: #364457;
-  --color-fg: #e8ecf1;
-  --color-muted: #8b98a9;
-  --color-subtle: #5f6c7e;
-  --color-accent: #4fa3b8;
-  --color-accent-strong: #6cbccf;
-  --color-accent-soft: #14323b;
-  --color-ok: #5fb892;
-  --color-ok-soft: #12302a;
-  --color-warn: #e0a84a;
-  --color-warn-soft: #3a2c12;
-  --color-danger: #e07a7a;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/*
+ * Perfusion Path visual system.
+ *
+ * The palette borrows the heart–lung machine's own color code: the venous
+ * line is blue, the arterial line is red. Venous blue is the working ink for
+ * links and controls; arterial red is reserved for urgency (a deadline close
+ * or missed on an application not yet submitted) and appears nowhere else.
+ *
+ * Tokens resolve per theme: light by default, dark by system preference
+ * unless the user picked a theme (data-theme on <html>, set before paint by
+ * the script in layout.tsx).
+ */
 
 :root {
+  --paper: #f1f3f2;
+  --surface: #fafbfb;
+  --raised: #e6eae9;
+  --line: #d3dad9;
+  --line-strong: #aeb9ba;
+  --ink: #14202a;
+  --muted: #4f5e6b;
+  --subtle: #66737f;
+  --venous: #234c73;
+  --venous-strong: #163756;
+  --venous-soft: #dce5ee;
+  --arterial: #b0122a;
+  --arterial-soft: #f7dfe2;
+  --ok: #2d6a4e;
+  --ok-soft: #daebe1;
+  --warn: #85570a;
+  --warn-soft: #f3e6c8;
+  /* Pipeline ramp: lightest = furthest from done. */
+  --stage-0: #a3b1be;
+  --stage-1: #6f8fae;
+  --stage-2: #3d6890;
+  --stage-3: #234c73;
+  --stage-4: #14202a;
+  --grid: #dfe5e4;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #101b25;
+    --surface: #15222e;
+    --raised: #1c2b38;
+    --line: #283a49;
+    --line-strong: #3a5063;
+    --ink: #e2e9ee;
+    --muted: #a3b1bd;
+    --subtle: #8495a3;
+    --venous: #8fb6db;
+    --venous-strong: #b8d2ec;
+    --venous-soft: #1c3247;
+    --arterial: #ff6377;
+    --arterial-soft: #3b1a22;
+    --ok: #6fc49c;
+    --ok-soft: #143127;
+    --warn: #e2b35a;
+    --warn-soft: #382d15;
+    --stage-0: #3e5366;
+    --stage-1: #5d7e9e;
+    --stage-2: #86a9cb;
+    --stage-3: #adc9e5;
+    --stage-4: #e2e9ee;
+    --grid: #1c2c3a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #101b25;
+  --surface: #15222e;
+  --raised: #1c2b38;
+  --line: #283a49;
+  --line-strong: #3a5063;
+  --ink: #e2e9ee;
+  --muted: #a3b1bd;
+  --subtle: #8495a3;
+  --venous: #8fb6db;
+  --venous-strong: #b8d2ec;
+  --venous-soft: #1c3247;
+  --arterial: #ff6377;
+  --arterial-soft: #3b1a22;
+  --ok: #6fc49c;
+  --ok-soft: #143127;
+  --warn: #e2b35a;
+  --warn-soft: #382d15;
+  --stage-0: #3e5366;
+  --stage-1: #5d7e9e;
+  --stage-2: #86a9cb;
+  --stage-3: #adc9e5;
+  --stage-4: #e2e9ee;
+  --grid: #1c2c3a;
   color-scheme: dark;
 }
 
+/* Existing component names map onto the theme tokens. */
+@theme inline {
+  --color-canvas: var(--paper);
+  --color-surface: var(--surface);
+  --color-raised: var(--raised);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--ink);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--venous);
+  --color-accent-strong: var(--venous-strong);
+  --color-accent-soft: var(--venous-soft);
+  --color-arterial: var(--arterial);
+  --color-arterial-soft: var(--arterial-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-danger: var(--arterial);
+  --color-stage-0: var(--stage-0);
+  --color-stage-1: var(--stage-1);
+  --color-stage-2: var(--stage-2);
+  --color-stage-3: var(--stage-3);
+  --color-stage-4: var(--stage-4);
+  --color-grid: var(--grid);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-azeret), ui-monospace, monospace;
+}
+
+/* Archivo's width axis carries the display voice: condensed for headings
+   and the countdown numeral, normal width for reading. */
+@utility font-condensed {
+  font-variation-settings: "wdth" 68;
+}
+@utility font-semicondensed {
+  font-variation-settings: "wdth" 84;
+}
+
 body {
-  background: var(--color-canvas);
-  color: var(--color-fg);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  /* Hinted advance rounding opens gaps in Archivo's variable glyphs on
+     Chromium/Linux ("Perf usion"); geometric precision keeps true widths. */
+  text-rendering: geometricPrecision;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 ::selection {
-  background: var(--color-accent-soft);
+  background: var(--venous-soft);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--venous);
   outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* The one orchestrated motion: deadline markers settle onto the strip. */
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settle {
+  animation: settle 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

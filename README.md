@@ -55,8 +55,15 @@ schema changes from a checkout of the same commit, against the bind-mounted
 database file, before starting the new image (back up first):
 
 ```sh
-DATABASE_URL=file:<DATA_DIR>/app.db npm run db:migrate
+DATABASE_URL=file:/srv/perfusion/data/app.db npm run db:migrate
 ```
+
+Here `/srv/perfusion/data` stands for the host folder you bind-mount to `/data`
+in the container, and `app.db` is the database file inside it. Don't append
+`app.db` twice, and don't point at a path where `app.db` is a directory. On your
+own machine the default already points at `data/app.db`, so plain
+`npm run db:migrate` is enough. In fish, which lacks `VAR=value command` before
+3.1, use `env DATABASE_URL=... npm run db:migrate`.
 
 A page that hits an unmigrated database shows an error naming this fix.
 

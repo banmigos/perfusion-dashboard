@@ -134,6 +134,7 @@ export function addChecklistItem(
   input: {
     title: string;
     detail?: string | null;
+    category?: string | null;
     dueAt?: Date | null;
     linkUrl?: string | null;
   },
@@ -153,6 +154,7 @@ export function addChecklistItem(
       checklistId,
       title: input.title,
       detail: input.detail ?? null,
+      category: input.category ?? null,
       dueAt: input.dueAt ?? null,
       linkUrl: input.linkUrl ?? null,
       sortOrder,

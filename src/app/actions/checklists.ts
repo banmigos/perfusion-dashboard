@@ -10,13 +10,21 @@ import {
   updateChecklistItem,
 } from "@/domain/checklists";
 import { CHECKLIST_ITEM_STATUSES } from "@/db/schema/personal";
+import { REQUIREMENT_CATEGORIES } from "@/db/schema/canonical";
+
+function revalidateChecklistViews() {
+  revalidatePath("/programs", "layout");
+  revalidatePath("/requirements");
+  revalidatePath("/timeline");
+  revalidatePath("/my");
+  revalidatePath("/");
+}
 
 export async function generateChecklistAction(
   savedProgramId: number,
 ): Promise<void> {
   generateChecklist(db, savedProgramId);
-  revalidatePath("/my");
-  revalidatePath("/");
+  revalidateChecklistViews();
 }
 
 const dueDateSchema = z
@@ -28,6 +36,7 @@ const addItemSchema = z.object({
   title: z.string().trim().min(1, "title required"),
   dueAt: dueDateSchema,
   linkUrl: z.string(),
+  category: z.enum([...REQUIREMENT_CATEGORIES, ""]),
 });
 
 export async function addChecklistItemAction(
@@ -38,16 +47,17 @@ export async function addChecklistItemAction(
     title: formData.get("title") ?? "",
     dueAt: formData.get("dueAt") ?? "",
     linkUrl: formData.get("linkUrl") ?? "",
+    category: formData.get("category") ?? "",
   });
 
   addChecklistItem(db, checklistId, {
     title: parsed.title,
     detail: null,
+    category: parsed.category === "" ? null : parsed.category,
     dueAt: parsed.dueAt,
     linkUrl: parsed.linkUrl.trim() === "" ? null : parsed.linkUrl,
   });
-  revalidatePath("/my");
-  revalidatePath("/");
+  revalidateChecklistViews();
 }
 
 const statusSchema = z.enum(CHECKLIST_ITEM_STATUSES);
@@ -57,8 +67,7 @@ export async function updateChecklistItemStatusAction(
   status: string,
 ): Promise<void> {
   updateChecklistItem(db, itemId, { status: statusSchema.parse(status) });
-  revalidatePath("/my");
-  revalidatePath("/");
+  revalidateChecklistViews();
 }
 
 export async function updateChecklistItemDueDateAction(
@@ -67,12 +76,10 @@ export async function updateChecklistItemDueDateAction(
 ): Promise<void> {
   const dueAt = dueDateSchema.parse(formData.get("dueAt") ?? "");
   updateChecklistItem(db, itemId, { dueAt });
-  revalidatePath("/my");
-  revalidatePath("/");
+  revalidateChecklistViews();
 }
 
 export async function deleteChecklistItemAction(itemId: number): Promise<void> {
   deleteChecklistItem(db, itemId);
-  revalidatePath("/my");
-  revalidatePath("/");
+  revalidateChecklistViews();
 }

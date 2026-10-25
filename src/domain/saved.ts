@@ -5,6 +5,7 @@ import * as schema from "@/db/schema";
 import { CURRENT_USER_ID } from "./user";
 
 export type Priority = (typeof schema.PRIORITIES)[number];
+export type ApplicationStatus = (typeof schema.APPLICATION_STATUSES)[number];
 
 export function saveProgram(
   db: BetterSQLite3Database<typeof schema>,
@@ -49,6 +50,18 @@ export function updateSavedProgram(
 ): void {
   db.update(schema.savedPrograms)
     .set(patch)
+    .where(eq(schema.savedPrograms.id, savedProgramId))
+    .run();
+}
+
+/** Move an application through the pipeline, stamping when it last moved. */
+export function setApplicationStatus(
+  db: BetterSQLite3Database<typeof schema>,
+  savedProgramId: number,
+  status: ApplicationStatus,
+): void {
+  db.update(schema.savedPrograms)
+    .set({ applicationStatus: status, statusChangedAt: new Date() })
     .where(eq(schema.savedPrograms.id, savedProgramId))
     .run();
 }

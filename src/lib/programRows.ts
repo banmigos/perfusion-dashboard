@@ -18,6 +18,7 @@ export type ProgramTableRow = {
   location: string | null;
   credential: FactField;
   length: FactField;
+  classSize: FactField;
   deadline: FactField & { cycleLabel: string | null };
   gpa: FactField;
   tuition: TuitionField[];
@@ -78,6 +79,10 @@ export function buildProgramRow(detail: ProgramDetail): ProgramTableRow {
           ? null
           : formatMonths(program.programLengthMonths),
       claim: claimFor("programs", program.id, "program_length_months"),
+    },
+    classSize: {
+      value: program.classSize === null ? null : String(program.classSize),
+      claim: claimFor("programs", program.id, "class_size"),
     },
     deadline: {
       value: current?.cycle.deadlineDate ?? null,

@@ -9,6 +9,14 @@ import { createdAt, id, updatedAt } from "./_helpers";
 import { applicationCycles, programs, requirements, users } from "./canonical";
 
 export const PRIORITIES = ["reach", "target", "likely", "dropped"] as const;
+/** Where an application stands in the pipeline, in order. Personal data, never canonical. */
+export const APPLICATION_STATUSES = [
+  "not_started",
+  "in_progress",
+  "submitted",
+  "interview",
+  "decision",
+] as const;
 export const CHECKLIST_ITEM_STATUSES = [
   "todo",
   "in_progress",
@@ -32,6 +40,10 @@ export const savedPrograms = sqliteTable(
       .$defaultFn(() => new Date()),
     priority: text({ enum: PRIORITIES }),
     personalNote: text(),
+    applicationStatus: text({ enum: APPLICATION_STATUSES })
+      .notNull()
+      .default("not_started"),
+    statusChangedAt: integer({ mode: "timestamp_ms" }),
   },
   (t) => [
     unique("saved_programs_user_program_unique").on(t.userId, t.programId),

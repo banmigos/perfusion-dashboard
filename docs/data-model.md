@@ -185,7 +185,10 @@ claims, and archive-instead-of-delete on every canonical table so rows never act
 ### Personal — never written by import, ever
 
 **`saved_programs`** — `id`, `user_id` FK CASCADE, `program_id` FK RESTRICT, `added_at`,
-`priority` (`reach|target|likely|dropped`), `personal_note`. `UNIQUE(user_id, program_id)`.
+`priority` (`reach|target|likely|dropped`), `personal_note`,
+`application_status` (`not_started|in_progress|submitted|interview|decision`, default
+`not_started`), `status_changed_at`. `UNIQUE(user_id, program_id)`. Application status is
+personal pipeline state; it never feeds back into canonical cycle data.
 
 **`personal_checklists`** — `id`, `user_id` FK CASCADE, `saved_program_id` FK CASCADE,
 `cycle_id` FK NULL RESTRICT, `title`, `created_at`.

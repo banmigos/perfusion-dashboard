@@ -1,18 +1,21 @@
 // src/components/ChecklistItemRow.tsx
 "use client";
 
-import { useTransition } from "react";
+import { useOptimistic, useState, useTransition } from "react";
 import {
   deleteChecklistItemAction,
   updateChecklistItemDueDateAction,
   updateChecklistItemStatusAction,
 } from "@/app/actions/checklists";
 import { CHECKLIST_ITEM_STATUSES } from "@/db/schema/personal";
+import { CHECKLIST_STATUS_LABEL } from "@/lib/categories";
 import { taskTitle } from "@/lib/taskTitle";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 import { Select } from "./ui/Select";
 import { cn } from "./ui/cn";
+
+type Status = (typeof CHECKLIST_ITEM_STATUSES)[number];
 
 type Item = {
   id: number;
@@ -20,7 +23,7 @@ type Item = {
   category?: string | null;
   derivedFromRequirementId?: number | null;
   dueAt: Date | null;
-  status: (typeof CHECKLIST_ITEM_STATUSES)[number];
+  status: Status;
   linkUrl: string | null;
 };
 
@@ -51,40 +54,64 @@ export function ChecklistItemRow({
   programLabel?: string;
 }) {
   const [isPending, startTransition] = useTransition();
+  const [status, setStatus] = useOptimistic(item.status);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const title = taskTitle(item);
+  const closed = status === "done" || status === "skipped";
+  const overdue = isOverdue(item.dueAt, status);
 
   return (
     <li className="flex flex-wrap items-center gap-x-3 gap-y-2 py-2.5 text-sm">
-      <Select
-        value={item.status}
+      {/* A checkbox for the common case: done or not. */}
+      <input
+        type="checkbox"
+        checked={status === "done"}
+        aria-label={`Mark "${title}" done`}
         disabled={isPending}
-        aria-label="Status"
-        onChange={(e) =>
-          startTransition(() => {
-            void updateChecklistItemStatusAction(item.id, e.target.value);
-          })
-        }
-        compact
-      >
-        {CHECKLIST_ITEM_STATUSES.map((s) => (
-          <option key={s} value={s}>
-            {s}
-          </option>
-        ))}
-      </Select>
+        onChange={(e) => {
+          const next: Status = e.target.checked ? "done" : "todo";
+          startTransition(async () => {
+            setStatus(next);
+            await updateChecklistItemStatusAction(item.id, next);
+          });
+        }}
+        className="size-4 shrink-0 accent-[var(--venous)]"
+      />
 
       <span
         title={item.title}
         className={cn(
-          "text-fg",
-          item.status === "done" && "text-subtle line-through",
+          "min-w-40 flex-1 transition-colors",
+          closed ? "text-subtle line-through" : "text-fg",
         )}
       >
-        {taskTitle(item)}
+        {title}
+        {programLabel && (
+          <span className="block text-xs text-muted no-underline">
+            {programLabel}
+          </span>
+        )}
       </span>
 
-      {programLabel && (
-        <span className="text-xs text-muted">{programLabel}</span>
-      )}
+      <Select
+        value={status}
+        disabled={isPending}
+        aria-label={`Status of "${title}"`}
+        onChange={(e) => {
+          const next = e.target.value as Status;
+          startTransition(async () => {
+            setStatus(next);
+            await updateChecklistItemStatusAction(item.id, next);
+          });
+        }}
+        compact
+      >
+        {CHECKLIST_ITEM_STATUSES.map((s) => (
+          <option key={s} value={s}>
+            {CHECKLIST_STATUS_LABEL[s]}
+          </option>
+        ))}
+      </Select>
 
       <form
         action={updateChecklistItemDueDateAction.bind(null, item.id)}
@@ -94,14 +121,15 @@ export function ChecklistItemRow({
           compact
           type="date"
           name="dueAt"
-          aria-label="Due date"
+          aria-label={`Due date for "${title}"`}
           defaultValue={item.dueAt ? formatDueDate(item.dueAt) : ""}
           className={cn(
-            isOverdue(item.dueAt, item.status) && "border-danger text-danger",
+            "font-mono",
+            overdue && "border-arterial text-arterial",
           )}
         />
         <Button type="submit" variant="ghost" size="sm">
-          set
+          Set
         </Button>
       </form>
 
@@ -112,23 +140,43 @@ export function ChecklistItemRow({
           rel="noopener noreferrer"
           className="text-xs text-accent hover:text-accent-strong hover:underline"
         >
-          link
+          Link
         </a>
       )}
 
-      <Button
-        variant="danger"
-        size="sm"
-        disabled={isPending}
-        onClick={() =>
-          startTransition(() => {
-            void deleteChecklistItemAction(item.id);
-          })
-        }
-        className="ml-auto"
-      >
-        delete
-      </Button>
+      {confirmingDelete ? (
+        <span className="ml-auto flex items-center gap-1">
+          <Button
+            variant="danger"
+            size="sm"
+            disabled={isPending}
+            onClick={() =>
+              startTransition(async () => {
+                await deleteChecklistItemAction(item.id);
+              })
+            }
+          >
+            Delete task
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setConfirmingDelete(false)}
+          >
+            Keep
+          </Button>
+        </span>
+      ) : (
+        <Button
+          variant="ghost"
+          size="sm"
+          aria-label={`Delete "${title}"`}
+          onClick={() => setConfirmingDelete(true)}
+          className="ml-auto"
+        >
+          Delete
+        </Button>
+      )}
     </li>
   );
 }

@@ -43,6 +43,14 @@ export type ApplicationRow = ProgramTableRow & {
   progress: ChecklistProgress;
 };
 
+export function getApplicationRow(
+  db: BetterSQLite3Database<typeof schema>,
+  schoolSlug: string,
+  programSlug: string,
+): ApplicationRow | null {
+  return listApplicationRows(db, { schoolSlug, programSlug })[0] ?? null;
+}
+
 export function checklistProgress(items: ChecklistItem[]): ChecklistProgress {
   const done = items.filter((i) => i.status === "done").length;
   const skipped = items.filter((i) => i.status === "skipped").length;
@@ -55,6 +63,7 @@ export function checklistProgress(items: ChecklistItem[]): ChecklistProgress {
 
 export function listApplicationRows(
   db: BetterSQLite3Database<typeof schema>,
+  only?: { schoolSlug: string; programSlug: string },
 ): ApplicationRow[] {
   const programs = db
     .select({ school: schema.schools, program: schema.programs })
@@ -64,6 +73,8 @@ export function listApplicationRows(
       and(
         ne(schema.programs.status, "archived"),
         ne(schema.schools.status, "archived"),
+        only && eq(schema.schools.slug, only.schoolSlug),
+        only && eq(schema.programs.slug, only.programSlug),
       ),
     )
     .orderBy(schema.schools.name, schema.programs.name)

@@ -82,6 +82,19 @@ test("status filter narrows to tracked programs and the board shows them", async
     await expect(cell.getByRole("button", { name: /^Track / })).toBeVisible();
   }
 
+  // Track a program of this test's own so the board is never empty because
+  // a parallel test stopped tracking its program.
+  await page.goto("/programs?q=Emory");
+  const track = page.getByRole("button", { name: "Track Emory University" });
+  if (await track.isVisible().catch(() => false)) {
+    await track.click();
+    await expect(
+      page.getByRole("combobox", {
+        name: "Application status for Emory University",
+      }),
+    ).toBeVisible();
+  }
+
   await page.goto("/programs?view=board");
   for (const column of [
     "Not started",
@@ -116,15 +129,18 @@ test("map renders from the map view toggle", async ({ page }) => {
   await expect(page.locator(".leaflet-marker-icon").first()).toBeVisible();
 });
 
-test("timeline plots dated programs and lists undated ones separately", async ({
+test("timeline lists every program, undated ones apart from the chart", async ({
   page,
 }) => {
   await page.goto("/timeline");
   await expect(page.getByRole("heading", { name: "Timeline" })).toBeVisible();
-  // Each plotted row's link carries its deadline for screen readers.
+  // The e2e database holds the legacy capture, whose deadlines import as
+  // unknown (never as facts), so programs appear in the undated list.
   await expect(
-    page.getByRole("link", { name: /Midwestern.*deadline/ }).first(),
-  ).toBeAttached();
+    page
+      .getByRole("region", { name: "No deadline on record" })
+      .getByRole("link", { name: /Midwestern University/ }),
+  ).toBeVisible();
 
   await page.getByRole("link", { name: "Tracked" }).click();
   await expect(page).toHaveURL(/show=tracked/);

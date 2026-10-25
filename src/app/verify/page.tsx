@@ -45,7 +45,7 @@ export default function VerifyPage() {
     <div>
       <PageHeader
         title="Needs Verification"
-        description={`${queue.length} claim${queue.length === 1 ? "" : "s"} pending. Saved programs with the nearest deadline are listed first.`}
+        description={`${queue.length} claim${queue.length === 1 ? "" : "s"} pending. Tracked programs with the nearest deadline are listed first.`}
       />
 
       {queue.length === 0 ? (

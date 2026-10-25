@@ -15,6 +15,11 @@ describe("todayIso", () => {
     expect(todayIso(now, "America/New_York")).toBe("2026-10-25");
     expect(todayIso(now, "UTC")).toBe("2026-10-26");
   });
+
+  it("falls back to the process zone on an invalid zone instead of throwing", () => {
+    const now = new Date("2026-10-26T01:30:00Z");
+    expect(todayIso(now, "<IANA_TIME_ZONE>")).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
 });
 
 describe("daysBetween / addDays", () => {

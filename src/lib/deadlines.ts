@@ -27,12 +27,20 @@ export const HORIZON_DAYS = 120;
 export function todayIso(now: Date, timeZone?: string): string {
   const zone = timeZone ?? (process.env.APP_TIME_ZONE || undefined);
   // en-CA formats as YYYY-MM-DD.
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: zone,
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(now);
+  const format = (z: string | undefined) =>
+    new Intl.DateTimeFormat("en-CA", {
+      timeZone: z,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(now);
+  try {
+    return format(zone);
+  } catch {
+    // An invalid zone (e.g. an unreplaced placeholder) must not take every
+    // page down; fall back to the process zone.
+    return format(undefined);
+  }
 }
 
 function isoToUtcMs(iso: string): number {

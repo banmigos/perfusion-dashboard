@@ -115,3 +115,17 @@ test("map renders from the map view toggle", async ({ page }) => {
   await expect(page.locator(".leaflet-container")).toBeVisible();
   await expect(page.locator(".leaflet-marker-icon").first()).toBeVisible();
 });
+
+test("timeline plots dated programs and lists undated ones separately", async ({
+  page,
+}) => {
+  await page.goto("/timeline");
+  await expect(page.getByRole("heading", { name: "Timeline" })).toBeVisible();
+  // Each plotted row's link carries its deadline for screen readers.
+  await expect(
+    page.getByRole("link", { name: /Midwestern.*deadline/ }).first(),
+  ).toBeAttached();
+
+  await page.getByRole("link", { name: "Tracked" }).click();
+  await expect(page).toHaveURL(/show=tracked/);
+});

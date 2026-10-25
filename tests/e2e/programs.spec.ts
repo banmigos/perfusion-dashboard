@@ -58,16 +58,53 @@ test("programs default to a table with the research columns", async ({
 
   for (const name of [
     "School",
-    "Location",
+    "Status",
+    "Deadline",
+    "Checklist",
     "Credential",
     "Length",
-    "Deadline",
+    "Class size",
     "GPA",
     "Tuition",
+    "Note",
   ]) {
     await expect(page.getByRole("columnheader", { name })).toBeVisible();
   }
   await expect(page.locator(".leaflet-container")).toHaveCount(0);
+});
+
+test("status filter narrows to tracked programs and the board shows them", async ({
+  page,
+}) => {
+  await page.goto("/programs?status=untracked&due=none");
+  const statusCells = page.locator('td[data-col="status"]');
+  for (const cell of await statusCells.all()) {
+    await expect(cell.getByRole("button", { name: /^Track / })).toBeVisible();
+  }
+
+  await page.goto("/programs?view=board");
+  for (const column of [
+    "Not started",
+    "In progress",
+    "Submitted",
+    "Interview",
+    "Decision",
+  ]) {
+    await expect(page.getByRole("region", { name: column })).toBeVisible();
+  }
+});
+
+test("sorting by school toggles direction through the header link", async ({
+  page,
+}) => {
+  await page.goto("/programs?sort=school");
+  const header = page.getByRole("columnheader", { name: /School/ });
+  await expect(header).toHaveAttribute("aria-sort", "ascending");
+  await header.getByRole("link").click();
+  await expect(page).toHaveURL(/dir=desc/);
+  await expect(
+    page.getByRole("columnheader", { name: /School/ }),
+  ).toHaveAttribute("aria-sort", "descending");
 });
 
 test("map renders from the map view toggle", async ({ page }) => {

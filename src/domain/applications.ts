@@ -24,6 +24,7 @@ export type ChecklistProgress = {
  */
 export type ApplicationRow = ProgramTableRow & {
   programId: number;
+  numbers: { lengthMonths: number | null; classSize: number | null };
   cycle: {
     id: number;
     opensDate: string | null;
@@ -109,6 +110,10 @@ export function listApplicationRows(
       {
         ...buildProgramRow(detail),
         programId: program.id,
+        numbers: {
+          lengthMonths: program.programLengthMonths,
+          classSize: program.classSize,
+        },
         cycle: current && {
           id: current.id,
           opensDate: current.applicationOpensDate,

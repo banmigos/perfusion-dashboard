@@ -8,7 +8,23 @@ export type FactField = {
   claim: ClaimLike | undefined;
 };
 
-export type TuitionField = FactField & { label: string };
+export type TuitionField = FactField & {
+  label: string;
+  /** Short form for dense views, e.g. "in-state, per year". */
+  shortLabel: string;
+};
+
+const RESIDENCY_SHORT: Record<string, string> = {
+  in_state: "in-state",
+  out_of_state: "out-of-state",
+  international: "international",
+  flat: "flat",
+};
+const COVERS_SHORT: Record<string, string> = {
+  total_program: "whole program",
+  per_year: "per year",
+  per_credit: "per credit",
+};
 
 export type ProgramTableRow = {
   schoolSlug: string;
@@ -94,6 +110,7 @@ export function buildProgramRow(detail: ProgramDetail): ProgramTableRow {
     gpa,
     tuition: detail.tuitionEstimates.map((t) => ({
       label: `${t.residency.replace("_", " ")} · ${t.covers.replace("_", " ")} · ${t.asOfYear}`,
+      shortLabel: `${RESIDENCY_SHORT[t.residency] ?? t.residency}, ${COVERS_SHORT[t.covers] ?? t.covers}`,
       value: formatUsdCents(t.amountCents),
       claim: claimFor("tuition_estimates", t.id, "record"),
     })),

@@ -13,7 +13,7 @@ const PIN_WIDTH = 28;
 const PIN_HEIGHT = 40;
 const pinIcon = L.divIcon({
   className: "",
-  html: `<svg xmlns="http://www.w3.org/2000/svg" width="${PIN_WIDTH}" height="${PIN_HEIGHT}" viewBox="0 0 28 40" aria-hidden="true"><path d="M14 1C6.8 1 1 6.8 1 14c0 9.5 13 25 13 25s13-15.5 13-25C27 6.8 21.2 1 14 1z" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="#fff"/></svg>`,
+  html: `<svg xmlns="http://www.w3.org/2000/svg" width="${PIN_WIDTH}" height="${PIN_HEIGHT}" viewBox="0 0 28 40" aria-hidden="true"><path d="M14 1C6.8 1 1 6.8 1 14c0 9.5 13 25 13 25s13-15.5 13-25C27 6.8 21.2 1 14 1z" fill="#234c73" stroke="#14202a" stroke-width="1.5"/><circle cx="14" cy="14" r="5" fill="#fff"/></svg>`,
   iconSize: [PIN_WIDTH, PIN_HEIGHT],
   iconAnchor: [PIN_WIDTH / 2, PIN_HEIGHT],
   popupAnchor: [0, -PIN_HEIGHT],

@@ -75,22 +75,70 @@ export function FactCell({
         .filter(Boolean)
         .join(" — ");
 
+      const quietCheck =
+        variant === "compact" &&
+        state.verification === "verified" &&
+        !state.isStale;
+      const check = (
+        <svg
+          viewBox="0 0 12 12"
+          aria-hidden="true"
+          className="size-3 shrink-0 text-ok"
+        >
+          <path
+            d="M2.5 6.2l2.2 2.2 4.8-4.9"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+
       return (
         <span
-          className="inline-flex flex-wrap items-center gap-x-2 gap-y-1"
+          className={
+            quietCheck
+              ? "inline-flex items-center gap-x-1.5 whitespace-nowrap"
+              : "inline-flex flex-wrap items-center gap-x-1.5 gap-y-1"
+          }
           title={detail || undefined}
         >
           <span className="text-fg tabular-nums">{value ?? "—"}</span>
-          <FreshnessPill
-            verification={state.verification}
-            isStale={state.isStale}
-          />
-          {state.source && (
-            <SourceBadge
-              url={state.source.url}
-              title={state.source.title}
-              label={variant === "compact" ? "src↗" : undefined}
-            />
+          {quietCheck ? (
+            // In dense tables a fresh, verified fact earns a quiet check that
+            // doubles as the link to its source; anything less keeps the full
+            // badge and source link so it stands out.
+            state.source ? (
+              <a
+                href={state.source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Verified. Source: ${state.source.title ?? new URL(state.source.url).hostname}`}
+                className="-m-1 rounded p-1 hover:bg-ok-soft"
+              >
+                {check}
+              </a>
+            ) : (
+              <span role="img" aria-label="verified">
+                {check}
+              </span>
+            )
+          ) : (
+            <>
+              <FreshnessPill
+                verification={state.verification}
+                isStale={state.isStale}
+              />
+              {state.source && (
+                <SourceBadge
+                  url={state.source.url}
+                  title={state.source.title}
+                  label={variant === "compact" ? "source" : undefined}
+                />
+              )}
+            </>
           )}
           {variant === "detail" && state.checkedAt && (
             <span className="text-xs text-subtle">
